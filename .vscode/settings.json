@@ -1,0 +1,22 @@
+{
+    "cSpell.words": [
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "--shell-escape",
+                "-file-line-error",
+                "-pdf",        
+                "-outdir=%OUTDIR%",
+                "-output-directory=build",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.outDir": "%DIR%/build"
+}

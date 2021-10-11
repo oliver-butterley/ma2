@@ -1,0 +1,206 @@
+\chapter{Introduction}
+
+\lettrine{W}{e} start by looking at examples which demonstrate some of the motives behind studying analysis in general.
+%
+\begin{example*}[Series]
+  The geometric series
+  \(S = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \cdots\)
+  can be summed by the following simple simple trick.
+  Multiplying by \(2\) we obtain that
+  \[
+    2S = 2 + 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \cdots = 2+S
+  \]
+  and so \(S=2\).
+  If we try to do the same to the sum
+  \(T = 1 + 2 + 4 + 8 + 16 + \cdots\)
+  we get the nonsensical answer
+  \[
+    2T = 2 + 4 + 8 + 16 + \cdots = T -1
+  \]
+  and so \(T = -1\).
+  %
+  Why should we trust the argument in the first case and not in the second?
+\end{example*}
+
+
+\begin{example*}[Interchanging sums]
+  If we consider any matrix of numbers, for example,
+  \[
+    \begin{pmatrix}
+      1 & 2 & 3 \\
+      4 & 5 & 6 \\
+      7 & 8 & 9
+    \end{pmatrix}
+  \]
+  we can sum first the rows \(6 + 15 + 24 = 45\) or first the columns \(12 + 15 + 18 = 45\) to obtain the total sum of all numbers.
+  This is the rule
+  \[
+    \sum_{j=1}^{m} \sum_{k=1}^{n} a_{jk} = \sum_{k=1}^{n} \sum_{j=1}^{m}  a_{jk}.
+  \]
+  We would like to believe that also \(\sum_{j=1}^{\infty} \sum_{k=1}^{\infty} a_{jk} = \sum_{k=1}^{\infty} \sum_{j=1}^{\infty}  a_{jk}\).
+  However this doesn't work for the following matrix:
+  \[
+    \begin{pmatrix}
+      1      & 0      & 0      & \cdots \\
+      -1     & 1      & 0      & \cdots \\
+      0      & -1     & 1      & \cdots \\
+      \vdots & \vdots & \vdots & \ddots
+    \end{pmatrix}
+  \]
+  %
+  We often want to swap the order of summing (or integrating) and often need to consider infinite sums (or integrals).
+  When can we do this and can't we?
+\end{example*}
+
+\begin{example*}[Interchanging integrals]
+  Let's try to integrate \(e^{-xy} - xye^{-xy}\) with respect to both \(x\) and \(y\).
+  We would like to believe that
+  \[
+    \int_{0}^{\infty} \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy \ dx
+    \overset{\text{\large\color{blue} ?}}{=} \int_{0}^{1} \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx \ dy.
+  \]
+  Since
+  \( \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy = \left[ ye^{-xy} \right]_{y=0}^{1} = e^{-x}\),
+  the left-hand side is
+  \( \int_{0}^{\infty} e^{-x} \ dx = \left[ -e^{-x} \right]_{0}^{\infty} = 1 \).
+  However, since
+  \( \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx = \left[ xe^{-xy} \right]_{x=0}^{\infty} = 0\),
+  the right-hand side is \(\int_{0}^{1} 0 \ dx = 0\).
+  So how do we know when to trust the interchange of intervals?
+\end{example*}
+
+
+\begin{example*}[interchanging limits]
+  We could easily believe that
+  \[
+    \lim_{x\to 0}\lim_{y\to 0} \frac{x^2}{x^2 + y^2}
+    \overset{\text{\large\color{blue} ?}}{=}
+    \lim_{y\to 0}\lim_{x\to 0} \frac{x^2}{x^2 + y^2}.
+  \]
+  However \(\lim_{y\to 0} \frac{x^2}{x^2 + y^2} = \frac{x^2}{x^2 + 0} = 1 \) and so the left-hand side is \(1\)
+  whereas \(\lim_{x\to 0} \frac{x^2}{x^2 + y^2} = \frac{0}{0 + y^2} = 0\) so the right-hand side is \(0\).
+  This example shows that the interchange of limits is untrustworthy. Under what circumstances is it legitimate?
+\end{example*}
+
+We need to be rigorous in our logic otherwise, as we have seen in these examples, the conclusions can be erroneous and the difficulties are often subtle.
+
+\subsection*{Curves of constant width}
+%
+\begin{figure}[htb]
+  \centering
+  \includesvg[width=0.6\textwidth]{content/graphics/reuleaux.svg}
+  \caption{The Reuleaux triangle is a curve of constant width.}
+  \label{fig:reuleaux}
+\end{figure}
+%
+The above examples are calculus based but it is worthwhile to consider a real world application of the rigour and reasoning we aspire to.
+Suppose we are organising the production facilities which manufacture a component that is round (maybe a rocket body, maybe a tube, etc.).
+\begin{samepage}
+  As part of the production it is important to have a procedure which guarantees that the fabrication is done to the correct tolerance.
+  The idea proposed is:
+  \begin{quotation}
+    ``We measure the width from all angles to confirm that the manufactured component is correct.''
+  \end{quotation}
+\end{samepage}
+Two-dimensional problem in the sense we assume that the object is a closed curve in \(\bR^2\).
+For a given angle we define the width of this curve to be the smallest distance between two parallel lines which touch the curve in a single point but never cross it (one each side of the curve).
+We say that the curve has constant width if this width is equal from every direction.
+This is just what we would check using calipers on a part and rotating.
+The following statement is intuitive and true.
+\begin{theorem*}
+  A circle has constant width.
+\end{theorem*}
+\noindent
+However the converse is not true, indeed the following is true.
+\begin{theorem*}
+  There exist constant width curves which are not circles.
+\end{theorem*}
+\noindent
+This can be proved by constructing many such curves, for example the \href{https://en.wikipedia.org/wiki/Reuleaux_triangle}{Reuleaux triangle}. Indeed there are such curves which look similar to regular polygons but still have constant width.
+
+
+% \footnotetext{
+%   Source of Figure~\ref{fig:reuleaux}: 
+%   \url{https://commons.wikimedia.org/wiki/File:Reuleaux_supporting_lines.svg}
+%   }
+
+
+
+\subsection*{MA2 versus MA1}
+
+Much of what we do in this course builds on ideas established in Mathematical Analysis 1.
+In particular many of the ideas are extended to the higher dimensional setting.
+
+\begin{center}
+  \begin{tabular}{r | l}
+    \textbf{Mathematical Analysis 1}
+     &
+    \textbf{Mathematical Analysis 2}  \\
+    \hline
+    Sequences \& series of numbers
+     &
+    Sequences \& series  of functions \\
+    \(a_1, a_2, a_3,\ldots \)
+     &
+    \(f_1(x), f_2(x), f_3(x),\ldots \)
+    \\
+    \(\sum_{j=0}^{\infty} a_j\)
+     &
+    \(\sum_{j=0}^{\infty} f_j(x)\)
+    \\
+    \hline
+    (Functions) \(f:\bR \to \bR\)
+     &
+    \(f:\bR^n \to \bR\) (Scalar fields)
+    \\
+     &
+    \(\mathbf{f}:\bR^n \to \bR^n\) (Vector fields)
+    \\
+     &
+    \(\boldsymbol{\alpha}:\bR \to \bR^n\) (Paths)
+    \\
+    \hline
+    (Derivative) \( f'(x) = \frac{df}{dx}(x)\)
+     &
+    \( \frac{\partial f}{\partial x_j}(x_1,\ldots,x_n)\) (Partial derivatives)
+    \\
+     &
+    \(\nabla f\) (Gradient)
+    \\
+     &
+    \(D_v f\) (Directional derivative)
+    \\
+     &
+    \(\boldsymbol{\alpha}'\) (Derivative of path)
+    \\
+     &
+    \(Df\) (Jacobian matrix)
+    \\
+    \hline
+    (Extrema) \(\sup_{x\in \bR} f(x)\)
+     &
+    \(\sup_{x\in \bR^n} f(x)\) (Extrema)
+    \\
+     &
+    Lagrange multiplier method
+    \\
+    \hline
+    Integral \(\int_{a}^{b} f(x) \ dx\)
+     &
+    Multiple integral
+    \\
+     &
+    Line integral
+    \\
+     &
+    Surface integral
+  \end{tabular}
+\end{center}
+
+
+\subsection*{Suggested further reading}
+
+\begin{itemize}
+  \item "Analysis 1" by Terence Tao.
+        (Particularly \S 1.2 ``Why Analysis?'' and Appendix A ``The basics of mathematical logic'').
+\end{itemize}

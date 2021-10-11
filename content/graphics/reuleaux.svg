@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="379.453px" height="285.147px" viewBox="0 0 379.453 285.147" enable-background="new 0 0 379.453 285.147"
+	 xml:space="preserve">
+<path fill="#6699FF" stroke="#231F20" stroke-miterlimit="10" d="M253.881,228.635c-0.001-79.948-43.44-149.746-108-187.093
+	c-64.56,37.348-107.999,107.145-108,187.093c31.771,18.379,68.655,28.903,108,28.903
+	C185.226,257.538,222.11,247.014,253.881,228.635z"/>
+<line fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" x1="-2.702" y1="74.089" x2="335.524" y2="0"/>
+<line fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" x1="41.227" y1="285.147" x2="379.454" y2="211.062"/>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="248.971" y1="32.537" x2="288.768" y2="214.211"/>
+		<g>
+			<path fill="#000000" d="M247.68,26.642c-0.422,3-1.424,6.826-2.816,9.367l4.277-2.698l5.013,0.663
+				C251.827,32.248,249.316,29.19,247.68,26.642z"/>
+		</g>
+		<g>
+			<path fill="#000000" d="M290.059,220.106c-1.637-2.549-4.147-5.605-6.475-7.332l5.014,0.663l4.276-2.698
+				C291.482,213.28,290.48,217.107,290.059,220.106z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 273.73 119.4346)" fill="#000000" font-family="Helvetica" font-size="24">width</text>
+</svg>

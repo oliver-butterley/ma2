@@ -1,0 +1,111 @@
+\documentclass[12pt,openany]{book}      
+% paper size is in options.sty
+\usepackage[utf8x]{inputenc}
+\usepackage[colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref}
+\usepackage{svg} % automatically convert svg and include
+\usepackage{graphicx}
+\usepackage[UKenglish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[type={CC},modifier={by-sa},version={4.0}]{doclicense}
+\usepackage[skins,breakable,theorems]{tcolorbox}
+\usepackage{enumitem} % spacing for lists
+\setlist{noitemsep,topsep=2pt}
+\usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
+\usepgfplotslibrary{fillbetween}
+% \usetikzlibrary{external} % To speed up compile
+% \tikzexternalize[prefix=figures/]
+
+
+\usetikzlibrary{positioning, arrows.meta}
+
+%%%%%%%%%%%%%%% Arrow to position in vector
+\newcommand{\here}[2]{\tikz[remember picture]{\node[inner sep=0](#2){#1}}}
+%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{varwidth}
+
+
+%%%%%%%%%% BOOK INFORMATION %%%%%%%%%%
+\newcommand{\authorname}{Everyone who contributed.}
+\newcommand{\booktitle}{Mathematical Analysis 2}
+\newcommand{\subtitle}{Lecture notes 2021/22}
+\newcommand{\publisher}{\texttt{github.com/oliver-butterley/ma2}}
+\newcommand{\editionyear}{2021}
+\title{\booktitle}
+\author{\authorname}
+    
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% Highlighted versions of definition and theorem
+\tcolorboxenvironment{definition}{
+    colback=blue!5!white, 
+    arc=2mm,  enhanced, frame hidden, oversize,
+    left=2mm,right=2mm,top=1mm,bottom=1mm}
+\tcolorboxenvironment{theorem}{
+    colback=blue!5!white, 
+    arc=2mm,  enhanced, frame hidden, oversize,
+    left=2mm,right=2mm,top=1mm,bottom=1mm}
+
+    
+    \colorlet{paleBlue}{blue!10!white}
+
+\usepackage{misc/options}
+
+%%%%%%%%% helpers
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\bC}{\mathbb{C}} % Complex numbers
+\newcommand{\bN}{\mathbb{N}} % Natural numbers
+\newcommand{\bR}{\mathbb{R}} % Real numbers
+%%%%%%%%%
+
+\newcommand{\norm}[1]{\left\|#1\right\|} % Norm
+\renewcommand{\aa}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\cc}{\mathbf{c}}
+\newcommand{\ee}{\mathbf{e}}
+\newcommand{\ff}{\mathbf{f}}
+\renewcommand{\gg}{\mathbf{g}}
+\newcommand{\hh}{\mathbf{h}}
+\newcommand{\rr}{\mathbf{r}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\aalpha}{\boldsymbol{\alpha}}
+
+
+\begin{document}
+
+% Reduce space around displayed equations
+\setlength{\abovedisplayskip}{10pt}
+\setlength{\belowdisplayskip}{10pt}
+
+\frontmatter
+\input{frontmatter/titlepage}
+\input{frontmatter/copyrightpage}
+\input{frontmatter/preface}
+\input{frontmatter/tocpage}
+
+\pagestyle{fancy}
+
+\input{content/part0}
+
+\mainmatter
+
+\input{content/part1}
+\input{content/part2}
+
+\end{document}
