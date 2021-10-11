@@ -2,10 +2,10 @@
 
 \chapter{Differential calculus of scalar and vector fields}
 
-In this part of the course we start to consider higher dimensional space.
-I.e., instead of \(\bR\) we consider \(\bR^n\) for \(n\in \bN\).
+\lettrine{I}{n} this part of the course we start to consider higher dimensional space.
+That is, instead of \(\bR\) we consider \(\bR^n\) for \(n\in \bN\).
 We will particularly focus on 2D and 3D but everything also holds in any dimension.
-In higher dimension we have more options for functions and correspondingly more options for derivatives.
+Going beyond \(\bR\) we have more options for functions and correspondingly more options for derivatives.
 
 Various different notation is commonly used.
 Here we will primarily use \((x,y)\in \bR^2\), \((x,y,z)\in\bR^3\) or, more generally,  \(\xx =(x_1,x_2,\ldots,x_n) \in \bR^n \)
@@ -17,6 +17,7 @@ For example, \(\bR^2\) is the plane, \(\bR^3\) is 3D space.
     \(\xx \cdot \yy = \sum_{k=1}^{n} x_k y_k \in \bR\)
 \end{definition}
 
+\noindent
 We recall that the inner product being zero has a geometric meaning, it means that the two vectors are orthogonal.
 We also recall that the ``length'' of a vector is given by the norm, defined as follows.
 
@@ -24,6 +25,7 @@ We also recall that the ``length'' of a vector is given by the norm, defined as 
     \(\norm{\xx} =  \sqrt{\xx \cdot \xx} = (\sum_{k=1}^{n} x_k^2 )^{\frac{1}{2}}\).
 \end{definition}
 
+\noindent
 For example, in \(\bR^2\) then \(\norm{(x,y)} = \sqrt{x^2 + y^2}\).
 There are various convenient properties for working with norms and inner products, in particular, the Cauchy-Schwarz inequality (\(\abs{x\cdot y} \leq \norm{\xx} \ \norm{\yy}\)) and the triangle inequality (\(\norm{\xx + \yy} \leq \norm{\xx} + \norm{\yy}\)).
 
@@ -209,7 +211,7 @@ Observe how, if \(n=m=1\), this is the familiar notion of continuity for functio
     \end{enumerate}
 \end{theorem}
 
-We will prove just one part of the above theorem here, the other parts are left as exercises and are relatively straightforward.
+We prove a couple of the parts of the above theorem here, the other parts are left as exercises and are relatively straightforward.
 
 \begin{proof}[Proof of (c)]
     \begin{enumerate}
@@ -238,7 +240,7 @@ We will prove just one part of the above theorem here, the other parts are left 
 \end{proof}
 
 
-When writing a vector field (or similar functions) it is often convenient to divided the higher-dimensional function into smaller parts. 
+When writing a vector field (or similar functions) it is often convenient to divided the higher-dimensional function into smaller parts.
 We call these parts the \emph{Components of a vector field}.
 
 \begin{theorem}
@@ -248,18 +250,18 @@ We call these parts the \emph{Components of a vector field}.
 \begin{proof}
     \begin{description}
         \item[(\(\Rightarrow\))]
-            Let
-            \( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \)
-            \begin{tikzpicture}[remember picture, overlay]
-                \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
-                \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
-            \end{tikzpicture}
-            and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
-            We have already shown that the continuity of two vector fields implies the continuity of the inner product.
+              Let
+              \( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \)
+              \begin{tikzpicture}[remember picture, overlay]
+                  \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
+                  \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
+              \end{tikzpicture}
+              and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
+              We have already shown that the continuity of two vector fields implies the continuity of the inner product.
         \item[(\(\Leftarrow \))]
-            By definition of the norm
-            \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{m}(f_k(\xx)-f_k(\aa))^2\)
-            and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
+              By definition of the norm
+              \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{m}(f_k(\xx)-f_k(\aa))^2\)
+              and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
     \end{description}
 \end{proof}
 
@@ -294,32 +296,31 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 \end{theorem}
 
 \begin{proof}
-    \begin{itemize}
-        \item \(\displaystyle\lim_{\xx\to\aa}\norm{\ff(\gg(\xx))-\ff(\gg(\aa))}  =\displaystyle\lim_{\yy\to\gg(\aa)}\norm{\ff(\yy)-\ff(\gg(\aa))}  =0   \)
-    \end{itemize}
+    \(\displaystyle\lim_{\xx\to\aa}\norm{\ff(\gg(\xx))-\ff(\gg(\aa))}  =\displaystyle\lim_{\yy\to\gg(\aa)}\norm{\ff(\yy)-\ff(\gg(\aa))}  =0   \)
 \end{proof}
 
 \begin{example*}
-    \(f(x_1,x_2)= \sin(x_1^2 + x_2) + x_1 x_2\)
+    We can consider the scalar field \(f(x,y)= \sin(x^2 + y) + x y\) as the composition of functions.
 \end{example*}
 
 
 
-
-{}
-
-\begin{example*}[Continuity problem in higher dimensions]
-    Let \(f(x_1,x_2)\) be defined as \(f(0,0)=0\) and, for all \((x_1,x_2)\neq (0,0)\),
+\begin{example*}[continuity in higher dimensions]
+    Let \(f(x,y)\) be defined as \(f(0,0)=0\) and, for all \((x,y)\neq (0,0)\),
     \[
-        f(x_1,x_2) =
-        \frac{x_1x_2}{x_1^2 + x_2^2}.
+        f(x,y) =
+        \frac{x y}{x^2 + y^2}.
     \]
-    What is the behaviour of the function along the following three lines?
-    \begin{enumerate}
-        \item \(x_1=0\),
-        \item \(x_2=0\),
-        \item \(x_1=x_2\).
-    \end{enumerate}
+    What is the behaviour of \(f\) when approaching \((0,0)\) along the following three lines?
+    \begin{center}
+        \begin{tabular}{r | l}
+            line        & limit                                      \\
+            \hline
+            \(\{x=0\}\) & \(f(0,t) \to 0\) as \(t \to 0\)            \\
+            \(\{y=0\}\) & \(f(t,0) \to 0\) as \(t \to 0\)            \\
+            \(\{x=y\}\) & \(f(t,t) \to \frac{1}{2}\) as \(t \to 0\).
+        \end{tabular}
+    \end{center}
 \end{example*}
 
 
@@ -327,56 +328,43 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 \section{Derivatives of scalar fields}
 
 
- {Directional derivatives}
-
-
-
-
-
 \begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-                view={0}{90},
-                width = \textwidth]
-            \addplot3[
-                domain=0:2,
-                domain y=0:2,
-                contour filled={number=25}]
-            {x*x + y*y};
-            \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,1.35); %\node[midway, left]{\(\left(\begin{smallmatrix}0 \\ 1\end{smallmatrix} \right)\)};
-            \draw[->,thick] (axis cs:1,1) -- (axis cs:1.5,1);
-            \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,0.65);
-        \end{axis}
-    \end{tikzpicture}
-
-    \caption{Plot where colour represents the value of \(f(x_1,x_2)=x_1^2 + x_2^2\). The change in \(f\) depends on direction.}
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    view={0}{90},
+                    width = .5\textwidth]
+                \addplot3[
+                    domain=0:2,
+                    domain y=0:2,
+                    contour filled={number=25}]
+                {x*x + y*y};
+                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,1.35); %\node[midway, left]{\(\left(\begin{smallmatrix}0 \\ 1\end{smallmatrix} \right)\)};
+                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.5,1);
+                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,0.65);
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Plot where colour represents the value of \(f(x_1,x_2)=x_1^2 + x_2^2\). The change in \(f\) depends on direction.}
+    \end{center}
 \end{figure}
 
 
 
 
-\begin{definition}[Directional derivative]
+\begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(f:S\to \bR\).
-    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\) the derivative of \(f\) with respect to \(\vv\) is defined as
+    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\), \(\norm{v}=1\) the derivative of \(f\) with respect to \(\vv\) is defined as
     \[
         D_{\vv}f(\aa) :=
         \lim_{h\to 0} \frac{1}{h}\left(  f(\aa+h \vv) - f(\aa)     \right).
     \]
 \end{definition}
 
-\begin{itemize}
-    \item
-          When \(h\) is small \(\aa + h \vv \in S\) because \(\aa\in \operatorname{int} S\) so this definition makes sense.
-    \item
-          Many different notations in use.
-\end{itemize}
+
+When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in \operatorname{int} S\) so this definition makes sense.
 
 
 
-% Directional derivative is linear - we only need to care about direction of \(\vv\)
-
-
-%{Properties of directional derivative}
 
 \begin{theorem}
     Suppose \(S\subset \bR^n\), \(f:S\to \bR\), \(\aa \in \operatorname{int} S\).
@@ -410,11 +398,11 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 
 
 
-{Partial derivatives}
+
 % \tikzset{external/export next=false}
 For any \(k\in\{1,2,\ldots,n\}\),
 let
-\( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \).
+\( \ee_k=(0,\ldots,0,\here{\(1\)}{fromHere},0,\ldots,0)  \).
 \begin{tikzpicture}[remember picture, overlay]
     \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
     \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
@@ -428,7 +416,7 @@ let
 \end{definition}
 
 
-{Notation}
+
 Various symbols used for partial derivatives:
 \(\frac{\partial f}{\partial x_k}(\aa) = D_kf(\aa) = \partial_{k}f(\aa)\).
 If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
@@ -468,8 +456,6 @@ I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 
 
 
-
-{Total derivatives (cont.)}
 \begin{proof}
     Since \(f\) is differentiable
     \(  f(\aa+ h \vv) = f(\aa) + h T_\aa \cdot \vv + h\norm{\vv}E(\aa,h\vv)\)
