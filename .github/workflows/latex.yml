@@ -37,6 +37,10 @@ jobs:
       - run: mkdir dist
       - run: cp main.pdf dist/main.pdf
 
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
       # Upload PDF to server
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
