@@ -2,8 +2,13 @@ name: Compile Latex as pdf
 
 # Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,11 +31,33 @@ jobs:
           latexmk_shell_escape: true
           extra_system_packages: inkscape
           
-      # Upload PDF file
-      - uses: actions/upload-artifact@v2
+      # Upload PDF file as artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: PDF
           path: main.pdf
+
+      # Copy file to deploy folder
+      - run: mkdir dist
+      - run: cp main.pdf dist/main.pdf
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      # Upload PDF to server
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+            ARGS: "-rltgoDzvO --delete"
+            SOURCE: "dist/"
+            REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+            REMOTE_USER: ${{ secrets.REMOTE_USER }}
+            TARGET: ${{ secrets.REMOTE_TARGET }}  # E.g., "~/public_html/MA2/draft/"
+            EXCLUDE: ""
+
 
 
 
