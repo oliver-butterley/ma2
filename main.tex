@@ -58,13 +58,13 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
-\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
-\newtheorem{example}{Example}
+\newtheorem{example}[theorem]{Example}
 \newtheorem*{example*}{Example}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 
 % Highlighted versions of definition and theorem
 \tcolorboxenvironment{definition}{
@@ -76,8 +76,7 @@
     arc=2mm,  enhanced, frame hidden, oversize,
     left=2mm,right=2mm,top=1mm,bottom=1mm}
 
-    
-    \colorlet{paleBlue}{blue!10!white}
+\colorlet{paleBlue}{blue!10!white}
 
 \usepackage{misc/options}
 

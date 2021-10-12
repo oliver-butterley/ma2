@@ -313,7 +313,7 @@ The continuity of functions continues to hold, in an intuitive way, under compos
     \]
     What is the behaviour of \(f\) when approaching \((0,0)\) along the following three lines?
     \begin{center}
-        \begin{tabular}{r | l}
+        \begin{tabular}{ c | c }
             line        & limit                                      \\
             \hline
             \(\{x=0\}\) & \(f(0,t) \to 0\) as \(t \to 0\)            \\
@@ -379,17 +379,17 @@ When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in
 %<>{Note:}
 
 \begin{proof}
-    By definition \(\frac{g(t+h)-g(h)}{h} =\frac{f(\aa+h \vv) - f(\aa)}{h} \).
+    By definition \(\frac{1}{h}(g(t+h)-g(h)) =\frac{1}{h}(f(\aa+h \vv) - f(\aa)) \).
 \end{proof}
 
-\begin{theorem}[Mean value]
+\begin{theorem*}[mean value]
     Assume that \(D_{\vv}(\aa+t\vv)\)  exists for each \(t\in [0,1]\). Then for some \(\theta \in (0,1)\),
     \[
         f(\aa+\vv) - f(\aa) = D_{\vv}f (\zz),
         \quad
         \text{where \(z=\aa + \theta \vv\)}.
     \]
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
     Apply mean value theorem to \(g(t) = f(\aa+t\vv)\).
@@ -408,7 +408,7 @@ let
     \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
 \end{tikzpicture}
 
-\begin{definition}[Partial derivatives]
+\begin{definition}[partial derivatives]
     We define the \emph{partial derivative} in \(x_k\) of \(f(x_1,x_2,\ldots,x_n)\) at \(\aa\) as
     \[
         \frac{\partial f}{\partial x_k}(\aa) := D_{\ee_k}f(\aa).
@@ -420,18 +420,10 @@ let
 Various symbols used for partial derivatives:
 \(\frac{\partial f}{\partial x_k}(\aa) = D_kf(\aa) = \partial_{k}f(\aa)\).
 If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
+In practice, to compute the partial derivative \( \frac{\partial f}{\partial x_k}\), one should consider all other \(x_j\) for \(j\neq k\) as constants and take the derivative with respect to \(x_k\).
 
 
-    <>{In practice:}
-To compute the partial derivative \( \frac{\partial f}{\partial x_k}\), one should consider all other \(x_j\) for \(j\neq k\) as constants and take the derivative with respect to \(x_k\).
-
-
-
-
-    {Total derivatives}
-
-
-Recall that if \(f:\bR \to \bR\) is differentiable, then
+If \(f:\bR \to \bR\) is differentiable, then
 \[
     f(a + h) = f(a) + h f'(a) + hE(a,h)
 \]
@@ -439,7 +431,7 @@ where \(E(a,h) \to 0\) as \(h\to 0\).
 I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 
 
-\begin{definition}[Differentiable]
+\begin{definition}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there is \(T_\aa \in \bR^n\) and \(E(\aa,\vv)\) such that, for \(\vv\in B(\aa,r)\),
     \[
@@ -475,7 +467,7 @@ I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 
 
 %
-\begin{definition}[Gradient]
+\begin{definition}[gradient]
     The \emph{gradient} of \(f\) is the vector-valued function
     \[
         \nabla f(\aa) :=
@@ -492,11 +484,10 @@ I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 
 
 
-\begin{theorem}
+\begin{theorem*}
     If \(f\) is differentiable at \(\aa\), then it is continuous at \(\aa\).
-\end{theorem}
+\end{theorem*}
 \begin{proof}
-    \vspace{-2em}
     \begin{align*}
          & \abs{f(\aa+\vv)-f(\aa)}                                                            \\
          & \quad = \abs{ T_\aa \cdot \vv + \norm{\vv}E(\aa,\vv)  }                            \\
@@ -593,52 +584,38 @@ We define the derivative as
     \end{pmatrix}.  % = \left( x_1'(t), \ldots, x_n'(t)  \right).
 \]
 
+Here \(\aalpha'\) is a vector-valued function which represents the ``direction of movement''.
+
+% We sometimes consider horizontal and sometimes vertical vectors. It can be convenient to distinguish between ``position'' and ``direction''.
 
 
-
-\begin{itemize}
-    \item \(\aalpha'\) is a vector-valued function,
-    \item It represents the ``direction of movement''.
-\end{itemize}
-
-<>{Note:}
-We sometimes consider horizontal and sometimes vertical vectors. It can be convenient to distinguish between ``position'' and ``direction''.
-
-
-\vspace{-2.5em}
-\begin{figure}
-    \begin{tikzpicture}%
-        \begin{axis}[
-                view={60}{15},
-                width=\textwidth,
-                height=1.1\textwidth,
-                axis lines=center,
-                xlabel=$ $,ylabel=$ $,zlabel=$ $,
-                zmin=-1, zmax=1.6,
-                xtick=\empty,  ytick=\empty,  ztick=\empty
-            ]
-            \addplot3[blue,thick,domain=-9:8,samples=60,samples y=0]
-            ({sin(deg(x))},
-            {cos(deg(x))},
-            {2*x/(5*pi)});
-            \draw[->,thick] (axis cs:-1,0,0.6) -- (axis cs:-1,1,0.65) node[anchor=south]{\(\aalpha'(t)\)};
-            \node[circle,fill,inner sep=2pt] at (axis cs:-1,0,0.6) {} ;
-            \node[anchor=south] at (axis cs:-1,0,0.6) {\(\aalpha(t)\)} ;
-        \end{axis}
-    \end{tikzpicture}
-    \caption{\(\aalpha(t):=(\cos t, \sin t, t)\), \(t\in \bR\).}
+\begin{figure}[htb]
+    \begin{center}
+        \begin{tikzpicture}%
+            \begin{axis}[
+                    view={60}{15},
+                    width=0.8\textwidth,
+                    height=0.8\textwidth,
+                    axis lines=center,
+                    xlabel=$ $,ylabel=$ $,zlabel=$ $,
+                    zmin=-1, zmax=1.6,
+                    xtick=\empty,  ytick=\empty,  ztick=\empty
+                ]
+                \addplot3[blue,thick,domain=-9:8,samples=60,samples y=0]
+                ({sin(deg(x))},
+                {cos(deg(x))},
+                {2*x/(5*pi)});
+                \draw[->,thick] (axis cs:-1,0,0.6) -- (axis cs:-1,1,0.65) node[anchor=south]{\(\aalpha'(t)\)};
+                \node[circle,fill,inner sep=2pt] at (axis cs:-1,0,0.6) {} ;
+                \node[anchor=south] at (axis cs:-1,0,0.6) {\(\aalpha(t)\)} ;
+            \end{axis}
+        \end{tikzpicture}
+        \caption{\(\aalpha(t)=(\cos t, \sin t, t)\), \(t\in \bR\).}
+    \end{center}
 \end{figure}
 
 
-
-
-
-
-
-
-{Chain rule (cont.)}
-
-\begin{theorem}
+\begin{theorem*}
     Let \(S\subset \bR^n\) be open and \(I\subset \bR\) an interval.
     Let \(\xx: I \to S\) and \(f:S \to \bR\) and define, for \(t\in I\),
     \[
@@ -649,10 +626,8 @@ We sometimes consider horizontal and sometimes vertical vectors. It can be conve
     \[
         g'(t) = \nabla f \left(\xx(t)\right) \cdot \xx'(t).
     \]
-\end{theorem}
+\end{theorem*}
 
-
-\vspace{-.5em}
 
 \begin{proof}
     Let \(h>0\) be small, \vspace{-.5em}
@@ -668,53 +643,45 @@ We sometimes consider horizontal and sometimes vertical vectors. It can be conve
 \end{proof}
 
 
-
-{Chain rule example}
-
-
-
-\begin{itemize}
-    \item A particle moves in a circle and its position at time \(t\in [0,2\pi]\) is given by
-          \[
-              \xx(t) = (\cos t, \sin t).
-          \]
-    \item  The temperature at a point \(\yy=(y_1,y_2)\) is given by the function \(f(\yy) := y_1 + y_2\),
-    \item             The temperature the particle experiences at time \(t\) is given by \(g(t) = f (\xx(t))\).
-\end{itemize}
-
-
+\begin{example*}
+    A particle moves in a circle and its position at time \(t\in [0,2\pi]\) is given by
+    \[
+        \xx(t) = (\cos t, \sin t).
+    \]
+    The temperature at a point \(\yy=(y_1,y_2)\) is given by the function \(f(\yy) := y_1 + y_2\),
+    The temperature the particle experiences at time \(t\) is given by \(g(t) = f (\xx(t))\).
+    Temperature change:
+    \(
+    g'(t)
+    = \nabla f \left(\xx(t)\right) \cdot \xx'(t)
+    = \left(\begin{smallmatrix}
+            1 \\
+            1
+        \end{smallmatrix}\right)
+    \cdot
+    \left( \begin{smallmatrix}
+            -\sin t \\
+            \cos t
+        \end{smallmatrix}\right)
+    = \cos t - \sin t.
+    \)
+\end{example*}
 
 
 \begin{figure}
-    \begin{tikzpicture}
-        \shade[shading=axis, top color=red, shading angle=-45] (-2.4,-2.4) rectangle (2.4,2.4);
-        \draw[step=1cm,gray,very thin] (-2.4,-2.4) grid (2.4,2.4);
-        \draw[thick,->] (-2.4,0) -- (2.4,0) node[anchor=north]{\(x_1\)};
-        \draw[thick,->] (0,-2.4) -- (0,2.4) node[anchor=east]{\(x_2\)};
-        \draw[dashed] (0,0) circle (2);
-        \draw[thick] (2,0) arc [start angle=0, end angle=130, radius=2] node[circle,fill,inner sep=2pt]{} node[anchor=north west]{\(\xx(t)\)};
-    \end{tikzpicture}
-    \caption{\(\xx(t)\) is the position of a particle. Shading represents temperature \(f\).}
+    \begin{center}
+        \begin{tikzpicture}
+            \shade[shading=axis, top color=red, shading angle=-45] (-2.4,-2.4) rectangle (2.4,2.4);
+            \draw[step=1cm,gray,very thin] (-2.4,-2.4) grid (2.4,2.4);
+            \draw[thick,->] (-2.4,0) -- (2.4,0) node[anchor=north]{\(x_1\)};
+            \draw[thick,->] (0,-2.4) -- (0,2.4) node[anchor=east]{\(x_2\)};
+            \draw[dashed] (0,0) circle (2);
+            \draw[thick] (2,0) arc [start angle=0, end angle=130, radius=2] node[circle,fill,inner sep=2pt]{} node[anchor=north west]{\(\xx(t)\)};
+        \end{tikzpicture}
+        \caption{\(\xx(t)\) is the position of a particle. Shading represents temperature \(f\).}
+    \end{center}
 \end{figure}
 
-
-
-
-Temperature change:
-\(
-g'(t)
-= \nabla f \left(\xx(t)\right) \cdot \xx'(t)
-= \left(\begin{smallmatrix}
-        1 \\
-        1
-    \end{smallmatrix}\right)
-\cdot
-\left( \begin{smallmatrix}
-        -\sin t \\
-        \cos t
-    \end{smallmatrix}\right)
-= \cos t - \sin t.
-\)
 
 
 
@@ -722,18 +689,13 @@ g'(t)
 
 \section{Level sets \& tangent planes}
 
-
- {Level sets \& tangent planes (2D)}
-
-
-
-
 Let \(S\subset \bR^2\), \(f:S\to\bR\).
 Suppose \(c\in \bR\) and
 \[
     L(c) := \left\{\xx\in S : f(\xx)=c\right\}
 \]
 is a curve at \(\aa \in S\) in the sense that  \(\xx:I \to S\) is the parametric form of the curve.
+The set \(L(c)\) is called the \emph{level set}.
 I.e., \(\xx(t_a) = \aa\) for some \(t_a \in I\) and \[f(\xx(t))=c\] for all \(t\in I\).
 Then
 \begin{itemize}
@@ -743,10 +705,6 @@ Then
 \end{itemize}
 
 This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0\).
-
-
-
-
 
 % \begin{figure}
 %     \begin{tikzpicture}
@@ -771,23 +729,6 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
     \item   Contours \(\leftrightarrow\)  altitude.
 \end{itemize}
 
-<>{Terminology:}
-\(L(c)\) is called the \emph{level set}.
-
-
-
-
-
-
-
-
-
-{Level set examples}
-
-
-
-
-
 \begin{example*}
     Let \(f(x_1,x_2,x_3):=x_1^2 + x_2^2 + x_3^2\).
     \begin{itemize}
@@ -810,75 +751,63 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
 %
 % %                       
 \begin{figure}
-    \begin{minipage}[c]{0.5\textwidth}
-        %\fbox{
-        \begin{tikzpicture}
-            \begin{axis}[hide axis,axis equal]
-                \addplot3[%
-                    opacity = 0.5,
-                    surf,
-                    z buffer = sort,
-                    samples = 21,
-                    variable = \u,
-                    variable y = \v,
-                    domain = 0:180,
-                    y domain = 0:360,
-                ]
-                ({cos(u)*sin(v)}, {sin(u)*sin(v)}, {cos(v)});
-            \end{axis}
-        \end{tikzpicture}%
-        %}
-    \end{minipage}%
-    \begin{minipage}[c]{0.5\textwidth}
-        %\fbox{
-        \begin{tikzpicture}
-            \begin{axis}[hide axis,axis equal]
-                \addplot3[surf, opacity = 0.5,                     z buffer = sort, domain=0:360,y domain=.2:2]
-                ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
-                \addplot3[surf,domain=0:360,y domain=-2:-.2]
-                ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
-            \end{axis}
-        \end{tikzpicture}
-        %}
-    \end{minipage}%
+    \begin{center}
+        \begin{minipage}[c]{0.5\textwidth}
+            %\fbox{
+            \begin{tikzpicture}
+                \begin{axis}[hide axis,axis equal]
+                    \addplot3[%
+                        opacity = 0.5,
+                        surf,
+                        z buffer = sort,
+                        samples = 21,
+                        variable = \u,
+                        variable y = \v,
+                        domain = 0:180,
+                        y domain = 0:360,
+                    ]
+                    ({cos(u)*sin(v)}, {sin(u)*sin(v)}, {cos(v)});
+                \end{axis}
+            \end{tikzpicture}%
+            %}
+        \end{minipage}%
+        \begin{minipage}[c]{0.5\textwidth}
+            %\fbox{
+            \begin{tikzpicture}
+                \begin{axis}[hide axis,axis equal]
+                    \addplot3[surf, opacity = 0.5,                     z buffer = sort, domain=0:360,y domain=.2:2]
+                    ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
+                    \addplot3[surf,domain=0:360,y domain=-2:-.2]
+                    ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
+                \end{axis}
+            \end{tikzpicture}
+            %}
+        \end{minipage}%
 
-    \begin{minipage}[c]{0.5\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[hide axis,axis equal]
-                \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
-                ({y*cos(x)},{y*sin(x)},{y});
-            \end{axis}
-        \end{tikzpicture}%                
-    \end{minipage}%
-    \begin{minipage}[c]{0.5\textwidth}
-        %\fbox{
-        \begin{tikzpicture}
-            \begin{axis}[hide axis,axis equal]
-                \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
-                ({cosh(y)*cos(x)},{cosh(y)*sin(x)},{sinh(y)});
-            \end{axis}
-        \end{tikzpicture}
-        %}
-    \end{minipage}
-    \caption{Sphere, two-sheeted hyperboloid, infinite cone, one-sheeted hyperboloid.}
+        \begin{minipage}[c]{0.5\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[hide axis,axis equal]
+                    \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
+                    ({y*cos(x)},{y*sin(x)},{y});
+                \end{axis}
+            \end{tikzpicture}%                
+        \end{minipage}%
+        \begin{minipage}[c]{0.5\textwidth}
+            %\fbox{
+            \begin{tikzpicture}
+                \begin{axis}[hide axis,axis equal]
+                    \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
+                    ({cosh(y)*cos(x)},{cosh(y)*sin(x)},{sinh(y)});
+                \end{axis}
+            \end{tikzpicture}
+            %}
+        \end{minipage}
+        \caption{Sphere, two-sheeted hyperboloid, infinite cone, one-sheeted hyperboloid.}
+    \end{center}
 \end{figure}
 
 
-
-
-
-
-
-
-
-{Level set \& tangent planes (3D)}
-
-
-
-
-
 Let \(f\) be a differentiable scalar field on \(S\subset \bR^3\) and suppose that \(L(c) = \left\{\xx\in S : f(\xx)=c\right\}\) is a surface.
-
 
 \begin{itemize}
     \item \(\nabla f(\aa)\) is normal to every curve \(\aalpha(t)\) in the surface which passes through \(\aa\),
@@ -939,10 +868,6 @@ Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ld
 \end{definition}
 
 
-
-
-{Derivatives of vector fields (cont.)}
-
 \begin{theorem}
     If \(\ff\) is differentiable at \(\aa\)
     then \(\ff\) is continuous at \(\aa\)
@@ -952,9 +877,6 @@ Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ld
 \begin{proof}
     Same as for the case when \(f:\bR^n \to \bR\).
 \end{proof}
-
-
-
 
 
 \section{Jacobian matrix and chain rule}
