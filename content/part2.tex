@@ -88,9 +88,10 @@ The open \(n\)-ball of radius \(r\) and centre \(\aa\) is written as
 For example,
 open intervals, open disks, open balls, unions of open intervals, etc., are all open sets.
 
-\begin{example*}
+\begin{lemma*}
     Let $r>0$, $\mathbf{x} \in \mathbb{R}^n$. The set $B(\mathbf{a},r) \subset \mathbb{R}^n$ is open.
-    Proof:
+\end{lemma*}
+\begin{proof}
     Let $\mathbf{b} \in B(\mathbf{a},r)$. It suffices to show that $\mathbf{b}$ is an interior point.
     (1) Let $r_1 = \| \mathbf{b} - \mathbf{a} \| < r$.
     (2) Let $r_2 = (r - r_1)/2$.
@@ -98,8 +99,7 @@ open intervals, open disks, open balls, unions of open intervals, etc., are all 
     In order to see this take any $\mathbf{c} \in B(\mathbf{b},r_2)$ and observe that
     $$\| \mathbf{c} - \mathbf{a} \| \leq \| \mathbf{c} - \mathbf{b} \|  + \| \mathbf{b} - \mathbf{a} \| \leq r_2 + r_1 = \frac{r + r_1}{2} < r.$$
     Observe that the radius of the ball will be very small for points close to the boundary.
-\end{example*}
-
+\end{proof}
 
 
 
@@ -114,17 +114,17 @@ open intervals, open disks, open balls, unions of open intervals, etc., are all 
 Analogously the Cartesian product can be defined in higher dimensions:
 If \(A_1 \subset \bR^m\), \(A_2 \subset \bR^n\) then the \emph{Cartesian product} \(A_1 \times A_2\) is defined as the set of all points \((x_1,\ldots,x_m,y_1,\ldots,y_n) \in \bR^{m+n}\) such that \((x_1,\ldots,x_m) \in A_1\) and \((y_1,\ldots,y_n) \in A_2\).
 
-    {Fact:}
-If \(A_1, A_2\) are open subsets of \(\bR\) then \( A_1 \times A_2 \) is an open subset of \(\bR^2\).
-Proof:
-\begin{itemize}
-    \item     Let \(\aa = (a_1,a_2) \in A_1\times A_2 \subset \bR^2\)
-    \item     \(A_1\) is open \(\implies\)  exists \(r_1>0\) such that \(B(a_1,r_1)\subset A_1\)
-    \item Similarly for \(A_2\)
-    \item Let \(r=\min \{r_1,r_2\}\)
-    \item \(B(\aa,r) \subset B(a_1,r_1) \times B(a_2,r_2) \subset A_1\times A_2\)
-\end{itemize}
 
+\begin{lemma*}
+    If \(A_1, A_2\) are open subsets of \(\bR\) then \( A_1 \times A_2 \) is an open subset of \(\bR^2\).
+\end{lemma*}
+\begin{proof}
+    Let \(\aa = (a_1,a_2) \in A_1\times A_2 \subset \bR^2\).
+    Since  \(A_1\) is open there  exists \(r_1>0\) such that \(B(a_1,r_1)\subset A_1\).
+    Similarly for \(A_2\).
+    Let \(r=\min \{r_1,r_2\}\).
+    This all means that \(B(\aa,r) \subset B(a_1,r_1) \times B(a_2,r_2) \subset A_1\times A_2\).
+\end{proof}
 
 
 \begin{figure}[htb]
@@ -157,7 +157,7 @@ In the following definitions we develop this idea.
 \end{definition}
 
 Observe that \(\operatorname{ext} S\) is an open set.
-We use the notation \(S^c = \bR^n \setminus S\) and we say that this is the \emph{complement} of the set \(S\).
+We use the notation \(S^c = \bR^n \setminus S\) and we say that \(C^c\) is the \emph{complement} of the set \(S\).
 
 
 
@@ -174,14 +174,11 @@ We use the notation \(S^c = \bR^n \setminus S\) and we say that this is the \emp
     \(S\) is open \(\Longleftrightarrow \) \(S^c\) is closed.
 \end{lemma}
 \begin{proof}
-
-    \begin{itemize}
-        \item \(\bR^n =  \operatorname{int} S \cup \partial S \cup \operatorname{ext} S\) (disjointly);
-        \item If \(\xx \in \partial S\) then, for every \(r>0\), \(B(\xx,r) \cap S \neq \emptyset\) and so \(\xx \in \partial(S^c)\);
-        \item Similarly with \(S\) and \(S^c\) swapped and so \(\partial S = \partial(S^c)\);
-        \item If \(S\) is open then \(\operatorname{int} S = S\) and \(S^c = \operatorname{ext} S \cup \partial S =  \operatorname{ext} S \cup \partial (S^c)\) and so \(S^c\) is closed;
-        \item If \(S\) is not open then there exists \(\aa \in \partial S \cap S\). Additionally  \(\aa \in \partial (S^c) \cap S\) hence \(S^c\) is not closed.
-    \end{itemize}
+    Observe that \(\bR^n =  \operatorname{int} S \cup \partial S \cup \operatorname{ext} S\) (disjointly).
+    If \(\xx \in \partial S\) then, for every \(r>0\), \(B(\xx,r) \cap S \neq \emptyset\) and so \(\xx \in \partial(S^c)\).
+    Similarly with \(S\) and \(S^c\) swapped and so \(\partial S = \partial(S^c)\).
+    If \(S\) is open then \(\operatorname{int} S = S\) and \(S^c = \operatorname{ext} S \cup \partial S =  \operatorname{ext} S \cup \partial (S^c)\) and so \(S^c\) is closed.
+    If \(S\) is not open then there exists \(\aa \in \partial S \cap S\). Additionally  \(\aa \in \partial (S^c) \cap S\) hence \(S^c\) is not closed.
 \end{proof}
 
 
@@ -214,34 +211,29 @@ Observe how, if \(n=m=1\), this is the familiar notion of continuity for functio
 We prove a couple of the parts of the above theorem here, the other parts are left as exercises and are relatively straightforward.
 
 \begin{proof}[Proof of (c)]
-    \begin{enumerate}
-        \item
-              \(
-              \ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc
-              = (\ff(\xx)-\bb)\cdot(\gg(\xx)-\cc) + \bb\cdot(\gg(\xx)-\cc) + \cc\cdot(\ff(\xx)-\bb)
-              \)
-        \item By the triangle inequality and Cauchy-Schwarz,
-              \[
-                  \begin{aligned}
-                      \norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }
-                       & \leq \norm{\ff(\xx)-\bb} \norm{\gg(\xx)-\cc} \\
-                       & \quad + \norm{\bb}\norm{\gg(\xx)-\cc}        \\
-                       & \quad + \norm{\cc} \norm{\ff(\xx)-\bb}
-                  \end{aligned}
-              \]
-        \item Since \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\) this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
-    \end{enumerate}
+    Observe that  \(
+    \ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc
+    = (\ff(\xx)-\bb)\cdot(\gg(\xx)-\cc) + \bb\cdot(\gg(\xx)-\cc) + \cc\cdot(\ff(\xx)-\bb)
+    \).
+    By the triangle inequality and Cauchy-Schwarz,
+    \[
+        \begin{aligned}
+            \norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }
+             & \leq \norm{\ff(\xx)-\bb} \norm{\gg(\xx)-\cc} \\
+             & \quad + \norm{\bb}\norm{\gg(\xx)-\cc}        \\
+             & \quad + \norm{\cc} \norm{\ff(\xx)-\bb}.
+        \end{aligned}
+    \]
+    Since \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\) this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
 \end{proof}
 
 \begin{proof}[Proof of (d)]
-    \begin{enumerate}
-        \item Take \(\ff = \gg\) in part (c) implies that \(   \lim_{\xx \to \aa} \norm{\ff(\xx)}^2 = \norm{\bb}^2\).
-    \end{enumerate}
+    Take \(\ff = \gg\) in part (c) implies that \(   \lim_{\xx \to \aa} \norm{\ff(\xx)}^2 = \norm{\bb}^2\).
 \end{proof}
 
 
 When writing a vector field (or similar functions) it is often convenient to divided the higher-dimensional function into smaller parts.
-We call these parts the \emph{Components of a vector field}.
+We call these parts the \emph{components of a vector field}.
 
 \begin{theorem}
     Let \(\ff(\xx) = \left(f_1(\xx),\ldots,f_m(\xx) \right)\).
@@ -250,18 +242,18 @@ We call these parts the \emph{Components of a vector field}.
 \begin{proof}
     \begin{description}
         \item[(\(\Rightarrow\))]
-              Let
-              \( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \)
-              \begin{tikzpicture}[remember picture, overlay]
-                  \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
-                  \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
-              \end{tikzpicture}
-              and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
-              We have already shown that the continuity of two vector fields implies the continuity of the inner product.
+            Let
+            \( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \)
+            \begin{tikzpicture}[remember picture, overlay]
+                \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
+                \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
+            \end{tikzpicture}
+            and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
+            We have already shown that the continuity of two vector fields implies the continuity of the inner product.
         \item[(\(\Leftarrow \))]
-              By definition of the norm
-              \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{m}(f_k(\xx)-f_k(\aa))^2\)
-              and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
+            By definition of the norm
+            \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{m}(f_k(\xx)-f_k(\aa))^2\)
+            and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
     \end{description}
 \end{proof}
 
@@ -345,7 +337,7 @@ The continuity of functions continues to hold, in an intuitive way, under compos
                 \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,0.65);
             \end{axis}
         \end{tikzpicture}
-        \caption{Plot where colour represents the value of \(f(x_1,x_2)=x_1^2 + x_2^2\). The change in \(f\) depends on direction.}
+        \caption{Plot where colour represents the value of \(f(x,y)=x^2 + y^2\). The change in \(f\) depends on direction.}
     \end{center}
 \end{figure}
 
