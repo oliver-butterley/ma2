@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+\usepackage{svg}
+
+\renewcommand{\aa}{\mathbf{a}}
+\newcommand{\aalpha}{\boldsymbol{\alpha}}
+
+
+\begin{document}
+
+\begin{tikzpicture}%
+    \node[anchor=south west,inner sep=0] (image) at (0,0)
+    {\includesvg[width=\textwidth,inkscapelatex=false]{tangent}};
+    % SVG adapted from work in public domain (https://commons.wikimedia.org/wiki/File:Tangentialvektor.svg)
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        % scope for unitary coordinates over image
+        \node[] at (0.5,1) {\(\nabla f(\aa)\)};
+        \node[] at (0.43,0.75) {\(\aa\)};
+        \node[] at (0.8,0.48) {\(L(c)\)};
+        \node[] at (0.1,0.27) {\(\aalpha(t)\)};
+        \node[] at (0.17,0.75) {\(\aalpha'(t)\)};
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}
