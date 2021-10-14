@@ -23,7 +23,16 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       
-      # Compile LaTeX
+      # Compile graphics folder LaTeX
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "graphics/*.tex"
+          glob_root_file: true
+          latexmk_shell_escape: true
+          extra_system_packages: inkscape      
+
+      # Compile main LaTeX
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
