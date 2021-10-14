@@ -74,12 +74,7 @@ The open \(n\)-ball of radius \(r\) and centre \(\aa\) is written as
 
 \begin{figure}[htbp]
     \begin{center}
-        \begin{tikzpicture}
-            \fill[paleBlue] plot [smooth cycle, tension=1] coordinates {(0,0) (1,3) (3,3) (4,1)};
-            \draw[dashed] (1,2) circle (.55) node[above right=10pt]{\(B(\aa,r)\)};
-            \fill[black] (1,2) circle (2pt) node[anchor=north west]{\(\aa\)};
-            \node at (2,1){\(S\)};
-        \end{tikzpicture}
+        \includegraphics{interior.pdf}
         \caption{Interior points are the centre of a ball contained within the set.}
     \end{center}
 \end{figure}
@@ -129,19 +124,7 @@ If \(A_1 \subset \bR^m\), \(A_2 \subset \bR^n\) then the \emph{Cartesian product
 
 \begin{figure}[htb]
     \begin{centering}
-        \begin{tikzpicture}
-            \fill[blue!10!white] (1,1) rectangle (4,3);
-            \draw[step=1cm,gray,very thin] (-0.4,-0.4) grid (5.4,3.4);
-            \draw[thick,->] (-0.4,0) -- (5.4,0) node[anchor=north]{\(x_1\)};
-            \draw[thick,->] (0,-0.4) -- (0,3.4) node[anchor=east]{\(x_2\)};
-            \draw[thick,dashed] (1,-0.2) -- (1,3.2);
-            \draw[thick,dashed] (4,-0.2) -- (4,3.2);
-            \draw[thick,dashed] (-0.2,1) -- (5.2,1);
-            \draw[thick,dashed] (-0.2,3) -- (5.2,3);
-            \draw[blue, very thick] (1,0) -- (4,0) node[black,midway,below]{\(A_1\)};
-            \draw[blue, very thick] (0,1) -- (0,3) node[black,midway,left]{\(A_2\)};
-            \node[] at (2.5,2) {\(A_1 \times A_2\)};
-        \end{tikzpicture}
+        \includegraphics{cartesian.pdf}
         \caption{If \(A_1, A_2\) are intervals then \( A_1 \times A_2 \) is a rectangle.}
     \end{centering}
 \end{figure}
@@ -323,20 +306,7 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 
 \begin{figure}
     \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    view={0}{90},
-                    width = .5\textwidth]
-                \addplot3[
-                    domain=0:2,
-                    domain y=0:2,
-                    contour filled={number=25}]
-                {x*x + y*y};
-                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,1.35); %\node[midway, left]{\(\left(\begin{smallmatrix}0 \\ 1\end{smallmatrix} \right)\)};
-                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.5,1);
-                \draw[->,thick] (axis cs:1,1) -- (axis cs:1.35,0.65);
-            \end{axis}
-        \end{tikzpicture}
+        \includegraphics[width=0.5\textwidth]{gradient.pdf}
         \caption{Plot where colour represents the value of \(f(x,y)=x^2 + y^2\). The change in \(f\) depends on direction.}
     \end{center}
 \end{figure}
@@ -357,8 +327,6 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in \operatorname{int} S\) so this definition makes sense.
 
 
-
-
 \begin{theorem}
     Suppose \(S\subset \bR^n\), \(f:S\to \bR\), \(\aa \in \operatorname{int} S\).
     Let \(g(t) := f(\aa + t\vv)\).
@@ -369,7 +337,6 @@ When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in
     In particular \(g'(0) = D_{\vv}f(\aa)\).
 \end{theorem}
 
-%<>{Note:}
 
 \begin{proof}
     By definition \(\frac{1}{h}(g(t+h)-g(h)) =\frac{1}{h}(f(\aa+h \vv) - f(\aa)) \).
@@ -461,47 +428,43 @@ I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 
 %
 \begin{definition}[gradient]
-    The \emph{gradient} of \(f\) is the vector-valued function
+    The \emph{gradient} of the scalar field \(f(x,y,z)\) at the point \((a,b,c)\) is
     \[
-        \nabla f(\aa) :=
+        \nabla f(a,b,c) =
         \begin{pmatrix}
-            \partial_1 f(\aa) \\
-            \partial_2 f(\aa) \\
-            \vdots            \\
-            \partial_nf(\aa)
+            \frac{\partial f}{\partial x}(a,b,c) \\[2pt]
+            \frac{\partial f}{\partial y}(a,b,c) \\[2pt]
+            \frac{\partial f}{\partial z}(a,b,c)
         \end{pmatrix}.
     \]
 \end{definition}
 %
-
-
-
+\noindent
+In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar field \(f(x_1,\ldots,x_n)\) at the point \(\aa\) is
+\[
+    \nabla f(\aa) =
+    \begin{pmatrix}
+        \partial_1 f(\aa) \\
+        \partial_2 f(\aa) \\
+        \vdots            \\
+        \partial_nf(\aa)
+    \end{pmatrix}.
+\]
 
 \begin{theorem*}
     If \(f\) is differentiable at \(\aa\), then it is continuous at \(\aa\).
 \end{theorem*}
 \begin{proof}
-    \begin{align*}
-         & \abs{f(\aa+\vv)-f(\aa)}                                                            \\
-         & \quad = \abs{ T_\aa \cdot \vv + \norm{\vv}E(\aa,\vv)  }                            \\
-         & \quad \leq  \norm{T_\aa } \norm{\vv} + \norm{\vv} \abs{E(\aa,\vv)} \to 0. \qedhere
-    \end{align*}
+    Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{ T_\aa \cdot \vv + \norm{\vv}E(\aa,\vv)}\).
+    Consequently \( \abs{f(\aa+\vv)-f(\aa)} \leq \norm{T_\aa } \norm{\vv} + \norm{\vv} \abs{E(\aa,\vv)} \) and this tends to \(0\) as \(\norm{\vv} \to 0\).
 \end{proof}
-
-
-
-
-
-
-
-{}
 
 \begin{theorem}
     Suppose that the partial derivatives \(\partial_1 f(\xx), \partial_2 f(\xx), \ldots, \partial_nf(\xx)\) exist for all \(\xx\in B(\aa,r)\) and are continuous at \(\aa\).
     Then \(f\) is differentiable at \(\aa\).
 \end{theorem}
-\begin{proof}
 
+\begin{proof}
     \begin{enumerate}
         \item Write \(\vv = (v_1,v_2,\ldots,v_n)\)
               and
@@ -522,26 +485,6 @@ I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
 \end{proof}
 
 
-
-
-% 
-%     {Parametrized curves}
-
-%     Let \(\rr(t) = \left( X_1(t), \ldots, X_n(t)  \right)\) be a vector-valued function defined on an interval \(I\subset \bR\).
-%     This describes a curve in \(\bR^n\).
-
-
-%     \begin{example*}
-%         \begin{itemize}
-%             \item         \(\rr(t) = (\cos t, 2 \sin t)\), \(t\in [0,2\pi]\)
-%             \item  \(\rr(t) = (\cos t, \sin t, t)\), \(t\in \bR\)
-%         \end{itemize}
-
-%     \end{example*}
-
-%     Different ways of describing a curve.
-% 
-
 \subsection*{Chain rule}
 
 If \(f(t) = g\circ h(t)\) then \(f'(t) = g'(h(t)) \ h'(t)\).
@@ -550,22 +493,14 @@ Does this extend to higher dimension?
 \begin{example*}
     Suppose that
     \begin{itemize}
-        \item \(\xx:\bR \to \bR^3\) describes the position \(\xx(t)\) at time \(t\),
-        \item \(f:\bR^3 \to \bR\) describes the temperature \(f(\xx)\) at a point \(\xx\)
+        \item \(\aalpha:\bR \to \bR^3\) describes the position \(\aalpha(t)\) at time \(t\),
+        \item \(f:\bR^3 \to \bR\) describes the temperature \(f(\aalpha)\) at a point \(\aalpha\)
     \end{itemize}
-
-    The temperature at time \(t\) is equal to \(g(t)=f(\xx(t))\).
-    We want to calculate \(g'(t)\).
+    The temperature at time \(t\) is equal to \(g(t)=f(\aalpha(t))\).
+    We want to calculate \(g'(t)\) because this is the change in temperature with respect to time.
 \end{example*}
 
-
-
-
-
-
-{Derivative of \(\aalpha:\bR \to \bR^n\)}
-
-
+Consequently it is convenient to consider the derivative of a path \(\aalpha:\bR \to \bR^n\).
 Let \(\aalpha:\bR \to \bR^n\) and suppose it has the form
 \(\aalpha(t) = \left( \alpha_1(t), \ldots, \alpha_n(t)  \right)\).
 We define the derivative as
@@ -574,36 +509,16 @@ We define the derivative as
         x_1'(t) \\
         \vdots  \\
         x_n'(t)
-    \end{pmatrix}.  % = \left( x_1'(t), \ldots, x_n'(t)  \right).
+    \end{pmatrix}.
 \]
-
+\noindent
 Here \(\aalpha'\) is a vector-valued function which represents the ``direction of movement''.
-
-% We sometimes consider horizontal and sometimes vertical vectors. It can be convenient to distinguish between ``position'' and ``direction''.
-
 
 \begin{figure}[htb]
     \begin{center}
-        \begin{tikzpicture}%
-            \begin{axis}[
-                    view={60}{15},
-                    width=0.8\textwidth,
-                    height=0.8\textwidth,
-                    axis lines=center,
-                    xlabel=$ $,ylabel=$ $,zlabel=$ $,
-                    zmin=-1, zmax=1.6,
-                    xtick=\empty,  ytick=\empty,  ztick=\empty
-                ]
-                \addplot3[blue,thick,domain=-9:8,samples=60,samples y=0]
-                ({sin(deg(x))},
-                {cos(deg(x))},
-                {2*x/(5*pi)});
-                \draw[->,thick] (axis cs:-1,0,0.6) -- (axis cs:-1,1,0.65) node[anchor=south]{\(\aalpha'(t)\)};
-                \node[circle,fill,inner sep=2pt] at (axis cs:-1,0,0.6) {} ;
-                \node[anchor=south] at (axis cs:-1,0,0.6) {\(\aalpha(t)\)} ;
-            \end{axis}
-        \end{tikzpicture}
+        \includegraphics[width=0.5\textwidth]{spiral.pdf}
         \caption{\(\aalpha(t)=(\cos t, \sin t, t)\), \(t\in \bR\).}
+        \label{fig:spiral}
     \end{center}
 \end{figure}
 
@@ -660,35 +575,26 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
     \)
 \end{example*}
 
-
 \begin{figure}
     \begin{center}
-        \begin{tikzpicture}
-            \shade[shading=axis, top color=red, shading angle=-45] (-2.4,-2.4) rectangle (2.4,2.4);
-            \draw[step=1cm,gray,very thin] (-2.4,-2.4) grid (2.4,2.4);
-            \draw[thick,->] (-2.4,0) -- (2.4,0) node[anchor=north]{\(x_1\)};
-            \draw[thick,->] (0,-2.4) -- (0,2.4) node[anchor=east]{\(x_2\)};
-            \draw[dashed] (0,0) circle (2);
-            \draw[thick] (2,0) arc [start angle=0, end angle=130, radius=2] node[circle,fill,inner sep=2pt]{} node[anchor=north west]{\(\xx(t)\)};
-        \end{tikzpicture}
+        \includegraphics[width=0.5\textwidth]{particle-circle.pdf}
         \caption{\(\xx(t)\) is the position of a particle. Shading represents temperature \(f\).}
+        \label{fig:particle-circle}
     \end{center}
 \end{figure}
-
-
-
-
 
 
 \section{Level sets \& tangent planes}
 
 Let \(S\subset \bR^2\), \(f:S\to\bR\).
-Suppose \(c\in \bR\) and
+Suppose \(c\in \bR\) and let
 \[
-    L(c) := \left\{\xx\in S : f(\xx)=c\right\}
+    L(c) = \left\{\xx\in S : f(\xx)=c\right\}.
 \]
-is a curve at \(\aa \in S\) in the sense that  \(\xx:I \to S\) is the parametric form of the curve.
 The set \(L(c)\) is called the \emph{level set}.
+In general this set can be empty or it can be all of \(S\).
+However the set \(L(c)\) is often a curve and this is the case of interest.
+This is the same notion as that of \href{https://en.wikipedia.org/wiki/Contour_line}{contour lines} on a map.
 I.e., \(\xx(t_a) = \aa\) for some \(t_a \in I\) and \[f(\xx(t))=c\] for all \(t\in I\).
 Then
 \begin{itemize}
@@ -698,30 +604,6 @@ Then
 \end{itemize}
 
 This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0\).
-
-% \begin{figure}
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%                 view={0}{90},
-%                 small,
-%             ]
-%             \addplot3[
-%                 domain=-1.3:1.3,
-%                 domain y=-1.3:1.3,
-%                 contour gnuplot={number=14},
-%                 thick,
-%             ]
-%             {exp(-x^2-y^2)*x};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Contour plot of \(x_1 \exp(-x_1^2-x_2^2)\)}
-% \end{figure}
-
-\begin{itemize}
-    \item   Isotherms \(\leftrightarrow\) temperature;
-    \item   Contours \(\leftrightarrow\)  altitude.
-\end{itemize}
-
 \begin{example*}
     Let \(f(x_1,x_2,x_3):=x_1^2 + x_2^2 + x_3^2\).
     \begin{itemize}
@@ -734,6 +616,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
 
 \begin{example*}
     Let \(f(x_1,x_2,x_3):=x_1^2 + x_2^2 - x_3^2\).
+    See Figure~\ref{fig:level-sets}.
     \begin{itemize}
         \item If \(c>0\) then \(L(c)\) is a one-sheeted hyperboloid,
         \item \(L(0) \) is an infinite cone,
@@ -741,61 +624,38 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
     \end{itemize}
 \end{example*}
 
-%
 % %                       
-\begin{figure}
+\begin{figure}[htb]
     \begin{center}
-        \begin{minipage}[c]{0.5\textwidth}
-            %\fbox{
-            \begin{tikzpicture}
-                \begin{axis}[hide axis,axis equal]
-                    \addplot3[%
-                        opacity = 0.5,
-                        surf,
-                        z buffer = sort,
-                        samples = 21,
-                        variable = \u,
-                        variable y = \v,
-                        domain = 0:180,
-                        y domain = 0:360,
-                    ]
-                    ({cos(u)*sin(v)}, {sin(u)*sin(v)}, {cos(v)});
-                \end{axis}
-            \end{tikzpicture}%
-            %}
-        \end{minipage}%
-        \begin{minipage}[c]{0.5\textwidth}
-            %\fbox{
-            \begin{tikzpicture}
-                \begin{axis}[hide axis,axis equal]
-                    \addplot3[surf, opacity = 0.5,                     z buffer = sort, domain=0:360,y domain=.2:2]
-                    ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
-                    \addplot3[surf,domain=0:360,y domain=-2:-.2]
-                    ({sqrt(y*y-.04)*cos(x)},{sqrt(y*y-.04)*sin(x)},{y});
-                \end{axis}
-            \end{tikzpicture}
-            %}
-        \end{minipage}%
-
-        \begin{minipage}[c]{0.5\textwidth}
-            \begin{tikzpicture}
-                \begin{axis}[hide axis,axis equal]
-                    \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
-                    ({y*cos(x)},{y*sin(x)},{y});
-                \end{axis}
-            \end{tikzpicture}%                
-        \end{minipage}%
-        \begin{minipage}[c]{0.5\textwidth}
-            %\fbox{
-            \begin{tikzpicture}
-                \begin{axis}[hide axis,axis equal]
-                    \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
-                    ({cosh(y)*cos(x)},{cosh(y)*sin(x)},{sinh(y)});
-                \end{axis}
-            \end{tikzpicture}
-            %}
-        \end{minipage}
-        \caption{Sphere, two-sheeted hyperboloid, infinite cone, one-sheeted hyperboloid.}
+        \begin{subfigure}[b]{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{sphere.pdf}
+            \caption{Sphere}
+            \label{fig:sphere}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{two-hyperboloid.pdf}
+            \caption{Two-sheeted hyperboloid}
+            \label{fig:two-hyperboloid}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{infinite-cone.pdf}
+            \caption{Infinite cone}
+            \label{fig:infinite-cone}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{one-hyperboloid.pdf}
+            \caption{One-sheeted hyperboloid}
+            \label{fig:one-hyperboloid}
+        \end{subfigure}
+        \caption{Various surfaces as level sets.}
+        \label{fig:level-sets}
     \end{center}
 \end{figure}
 
@@ -811,34 +671,14 @@ Let \(f\) be a differentiable scalar field on \(S\subset \bR^3\) and suppose tha
 Same argument as in \(\bR^2\) works in \(\bR^n\).
 
 
-
-
-% \begin{figure}
-%     \noindent\begin{tikzpicture}%
-%         \node[anchor=south west,inner sep=0] (image) at (0,0)
-%         {\includesvg[width=\textwidth,inkscapelatex=false]{tangent}};
-%         % SVG adapted from work in public domain (https://commons.wikimedia.org/wiki/File:Tangentialvektor.svg)
-%         \begin{scope}[x={(image.south east)},y={(image.north west)}]
-%             % scope for unitary coordinates over image
-%             \node[] at (0.5,1) {\(\nabla f(\aa)\)};
-%             \node[] at (0.43,0.75) {\(\aa\)};
-%             \node[] at (0.8,0.48) {\(L(c)\)};
-%             \node[] at (0.1,0.27) {\(\aalpha(t)\)};
-%             \node[] at (0.17,0.75) {\(\aalpha'(t)\)};
-%         \end{scope}
-%     \end{tikzpicture}
-%     \caption{Tangent plane and normal vector}
-% \end{figure}
-
-
-
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{tangent.pdf}
+    \caption{Tangent plane and normal vector}
+\end{figure}
 
 
 \section{Derivatives of vector fields}
-
-
-
- {Derivatives of vector fields}
 
 \begin{definition}[Directional derivative]
     Let \(S\subset \bR^n\) and \(\ff:S\to \bR^m\).
@@ -897,11 +737,6 @@ Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ld
     \item \( \mathbf{T}_\aa  (\vv ) = D\ff(\aa) \vv\).
 \end{itemize}
 
-
-
-{Derivatives of \(\ff : \bR^n \to \bR^m\) (recap.)}
-
-
 Let \(S\subset \bR^n\) and \(\ff : S \to \bR^m\).
 If \(f\) is differentiable at \(\aa \in S\) then, for all  \(\vv\in B(\aa,r) \subset S\),
 \[
@@ -944,56 +779,55 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
 
 
 
-
-{Polar coordinates (derivatives example)}
-
-
-\begin{itemize}
-    \item
-          We can write the change of coordinates
-          \((r,\theta) \mapsto (r\cos \theta, r\sin \theta)\)
-          as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\).
-    \item
-          We calculate the Jacobian matrix
-          \[
-              D\ff(r,\theta) =
-              \begin{pmatrix}
-                  \partial_{r}x(r,\theta) & \partial_{\theta}x(r,\theta) \\
-                  \partial_{r}y(r,\theta) & \partial_{\theta}y(r,\theta)
-              \end{pmatrix}
-              =
-              \begin{pmatrix}
-                  \cos \theta & -r\sin \theta \\
-                  \sin \theta & r\cos \theta
-              \end{pmatrix}.
-          \]
-    \item
-          We wish to calculate derivatives of \(h := g \circ \ff\) for some  \(g:\bR^2 \to \bR\).
-          \[
-              \begin{aligned}
-                  Dh(r,\theta) & = Dg(\ff(r,\theta)) \ D\ff(r,\theta) \\
+\begin{example}
+    Here we consider \emph{polar coordinates} and calculate the Jacobian of this transformation.
+    \begin{itemize}
+        \item
+              We can write the change of coordinates
+              \((r,\theta) \mapsto (r\cos \theta, r\sin \theta)\)
+              as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\).
+        \item
+              We calculate the Jacobian matrix
+              \[
+                  D\ff(r,\theta) =
                   \begin{pmatrix}
-                      \partial_r h(r,\theta) & \partial_\theta h(r,\theta)
+                      \partial_{r}x(r,\theta) & \partial_{\theta}x(r,\theta) \\
+                      \partial_{r}y(r,\theta) & \partial_{\theta}y(r,\theta)
                   \end{pmatrix}
-                               & =
-                  \begin{pmatrix}
-                      \partial_x g(\ff(r,\theta)) & \partial_y g(\ff(r,\theta))
-                  \end{pmatrix}
+                  =
                   \begin{pmatrix}
                       \cos \theta & -r\sin \theta \\
                       \sin \theta & r\cos \theta
-                  \end{pmatrix}
-              \end{aligned}
-          \]
+                  \end{pmatrix}.
+              \]
+        \item
+              We wish to calculate derivatives of \(h := g \circ \ff\) for some  \(g:\bR^2 \to \bR\).
+              \[
+                  \begin{aligned}
+                      Dh(r,\theta) & = Dg(\ff(r,\theta)) \ D\ff(r,\theta) \\
+                      \begin{pmatrix}
+                          \partial_r h(r,\theta) & \partial_\theta h(r,\theta)
+                      \end{pmatrix}
+                                   & =
+                      \begin{pmatrix}
+                          \partial_x g(\ff(r,\theta)) & \partial_y g(\ff(r,\theta))
+                      \end{pmatrix}
+                      \begin{pmatrix}
+                          \cos \theta & -r\sin \theta \\
+                          \sin \theta & r\cos \theta
+                      \end{pmatrix}
+                  \end{aligned}
+              \]
 
-    \item Consequently
-          \[
-              \begin{cases}
-                  \partial_r h(r,\theta) = \partial_x g(r\cos \theta, r\sin \theta) \cos \theta + \partial_y g(r\cos \theta, r\sin \theta)\sin \theta \\
-                  \partial_\theta h(r,\theta) = - r \partial_x g(r\cos \theta, r\sin \theta) \sin \theta +  r \partial_y g(r\cos \theta, r\sin \theta)\cos \theta
-              \end{cases}.
-          \]
-\end{itemize}
+        \item Consequently
+              \[
+                  \begin{cases}
+                      \partial_r h(r,\theta) = \partial_x g(r\cos \theta, r\sin \theta) \cos \theta + \partial_y g(r\cos \theta, r\sin \theta)\sin \theta \\
+                      \partial_\theta h(r,\theta) = - r \partial_x g(r\cos \theta, r\sin \theta) \sin \theta +  r \partial_y g(r\cos \theta, r\sin \theta)\cos \theta
+                  \end{cases}.
+              \]
+    \end{itemize}
+\end{example}
 
 
 
@@ -1023,62 +857,43 @@ Does \(\partial_1\partial_2 f = \partial_2\partial_1 f\), etc.?
     Then the derivative \(\partial_1\partial_2 f(\xx)\) exists and \(\partial_1\partial_2 f(\xx)=\partial_2\partial_1 f(\xx)\).
 \end{theorem}
 
-% \begin{proof}
-%     \dots Apostol Thm 8.8
-% \end{proof}
+In many cases we can choose to write a given curve/function either in \emph{implicit} or \emph{explicit} form.
 
+\begin{center}
+    \begin{tabular}{c | c}
+        \textbf{Implicit}     & \textbf{Explicit}                              \\
+        \hline
+        \(x^2-y=0\)           & \(y(x) = x^2\)                                 \\
+        \(x^2+y^2-1=0\)       & \(y(x) = \pm \sqrt{1-x^2}\), \(\abs{x}\leq 1\) \\
+        \(x^2-y^2-1=0\)       & \(y(x) = \pm \sqrt{x^2-1}\), \(\abs{x}\geq 1\) \\
+        \(x^2+y^2-e^y -4 =0\) & A mess?
+    \end{tabular}
+\end{center}
 
+Given the above observation, the following method of calculating derivatives is sometimes useful.
+Suppose that some \(f:\bR^2 \to \bR\) is given and we suppose there exists some \(y:\bR\to\bR\) such that
+\[
+    f(x,y(x))=0 \quad \text{ for all \(x\)}.
+\]
+Let \(h(x):= f(x,y(x))\) and note that \(h'(x)=0\).
+Here we are using the idea that \(h = f \circ g\) where \(g(x) = (x,y(x))\).
+By the chain rule \( h'(x)\) is equal to
+\[
+    \begin{pmatrix}
+        \frac{\partial f}{\partial x}(x,y(x)) & \frac{\partial f}{\partial y}(x,y(x))
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\
+        y'(x)
+    \end{pmatrix}
+    =0.
+\]
+Consequently
+\[
+    y'(x) = - \frac{ \frac{\partial f}{\partial x}(x,y(x)) }{ \frac{\partial f}{\partial y}(x,y(x)) }.
+\]
+A similar argument also holds in higher dimension.
 
-
-
-
-
-
-Implicit
-\begin{itemize}
-    \item \(x^2-y=0\)
-    \item \(x^2+y^2-1=0\)
-    \item \(x^2-y^2-1=0\)
-    \item \(x^2+y^2-e^y -4 =0\)
-\end{itemize}
-
-Explicit
-\begin{itemize}
-    \item \(f(x) = x^2\)
-    \item \(f(x) = \pm \sqrt{1-x^2}\), \(\abs{x}\leq 1\)
-    \item \(f(x) = \pm \sqrt{x^2-1}\), \(\abs{x}\geq 1\)
-    \item ?
-\end{itemize}
-
-
-
-
-
-\begin{itemize}
-    \item
-          We know \(F:\bR^2 \to \bR\) and we suppose there exists some \(f:\bR\to\bR\) such that
-          \(F(x,f(x))=0\) for all \(x\).
-    \item
-          Let \(g(x):= F(x,f(x))\) and note that \(g'(x)=0\).
-    \item
-          By the chain rule \(g'(x) \) is equal to
-          \[
-              \begin{pmatrix}
-                  \partial_1 F(x,f(x)) & \partial_2 F(x,f(x))
-              \end{pmatrix}
-              \begin{pmatrix}
-                  1 \\
-                  f'(x)
-              \end{pmatrix}
-          \]
-    \item
-          Consequently
-          \[
-              f'(x) = - \frac{\partial_1 F(x,f(x))}{\partial_2 F(x,f(x))}.
-          \]
-    \item
-          A similar argument holds in higher dimension.
-\end{itemize}
 
 
 

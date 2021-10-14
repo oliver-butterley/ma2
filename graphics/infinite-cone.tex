@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[hide axis,axis equal]
+        \addplot3[surf, opacity = 0.5,domain=0:360,y domain=-2:2]
+        ({y*cos(x)},{y*sin(x)},{y});
+    \end{axis}
+\end{tikzpicture}% 
+
+\end{document}
