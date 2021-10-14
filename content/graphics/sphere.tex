@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[hide axis,axis equal]
+        \addplot3[%
+            opacity = 0.5,
+            surf,
+            z buffer = sort,
+            samples = 21,
+            variable = \u,
+            variable y = \v,
+            domain = 0:180,
+            y domain = 0:360,
+        ]
+        ({cos(u)*sin(v)}, {sin(u)*sin(v)}, {cos(v)});
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
