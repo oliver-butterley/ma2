@@ -38,28 +38,7 @@ In order to understand this difficulty let us consider the following example.
 
 \begin{figure}
   \begin{center}
-    \begin{tikzpicture}
-      \begin{axis}[
-          axis y line = left,
-          axis x line = bottom,
-          xtick       = {0,1},
-          xticklabels = {$0$,$1$},
-          ytick       = {0,1},
-          yticklabels = {$0$,$1$},
-          samples     = 160,
-          domain      = 0:1,
-          xmin = 0, xmax = 1,
-          ymin = 0, ymax = 1,
-        ]
-        \foreach[evaluate=\n as \redfrac using (\n-1)*100/(15-1)] \n in {1,...,15}{
-            \edef\temp{
-              \noexpand\addplot[white!\redfrac!blue, thick, mark=none, text = black] {x^\n} node[pos=0.5, above left] (mid) {};
-              \noexpand\node[white!\redfrac!black] at (mid) {$f_{\n}(x) = x^{\n}$};
-            }
-            \temp
-          }
-      \end{axis}
-    \end{tikzpicture}
+    \includegraphics{sequence-xn.pdf}
     \caption{The sequence of functions \(f_n(x)= x^n\).}
   \end{center}
 \end{figure}
@@ -106,28 +85,7 @@ We observe that it converges pointwise to the constant function \(f(x)=0\).
 
 \begin{figure}
   \begin{center}
-    \begin{tikzpicture}
-      \begin{axis}[
-          axis y line = center,
-          axis x line = center,
-          xtick       = {-1,0,1},
-          xticklabels = {$-1$,$0$,$1$},
-          % ytick       = {-1,0,1},
-          % yticklabels = {$-1$,$0$,$1$},
-          samples     = 160,
-          domain      = -3:3,
-          xmin = -3, xmax = 3,
-          % ymin = 0, ymax = 1,
-        ]
-        \foreach[evaluate=\n as \redfrac using (\n-1)*100/(6-1)] \n in {1,...,6}{
-            \edef\temp{
-              \noexpand\addplot[white!\redfrac!blue, thick, mark=none, text = black] {atan(x*\n)*pi/180} node[pos=0.9, below right] (mid) {};
-              \noexpand\node[black] at (mid) {$n =\n$};
-            }
-            \temp
-          }
-      \end{axis}
-    \end{tikzpicture}
+    \includegraphics{sequence-arctan.pdf}
     \caption{The sequence of functions \(f_n(x)= \arctan(nx)\).}
   \end{center}
 \end{figure}
