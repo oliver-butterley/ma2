@@ -27,7 +27,8 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: "graphics/*.tex"
+          working_directory: graphics
+          root_file: "*.tex"
           glob_root_file: true
           latexmk_shell_escape: true
           extra_system_packages: inkscape      
