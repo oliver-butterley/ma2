@@ -21,36 +21,25 @@
 \usepackage[skins,breakable,theorems]{tcolorbox}
 \usepackage{enumitem} % spacing for lists
 \setlist{noitemsep,topsep=2pt}
-\usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
-\usepgfplotslibrary{fillbetween}
-% \usetikzlibrary{external} % To speed up compile
-% \tikzexternalize[prefix=figures/]
+% \usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
+% \usepgfplotslibrary{fillbetween}
 
 % Two packages for inserting git sha
 \usepackage{xstring}
 \usepackage{catchfile}
-
 % Set user input
 \newcommand{\gitfolder}{.git}             % Relative path to .git folder from .tex file
 \newcommand{\reponame}{oliver-butterley/ma2}    % Name of account and repo. Will be included in URL
-
 % Based on this https://tex.stackexchange.com/questions/455396/how-to-include-the-current-git-commit-id-and-branch-in-my-document
 \CatchFileDef{\headfull}{\gitfolder/HEAD}{}              % Get path to head file for checked out branch
 \StrGobbleRight{\headfull}{1}[\head]                      % Remove end of line character
 \StrBehind[2]{\head}{/}[\branch]                          % Parse out the path only
 \CatchFileDef{\commit}{\gitfolder/refs/heads/\branch}{}  % Get the content of the branch head
 \StrGobbleRight{\commit}{1}[\commithash]                  % Remove end of line character
-
 % Build the URL to this commit based on the information we now have
 \newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
-
 \newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
 
-\usetikzlibrary{positioning, arrows.meta}
-
-%%%%%%%%%%%%%%% Arrow to position in vector
-\newcommand{\here}[2]{\tikz[remember picture]{\node[inner sep=0](#2){#1}}}
-%%%%%%%%%%%%%%%%%%%
 
 
 \usepackage{varwidth}
@@ -113,6 +102,7 @@
 \newcommand{\yy}{\mathbf{y}}
 \newcommand{\zz}{\mathbf{z}}
 \newcommand{\aalpha}{\boldsymbol{\alpha}}
+\newcommand{\littleo}[1]{o(#1)}
 %%%%%%%%%
 
 

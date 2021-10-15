@@ -1,6 +1,4 @@
-
-
-\chapter{Differential calculus of scalar and vector fields}
+\chapter{Differential calculus in higher dimension}
 
 \lettrine{I}{n} this part of the course we start to consider higher dimensional space.
 That is, instead of \(\bR\) we consider \(\bR^n\) for \(n\in \bN\).
@@ -41,7 +39,10 @@ There are various convenient properties for working with norms and inner product
             \(\mathbf{f}:\bR^n \to \bR^n\) \\
             Paths:
              &
-            \(\boldsymbol{\alpha}:\bR \to \bR^n\)
+            \(\boldsymbol{\alpha}:\bR \to \bR^n\)\\
+            Change of coordinates:
+             &
+            \(\xx:\bR^n \to \bR^n\)
         \end{tabular}
     \end{center}
 \end{samepage}
@@ -93,7 +94,7 @@ open intervals, open disks, open balls, unions of open intervals, etc., are all 
     (3) We claim that $B(\mathbf{b},r_2) \subset B(\mathbf{a},r)$:
     In order to see this take any $\mathbf{c} \in B(\mathbf{b},r_2)$ and observe that
     $$\| \mathbf{c} - \mathbf{a} \| \leq \| \mathbf{c} - \mathbf{b} \|  + \| \mathbf{b} - \mathbf{a} \| \leq r_2 + r_1 = \frac{r + r_1}{2} < r.$$
-    Observe that the radius of the ball will be very small for points close to the boundary.
+    Observe that the radius of the ball will be small for points close to the boundary.
 \end{proof}
 
 
@@ -171,7 +172,7 @@ Let \(S\subset \bR^n\) and \(\ff : S \to \bR^m\).
 If \(\aa\in \bR^n\), \(\bb\in \bR^m\) we write
     {\(  \displaystyle\lim_{\xx \to \aa}\ff(\xx) = \bb \)}
 to mean that
-\(\lim_{\norm{\xx-\aa}\to 0}\norm{\ff(\xx)-\bb}=0\).
+\(\norm{\ff(\xx)-\bb} \to 0\) as \(\norm{\xx-\aa}\to 0\).
 Observe how, if \(n=m=1\), this is the familiar notion of continuity for functions on \(\bR\).
 
 \begin{definition}[continuous]
@@ -179,6 +180,27 @@ Observe how, if \(n=m=1\), this is the familiar notion of continuity for functio
     \(  \displaystyle\lim_{\xx \to \aa}\ff(\xx) = \ff(\aa)\).
     We say \(\ff\) is continuous on \(S\) if \(\ff\) is continuous at each point of \(S\).
 \end{definition}
+
+Even functions which look ``nice'' can fail to be continuous as we can see in the following example.
+
+\begin{example*}[continuity in higher dimensions]
+    Let \(f(x,y)\) be defined as \(f(0,0)=0\) and, for all \((x,y)\neq (0,0)\),
+    \[
+        f(x,y) =
+        \frac{x y}{x^2 + y^2}.
+    \]
+    What is the behaviour of \(f\) when approaching \((0,0)\) along the following lines?
+    \begin{center}
+        \begin{tabular}{ c | c }
+            line         & value                     \\
+            \hline
+            \(\{x=0\}\)  & \(f(0,t) =  0\)           \\
+            \(\{y=0\}\)  & \(f(t,0) = 0\)            \\
+            \(\{x=y\}\)  & \(f(t,t) = \frac{1}{2}\)  \\
+            \(\{x=-y\}\) & \(f(t,t) =-\frac{1}{2}\).
+        \end{tabular}
+    \end{center}
+\end{example*}
 
 \begin{theorem}
     Suppose that \(  \lim_{\xx \to \aa}\ff(\xx) = \bb\) and \(  \lim_{\xx \to \aa}\gg(\xx) = \cc\).
@@ -191,7 +213,7 @@ Observe how, if \(n=m=1\), this is the familiar notion of continuity for functio
     \end{enumerate}
 \end{theorem}
 
-We prove a couple of the parts of the above theorem here, the other parts are left as exercises and are relatively straightforward.
+We prove a couple of the parts of the above theorem here, the other parts are left as exercises.
 
 \begin{proof}[Proof of (c)]
     Observe that  \(
@@ -215,41 +237,41 @@ We prove a couple of the parts of the above theorem here, the other parts are le
 \end{proof}
 
 
-When writing a vector field (or similar functions) it is often convenient to divided the higher-dimensional function into smaller parts.
+When writing a vector field (or similar functions) it is often convenient to divide the higher-dimensional function into smaller parts.
 We call these parts the \emph{components of a vector field}.
+For example \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\) in 2D, \(\ff(\xx) = \left(f_1(\xx),f_2(\xx),f_3(\xx)\right)\) in 3D, etc.
 
 \begin{theorem}
-    Let \(\ff(\xx) = \left(f_1(\xx),\ldots,f_m(\xx) \right)\).
-    Then \(\ff\) is continuous if and only if each \(f_k\) is continuous.
+    Let \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\).
+    Then \(\ff\) is continuous if and only if \(f_1\) and \(f_2\) are continuous.
 \end{theorem}
-\begin{proof}
+\begin{proof} 
+    We will independently prove the two implications.
     \begin{description}
         \item[(\(\Rightarrow\))]
             Let
-            \( \ee_k=(0,\ldots,0,\here{1}{fromHere},0,\ldots,0)  \)
-            \begin{tikzpicture}[remember picture, overlay]
-                \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
-                \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
-            \end{tikzpicture}
+            \( \ee_1=(1,0) \), \( \ee_2=(0,1) \)
             and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
             We have already shown that the continuity of two vector fields implies the continuity of the inner product.
         \item[(\(\Leftarrow \))]
             By definition of the norm
-            \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{m}(f_k(\xx)-f_k(\aa))^2\)
+            \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{2}(f_k(\xx)-f_k(\aa))^2\)
             and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
     \end{description}
 \end{proof}
 
+In higher dimensions the analogous statement is true for the vector field \(\ff(\xx) = \left(f_1(\xx),\ldots,f_m(\xx) \right)\) with exactly the same proof. 
+I.e., \(\ff\) is continuous if and only if each \(f_k\) is continuous.
 
 
 \begin{example*}[polynomials]
-    A  \emph{polynomial} in \(n\) variables is a scalar field on \(\bR^n\) of the from
+    A  \emph{polynomial} in \(n\) variables is a scalar field on \(\bR^n\) of the form
     \[
-        p(x_1,\ldots,x_n)
+        f(x_1,\ldots,x_n)
         = \sum_{k_1=0}^{j}\cdots \sum_{k_n=0}^{j} c_{k_1,\dots,k_n} x_1^{k_1}\cdots x_n^{k_n}.
     \]
     E.g., \(f(x_1,x_2):= x_1 + 2x_1x_2 - x_1^2\) is a polynomial in \(2\) variables.
-    Polynomials are continuous everywhere in \(\bR^n\). (Finite sum of products of continuous fields.)
+    Polynomials are continuous everywhere in \(\bR^n\). This is because they are the finite sum of products of continuous scalar fields.
 \end{example*}
 
 \begin{example*}[rational functions]
@@ -279,30 +301,7 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 \end{example*}
 
 
-
-\begin{example*}[continuity in higher dimensions]
-    Let \(f(x,y)\) be defined as \(f(0,0)=0\) and, for all \((x,y)\neq (0,0)\),
-    \[
-        f(x,y) =
-        \frac{x y}{x^2 + y^2}.
-    \]
-    What is the behaviour of \(f\) when approaching \((0,0)\) along the following three lines?
-    \begin{center}
-        \begin{tabular}{ c | c }
-            line         & value                     \\
-            \hline
-            \(\{x=0\}\)  & \(f(0,t) =  0\)           \\
-            \(\{y=0\}\)  & \(f(t,0) = 0\)            \\
-            \(\{x=y\}\)  & \(f(t,t) = \frac{1}{2}\)  \\
-            \(\{x=-y\}\) & \(f(t,t) =-\frac{1}{2}\).
-        \end{tabular}
-    \end{center}
-\end{example*}
-
-
-
 \section{Derivatives of scalar fields}
-
 
 \begin{figure}
     \begin{center}
@@ -316,9 +315,9 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 
 \begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(f:S\to \bR\).
-    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\), \(\norm{v}=1\) the derivative of \(f\) with respect to \(\vv\) is defined as
+    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\), \(\norm{v}=1\) the directional derivative of \(f\) with respect to \(\vv\) is defined as
     \[
-        D_{\vv}f(\aa) :=
+        D_{\vv}f(\aa) =
         \lim_{h\to 0} \frac{1}{h}\left(  f(\aa+h \vv) - f(\aa)     \right).
     \]
 \end{definition}
@@ -327,7 +326,7 @@ The continuity of functions continues to hold, in an intuitive way, under compos
 When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in \operatorname{int} S\) so this definition makes sense.
 
 
-\begin{theorem}
+\begin{theorem*}
     Suppose \(S\subset \bR^n\), \(f:S\to \bR\), \(\aa \in \operatorname{int} S\).
     Let \(g(t) := f(\aa + t\vv)\).
     If one of the derivatives \(g'(t)\) or \(D_\vv f(\aa)\) exists then the other also exists and
@@ -335,12 +334,13 @@ When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in
         g'(t) = D_{\vv}f(\aa+t \vv).
     \]
     In particular \(g'(0) = D_{\vv}f(\aa)\).
-\end{theorem}
-
+\end{theorem*}
 
 \begin{proof}
     By definition \(\frac{1}{h}(g(t+h)-g(h)) =\frac{1}{h}(f(\aa+h \vv) - f(\aa)) \).
 \end{proof}
+
+The following result is useful for proving later results.
 
 \begin{theorem*}[mean value]
     Assume that \(D_{\vv}(\aa+t\vv)\)  exists for each \(t\in [0,1]\). Then for some \(\theta \in (0,1)\),
@@ -357,21 +357,14 @@ When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in
 
 
 
-
-
-% \tikzset{external/export next=false}
 For any \(k\in\{1,2,\ldots,n\}\),
-let
-\( \ee_k=(0,\ldots,0,\here{\(1\)}{fromHere},0,\ldots,0)  \).
-\begin{tikzpicture}[remember picture, overlay]
-    \node[font=\scriptsize, above right=7pt of fromHere] (toHere) {$k$\textsuperscript{th}position};
-    \draw[<-] ([yshift=4pt]fromHere.north) |- (toHere);
-\end{tikzpicture}
+let \(\ee_k\) be the \(n\)-dimensional unit vector where all entries are zero except the \(k\)\textsuperscript{th} position which is equal to \(1\).
+I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,\ldots,0,1)  \). 
 
 \begin{definition}[partial derivatives]
     We define the \emph{partial derivative} in \(x_k\) of \(f(x_1,x_2,\ldots,x_n)\) at \(\aa\) as
     \[
-        \frac{\partial f}{\partial x_k}(\aa) := D_{\ee_k}f(\aa).
+        \frac{\partial f}{\partial x_k}(\aa) = D_{\ee_k}f(\aa).
     \]
 \end{definition}
 
@@ -385,11 +378,10 @@ In practice, to compute the partial derivative \( \frac{\partial f}{\partial x_k
 
 If \(f:\bR \to \bR\) is differentiable, then
 \[
-    f(a + h) = f(a) + h f'(a) + hE(a,h)
+    f(a + h) \approx f(a) + h f'(a) 
 \]
-where \(E(a,h) \to 0\) as \(h\to 0\).
-I.e., \(f(a) + hf'(a)\) approximates \(f(x)\) close to \(a\).
-
+in the sense that\footnote{This is \emph{little-o notation}.   Here this means that \(\abs{f(a + h) - f(a) - h f'(a)}/\abs{h} \to 0\) as \(\abs{h}\to 0\).  } \(\abs{f(a + h) - f(a) - h f'(a)} = \littleo{\abs{h}}\).
+In other words, \(f(a) + hf'(a)\) approximates well \(f(a+h)\) when \(\abs{h}\) is small.
 
 \begin{definition}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
