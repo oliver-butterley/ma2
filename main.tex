@@ -42,8 +42,9 @@
 \StrGobbleRight{\commit}{1}[\commithash]                  % Remove end of line character
 
 % Build the URL to this commit based on the information we now have
-\newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
+\newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
 
+\newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
 
 \usetikzlibrary{positioning, arrows.meta}
 
@@ -69,7 +70,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{lemma*}{Lemma}
+\newtheorem*{lemma*}{Lemma}
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem*{example*}{Example}
