@@ -383,6 +383,8 @@ If \(f:\bR \to \bR\) is differentiable, then
 in the sense that\footnote{This is \emph{little-o notation}.   Here this means that \(\abs{f(a + h) - f(a) - h f'(a)}/\abs{h} \to 0\) as \(\abs{h}\to 0\).  } \(\abs{f(a + h) - f(a) - h f'(a)} = \littleo{\abs{h}}\).
 In other words, \(f(a) + hf'(a)\) approximates well \(f(a+h)\) when \(\abs{h}\) is small.
 
+We will use this idea in the higher dimensional definition of differentiable.
+
 \begin{definition}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there is \(T_\aa \in \bR^n\) and \(E(\aa,\vv)\) such that, for \(\vv\in B(\aa,r)\),
