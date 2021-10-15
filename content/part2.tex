@@ -680,7 +680,7 @@ Same argument as in \(\bR^2\) works in \(\bR^n\).
 
 \section{Derivatives of vector fields}
 
-\begin{definition}[Directional derivative]
+\begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(\ff:S\to \bR^m\).
     For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\) the derivative of \(f\) with respect to \(\vv\) is defined as
     \[
@@ -692,7 +692,7 @@ Same argument as in \(\bR^2\) works in \(\bR^n\).
 Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ldots,D_{\vv} f_m)\).
 
 
-\begin{definition}[Differentiable]
+\begin{definition}[differentiable]
     We say that \(f\) is \emph{differentiable} at \(\aa\) if there is a linear transformation \(\mathbf{T}_\aa : \bR^n \to \bR^m\) and \(\mathbf{E}(\aa,\vv)\) such that, for \(\vv\in B(\aa,r)\),
     \[
         \ff(\aa+\vv) = \ff(\aa) + \mathbf{T}_\aa  (\vv )+ \norm{\vv}\mathbf{E}(\aa,\vv)
@@ -714,6 +714,7 @@ Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ld
 
 \section{Jacobian matrix and chain rule}
 
+In general, the relevant differential for higher-dimensional functions is the \href{https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant}{Jacobian matrix}.
 
 \begin{definition}[Jacobian matrix]
     The \emph{Jacobian matrix} of \(\ff : \bR^n \to \bR^m\) at \(\aa\) is defined as
@@ -750,6 +751,7 @@ This is like a Taylor expansion in higher dimensions.
 Here we see that in higher dimensions we have a matrix form of the chain rule.
 
 \begin{theorem}
+    \label{thm:jacobian-chain}
     Let \(S\subset \bR^l\), \(T\subset \bR^m\) be open.
     Let \(\ff: S \to T\) and \(\gg:T \to \bR^n\) and define
     \[
@@ -895,9 +897,60 @@ Consequently
 A similar argument also holds in higher dimension.
 
 
+\section*{Worked examples}
 
+\subsection*{Jacobian matrix}
 
+\question
+Let $\mathbf{f}:\mathbb{R}^2\to\mathbb{R}^2$, $\mathbf{g}:\mathbb{R}^3\to\mathbb{R}^2$ be defined as
+\[
+    \begin{aligned}
+        \mathbf{f}(x,y) &= (e^{x+2y}, \sin(y+2x)) \\
+        \mathbf{g}(u,v,w) &= (u+2v^2+3w^3,2v-u^2).
+    \end{aligned}
+\]
+Let $\mathbf{h} =\mathbf{f} \circ \mathbf{g} : \bR^3 \to \bR^2$ and calculate \(D\mathbf{h}(1,-1,1)\).
 
+\solution
+We first calculate \(\mathbf{g}(1,-1,1) = (6,-3)\) and 
+\[
+    \begin{aligned}
+        D\mathbf{f}(x,y) &= 
+        \begin{pmatrix}
+           e^{x+2y} & 2 e^{x+2y}\\
+           2 \cos(y+2x) & \cos(y+2x)
+        \end{pmatrix},\\
+        D\mathbf{g}(u,v,w) &= 
+        \begin{pmatrix}
+            1 & 4v & 9w^2 \\
+            -2u & 2 & 0
+        \end{pmatrix}.   
+    \end{aligned}
+\]
+Consequently
+\[
+    \begin{aligned}
+        D\mathbf{f}(6,-3) &= 
+        \begin{pmatrix}
+           1 & 2 \\
+           2 \cos 9 & \cos 9
+        \end{pmatrix},\\
+        D\mathbf{g}(1,-1,1) &= 
+        \begin{pmatrix}
+            1 & -4 & 9 \\
+            -2 & 2 & 0
+        \end{pmatrix}.   
+    \end{aligned}
+\]
+By the chain rule for Jacobian matrices (Theorem~\ref{thm:jacobian-chain}),
+\( D\mathbf{h}(1,-1,1) = D\mathbf{f}(6,-3)  D\mathbf{g}(1,-1,1) \)
+and so, multiplying the matrices, we obtain 
+$$D\mathbf{h}(1,-1,1) =
+    \begin{pmatrix}
+        -3 & 0 & 9 \\
+        0        & -6\cos 9 & 18\cos 9
+    \end{pmatrix}.
+$$
 
 
 
