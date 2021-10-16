@@ -376,14 +376,13 @@ If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \
 In practice, to compute the partial derivative \( \frac{\partial f}{\partial x_k}\), one should consider all other \(x_j\) for \(j\neq k\) as constants and take the derivative with respect to \(x_k\).
 
 
-If \(f:\bR \to \bR\) is differentiable, then
+If \(f:\bR \to \bR\) is differentiable, then, if \(x\) is close to \(a\),
 \[
-    f(a + h) \approx f(a) + h f'(a) 
+    f(x) \approx f(a) + (x-a) f'(a) 
 \]
-in the sense that\footnote{This is \emph{little-o notation}.   Here this means that \(\abs{f(a + h) - f(a) - h f'(a)}/\abs{h} \to 0\) as \(\abs{h}\to 0\).  } \(\abs{f(a + h) - f(a) - h f'(a)} = \littleo{\abs{h}}\).
-In other words, \(f(a) + hf'(a)\) approximates well \(f(a+h)\) when \(\abs{h}\) is small.
+in the sense that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(\abs{f(a + h) - f(a) - h f'(a)} = \littleo{\abs{x-a}}\).
 
-We will use this idea in the higher dimensional definition of differentiable.
+We will use this idea in the higher dimensional definition of differentiability.
 
 \begin{definition}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
