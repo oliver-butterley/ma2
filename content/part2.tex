@@ -380,26 +380,60 @@ If \(f:\bR \to \bR\) is differentiable, then, if \(x\) is close to \(a\),
 \[
     f(x) \approx f(a) + (x-a) f'(a) 
 \]
-in the sense that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(\abs{f(a + h) - f(a) - h f'(a)} = \littleo{\abs{x-a}}\).
+in the sense that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(\abs{f(x) - f(a) - (x-a) f'(a)} = \littleo{\abs{x-a}}\).
 
 We will use this idea in the higher dimensional definition of differentiability.
 
-\begin{definition}[differentiable]
+\begin{definition*}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
-    We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there is \(T_\aa \in \bR^n\) and \(E(\aa,\vv)\) such that, for \(\vv\in B(\aa,r)\),
+    We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that, for \(\xx \in B(\aa,r)\),
     \[
-        f(\aa+\vv) = f(\aa) + T_\aa \cdot \vv + \norm{\vv}E(\aa,\vv)
+        f(\xx) \approx f(\aa) + {df}_{\aa}(\xx-\aa)
     \]
-    and \(E(\aa,\vv) \to 0\) as \(\vv \to 0\).
+    in the sense that \(\abs{f(\xx) - f(\aa) - {df}_{\aa}(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+\end{definition*}
+
+
+For future convenience we introduce the following notation.
+%
+\begin{definition}[gradient]
+    The \emph{gradient} of the scalar field \(f(x,y,z)\) at the point \(\aa\) is
+    \[
+        \nabla f(\aa) =
+        \begin{pmatrix}
+            \frac{\partial f}{\partial x}(\aa) \\[2pt]
+            \frac{\partial f}{\partial y}(\aa) \\[2pt]
+            \frac{\partial f}{\partial z}(\aa)
+        \end{pmatrix}.
+    \]
 \end{definition}
+%
+\noindent
+In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar field \(f(x_1,\ldots,x_n)\) at the point \(\aa\) is
+\[
+    \nabla f(\aa) =
+    \begin{pmatrix}
+        \partial_1 f(\aa) \\
+        \partial_2 f(\aa) \\
+        \vdots            \\
+        \partial_nf(\aa)
+    \end{pmatrix}.
+\]
+
 
 \begin{theorem}
     If \(f\) is differentiable at \(\aa\)
-    then \(T_\aa = \left( \partial_1 f(\aa), \ldots, \partial_nf(\aa) \right)\)
-    and \(D_{\vv}f(\aa) = T_{\aa}\cdot \vv\).
+    then \({df}_{\aa}(\vv) = \nabla f(\aa) \cdot \vv \).
+    This means that, for \(\xx \in B(\aa,r)\),
+    \[
+        f(\xx) \approx f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa)
+    \]
+    in the sense that \(\abs{f(\xx) - f(\aa) - \nabla f(\aa) (\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    Moreover 
+    \[
+        D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.  
+    \]
 \end{theorem}
-
-
 
 \begin{proof}
     Since \(f\) is differentiable
@@ -418,31 +452,6 @@ We will use this idea in the higher dimensional definition of differentiability.
 
 
 
-
-%
-\begin{definition}[gradient]
-    The \emph{gradient} of the scalar field \(f(x,y,z)\) at the point \((a,b,c)\) is
-    \[
-        \nabla f(a,b,c) =
-        \begin{pmatrix}
-            \frac{\partial f}{\partial x}(a,b,c) \\[2pt]
-            \frac{\partial f}{\partial y}(a,b,c) \\[2pt]
-            \frac{\partial f}{\partial z}(a,b,c)
-        \end{pmatrix}.
-    \]
-\end{definition}
-%
-\noindent
-In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar field \(f(x_1,\ldots,x_n)\) at the point \(\aa\) is
-\[
-    \nabla f(\aa) =
-    \begin{pmatrix}
-        \partial_1 f(\aa) \\
-        \partial_2 f(\aa) \\
-        \vdots            \\
-        \partial_nf(\aa)
-    \end{pmatrix}.
-\]
 
 \begin{theorem*}
     If \(f\) is differentiable at \(\aa\), then it is continuous at \(\aa\).
