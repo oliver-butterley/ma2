@@ -34,7 +34,7 @@
 \CatchFileDef{\headfull}{\gitfolder/HEAD}{}              % Get path to head file for checked out branch
 \StrGobbleRight{\headfull}{1}[\head]                      % Remove end of line character
 \StrBehind[2]{\head}{/}[\branch]                          % Parse out the path only
-\CatchFileDef{\commit}{\gitfolder/refs/heads/\branch}{}  % Get the content of the branch head
+\CatchFileDef{\commit}{\gitfolder/refs/heads/\branch}{}  % Get the chapters of the branch head
 \StrGobbleRight{\commit}{1}[\commithash]                  % Remove end of line character
 % Build the URL to this commit based on the information we now have
 \newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
@@ -127,12 +127,12 @@
 
 \pagestyle{fancy}
 
-\input{content/part0}
+\input{chapters/part0}
 
 \mainmatter
 
-\input{content/part1}
-\input{content/part2}
-\input{content/part3}
+\input{chapters/part1}
+\input{chapters/part2}
+\input{chapters/part3}
 
 \end{document}
