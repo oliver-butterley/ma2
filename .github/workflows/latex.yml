@@ -1,28 +1,21 @@
-name: Compile Latex as pdf
-
-# Controls when the workflow will run
+name: Compile Latex as PDF
+# Compiles the latex graphics, then compiles the latex source, then uploads the pdf
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contains a single job
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out repository under $GITHUB_WORKSPACE
       - name: Set up Git repository
         uses: actions/checkout@v2
-      
       # Compile graphics folder LaTeX
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
@@ -32,30 +25,22 @@ jobs:
           glob_root_file: true
           latexmk_shell_escape: true
           extra_system_packages: inkscape      
-
       # Compile main LaTeX
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           latexmk_shell_escape: true
-          extra_system_packages: inkscape
-          
+          extra_system_packages: inkscape 
       # Upload PDF file as artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: PDF
           path: main.pdf
-
       # Copy file to deploy folder
       - run: mkdir dist
       - run: cp main.pdf dist/main.pdf
-
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
       # Upload PDF to server
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
