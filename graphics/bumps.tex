@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+            xlabel=$x$, ylabel=$y$,
+            view={20}{20}
+        ]
+        \addplot3[surf,domain=-2:2,domain y=-2:2,samples=50]
+        {x*exp(-x*x-y*y) + exp(y*y*y/10)/4} ;
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

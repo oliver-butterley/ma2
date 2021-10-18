@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+            axis lines=center,
+            xlabel=$x$, ylabel=$f(x)$,
+        ]
+        \addplot[
+            blue,
+            domain=-1:1,
+            samples=21,
+        ]
+        {x^3};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

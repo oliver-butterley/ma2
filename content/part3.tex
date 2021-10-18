@@ -212,32 +212,19 @@ and \(\aa \in S\).
 \textbf{Terminology:}
 ``absolute'' = ``global'';
 ``relative'' = ``local''.
+
+
+
 \begin{figure}
     \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-                %title={$x \exp(-x^2-y^2)$},
-                xlabel=$x$, ylabel=$y$,
-                small,
-                view={20}{20}
-            ]
-            \addplot3[surf,domain=-2:2,domain y=-2:2,samples=50]
-            {x*exp(-x*x-y*y) + exp(y*y*y/10)/4} ;
-        \end{axis}
-    \end{tikzpicture}
+    \includegraphics{bumps.pdf}
     \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
 \end{figure}
 
 
 
 
-
-
-
-
 \textbf{Stationary points}
-
-
 
 
 \begin{theorem}
@@ -252,21 +239,14 @@ and \(\aa \in S\).
         \item This means that \(D_{\vv} f(\aa) = 0\) for every \(\vv\) and so \(\nabla f (\aa)= \mathbf{0}\). \qedhere
     \end{enumerate}
 \end{proof}
+
+
+
 \begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-                axis lines=center,
-                xlabel=$x$, ylabel=$f(x)$,
-            ]
-            \addplot[
-                blue,
-                domain=-1:1,
-                samples=21,
-            ]
-            {x^3};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\) as seen for the function \(f(x):=x^3\).}
+    \begin{center}
+        \includegraphics{inflection.pdf}
+        \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\) as seen for the function \(f(x):=x^3\).}
+    \end{center}
 \end{figure}
 
 
@@ -276,53 +256,15 @@ and \(\aa \in S\).
 \end{definition}
 
 
-
 \begin{figure}
-    \begin{tikzpicture}
-
-        \begin{axis}[
-                view={45}{30},
-                axis lines=none,
-                xmin=-1, xmax=1,
-                ymin=-1, ymax=1,
-                zmin=0, zmax=1,
-            ]
-            \addplot3[
-                surf,
-                samples=31,                            opacity = 0.5,
-                domain=0:1,y domain=45:225,
-                z buffer=sort,
-            ]
-            ({x * cos(y)},
-            {x * sin(y)},
-            x^2);
-        \end{axis}
-        \begin{axis}[
-                view={45}{30},
-                xlabel=\(x\), ylabel=\(y\),
-                axis lines=center,
-                xmin=-1, xmax=1,
-                ymin=-1, ymax=1,
-                zmin=0, zmax=1,
-            ]
-            \addplot3[
-                surf,
-                samples=31,
-                opacity = 0.5,
-                domain=0:1,y domain=225:405,
-                z buffer=auto,
-            ]
-            ({x * cos(y)},
-            {x * sin(y)},
-            x^2);
-        \end{axis}
-    \end{tikzpicture}
-
-    \caption{If \(f(x,y)=x^2+y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
-            2x\\2y
-        \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
-            0\\0
-        \end{smallmatrix}\right) \). The point \((0,0)\) is an absolute minimum for \(f\).}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{bowl.pdf}
+        \caption{If \(f(x,y)=x^2+y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
+                2x\\2y
+            \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
+                0\\0
+            \end{smallmatrix}\right) \). The point \((0,0)\) is an absolute minimum for \(f\).}
+    \end{center}
 \end{figure}
 
 
@@ -333,56 +275,15 @@ and \(\aa \in S\).
 
 
 \begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-                view={55}{30},
-                axis lines=center,
-                xlabel=\(x\), ylabel=\(y\),
-                xmin=-1, xmax=1,
-                ymin=-1, ymax=1,
-                zmin=-1, zmax=1,
-            ]
-            \addplot3[
-                surf,
-                samples=31,
-                opacity = 0.5,
-                domain=-1:0,
-                y domain=-1:1,
-                z buffer=auto,
-            ]
-            {x^2-y^2};
-        \end{axis}
-        \begin{axis}[
-                view={55}{30},
-                axis lines=center,
-                axis x line = none,
-                xmin=-1, xmax=1,
-                ymin=-1, ymax=1,
-                zmin=-1, zmax=1,
-            ]
-            \addplot3[
-                surf,
-                samples=31,
-                opacity = 0.5,
-                domain=0:1,
-                y domain=-1:1,
-                z buffer=auto,
-            ]
-            {x^2-y^2};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{If \(f(x,y)=x^2-y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
-            2x\\-2y
-        \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
-            0\\0
-        \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}
+    \begin{center}
+        \includegraphics{pringle.pdf}
+        \caption{If \(f(x,y)=x^2-y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
+                2x\\-2y
+            \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
+                0\\0
+            \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}
+    \end{center}
 \end{figure}
-
-
-
-
-
-
 
 
 \section{Second order Taylor formula and Hessian matrix}
