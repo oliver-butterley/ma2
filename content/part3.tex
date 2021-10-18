@@ -1,14 +1,15 @@
 % !TeX root = ../main.tex
 \chapter{Applications of the differential calculus}
 
+\lettrine{T}{h}e various notions which were introduced in the previous chapter are useful for some applications.
+This is what we explore in this chapter.
+
 \section{Partial differential equations}
 
-\subsection{First order linear PDEs}
+There are a huge number of different types of partial differential equations -- we consider here just a few types.
 
+\subsubsection*{First order linear PDEs}
 
-\textbf{First order linear PDE}
-
-Huge number of different partial differential equations -- we consider a few types.
 
 \begin{example}
     Find all solutions of the partial differential equation
@@ -42,10 +43,6 @@ Huge number of different partial differential equations -- we consider a few typ
     Conversely, every \(f\) which satisfies this equation is of the form \(g(bx-ay)\).
 \end{theorem}
 
-
-
-
-\textbf{PDE (cont.)}
 
 \begin{proof}
     \begin{description}
@@ -97,10 +94,7 @@ Huge number of different partial differential equations -- we consider a few typ
 
 
 
-\subsection{1D wave equation}
-
-
-\textbf{1D wave equation}
+\subsubsection*{1D wave equation}
 
 The \emph{1D wave equation} is
 \[
@@ -118,14 +112,6 @@ Good for small displacement.
 
 \textbf{Boundary conditions:}
 Are the ends fixed? Does it start moving?
-
-
-
-
-
-
-
-\textbf{1D wave equation (cont.)}
 
 \begin{theorem}
     \begin{enumerate}
@@ -147,10 +133,6 @@ Are the ends fixed? Does it start moving?
 \end{theorem}
 
 
-
-
-
-\textbf{1D wave equation (cont.)}
 \begin{proof}[Proof of part 1.]
     \begin{enumerate}
         \item Let \(f(x,t)\) be as defined \eqref{eq:wave} and calculate
@@ -175,9 +157,6 @@ Are the ends fixed? Does it start moving?
               and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
     \end{enumerate}
 \end{proof}
-
-
-
 
 
 
@@ -212,15 +191,9 @@ Are the ends fixed? Does it start moving?
 
 
 
-\section{Extrema}
+\section{Extrema (minima / maxima / saddle)}
 
-\subsection{Stationary points}
-
-
-\textbf{Minima, maxima and saddle points}
-
-
-
+\subsubsection*{Stationary points}
 
 
 Let \(S\subset \bR^n\) be open,
@@ -283,7 +256,6 @@ and \(\aa \in S\).
     \begin{tikzpicture}
         \begin{axis}[
                 axis lines=center,
-                small,
                 xlabel=$x$, ylabel=$f(x)$,
             ]
             \addplot[
@@ -299,15 +271,6 @@ and \(\aa \in S\).
 
 
 
-
-
-
-\textbf{Stationary points (cont.)}
-
-
-
-
-
 \begin{definition}[stationary point]
     If \(\nabla f(\aa)=0\) then \(\aa\) is called a \emph{stationary point}.
 \end{definition}
@@ -320,7 +283,6 @@ and \(\aa \in S\).
         \begin{axis}[
                 view={45}{30},
                 axis lines=none,
-                small,
                 xmin=-1, xmax=1,
                 ymin=-1, ymax=1,
                 zmin=0, zmax=1,
@@ -339,7 +301,6 @@ and \(\aa \in S\).
                 view={45}{30},
                 xlabel=\(x\), ylabel=\(y\),
                 axis lines=center,
-                small,
                 xmin=-1, xmax=1,
                 ymin=-1, ymax=1,
                 zmin=0, zmax=1,
@@ -376,7 +337,6 @@ and \(\aa \in S\).
         \begin{axis}[
                 view={55}{30},
                 axis lines=center,
-                small,
                 xlabel=\(x\), ylabel=\(y\),
                 xmin=-1, xmax=1,
                 ymin=-1, ymax=1,
@@ -396,7 +356,6 @@ and \(\aa \in S\).
                 view={55}{30},
                 axis lines=center,
                 axis x line = none,
-                small,
                 xmin=-1, xmax=1,
                 ymin=-1, ymax=1,
                 zmin=-1, zmax=1,
@@ -426,11 +385,7 @@ and \(\aa \in S\).
 
 
 
-\subsection{Second order Taylor formula and Hessian matrix}
-
-
-
-\textbf{Hessian matrix}
+\section{Second order Taylor formula and Hessian matrix}
 
 
 \begin{definition}[Hessian matrix]
@@ -510,11 +465,6 @@ Then
 \]
 
 
-
-
-
-\textbf{Hessian matrix (cont.)}
-
 \begin{example}
     Let \(f(x,y)=x^2-y^2\).
     The gradient is
@@ -570,9 +520,6 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) -
 
 
 
-
-\textbf{}
-
 \begin{proof}[Proof of second order Taylor formula]
 
     \begin{enumerate}
@@ -603,12 +550,7 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) -
 \end{proof}
 
 
-\subsection{Classifying stationary points}
-
-
-
-\textbf{Classifying stationary points}
-
+\section{Classifying stationary points}
 
 \begin{theorem}
     Let \(A\) be a real symmetric matrix and let
@@ -637,9 +579,6 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) -
         \item \(Q(B \uu_k ) = \lambda_k\) so, if \(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\) then \(\lambda_k>0\) for all \(k\). \qedhere
     \end{enumerate}
 \end{proof}
-
-
-
 
 % \textbf{Classifying stationary points (cont.)}
 
@@ -672,11 +611,9 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) -
 
 
 
-\subsection{Extreme value theorem for continuous scalar fields}
+\section{Extreme value theorem}
 
-
-\textbf{Extreme value theorem for continuous scalar fields}
-
+Here we explore the extreme value theorem for continuous scalar fields.
 The argument will be in two parts:
 \begin{enumerate}
     \item Continuity implies boundedness;
@@ -695,15 +632,10 @@ We call this set a \emph{rectangle}.
 
 
 
-\textbf{}
-
 \begin{theorem}[Bolzano–Weierstrass]
     If \({\{\xx_{n}\}}_{n}\) is a sequence in \( [\aa,\bb]\)
     there exists a convergent subsequence \({\{\xx_{n_j}\}}_{j}\).
 \end{theorem}
-
-
-
 
 \begin{proof}
     \begin{enumerate}
@@ -712,13 +644,6 @@ We call this set a \emph{rectangle}.
         \item Now divide again this sub-rectangle by half and repeat to give the subsequence.
     \end{enumerate}
 \end{proof}
-
-
-
-[Insert: illustration of proof]
-
-
-
 
 
 
@@ -736,9 +661,6 @@ We call this set a \emph{rectangle}.
         \item Bolzano–Weierstrass theorem means that there exists a subsequence \({\{\xx_{n_j}\}}_{j}\) converges to \( \xx \in [\aa,\bb]\);
         \item Continuity of \(f\) means that \(f(\xx_{n_j})\) converges to \(f(\xx)\). This is a contradiction.
     \end{enumerate}
-
-
-
 \end{proof}
 
 
@@ -767,14 +689,7 @@ We call this set a \emph{rectangle}.
 
 
 
-\section{Extrema with constraints}
-
-\subsection{Lagrange multipliers}
-
-
-
-\textbf{The geometric idea of Lagrange multipliers}
-
+\section{Extrema with constraints (Lagrange multipliers)}
 
 \begin{figure}
     \noindent\begin{tikzpicture}%
@@ -805,16 +720,7 @@ Minimise (or maximise) \(f(x,y)\) under the constraint \(g(x,y) = 0\).
 
 
 
-
-
-
-
-
-
-
-\textbf{Lagrange multipliers}
-
-{Method of Lagrange's multipliers}
+{Method of Lagrange's multipliers}.
 If a scalar field \(f(x_1,\ldots,x_n)\) has a relative extremum when it is subject to \(m\) constraints
 \[
     g_1(x_1,\ldots,x_n) = 0,
@@ -827,15 +733,6 @@ where \(m<n\), then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) suc
 at the extremum point.
 
 
-
-
-
-
-
-
-
-
-\textbf{Lagrange multipliers (cont.)}
 
 \begin{example}
     Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
@@ -866,10 +763,6 @@ at the extremum point.
     \end{itemize}
 \end{example}
 
-
-
-
-\textbf{Lagrange multipliers (cont.)}
 
 \begin{example}
     Find the points closest and furthest from the origin on the curve defined by the intersection of the two surfaces
