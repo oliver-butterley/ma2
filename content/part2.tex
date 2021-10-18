@@ -34,13 +34,13 @@ There are various convenient properties for working with norms and inner product
         \begin{tabular}{r l}
             Scalar fields:
              &
-            \(f:\bR^n \to \bR\)            \\
+            \(f:\bR^n \to \bR\)                   \\
             Vector fields:
              &
-            \(\mathbf{f}:\bR^n \to \bR^n\) \\
+            \(\mathbf{f}:\bR^n \to \bR^n\)        \\
             Paths:
              &
-            \(\boldsymbol{\alpha}:\bR \to \bR^n\)\\
+            \(\boldsymbol{\alpha}:\bR \to \bR^n\) \\
             Change of coordinates:
              &
             \(\xx:\bR^n \to \bR^n\)
@@ -246,7 +246,7 @@ For example \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\) in 2D, \(\ff(\xx) = \l
     Let \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\).
     Then \(\ff\) is continuous if and only if \(f_1\) and \(f_2\) are continuous.
 \end{theorem}
-\begin{proof} 
+\begin{proof}
     We will independently prove the two implications.
     \begin{description}
         \item[(\(\Rightarrow\))]
@@ -261,7 +261,7 @@ For example \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\) in 2D, \(\ff(\xx) = \l
     \end{description}
 \end{proof}
 
-In higher dimensions the analogous statement is true for the vector field \(\ff(\xx) = \left(f_1(\xx),\ldots,f_m(\xx) \right)\) with exactly the same proof. 
+In higher dimensions the analogous statement is true for the vector field \(\ff(\xx) = \left(f_1(\xx),\ldots,f_m(\xx) \right)\) with exactly the same proof.
 I.e., \(\ff\) is continuous if and only if each \(f_k\) is continuous.
 
 
@@ -271,7 +271,7 @@ I.e., \(\ff\) is continuous if and only if each \(f_k\) is continuous.
         f(x_1,\ldots,x_n)
         = \sum_{k_1=0}^{j}\cdots \sum_{k_n=0}^{j} c_{k_1,\dots,k_n} x_1^{k_1}\cdots x_n^{k_n}.
     \]
-    E.g., \(f(x_1,x_2):= x_1 + 2x_1x_2 - x_1^2\) is a polynomial in \(2\) variables.
+    E.g., \(f(x,y):= x + 2x y - x^2\) is a polynomial in \(2\) variables.
     Polynomials are continuous everywhere in \(\bR^n\). This is because they are the finite sum of products of continuous scalar fields.
 \end{example*}
 
@@ -284,7 +284,7 @@ I.e., \(\ff\) is continuous if and only if each \(f_k\) is continuous.
     A rational function is continuous at every point \(\xx\) such that \(q(\xx)\neq 0\).
 \end{example*}
 
-The continuity of functions continues to hold, in an intuitive way, under composition of functions.
+As described in the following result, the continuity of functions continues to hold, in an intuitive way, under composition of functions.
 
 \begin{theorem}
     Suppose \(S \subset \bR^l\), \(T\subset \bR^m\), \(\ff:S \to \bR^m\), \(\gg : T \to \bR^n\) and that \(\ff(S) \subset T\) so that
@@ -308,11 +308,12 @@ The continuity of functions continues to hold, in an intuitive way, under compos
     \begin{center}
         \includegraphics[width=0.5\textwidth]{gradient.pdf}
         \caption{Plot where colour represents the value of \(f(x,y)=x^2 + y^2\). The change in \(f\) depends on direction.}
+        \label{fig:directional}
     \end{center}
 \end{figure}
 
-
-
+We can imagine, for example in Figure~\ref{fig:directional}, that in higher dimensions, the derivative of a scalar field depends on the direction.
+This motivates the following.
 
 \begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(f:S\to \bR\).
@@ -360,7 +361,7 @@ The following result is useful for proving later results.
 The following notation is convenient.
 For any \(k\in\{1,2,\ldots,n\}\),
 let \(\ee_k\) be the \(n\)-dimensional unit vector where all entries are zero except the \(k\)\textsuperscript{th} position which is equal to \(1\).
-I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,\ldots,0,1)  \). 
+I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,\ldots,0,1)  \).
 
 \begin{definition}[partial derivatives]
     We define the \emph{partial derivative} in \(x_k\) of \(f(x_1,\ldots,x_n)\) at \(\aa\) as
@@ -370,28 +371,30 @@ I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,
 \end{definition}
 
 
+\begin{remark*}
+    Various symbols used for partial derivatives:
+    \(\frac{\partial f}{\partial x_k}(\aa) = D_kf(\aa) = \partial_{k}f(\aa)\).
+    If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
+\end{remark*}
 
-Various symbols used for partial derivatives:
-\(\frac{\partial f}{\partial x_k}(\aa) = D_kf(\aa) = \partial_{k}f(\aa)\).
-If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
 In practice, to compute the partial derivative \( \frac{\partial f}{\partial x_k}\), one should consider all other \(x_j\) for \(j\neq k\) as constants and take the derivative with respect to \(x_k\).
+In a moment we see this rigorously.
 
 
-If \(f:\bR \to \bR\) is differentiable, then, if \(x\) is close to \(a\),
+If \(f:\bR \to \bR\) is differentiable, then we know that, when \(x\) is close to \(a\),
 \[
-    f(x) \approx f(a) + (x-a) f'(a) 
+    f(x) \approx f(a) + (x-a) f'(a).
 \]
-in the sense that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(\abs{f(x) - f(a) - (x-a) f'(a)} = \littleo{\abs{x-a}}\).
-
-We will use this idea in the higher dimensional definition of differentiability.
+More precisely, we know that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(f(x) = f(a) + (x-a) f'(a) + \epsilon(x-a)\) where \(\abs{\epsilon(x-a)} = \littleo{\abs{x-a}}\).
+This way of seeing differentiability is convenient for the higher dimensional definition of differentiability.
 
 \begin{definition*}[differentiable]
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that, for \(\xx \in B(\aa,r)\),
     \[
-        f(\xx) \approx f(\aa) + {df}_{\aa}(\xx-\aa)
+        f(\xx) = f(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
     \]
-    in the sense that \(\abs{f(\xx) - f(\aa) - {df}_{\aa}(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
 \end{definition*}
 
 
@@ -410,14 +413,14 @@ For future convenience we introduce the following notation.
 \end{definition}
 %
 \noindent
-In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar field \(f(x_1,\ldots,x_n)\) at the point \(\aa\) is
+In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} of the scalar field \(f(x_1,\ldots,x_n)\) at the point \(\aa\) is
 \[
     \nabla f(\aa) =
     \begin{pmatrix}
-        \partial_1 f(\aa) \\
-        \partial_2 f(\aa) \\
-        \vdots            \\
-        \partial_nf(\aa)
+        \frac{\partial f}{\partial x_1}(\aa) \\[2pt]
+        \frac{\partial f}{\partial x_2}(\aa) \\[2pt]
+        \vdots                               \\
+        \frac{\partial f}{\partial x_n}(\aa)
     \end{pmatrix}.
 \]
 
@@ -427,51 +430,48 @@ In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar 
     then \({df}_{\aa}(\vv) = \nabla f(\aa) \cdot \vv \).
     This means that, for \(\xx \in B(\aa,r)\),
     \[
-        f(\xx) \approx f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa)
+        f(\xx) = f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa) + \epsilon(\xx-\aa)
     \]
-    in the sense that \(\abs{f(\xx) - f(\aa) - \nabla f(\aa) (\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
-    Moreover 
+    where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    Moreover, for any vector \(\vv\),
     \[
-        D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.  
+        D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.
     \]
 \end{theorem}
 
 \begin{proof}
-    Since \(f\) is differentiable
-    \(  f(\aa+ h \vv) = f(\aa) + h T_\aa \cdot \vv + h\norm{\vv}E(\aa,h\vv)\)
+    Since \(f\) is differentiable there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that
+    \(  f(\aa+ h \vv) = f(\aa) + h {df}_{\aa}(\vv) + \epsilon(h\vv)\)
     and hence
     \[
-        D_{\vv}f(\aa) :=
-        \lim_{h\to 0} \frac{f(\aa+h \vv) - f(\aa)}{h}
-        =
-        \lim_{h\to 0} \frac{ h T_\aa \cdot \vv + h\norm{\vv}E(\aa,h\vv) }{h}
-        = T_\aa \cdot \vv.
+        \begin{aligned}
+            D_{\vv}f(\aa) & =
+            \lim_{h\to 0} \frac{1}{h}(f(\aa+h \vv) - f(\aa)) \\
+                          & =
+            \lim_{h\to 0} \frac{1}{h}(h \ {df}_{\aa}(\vv) + \epsilon(h\vv) )
+            =  {df}_{\aa}(\vv).
+        \end{aligned}
     \]
-    In particular \(T_\aa\cdot \ee_k = D_{\ee_k}f(\aa)\).
+    In particular \({df}_{\aa}(\ee_k) = D_{\ee_k}f(\aa)\).
 \end{proof}
-
-
-
 
 
 \begin{theorem*}
     If \(f\) is differentiable at \(\aa\), then it is continuous at \(\aa\).
 \end{theorem*}
 \begin{proof}
-    Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{ T_\aa \cdot \vv + \norm{\vv}E(\aa,\vv)}\).
-    Consequently \( \abs{f(\aa+\vv)-f(\aa)} \leq \norm{T_\aa } \norm{\vv} + \norm{\vv} \abs{E(\aa,\vv)} \) and this tends to \(0\) as \(\norm{\vv} \to 0\).
+    Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{   {df}_{\aa}(\vv) + \epsilon(\vv)  }\).
+    Consequently \( \abs{f(\aa+\vv)-f(\aa)} \leq \norm{  {df}_{\aa} } \norm{\vv} + \abs{\epsilon(\vv)} \) and this tends to \(0\) as \(\norm{\vv} \to 0\).
 \end{proof}
 
 \begin{theorem}
-    Suppose that the partial derivatives \(\partial_1 f(\xx), \partial_2 f(\xx), \ldots, \partial_nf(\xx)\) exist for all \(\xx\in B(\aa,r)\) and are continuous at \(\aa\).
-    Then \(f\) is differentiable at \(\aa\).
+    Suppose that \(f(x_1,\ldots,x_n)\) is a scalar field.
+    If the partial derivatives \(\partial_1 f(\xx), \ldots, \partial_nf(\xx)\) exist for all \(\xx\in B(\aa,r)\) and are continuous at \(\aa\) then \(f\) is differentiable at \(\aa\).
 \end{theorem}
 
 \begin{proof}
+    For convenience write \(\vv = (v_1,v_2,\ldots,v_n)\)     and     \(\uu_k = (v_1,v_2,\ldots,v_k,0,\ldots,0)\).
     \begin{enumerate}
-        \item Write \(\vv = (v_1,v_2,\ldots,v_n)\)
-              and
-              \(\uu_k = (v_1,v_2,\ldots,v_k,0,\ldots,0)\);
         \item Observe that \(\uu_k - \uu_{k-1} = v_k \ee_k\), \(\uu_0 = (0,0,\ldots,0)\) and \(\uu_n = \vv\);
         \item Using the mean value theorem (exists \( \zz_k = \uu_{k-1}+ \theta_k \ee_k\)) \vspace{-0.9em}
               \[
@@ -490,8 +490,9 @@ In general (in \(\bR^n\) for any \(n\in\bN\)) the \emph{gradient} of the scalar 
 
 \subsection*{Chain rule}
 
-If \(f(t) = g\circ h(t)\) then \(f'(t) = g'(h(t)) \ h'(t)\).
-Does this extend to higher dimension?
+When we are working in \(\bR\) we know that, if \(g\) and \(h\) are differentiable, then \(f(t) = g\circ h(t)\) is also differentiable and also \(f'(t) = g'(h(t)) \ h'(t)\).
+This is called the \emph{chain rule} and is frequently very useful in calculating derivatives.
+We now investigate how this extends to higher dimension?
 
 \begin{example*}
     Suppose that
@@ -683,44 +684,62 @@ Same argument as in \(\bR^2\) works in \(\bR^n\).
 
 \section{Derivatives of vector fields}
 
+Essentially everything discussed above for scalar fields extends to vector fields in a predictable way.
+This is because of the linearity and that we can consider each \emph{component} of the vector field independently.
+
 \begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(\ff:S\to \bR^m\).
-    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\) the derivative of \(f\) with respect to \(\vv\) is defined as
+    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\) the derivative of the vector field \(\ff\) with respect to \(\vv\) is defined as
     \[
         D_{\vv}\ff(\aa) :=
-        \lim_{h\to 0} \frac{\ff(\aa+h \vv) - \ff(\aa)}{h}.
+        \lim_{h\to 0} \frac{1}{h} \left(\ff(\aa+h \vv) - \ff(\aa)\right).
     \]
 \end{definition}
 
-Note: If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ldots,D_{\vv} f_m)\).
+\begin{remark}
+    If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ldots,D_{\vv} f_m)\).
+\end{remark}
 
 
-\begin{definition}[differentiable]
-    We say that \(f\) is \emph{differentiable} at \(\aa\) if there is a linear transformation \(\mathbf{T}_\aa : \bR^n \to \bR^m\) and \(\mathbf{E}(\aa,\vv)\) such that, for \(\vv\in B(\aa,r)\),
+\begin{definition*}[differentiable]
+    We say that \(\ff: \bR^n \to \bR^m\) is \emph{differentiable} at \(\aa\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR^m\) such that, for \(\xx \in B(\aa,r)\),
     \[
-        \ff(\aa+\vv) = \ff(\aa) + \mathbf{T}_\aa  (\vv )+ \norm{\vv}\mathbf{E}(\aa,\vv)
+        \ff(\xx) = \ff(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
     \]
-    and \(\mathbf{E}(\aa,\vv) \to 0\) as \(\vv \to 0\).
-\end{definition}
+    \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+\end{definition*}
 
 
 \begin{theorem}
     If \(\ff\) is differentiable at \(\aa\)
     then \(\ff\) is continuous at \(\aa\)
-    and \( \mathbf{T}_{\aa}( \vv) =D_{\vv}\ff(\aa) \).
+    and \( {df}_{\aa}(\vv) =D_{\vv}\ff(\aa) \).
 \end{theorem}
 
 \begin{proof}
-    Same as for the case when \(f:\bR^n \to \bR\).
+    Same as for the case of scalar fields when \(f:\bR^n \to \bR\).
 \end{proof}
 
 
 \section{Jacobian matrix and chain rule}
 
-In general, the relevant differential for higher-dimensional functions is the \href{https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant}{Jacobian matrix}.
+The relevant differential for higher-dimensional functions is the \href{https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant}{Jacobian matrix}.
 
 \begin{definition}[Jacobian matrix]
-    The \emph{Jacobian matrix} of \(\ff : \bR^n \to \bR^m\) at \(\aa\) is defined as
+    Suppose that \(\ff: \bR^2 \to \bR^2\) and use the notation \(\ff(x,y) = (f_1(x,y),f_2(x,y))\).
+    The \emph{Jacobian matrix} of \(\ff\) at \(\aa\) is defined as
+    \[
+        D\ff(\aa) =
+        \begin{pmatrix}
+            \frac{\partial f_1}{\partial x} (\aa) & \frac{\partial f_1}{\partial y} (\aa) \\[2pt]
+            \frac{\partial f_2}{\partial x} (\aa) & \frac{\partial f_2}{\partial y} (\aa)
+        \end{pmatrix}.
+    \]
+\end{definition}
+
+\begin{remark*}
+    The \emph{Jacobian matrix} is defined analogously in any dimension.
+    I.e., if \(\ff : \bR^n \to \bR^m\) the the Jacobian at \(\aa\) is
     \[
         D\ff(\aa) =
         \begin{pmatrix}
@@ -730,26 +749,19 @@ In general, the relevant differential for higher-dimensional functions is the \h
             \partial_1 f_m (\aa) & \partial_2 f_m (\aa) & \cdots & \partial_n f_m (\aa)
         \end{pmatrix}
     \]
-
-\end{definition}
-
+\end{remark*}
 
 
-
-\begin{itemize}
-    \item Choosing a basis any linear transformation can be written as a \(m \times n\) matrix.
-    \item \( \mathbf{T}_\aa  (\vv ) = D\ff(\aa) \vv\).
-\end{itemize}
+If we choose a basis then any linear transformation \(\bR^n \to \bR^m\) can be written as a \(m \times n\) matrix.
+We find that \( {df}_{\aa}(\vv ) = D\ff(\aa) \vv\).
 
 Let \(S\subset \bR^n\) and \(\ff : S \to \bR^m\).
-If \(f\) is differentiable at \(\aa \in S\) then, for all  \(\vv\in B(\aa,r) \subset S\),
+If \(f\) is differentiable at \(\aa \in S\) then, for all  \(\xx\in B(\aa,r) \subset S\),
 \[
-    \ff(\aa+\vv) = \ff(\aa) +  D\ff(\aa) \vv + \norm{\vv}\mathbf{E}(\aa,\vv).
+    \ff(\xx) = \ff(\aa) +  D\ff(\aa) (\xx-\aa) + \epsilon(\xx-\aa)
 \]
-
-
+where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
 This is like a Taylor expansion in higher dimensions.
-
 
 Here we see that in higher dimensions we have a matrix form of the chain rule.
 
@@ -767,71 +779,67 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
     \]
 \end{theorem}
 
-\vspace{-1em}
-
 \begin{proof}
-    Since \(\ff\) and \(\gg\) are differentiable there exists \(\mathbf{E}_{\ff}\) and \(\mathbf{E}_{\gg}\).
-    Let \(\uu := \ff(\aa+\vv) - \ff(\aa) \).
+    Let \(\uu = \ff(\aa+\vv) - \ff(\aa) \).
+    Since \(\ff\) and \(\gg\) are differentiable,
     \[
         \begin{aligned}
             \hh(\aa+\vv) - \hh(\aa)
-             & = \gg(\ff(\aa+\vv)) - \ff(\hh(\aa))                                                                                               \\
-             & = D\gg(\ff(\aa))(\ff(\aa+\vv) - \ff(\aa) ) + \norm{\uu}\mathbf{E}_{\gg}(\ff(\aa),\uu)                                             \\
-             & = D\gg(\ff(\aa))   D\ff(\aa) \vv + \norm{\vv}D\gg(\ff(\aa))\mathbf{E}_{\ff}(\aa, \vv) + \norm{\uu}\mathbf{E}_{\gg}(\ff(\aa),\uu).
+             & = \gg(\ff(\aa+\vv)) - \gg(\ff(\aa))                                                                                    \\
+             & = D\gg(\ff(\aa))(\ff(\aa+\vv) - \ff(\aa) ) + \boldsymbol{\epsilon}_{\gg}(\uu)                                          \\
+             & = D\gg(\ff(\aa))   D\ff(\aa) \vv + D\gg(\ff(\aa))\boldsymbol{\epsilon}_{\ff}(\vv)  + \boldsymbol{\epsilon}_{\gg}(\uu).
         \end{aligned} \qedhere
     \]
 \end{proof}
 
 
 
-\begin{example}
+\begin{example}[polar coordinates]
     Here we consider \emph{polar coordinates} and calculate the Jacobian of this transformation.
-    \begin{itemize}
-        \item
-              We can write the change of coordinates
-              \((r,\theta) \mapsto (r\cos \theta, r\sin \theta)\)
-              as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\).
-        \item
-              We calculate the Jacobian matrix
-              \[
-                  D\ff(r,\theta) =
-                  \begin{pmatrix}
-                      \partial_{r}x(r,\theta) & \partial_{\theta}x(r,\theta) \\
-                      \partial_{r}y(r,\theta) & \partial_{\theta}y(r,\theta)
-                  \end{pmatrix}
-                  =
-                  \begin{pmatrix}
-                      \cos \theta & -r\sin \theta \\
-                      \sin \theta & r\cos \theta
-                  \end{pmatrix}.
-              \]
-        \item
-              We wish to calculate derivatives of \(h := g \circ \ff\) for some  \(g:\bR^2 \to \bR\).
-              \[
-                  \begin{aligned}
-                      Dh(r,\theta) & = Dg(\ff(r,\theta)) \ D\ff(r,\theta) \\
-                      \begin{pmatrix}
-                          \partial_r h(r,\theta) & \partial_\theta h(r,\theta)
-                      \end{pmatrix}
-                                   & =
-                      \begin{pmatrix}
-                          \partial_x g(\ff(r,\theta)) & \partial_y g(\ff(r,\theta))
-                      \end{pmatrix}
-                      \begin{pmatrix}
-                          \cos \theta & -r\sin \theta \\
-                          \sin \theta & r\cos \theta
-                      \end{pmatrix}
-                  \end{aligned}
-              \]
+    We can write the change of coordinates
+    \[
+        (r,\theta) \mapsto (r\cos \theta, r\sin \theta)
+    \]
+    as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\).
+    We calculate the Jacobian matrix of this transformation
+    \[
+        D\ff(r,\theta) =
+        \begin{pmatrix}
+            \partial_{r}x(r,\theta) & \partial_{\theta}x(r,\theta) \\
+            \partial_{r}y(r,\theta) & \partial_{\theta}y(r,\theta)
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            \cos \theta & -r\sin \theta \\
+            \sin \theta & r\cos \theta
+        \end{pmatrix}.
+    \]
+    In particular we see that \(\det D\ff(r,\theta) = r\), the familiar value used in change of variables with polar coordinated.
 
-        \item Consequently
-              \[
-                  \begin{cases}
-                      \partial_r h(r,\theta) = \partial_x g(r\cos \theta, r\sin \theta) \cos \theta + \partial_y g(r\cos \theta, r\sin \theta)\sin \theta \\
-                      \partial_\theta h(r,\theta) = - r \partial_x g(r\cos \theta, r\sin \theta) \sin \theta +  r \partial_y g(r\cos \theta, r\sin \theta)\cos \theta
-                  \end{cases}.
-              \]
-    \end{itemize}
+    Suppose now that we wish to calculate derivatives of \(h := g \circ \ff\) for some  \(g:\bR^2 \to \bR\).
+    \[
+        \begin{aligned}
+            Dh(r,\theta) & = Dg(\ff(r,\theta)) \ D\ff(r,\theta) \\
+            \begin{pmatrix}
+                \partial_r h(r,\theta) & \partial_\theta h(r,\theta)
+            \end{pmatrix}
+                         & =
+            \begin{pmatrix}
+                \partial_x g(\ff(r,\theta)) & \partial_y g(\ff(r,\theta))
+            \end{pmatrix}
+            \begin{pmatrix}
+                \cos \theta & -r\sin \theta \\
+                \sin \theta & r\cos \theta
+            \end{pmatrix}
+        \end{aligned}
+    \]
+    In other words
+    \[
+        \begin{cases}
+            \partial_r h(r,\theta) = \partial_x g(r\cos \theta, r\sin \theta) \cos \theta + \partial_y g(r\cos \theta, r\sin \theta)\sin \theta \\
+            \partial_\theta h(r,\theta) = - r \partial_x g(r\cos \theta, r\sin \theta) \sin \theta +  r \partial_y g(r\cos \theta, r\sin \theta)\cos \theta
+        \end{cases}.
+    \]
 \end{example}
 
 
@@ -841,37 +849,48 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
 
 \section{Implicit functions and partial derivatives}
 
+Just like with derivatives, we can take higher order partial derivatives.
+\begin{remark*}
+    For convenience when we want to write \(\frac{\partial}{\partial y}\frac{\partial}{\partial x}f(x,y) \), i.e., differentiate first with respect to \(x\) and then with respect to \(y\), we write instead \(\frac{\partial^2 f}{\partial y \partial x}(x,y) \).
+    The analogous notation is used for higher derivatives and any other choice of coordinates.
+\end{remark*}
 
-We consider the following equality of partial derivatives.
-Imagining the application of the partial derivative we can convince ourselves that it is something reasonable.
-
-Does \(\partial_1\partial_2 f = \partial_2\partial_1 f\), etc.?
+We first consider the question of when
+\[
+    \frac{\partial^2 f}{\partial y \partial x}(x,y)
+    \overset{\text{\large\color{blue} ?}}{=}
+    \frac{\partial^2 f}{\partial x \partial y}(x,y).
+\]
 
 \begin{example*}[partial derivative problem]
-    Let \(f:\bR^2 \to \bR\) be defined as \(f(0,0)=0\) and, for \((x_1,x_2)\neq (0,0)\),
+    Let \(f:\bR^2 \to \bR\) be defined as \(f(0,0)=0\) and, for \((x,y)\neq (0,0)\),
     \[
-        f(x_1,x_2) := \frac{x_1x_2(x_1^2 - x_2^2)}{x_1^2 + x_2^2}.
+        f(x,y) := \frac{x y(x^2 - y^2)}{x^2 + y^2}.
     \]
-    We can calculate \(\partial_2\partial_1 f (0,0) = -1\) but
-    \(\partial_1\partial_2 f(0,0) = 1\).
+    We calculate that \(\frac{\partial^2 f}{\partial y \partial x} (0,0) = -1\) but
+    \(\frac{\partial^2 f}{\partial x \partial y}(0,0) = 1\).
 \end{example*}
 
 \begin{theorem}
-    Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\partial_1 f\), \(\partial_2 f\) and \(\partial_2\partial_1 f\) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
-    Further assume that \(\partial_2\partial_1 f\) is continuous on \(S\).
-    Then the derivative \(\partial_1\partial_2 f(\xx)\) exists and \(\partial_1\partial_2 f(\xx)=\partial_2\partial_1 f(\xx)\).
+    Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x} \) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
+    Further assume that \(\frac{\partial^2 f}{\partial y \partial x} \) is continuous on \(S\).
+    Then the derivative \(\frac{\partial^2 f}{\partial x \partial y} (\xx)\) exists and
+    \[
+        \frac{\partial^2 f}{\partial x \partial y} (\xx)=\frac{\partial^2 f}{\partial y \partial x}  f(\xx).
+    \]
 \end{theorem}
 
 In many cases we can choose to write a given curve/function either in \emph{implicit} or \emph{explicit} form.
 
 \begin{center}
     \begin{tabular}{c | c}
-        \textbf{Implicit}     & \textbf{Explicit}                              \\
+        \textbf{Implicit}         & \textbf{Explicit}                              \\
         \hline
-        \(x^2-y=0\)           & \(y(x) = x^2\)                                 \\
-        \(x^2+y^2-1=0\)       & \(y(x) = \pm \sqrt{1-x^2}\), \(\abs{x}\leq 1\) \\
-        \(x^2-y^2-1=0\)       & \(y(x) = \pm \sqrt{x^2-1}\), \(\abs{x}\geq 1\) \\
-        \(x^2+y^2-e^y -4 =0\) & A mess?
+        \(x^2-y=0\)               & \(y(x) = x^2\)                                 \\
+        \(x^2+y^2=1\)             & \(y(x) = \pm \sqrt{1-x^2}\), \(\abs{x}\leq 1\) \\
+        \(x^2-y^2-1=0\)           & \(y(x) = \pm \sqrt{x^2-1}\), \(\abs{x}\geq 1\) \\
+        \(x^2+y^2-e^y -4 =0\)     & A mess?                                        \\
+        \(x^2y^4 - 3 = \sin(xy)\) & A huge mess?
     \end{tabular}
 \end{center}
 
@@ -908,50 +927,50 @@ A similar argument also holds in higher dimension.
 Let $\mathbf{f}:\mathbb{R}^2\to\mathbb{R}^2$, $\mathbf{g}:\mathbb{R}^3\to\mathbb{R}^2$ be defined as
 \[
     \begin{aligned}
-        \mathbf{f}(x,y) &= (e^{x+2y}, \sin(y+2x)) \\
-        \mathbf{g}(u,v,w) &= (u+2v^2+3w^3,2v-u^2).
+        \mathbf{f}(x,y)   & = (e^{x+2y}, \sin(y+2x)) \\
+        \mathbf{g}(u,v,w) & = (u+2v^2+3w^3,2v-u^2).
     \end{aligned}
 \]
 Let $\mathbf{h} =\mathbf{f} \circ \mathbf{g} : \bR^3 \to \bR^2$ and calculate \(D\mathbf{h}(1,-1,1)\).
 
 \solution
-We first calculate \(\mathbf{g}(1,-1,1) = (6,-3)\) and 
+We first calculate \(\mathbf{g}(1,-1,1) = (6,-3)\) and
 \[
     \begin{aligned}
-        D\mathbf{f}(x,y) &= 
+        D\mathbf{f}(x,y)   & =
         \begin{pmatrix}
-           e^{x+2y} & 2 e^{x+2y}\\
-           2 \cos(y+2x) & \cos(y+2x)
-        \end{pmatrix},\\
-        D\mathbf{g}(u,v,w) &= 
+            e^{x+2y}     & 2 e^{x+2y} \\
+            2 \cos(y+2x) & \cos(y+2x)
+        \end{pmatrix}, \\
+        D\mathbf{g}(u,v,w) & =
         \begin{pmatrix}
-            1 & 4v & 9w^2 \\
-            -2u & 2 & 0
-        \end{pmatrix}.   
+            1   & 4v & 9w^2 \\
+            -2u & 2  & 0
+        \end{pmatrix}.
     \end{aligned}
 \]
 Consequently
 \[
     \begin{aligned}
-        D\mathbf{f}(6,-3) &= 
+        D\mathbf{f}(6,-3)   & =
         \begin{pmatrix}
-           1 & 2 \\
-           2 \cos 9 & \cos 9
-        \end{pmatrix},\\
-        D\mathbf{g}(1,-1,1) &= 
+            1        & 2      \\
+            2 \cos 9 & \cos 9
+        \end{pmatrix},       \\
+        D\mathbf{g}(1,-1,1) & =
         \begin{pmatrix}
-            1 & -4 & 9 \\
-            -2 & 2 & 0
-        \end{pmatrix}.   
+            1  & -4 & 9 \\
+            -2 & 2  & 0
+        \end{pmatrix}.
     \end{aligned}
 \]
 By the chain rule for Jacobian matrices (Theorem~\ref{thm:jacobian-chain}),
 \( D\mathbf{h}(1,-1,1) = D\mathbf{f}(6,-3)  D\mathbf{g}(1,-1,1) \)
-and so, multiplying the matrices, we obtain 
+and so, multiplying the matrices, we obtain
 $$D\mathbf{h}(1,-1,1) =
     \begin{pmatrix}
-        -3 & 0 & 9 \\
-        0        & -6\cos 9 & 18\cos 9
+        -3 & 0        & 9        \\
+        0  & -6\cos 9 & 18\cos 9
     \end{pmatrix}.
 $$
 
