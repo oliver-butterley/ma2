@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
+        "Apostol",
+        "Bolzano",
+        "extremum",
+        "resp",
+        "Reuleaux",
+        "Schwarz",
+        "Weierstrass"
     ],
     "latex-workshop.latex.tools": [
         {
@@ -18,5 +25,8 @@
             "env": {}
         }
     ],
-    "latex-workshop.latex.outDir": "%DIR%/build"
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "cSpell.enableFiletypes": [
+        "!yaml"
+    ]
 }
