@@ -4,35 +4,37 @@
 \lettrine{T}{h}e various notions which were introduced in the previous chapter are useful for some applications.
 This is what we explore in this chapter.
 
+
 \section{Partial differential equations}
 
-There are a huge number of different types of partial differential equations -- we consider here just a few types.
+There are a huge number of different types of partial differential equations and here we consider here just a few types.
 
 \subsubsection*{First order linear PDEs}
 
 
-\begin{example}
+\begin{example*}
     Find all solutions of the partial differential equation
     \(3 \frac{\partial f}{\partial x}(x,y) + 2 \frac{\partial f}{\partial y} (x,y) = 0\).
-\end{example}
 
-\textbf{Solution:}
-
-\begin{enumerate}
-    \item Equivalent to
-          \(\left( \begin{smallmatrix}
-              3 \\ 2
-          \end{smallmatrix} \right)
-          \cdot
-          \nabla f(x,y) =0\);
-    \item Directional derivative \( D_{v}f(x,y) = 0\) where \(v=\left( \begin{smallmatrix}
+    \solution
+    \begin{enumerate}
+        \item Equivalent to
+              \(\left( \begin{smallmatrix}
+                  3 \\ 2
+              \end{smallmatrix} \right)
+              \cdot
+              \nabla f(x,y) =0\);
+        \item Directional derivative \( D_{v}f(x,y) = 0\) where \(v=\left( \begin{smallmatrix}
+                      3 \\ 2
+                  \end{smallmatrix} \right)\);
+        \item This means that \(f\) is constant in the direction \(\left( \begin{smallmatrix}
                   3 \\ 2
               \end{smallmatrix} \right)\);
-    \item This means that \(f\) is constant in the direction \(\left( \begin{smallmatrix}
-              3 \\ 2
-          \end{smallmatrix} \right)\);
-    \item All solutions have the form \(f(x,y) = g(2x-3y)\) for some \(g:\bR \to \bR\).
-\end{enumerate}
+        \item All solutions have the form \(f(x,y) = g(2x-3y)\) for some \(g:\bR \to \bR\).
+    \end{enumerate}
+\end{example*}
+
+
 
 \begin{theorem}
     Let \(g:\bR\to\bR\) be differentiable, \(a,b\in \bR\), \((a,b)\neq (0,0)\).
@@ -100,26 +102,22 @@ The \emph{1D wave equation} is
 \[
     \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t).
 \]
-\begin{itemize}
-    \item  \(x\) -- position along string
-    \item \(t\) -- time
-    \item \(f(x,t)\) -- displacement
-    \item \(c\) -- constant depending on the string
-\end{itemize}
+Here \(x\) represents the position along string,
+\(t\) is time and \(f(x,t)\) is the displacement of the string from the centre at position \(x\), at time \(t\).
+The constant \(c\) is a fixed parameter depending on the string.
 
-Derived from the equation of motion \(F = m a\) where \(F\) is the tension in the string, \(a\) is the acceleration from horizontal and \(m\) is the mass of a little piece of the string.
-Good for small displacement.
-
-\textbf{Boundary conditions:}
-Are the ends fixed? Does it start moving?
+This partial differential equation is derived from the equation of motion \(F = m a\) where \(F\) is the tension in the string, \(a\) is the acceleration from horizontal and \(m\) is the mass of a little piece of the string.
+The equation is valid for small displacement.
+In this case the \emph{boundary conditions} are natural: Are the ends of the string fixed? Is only one end fixed? At time \(t=0\), is the string already moving?
 
 \begin{theorem}
+    Let \(F\) be a twice differentiable function and \(G\) a differentiable function.
     \begin{enumerate}
         \item
-              Let \(F\) be a twice differentiable function and \(G\) a differentiable function. Then
+              Then the function defined as
               \begin{equation}
                   \label{eq:wave}
-                  f(x,t) := \frac{1}{2}(F(x+ct) + F(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \ ds
+                  f(x,t) = \frac{1}{2}(F(x+ct) + F(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \ ds
               \end{equation}
               satisfies \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \),
               \(f(x,0) = F(x)\)
@@ -159,11 +157,9 @@ Are the ends fixed? Does it start moving?
 \end{proof}
 
 
-
-\textbf{1D wave equation (cont.)}
 \begin{proof}[Proof of part 2.]
     \begin{enumerate}
-        %\item Suppose that \(f\) satisfies the 1D wave equation;
+        \item Suppose that \(f\) satisfies the 1D wave equation;
         \item Introduce \(u = x + ct\), \(v=x-ct\)
               and observe that \(x = \frac{u+v}{2}\), \(t=\frac{u-v}{2c}\);
         \item Define \(g(u,v) = f(x,t) = f(   \frac{u+v}{2} , \frac{u-v}{2c} )\);
@@ -193,9 +189,6 @@ Are the ends fixed? Does it start moving?
 
 \section{Extrema (minima / maxima / saddle)}
 
-\subsubsection*{Stationary points}
-
-
 Let \(S\subset \bR^n\) be open,
 \(f:S \to \bR\) be a scalar field
 and \(\aa \in S\).
@@ -208,24 +201,20 @@ and \(\aa \in S\).
     If \(f(\aa)\leq f(\xx)\) (resp.\ \(f(\aa)\geq f(\xx)\)) for all \(\xx \in B(\aa,r)\) for some \(r>0\), then \(f(\aa)\) is said to be a \emph{relative} minimum (resp.\ maximum) of \(f\).
 \end{definition}
 
+Collectively we call the these points the \emph{extrema} of the scalar field.
+In the case of a scalar field defined on \(\bR^2\) we can visualize the scalar field as a 3D plot like Figure~\ref{fig:bumps}.
+Here we see the extrema as the ``flat'' regions.
+In this setting we use \emph{global} as a synonym of \emph{absolute} and \emph{local} as a synonym of \emph{relative}.
 
-\textbf{Terminology:}
-``absolute'' = ``global'';
-``relative'' = ``local''.
 
-
-
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics{bumps.pdf}
     \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
+    \label{fig:bumps}
 \end{figure}
 
-
-
-
-\textbf{Stationary points}
-
+To proceed it is convenient to connect the extrema with the behaviour of the gradient of the scalar field.
 
 \begin{theorem}
     If \(f:S\to\bR\) is differentiable and has a relative minimum or maximum at \(\aa\), then \(\nabla f(\aa)=  \mathbf{0}\).
@@ -242,13 +231,15 @@ and \(\aa \in S\).
 
 
 
-\begin{figure}
+\begin{figure}[htb]
     \begin{center}
         \includegraphics{inflection.pdf}
         \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\) as seen for the function \(f(x):=x^3\).}
     \end{center}
 \end{figure}
 
+Observe that here and in the subsequent text, we can always consider the case of \(f:\bR \to \bR\), i.e., the case of \(\bR^n\) where \(n=1\).
+Everything still holds and reduces to the arguments and formulae previously developed for functions of one variable.
 
 
 \begin{definition}[stationary point]
@@ -256,7 +247,7 @@ and \(\aa \in S\).
 \end{definition}
 
 
-\begin{figure}
+\begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{bowl.pdf}
         \caption{If \(f(x,y)=x^2+y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
@@ -286,87 +277,99 @@ and \(\aa \in S\).
 \end{figure}
 
 
-\section{Second order Taylor formula and Hessian matrix}
+\section{Hessian matrix}
 
+To proceed it is useful to develop the idea of a second order Taylor expansion in this higher dimensional setting.
+In particular this will allow us to identify the local behaviour close to stationary points.
+The main object for doing this is the \emph{Hessian matrix}.
 
 \begin{definition}[Hessian matrix]
-    Let \(f:\bR^n \to\bR\) be twice differentiable.
-    The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined
+    Let \(f:\bR^2 \to\bR\) be twice differentiable.
+    We write this scalar field as \(f(x,y)\).
+    The \emph{Hessian matrix} at \(\aa\in \bR^2\) is defined as
     \[
         \mathbf{H} f (\aa)= \begin{pmatrix}
-            \dfrac{\partial^2 f}{\partial x_1^2} (\aa)
-             & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} (\aa)
-             & \cdots
-             & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n}(\aa)  \\[2.2ex]
-            \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} (\aa)
-             & \dfrac{\partial^2 f}{\partial x_2^2}(\aa)
-             & \cdots
-             & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n}(\aa)  \\[2.2ex]
-            \vdots
-             & \vdots
-             & \ddots
-             & \vdots                                                 \\[2.2ex]
-            \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} (\aa)
-             & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} (\aa)
-             & \cdots
-             & \dfrac{\partial^2 f}{\partial x_n^2}(\aa)
+            \dfrac{\partial^2 f}{\partial x^2} (\aa)
+             & \dfrac{\partial^2 f}{\partial x\,\partial y} (\aa)
+            \\[2.2ex]
+            \dfrac{\partial^2 f}{\partial y\,\partial x} (\aa)
+             & \dfrac{\partial^2 f}{\partial y^2}(\aa)
         \end{pmatrix}.
     \]
 \end{definition}
 
+Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\).
 
-
-\begin{itemize}
-    \item The Hessian matrix \(\mathbf{H} f (\aa)\) is symmetric;
-\end{itemize}
-
-\begin{itemize}
-    \item If \(\vv= \left( \begin{smallmatrix}
-                  v_1\\ \vdots \\v_n
-              \end{smallmatrix} \right)  \) then \(\vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv \in \bR\).
-\end{itemize}
-
-
-
-
-
-
-
-\textbf{\(\vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv\)}
-
-%We consider the \(\bR^2\) case. 
-Let \(\vv= \left( \begin{smallmatrix}
-        v_1\\ \vdots \\v_n
-    \end{smallmatrix} \right)  \).
-We use the notation
-\(\partial_{j}\partial_{k}f(\aa) = \frac{\partial^2 f}{\partial x_j\,\partial x_k} (\aa)\).
-
-Then
+The Hessian matrix is defined analogously in any dimensions as follows.
+Let \(f:\bR^n \to\bR\) be twice differentiable.
+The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
 \[
-    \begin{aligned}
-        \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv
-         & =
-        \begin{pmatrix}
-            v_1 & \cdots & v_n
-        \end{pmatrix}
-        \begin{pmatrix}
-            \partial_{1}\partial_{1}f(\aa) & \cdots &
-            \partial_{1}\partial_{n}f(\aa)                   \\
-            \vdots                         & \ddots & \vdots \\
-            \partial_{n}\partial_{1}f(\aa) & \cdots &
-            \partial_{n}\partial_{n}f(\aa)
-        \end{pmatrix}
-        \begin{pmatrix}
-            v_1 \\ \vdots \\v_n
-        \end{pmatrix} \\
-         & = \sum_{j,k=0}^{n}
-        \partial_{j}\partial_{k}f(\aa)
-        v_j v_k.
-    \end{aligned}
+    \mathbf{H} f (\aa)= \begin{pmatrix}
+        \dfrac{\partial^2 f}{\partial x_1^2} (\aa)
+         & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} (\aa)
+         & \cdots
+         & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n}(\aa)  \\[2.2ex]
+        \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} (\aa)
+         & \dfrac{\partial^2 f}{\partial x_2^2}(\aa)
+         & \cdots
+         & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n}(\aa)  \\[2.2ex]
+        \vdots
+         & \vdots
+         & \ddots
+         & \vdots                                                 \\[2.2ex]
+        \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} (\aa)
+         & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} (\aa)
+         & \cdots
+         & \dfrac{\partial^2 f}{\partial x_n^2}(\aa)
+    \end{pmatrix}.
 \]
 
+Observe that the Hessian matrix is a symmetric matrix in any dimension.
 
-\begin{example}
+
+\begin{lemma*}
+    If \(\vv= \left( \begin{smallmatrix}
+            v_1\\ \vdots \\v_n
+        \end{smallmatrix} \right)  \) then\footnote{The notation \(\vv^{\mathbf{t}}\) denotes the transpose of the vector \(\vv\).} \(\vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv = \sum_{j,k=0}^{n}
+        \partial_{j}\partial_{k}f(\aa)
+        v_j v_k \in \bR\).
+\end{lemma*}
+
+\begin{proof}
+    %We consider the \(\bR^2\) case. 
+    % Let \(\vv= \left( \begin{smallmatrix}
+    %         v_1\\ \vdots \\v_n
+    %     \end{smallmatrix} \right)  \).
+    For convenience we use the notation
+    \(\partial_{j}\partial_{k}f(\aa) = \frac{\partial^2 f}{\partial x_j\,\partial x_k} (\aa)\).
+    We calculate that
+    \[
+        \begin{aligned}
+            \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv
+             & =
+            \begin{pmatrix}
+                v_1 & \cdots & v_n
+            \end{pmatrix}
+            \begin{pmatrix}
+                \partial_{1}\partial_{1}f(\aa) & \cdots &
+                \partial_{1}\partial_{n}f(\aa)                   \\
+                \vdots                         & \ddots & \vdots \\
+                \partial_{n}\partial_{1}f(\aa) & \cdots &
+                \partial_{n}\partial_{n}f(\aa)
+            \end{pmatrix}
+            \begin{pmatrix}
+                v_1 \\ \vdots \\v_n
+            \end{pmatrix} \\
+             & = \sum_{j,k=0}^{n}
+            \partial_{j}\partial_{k}f(\aa)
+            v_j v_k
+        \end{aligned} 
+    \]
+    as required.
+\end{proof}
+
+
+\begin{example*}
     Let \(f(x,y)=x^2-y^2\).
     The gradient is
     \[\nabla f(x,y) =\begin{pmatrix}
@@ -396,26 +399,24 @@ Then
     The point \((0,0)\) is a stationary point since \(\nabla f(0,0) =\left(\begin{smallmatrix}
             0\\0
         \end{smallmatrix}\right) \).
-\end{example}
+\end{example*}
 
 
+\subsubsection*{Second order Taylor formula for scalar fields}
 
-
-\textbf{Second order Taylor formula for scalar fields}
-
-\textbf{Recall first order Taylor approximation:}
+First let's recall the first order Taylor approximation from Theorem~\ref{thm:differential}.
 If \(f\) is differentiable at \(\aa\)
 then
-\(  f(\aa+  \vv) - f(\aa)  = \nabla f(\aa) \cdot \vv + \norm{\vv}E(\aa,\vv)\).
-If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) - f(\aa)  =  \norm{\vv}E(\aa,\vv)\) but we want better information.
+\(  f(\aa+  \vv) = f(\aa)  + \nabla f(\aa) \cdot \vv + \epsilon(\vv)\).
+If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) = f(\aa)  +  \epsilon(\vv)\) so a natural next question is to search for slightly more detailed information.
 
 \begin{theorem}[second order Taylor]
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
     Then, if \(\norm{\vv}\leq r\),
     \[
-        f(\aa+\vv) = f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv + \norm{\vv}^2 E_2(\aa,\vv)
+        f(\aa+\vv) \approx f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv
     \]
-    and \(E_2(\aa,\vv) \to 0\) as \(\norm{\vv}\to 0\).
+    in the sense that the error is \(\littleo{\norm{\vv}^2}\).
 \end{theorem}
 
 
@@ -452,6 +453,8 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) -
 
 
 \section{Classifying stationary points}
+
+In order to classify the stationary points we will take advantage of the Hessian matrix and therefore we need to first understand the follow fact about real symmetric matrices.
 
 \begin{theorem}
     Let \(A\) be a real symmetric matrix and let
@@ -520,15 +523,13 @@ The argument will be in two parts:
     \item Continuity implies boundedness;
     \item Boundedness implies that the maximum and minimum are attained.
 \end{enumerate}
-
-\textbf{Notation:}
-Intervals / rectangles / etc\ldots
+We use the following notation for \emph{intervals} / \emph{rectangles} / \emph{cuboids}, etc.
 If \(\aa = (a_1,\ldots,a_n)\) and  \(\bb = (b_1,\ldots,b_n)\)
-then we consider the \(n\)-dimensional closed cartesian product
+then we consider the \(n\)-dimensional closed Cartesian product
 \[
     [\aa,\bb] = [a_1,b_1] \times \cdots \times [a_n,b_n].
 \]
-We call this set a \emph{rectangle}.
+We call this set a \emph{rectangle} (independent of the dimension).
 
 
 
@@ -623,7 +624,7 @@ at the extremum point.
 
 
 
-\begin{example}
+\begin{example*}
     Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
     \begin{itemize}
         \item \(\nabla f(x,y) = \left(\begin{smallmatrix}
@@ -650,10 +651,10 @@ at the extremum point.
               \)
         \item This has the solution \((x,y) = (\frac{1}{2},\frac{1}{2})\), \(f(\frac{1}{2},\frac{1}{2})= \frac{1}{4}\).
     \end{itemize}
-\end{example}
+\end{example*}
 
 
-\begin{example}
+\begin{example*}
     Find the points closest and furthest from the origin on the curve defined by the intersection of the two surfaces
     \[
         x^2 - xy + y^2 - z^2 = 1
@@ -677,7 +678,7 @@ at the extremum point.
               \]
         \item Check which are closest to and which are furthest from the origin.
     \end{itemize}
-\end{example}
+\end{example*}
 
 
 

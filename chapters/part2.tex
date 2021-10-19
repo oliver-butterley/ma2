@@ -426,6 +426,7 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 
 
 \begin{theorem}
+    \label{thm:differential}
     If \(f\) is differentiable at \(\aa\)
     then \({df}_{\aa}(\vv) = \nabla f(\aa) \cdot \vv \).
     This means that, for \(\xx \in B(\aa,r)\),
@@ -433,7 +434,7 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
         f(\xx) = f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa) + \epsilon(\xx-\aa)
     \]
     where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
-    Moreover, for any vector \(\vv\),
+    Moreover, for any vector \(\vv\), \(\norm{v}=1\),
     \[
         D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.
     \]
