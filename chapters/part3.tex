@@ -208,10 +208,11 @@ In this setting we use \emph{global} as a synonym of \emph{absolute} and \emph{l
 
 
 \begin{figure}[htb]
-    \centering
-    \includegraphics{bumps.pdf}
-    \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
-    \label{fig:bumps}
+    \begin{center}
+        \includegraphics{bumps.pdf}
+        \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
+        \label{fig:bumps}
+    \end{center}
 \end{figure}
 
 To proceed it is convenient to connect the extrema with the behaviour of the gradient of the scalar field.
@@ -229,11 +230,9 @@ To proceed it is convenient to connect the extrema with the behaviour of the gra
     \end{enumerate}
 \end{proof}
 
-
-
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics{inflection.pdf}
+        \includegraphics[width=0.5\textwidth]{inflection.pdf}
         \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\) as seen for the function \(f(x):=x^3\).}
     \end{center}
 \end{figure}
@@ -331,8 +330,8 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
     If \(\vv= \left( \begin{smallmatrix}
             v_1\\ \vdots \\v_n
         \end{smallmatrix} \right)  \) then\footnote{The notation \(\vv^{\mathbf{t}}\) denotes the transpose of the vector \(\vv\).} \(\vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv = \sum_{j,k=0}^{n}
-        \partial_{j}\partial_{k}f(\aa)
-        v_j v_k \in \bR\).
+    \partial_{j}\partial_{k}f(\aa)
+    v_j v_k \in \bR\).
 \end{lemma*}
 
 \begin{proof}
@@ -363,7 +362,7 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
              & = \sum_{j,k=0}^{n}
             \partial_{j}\partial_{k}f(\aa)
             v_j v_k
-        \end{aligned} 
+        \end{aligned}
     \]
     as required.
 \end{proof}
@@ -519,10 +518,8 @@ In order to classify the stationary points we will take advantage of the Hessian
 
 Here we explore the extreme value theorem for continuous scalar fields.
 The argument will be in two parts:
-\begin{enumerate}
-    \item Continuity implies boundedness;
-    \item Boundedness implies that the maximum and minimum are attained.
-\end{enumerate}
+Firstly we show that continuity implies boundedness;
+Secondly we show that boundedness implies that the maximum and minimum are attained.
 We use the following notation for \emph{intervals} / \emph{rectangles} / \emph{cuboids}, etc.
 If \(\aa = (a_1,\ldots,a_n)\) and  \(\bb = (b_1,\ldots,b_n)\)
 then we consider the \(n\)-dimensional closed Cartesian product
@@ -530,9 +527,7 @@ then we consider the \(n\)-dimensional closed Cartesian product
     [\aa,\bb] = [a_1,b_1] \times \cdots \times [a_n,b_n].
 \]
 We call this set a \emph{rectangle} (independent of the dimension).
-
-
-
+As a first step it is convenient to know that all sequences in our setting have convergent subsequences.
 
 \begin{theorem}[Bolzano–Weierstrass]
     If \({\{\xx_{n}\}}_{n}\) is a sequence in \( [\aa,\bb]\)
@@ -540,35 +535,26 @@ We call this set a \emph{rectangle} (independent of the dimension).
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Divide \( [\aa,\bb]\) into sub-rectangles of size half the original;
-        \item Choose a sub-rectangle which contains infinite elements of the sequence and choose the first of these elements to be part of the sub-sequence;
-        \item Now divide again this sub-rectangle by half and repeat to give the subsequence.
-    \end{enumerate}
+    In order to prove the theorem we construct the subsequence.
+    Firstly we divide \( [\aa,\bb]\) into sub-rectangles of size half the original.
+    We then choose a sub-rectangle which contains infinite elements of the sequence and choose the first of these elements to be part of the sub-sequence.
+    We repeat this process by again dividing the sub-rectangle we chose by half and choosing the next element of the subsequence.
+    We repeat to give the full subsequence.
 \end{proof}
-
-
-
-\textbf{Boundedness}
 
 \begin{theorem}[boundedness of continuous scalar fields]
     Suppose that \(f\) is a scalar field continuous at every point in the closed rectangle \([\aa,\bb]\).
     Then \(f\) is bounded on \([\aa,\bb]\) in the sense that there exists \(C>0\) such that \(\abs{f(\xx)} \leq C\) for all \(\xx \in [\aa,\bb]\).
 \end{theorem}
 
-
 \begin{proof}
-    \begin{enumerate}
-        \item Suppose the contrary: for all \(n\in\bN\) there exists \(\xx_n\in [\aa,\bb]\) such that \(\abs{f(\xx_n)}>n\);
-        \item \href{https://en.wikipedia.org/wiki/Bolzano%E2%80%93Weierstrass_theorem}{Bolzano–Weierstrass} theorem means that there exists a subsequence \({\{\xx_{n_j}\}}_{j}\) converges to \( \xx \in [\aa,\bb]\);
-        \item Continuity of \(f\) means that \(f(\xx_{n_j})\) converges to \(f(\xx)\). This is a contradiction.
-    \end{enumerate}
+    Suppose the contrary: for all \(n\in\bN\) there exists \(\xx_n\in [\aa,\bb]\) such that \(\abs{f(\xx_n)}>n\).
+    \href{https://en.wikipedia.org/wiki/Bolzano%E2%80%93Weierstrass_theorem}{Bolzano–Weierstrass} theorem means that there exists a subsequence \({\{\xx_{n_j}\}}_{j}\) converges to \( \xx \in [\aa,\bb]\).
+    Continuity of \(f\) means that \(f(\xx_{n_j})\) converges to \(f(\xx)\). This is a contradiction and hence the theorem is proved.
 \end{proof}
 
 
-
-
-\textbf{Attaining extreme values}
+We can now use the above result on the boundedness in order to show that the  extreme values are actually obtained.
 
 \begin{theorem}[extreme value theorem]
     Suppose that \(f\) is a scalar field continuous at every point in the closed rectangle \([\aa,\bb]\).
@@ -581,11 +567,9 @@ We call this set a \emph{rectangle} (independent of the dimension).
 \end{theorem}
 
 \begin{proof}
-    \begin{itemize}
-        \item  By the boundedness theorem \(\sup f\) is finite and so there exists a sequence  \({\{\xx_{n}\}}_{n}\)  such that \(f(\xx_n)\) converges to \(\sup f\);
-        \item Bolzano–Weierstrass theorem implies that there exists a subsequence  \({\{\xx_{n_j}\}}_{j}\) which converges to \( \xx \in [\aa,\bb]\);
-        \item By continuity \(f(\xx_n) \to f(\xx) = \sup f\).
-    \end{itemize}
+    By the boundedness theorem \(\sup f\) is finite and so there exists a sequence  \({\{\xx_{n}\}}_{n}\)  such that \(f(\xx_n)\) converges to \(\sup f\).
+    Bolzano–Weierstrass theorem implies that there exists a subsequence  \({\{\xx_{n_j}\}}_{j}\) which converges to \( \xx \in [\aa,\bb]\).
+    By continuity \(f(\xx_n) \to f(\xx) = \sup f\).
 \end{proof}
 
 
@@ -593,91 +577,91 @@ We call this set a \emph{rectangle} (independent of the dimension).
 
 \section{Extrema with constraints (Lagrange multipliers)}
 
-\begin{figure}
+We now consider a slightly different problem to the one earlier in this chapter.
+There we wished to find the extrema of a given scalar field.
+Here the general problem is to minimise or maximise a given scalar field \(f(x,y)\) under the constraint \(g(x,y) = 0\).
+Subsequently we will also consider the same problem but in higher dimensions.
+We can visualize this problem as shown in Figure~\ref{fig:lagrange}.
+For this graphic representation we draw the constraint and also various level sets of the function that we want to find the extrema of.
+The graphical representation suggests to us that at the ``touching point'' the gradient vectors are parallel.
+In other words, \(\nabla f = \lambda \nabla g\) for some \(\lambda \in \bR\).
+The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagrange_multiplier}{method of Lagrange multipliers}.
+
+
+\begin{theorem}[Lagrange multipliers]
+    If a scalar field \(f(x_1,\ldots,x_n)\) has a relative extremum when it is subject to \(m\) constraints
+    \[
+        g_1(x_1,\ldots,x_n) = 0,
+        \dots , g_m(x_1,\ldots,x_n)=0,
+    \]
+    where \(m<n\), then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that
+    \[
+        \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m
+    \]
+    at the extremum point.
+\end{theorem}
+
+\begin{figure}[htb]
     \begin{center}
         \includegraphics{lagrange.pdf}
-        \caption{Extrema of \(f\) under constraint \(g\)}
+        \caption{Searching for the extrema of \(f\) under constraint \(g(x,y)=0\)}
+        \label{fig:lagrange}
     \end{center}
 \end{figure}
 
 
-\textbf{Problem:}
-Minimise (or maximise) \(f(x,y)\) under the constraint \(g(x,y) = 0\).
-\begin{itemize}
-    \item At ``touching point'' the gradient vectors are parallel;
-    \item I.e., \(\nabla f = \lambda \nabla g\) for some \(\lambda \in \bR\).
-\end{itemize}
-
-
-
-{Method of Lagrange's multipliers}.
-If a scalar field \(f(x_1,\ldots,x_n)\) has a relative extremum when it is subject to \(m\) constraints
-\[
-    g_1(x_1,\ldots,x_n) = 0,
-    \dots , g_m(x_1,\ldots,x_n)=0,
-\]
-where \(m<n\), then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that
-\[
-    \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m
-\]
-at the extremum point.
-
-
-
 \begin{example*}
     Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
-    \begin{itemize}
-        \item \(\nabla f(x,y) = \left(\begin{smallmatrix}
-                  y\\ x
-              \end{smallmatrix}\right)\)
-              and \(\nabla g(x,y) = \left(\begin{smallmatrix}
-                  1\\ 1
-              \end{smallmatrix}\right)\);
-        \item  According to the Lagrange multiplier method there is \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at the extremum point \((x,y)\);
-        \item We must solve the simultaneous equations
-              \[
-                  \left(\begin{smallmatrix}
-                          y\\ x
-                      \end{smallmatrix}\right)
-                  = \lambda \left(\begin{smallmatrix}
-                          1\\ 1
-                      \end{smallmatrix}\right),
-                  \quad g(x,y) =0;
-              \]
-        \item I.e.,
-              \( x = \lambda, \quad
-              y = \lambda, \quad
-              x+y = 1;
-              \)
-        \item This has the solution \((x,y) = (\frac{1}{2},\frac{1}{2})\), \(f(\frac{1}{2},\frac{1}{2})= \frac{1}{4}\).
-    \end{itemize}
+    We start by calculating that
+    \[
+        \nabla f(x,y) = \left(\begin{smallmatrix}
+                y\\ x
+            \end{smallmatrix}\right),
+        \quad
+        \nabla g(x,y) = \left(\begin{smallmatrix}
+                1\\ 1
+            \end{smallmatrix}\right).
+    \]
+    According to the Lagrange multiplier method there is \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at the extremum point \((x,y)\).
+    To proceed we must solve the system of equations (3 equations and 3 unknowns),
+    \[
+        \left(\begin{smallmatrix}
+                y\\ x
+            \end{smallmatrix}\right)
+        = \lambda \left(\begin{smallmatrix}
+                1\\ 1
+            \end{smallmatrix}\right),
+        \quad g(x,y) =0;
+    \]
+    That is,
+    \( x = \lambda, \quad
+    y = \lambda, \quad
+    x+y = 1
+    \).
+    This has the solution \((x,y) = (\frac{1}{2},\frac{1}{2})\), \(f(\frac{1}{2},\frac{1}{2})= \frac{1}{4}\).
 \end{example*}
 
 
 \begin{example*}
-    Find the points closest and furthest from the origin on the curve defined by the intersection of the two surfaces
+    We wish to find the points closest and furthest from the origin on the curve defined by the intersection of the two surfaces
     \[
         x^2 - xy + y^2 - z^2 = 1
         \quad \text{and} \quad
         x^2 + y^2 = 1.
     \]
-    \vspace{-1em}
-    \begin{itemize}
-        \item Let \(f(x,y,z) = \sqrt{x^2 + y^2 + z^2}\);
-        \item Let \(g_1(x,y,z) = x^2 - xy + y^2 - z^2 - 1\),
-              \(g_2(x,y,z) = x^2 + y^2 - 1\);
-        \item Calculate \(\nabla f\), \(\nabla g_1\) and \(\nabla g_2\);
-        \item Solve the system of 5 equations (and 5 unknowns):
-              \vspace{-1em}
-              \[
-                  \nabla f (x,y,z) = \lambda_1 \nabla g_1(x,y,z)  + \lambda_2 \nabla g_2(x,y,z),
-              \]
-              \[
-                  \quad g_1(x,y,z) =0,
-                  \quad g_2(x,y,z) =0;
-              \]
-        \item Check which are closest to and which are furthest from the origin.
-    \end{itemize}
+    Let \(f(x,y,z) = \sqrt{x^2 + y^2 + z^2}\),
+    \(g_1(x,y,z) = x^2 - xy + y^2 - z^2 - 1\),
+    \(g_2(x,y,z) = x^2 + y^2 - 1\).
+    We now calculate \(\nabla f\), \(\nabla g_1\) and \(\nabla g_2\).
+    This leads us to a system of 5 equations and 5 unknowns:
+    \[
+        \nabla f (x,y,z) = \lambda_1 \nabla g_1(x,y,z)  + \lambda_2 \nabla g_2(x,y,z),
+    \]
+    \[
+        \quad g_1(x,y,z) =0,
+        \quad g_2(x,y,z) =0;
+    \]
+    We solve this system of equations in order to obtain a set of points. Finally we check which of these points are closest to and which are furthest from the origin.
 \end{example*}
 
 
