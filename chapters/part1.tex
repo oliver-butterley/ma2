@@ -132,9 +132,13 @@ Recall that integrals are defined rigorously using the notion of a step function
 \begin{proof}
   The uniform convergence implies that for each \(\epsilon>0\), there exists \(N\) such that for every \(n\geq N\) and every \(x\in D\), \(|f_n(x) - f(x)| <  \frac{\epsilon}{b-a}\).
   This means that
-  \[ \Big| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \Big|
-    \leq \int_{a}^{b} | f_n(x) - f(x) | \ dx
-    \leq (b-a) \frac{\epsilon}{b-a} = \epsilon.\]
+  \[
+    \begin{aligned}
+      \Big| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \Big|
+       & \leq \int_{a}^{b} | f_n(x) - f(x) | \ dx    \\
+       & \leq (b-a) \frac{\epsilon}{b-a} = \epsilon.
+    \end{aligned}
+  \]
   This shows that \(\int_{a}^{b} f_n(x) \ dx \to  \int_{a}^{b} f(x) \ dx\).
 \end{proof}
 

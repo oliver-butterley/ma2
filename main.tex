@@ -1,21 +1,20 @@
-\documentclass[paper=A5,fontsize=12pt,openright,DIV=16,parskip=half*,chapterprefix=on]{scrbook}      
+\documentclass[paper=A5,fontsize=12pt,openright,DIV=16,chapterprefix=on]{scrbook}      
 \usepackage[UKenglish]{babel}
-\usepackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref}
-\usepackage{ebgaramond}
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,babel=true]{microtype}   % Better typography
+\usepackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref} % Clickable links
+\usepackage{ebgaramond} % Classic style font
+\usepackage[tracking=true,babel=true]{microtype}   % Better typography
 \usepackage{lettrine}   % Add drop caps to chapter openings
 
-%%%%%%%%%%%%%% setup format for section headings
+%%%%%%%%%%%%%% setup format for section headings %%%%%%%
 \setkomafont{disposition}{\normalfont\scshape}
 \addtokomafont{chapterentry}{\normalfont\itshape\large}
 \addtokomafont{chapterentrypagenumber}{\normalfont\normalsize}
 \renewcommand{\raggedchapter}{\centering}
 \renewcommand{\raggedsection}{\centering}
-%%%%%%%%%%% setup table of contents
+%%%%%%%%%%% setup table of contents %%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{\sectiontocdepth}
 \newcommand\gobble[1]{}
-\DeclareTOCStyleEntry[entrynumberformat=\gobble,numwidth=0pt]{default}{chapter}
-\DeclareTOCStyleEntry[entrynumberformat=\gobble,numwidth=0pt]{default}{section}
+\DeclareTOCStyleEntries[entrynumberformat=\gobble,numwidth=0pt]{default}{chapter,section}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{svg} % automatically convert svg and include
