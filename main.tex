@@ -1,7 +1,22 @@
-\documentclass[12pt,openany]{book}      
-% paper size is in options.sty
-\usepackage[utf8x]{inputenc}
+\documentclass[paper=A5,fontsize=12pt,openright,DIV=16,parskip=half*,chapterprefix=on]{scrbook}      
+\usepackage[UKenglish]{babel}
 \usepackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref}
+\usepackage{ebgaramond}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,babel=true]{microtype}   % Better typography
+\usepackage{lettrine}   % Add drop caps to chapter openings
+
+%%%%%%%%%%%%%% setup format for section headings
+\setkomafont{disposition}{\normalfont\scshape}
+\addtokomafont{chapterentry}{\normalfont\itshape\large}
+\addtokomafont{chapterentrypagenumber}{\normalfont\normalsize}
+\renewcommand{\raggedchapter}{\centering}
+\renewcommand{\raggedsection}{\centering}
+%%%%%%%%%%% setup table of contents
+\setcounter{tocdepth}{\sectiontocdepth}
+\newcommand\gobble[1]{}
+\DeclareTOCStyleEntry[entrynumberformat=\gobble,numwidth=0pt]{default}{chapter}
+\DeclareTOCStyleEntry[entrynumberformat=\gobble,numwidth=0pt]{default}{section}
+%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{svg} % automatically convert svg and include
 
@@ -14,17 +29,14 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
-\usepackage[UKenglish]{babel}
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[type={CC},modifier={by-sa},version={4.0}]{doclicense}
 \usepackage[skins,breakable,theorems]{tcolorbox}
-\usepackage{enumitem} % spacing for lists
-\setlist{noitemsep,topsep=2pt}
-\usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
-% \usepgfplotslibrary{fillbetween}
 
-% Two packages for inserting git sha
+\usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
+
+%%%%%%%%%%%% inserting git sha
 \usepackage{xstring}
 \usepackage{catchfile}
 % Set user input
@@ -39,16 +51,14 @@
 % Build the URL to this commit based on the information we now have
 \newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
 \newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-\usepackage{varwidth}
 
 
 %%%%%%%%%% BOOK INFORMATION %%%%%%%%%%
 \newcommand{\authorname}{Everyone who contributed.}
-\newcommand{\booktitle}{Mathematical Analysis 2}
-\newcommand{\subtitle}{Lecture notes 2021/22}
+\newcommand{\booktitle}{Mathematical Analysis~2}
+% \newcommand{\subtitle}{Lecture notes 2021/22}
 \newcommand{\sourcelink}{\href{https://github.com/oliver-butterley/ma2}{\texttt{github.com/oliver-butterley/ma2}}}
 \newcommand{\editionyear}{2021}
 
@@ -117,8 +127,8 @@
 \begin{document}
 
 % Reduce space around displayed equations
-\setlength{\abovedisplayskip}{10pt}
-\setlength{\belowdisplayskip}{10pt}
+% \setlength{\abovedisplayskip}{10pt}
+% \setlength{\belowdisplayskip}{10pt}
 
 \frontmatter
 \input{frontmatter/titlepage}
@@ -126,8 +136,9 @@
 \input{frontmatter/preface}
 \input{frontmatter/tocpage}
 
-\pagestyle{fancy}
+% \pagestyle{fancy}
 
+\pagestyle{plain}
 \input{chapters/part0}
 
 \mainmatter
@@ -135,5 +146,7 @@
 \input{chapters/part1}
 \input{chapters/part2}
 \input{chapters/part3}
+
+\backmatter
 
 \end{document}
