@@ -589,12 +589,13 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
 
 
 \begin{theorem}[Lagrange multipliers]
-    If a scalar field \(f(x_1,\ldots,x_n)\) has a relative extremum when it is subject to \(m\) constraints
+    Suppose that a scalar field \(f(x_1,\ldots,x_n)\) has a relative minimum or maximum when it is subject to \(m\) constraints
     \[
         g_1(x_1,\ldots,x_n) = 0,
         \dots , g_m(x_1,\ldots,x_n)=0,
     \]
-    where \(m<n\), then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that
+    where \(m<n\), and that the \(\nabla g_k\) are all linearly independent.
+    Then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that
     \[
         \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m
     \]
