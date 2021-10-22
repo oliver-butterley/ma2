@@ -1,0 +1,203 @@
+% !TeX root = ../main.tex
+\chapter{Worked examples}
+
+\lettrine{T}{his} chapter contains various examples from the different parts of the course and the full calculations.
+Some of the examples come from the exercises, some from past exams, some just because they are relevant to the material.
+
+\section{Sequences and series of functions}
+
+\section{Differential calculus in higher dimension}
+
+\begin{task}
+    Let $\mathbf{f}:\mathbb{R}^2\to\mathbb{R}^2$, $\mathbf{g}:\mathbb{R}^3\to\mathbb{R}^2$ be defined as
+    \[
+        \begin{aligned}
+            \mathbf{f}(x,y)   & = (e^{x+2y}, \sin(y+2x)) \\
+            \mathbf{g}(u,v,w) & = (u+2v^2+3w^3,2v-u^2).
+        \end{aligned}
+    \]
+    Let $\mathbf{h} =\mathbf{f} \circ \mathbf{g} : \bR^3 \to \bR^2$ and calculate \(D\mathbf{h}(1,-1,1)\).
+\end{task}
+
+\begin{solution}
+    We first calculate \(\mathbf{g}(1,-1,1) = (6,-3)\) and
+    \[
+        \begin{aligned}
+            D\mathbf{f}(x,y)   & =
+            \begin{pmatrix}
+                e^{x+2y}     & 2 e^{x+2y} \\
+                2 \cos(y+2x) & \cos(y+2x)
+            \end{pmatrix}, \\
+            D\mathbf{g}(u,v,w) & =
+            \begin{pmatrix}
+                1   & 4v & 9w^2 \\
+                -2u & 2  & 0
+            \end{pmatrix}.
+        \end{aligned}
+    \]
+    Consequently
+    \[
+        \begin{aligned}
+            D\mathbf{f}(6,-3)   & =
+            \begin{pmatrix}
+                1        & 2      \\
+                2 \cos 9 & \cos 9
+            \end{pmatrix},       \\
+            D\mathbf{g}(1,-1,1) & =
+            \begin{pmatrix}
+                1  & -4 & 9 \\
+                -2 & 2  & 0
+            \end{pmatrix}.
+        \end{aligned}
+    \]
+    By the chain rule for Jacobian matrices (Theorem~\ref{thm:jacobian-chain}),
+    \( D\mathbf{h}(1,-1,1) = D\mathbf{f}(6,-3)  D\mathbf{g}(1,-1,1) \)
+    and so, multiplying the matrices, we obtain
+    $$D\mathbf{h}(1,-1,1) =
+        \begin{pmatrix}
+            -3 & 0        & 9        \\
+            0  & -6\cos 9 & 18\cos 9
+        \end{pmatrix}.
+    $$
+\end{solution}
+
+
+\section{Applications of the differential calculus}
+
+% \begin{task}
+%     Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
+% \end{task}
+
+% \begin{proof}[Solution]
+%     We start by calculating that
+%     \[
+%         \nabla f(x,y) = \left(\begin{smallmatrix}
+%                 y\\ x
+%             \end{smallmatrix}\right),
+%         \quad
+%         \nabla g(x,y) = \left(\begin{smallmatrix}
+%                 1\\ 1
+%             \end{smallmatrix}\right).
+%     \]
+%     According to the Lagrange multiplier method there is \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at the extremum point \((x,y)\).
+%     To proceed we must solve the system of equations (3 equations and 3 unknowns),
+%     \[
+%         \left(\begin{smallmatrix}
+%                 y\\ x
+%             \end{smallmatrix}\right)
+%         = \lambda \left(\begin{smallmatrix}
+%                 1\\ 1
+%             \end{smallmatrix}\right),
+%         \quad g(x,y) =0;
+%     \]
+%     That is,
+%     \( x = \lambda, \quad
+%     y = \lambda, \quad
+%     x+y = 1
+%     \).
+%     This has the solution \((x,y) = (\frac{1}{2},\frac{1}{2})\), \(f(\frac{1}{2},\frac{1}{2})= \frac{1}{4}\).
+% \end{proof}
+
+
+
+% \begin{task}
+%     Find the points closest to the origin on the set defined by the intersection of the two surfaces
+%     \[
+%         x^2 - xy + y^2 - z^2 = 1
+%         \quad \text{and} \quad
+%         x^2 + y^2 = 1.
+%     \]
+% \end{task}
+
+% \begin{proof}[Solution]
+%     For convenience we let
+%     \[
+%         \begin{aligned}
+%             f(x,y,z)   & = x^2 + y^2 + z^2,          \\
+%             g_1(x,y,z) & = x^2 - xy + y^2 - z^2 - 1, \\
+%             g_2(x,y,z) & = x^2 + y^2 - 1.
+%         \end{aligned}
+%     \]
+%     In the language of the Lagrange multiplier method, we are finding the extrema of \(f\) subject to the constraints \(g_1=0\) and \(g_2 = 0\).
+%     Applying the method leads us to the a system of 5 equations and 5 unknowns,
+%     \[
+%         \nabla f  = \lambda_1 \nabla g_1  + \lambda_2 \nabla g_2,
+%         \quad
+%         g_1 = 0,
+%         \quad
+%         g_2 = 0.
+%     \]
+%     We proceed to solve this system of equations in order to obtain a set of points which are the points where the extrema occur.
+%     We calculate that the gradients are
+%     \[
+%         \nabla f (x,y,z) = \begin{pmatrix}
+%             2 x \\ 2y \\ 2z
+%         \end{pmatrix},
+%         \quad
+%         \nabla g_1(x,y,z) = \begin{pmatrix}
+%             2x-y \\ 2y - x \\ -2z
+%         \end{pmatrix},
+%         \quad
+%         \nabla g_2(x,y,z) = \begin{pmatrix}
+%             2x \\ 2y \\ 0
+%         \end{pmatrix}.
+%     \]
+%     Consequently the 5 equations are
+%     \[
+%         \begin{aligned}
+%             2x & = \lambda_1 ( 2x -y ) + \lambda_2(2x) \\
+%             2y & = \lambda_1 ( 2y - x) + \lambda_2(2y) \\
+%             2z & = \lambda_1(-2z),
+%         \end{aligned}
+%     \]
+%     \[
+%         x^2 + y^2 = 1,
+%         \quad
+%         x^2 - xy + y^2 - z^2 =1.
+%     \]
+%     If we combine the 4\textsuperscript{th} and 5\textsuperscript{th} equations we obtain that 
+%         \begin{equation}
+%             \label{eq:LagrangeA}
+%             xy + z^2 = 0.
+%         \end{equation}
+%     Consequently
+%     \begin{equation}
+%         \label{eq:LagrangeB}
+%         xy \leq 0.
+%     \end{equation}
+%     If we multiply the 1\textsuperscript{st} by \(y\), multiply the 2\textsuperscript{nd} by \(x\) and combine we obtain that \(\lambda_1(2x-y)y = \lambda_1(2y - x)x\).
+%     This means that
+%     \begin{equation}
+%         \label{eq:LagrangeC}
+%         x^2 = y^2 
+%         \quad \text{or} \quad
+%         \lambda_1 = 0.
+%     \end{equation}
+%     For a moment we assume the first case and combined this with the 4\textsuperscript{th} equation.
+%     This means that \(x^2 +x^2 = 1\) and so \(x = \pm \frac{1}{\sqrt{2}}\).
+%     In general \(x^2 = y^2\) allows that \(y = \pm x\) but \eqref{eq:LagrangeB} means that \(y = -x\). Using \eqref{eq:LagrangeA} to calculate \(z\) we obtain 4 solutions,
+%     \[
+%         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}}),
+%         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}),
+%         (\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}}),
+%         (\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}).
+%     \]
+%     We check that these really are solutions by substituting into the 5 equations.
+%     Now we need to consider the other case \eqref{eq:LagrangeC} which we previously ignored. 
+%     Consider the 3\textsuperscript{rd} equation we find that \(z = 0\). 
+%     Consequently, by \eqref{eq:LagrangeA}, either \(x=0\) or \(y=0\).
+%     This then means that, by the 4\textsuperscript{th} equation that \(y^2=1\) or \(x^2=1\) respectively.
+%     Consequently we have obtained another 4 solutions,
+%     \[
+%         (-1,0,0),
+%         (1,0,0),
+%         (0,-1,0),
+%         (0,1,0).
+%     \]
+%     Again we check that these really are solutions by substituting into the 5 equations.
+
+%     Calculating the distance of the points to the origin we find that the first set are equally the closest to the origin and the second set are equally the furthest.
+% \end{proof}
+
+
+

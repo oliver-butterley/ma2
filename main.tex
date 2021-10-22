@@ -78,6 +78,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{remark*}{Remark}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}} % Environment for solutions of tasks
 
 % Highlighted versions of definition and theorem
 \tcolorboxenvironment{definition}{
@@ -120,14 +121,9 @@
 
 % Light formatting for questions and solutions
 \newcommand{\question}{\noindent \textbf{Question:} }
-\newcommand{\solution}{\noindent \textbf{Solution:} }
 
 
 \begin{document}
-
-% Reduce space around displayed equations
-% \setlength{\abovedisplayskip}{10pt}
-% \setlength{\belowdisplayskip}{10pt}
 
 \frontmatter
 \input{frontmatter/titlepage}
@@ -135,17 +131,19 @@
 \input{frontmatter/preface}
 \input{frontmatter/tocpage}
 
-% \pagestyle{fancy}
-
 \pagestyle{plain}
+
 \input{chapters/part0}
 
 \mainmatter
-
 \input{chapters/part1}
 \input{chapters/part2}
 \input{chapters/part3}
 
+\appendix
+\input{chapters/examples.tex}
+
 \backmatter
+
 
 \end{document}
