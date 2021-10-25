@@ -1,103 +1,95 @@
 % !TeX root = ../main.tex
 \chapter{Applications of the differential calculus}
 
-\lettrine{T}{h}e various notions which were introduced in the previous chapter are useful for some applications.
-This is what we explore in this chapter.
-
+\lettrine{I}{n} the previous chapter we introduced various notions of differentials for higher dimensional functions (scalar fields, vector fields, paths, etc.).
+In this chapter we now explore various applications of these notions and work with some of the implementations, rather than just the theory.
+Firstly we will consider certain partial differential equations which we now have the tools to solve.
+Then the majority of the chapter is devoted to searching for extrema (minima / maxima) in various different scenarios.
+This extends what we already know for functions in \(\bR\) and we will find that in higher dimensions many more possibilities and subtleties exist.
 
 \section{Partial differential equations}
 
-There are a huge number of different types of partial differential equations and here we consider here just a few types.
-
-\subsubsection*{First order linear PDEs}
-
+There are a huge number of different types of partial differential equations and here we consider just two types \emph{first order linear PDEs} and the \emph{1D wave equation}.
+We start by consider an example of the first type.
 
 \begin{example*}
     Find all solutions of the partial differential equation
     \(3 \frac{\partial f}{\partial x}(x,y) + 2 \frac{\partial f}{\partial y} (x,y) = 0\).
-
-    \solution
-    \begin{enumerate}
-        \item Equivalent to
-              \(\left( \begin{smallmatrix}
-                  3 \\ 2
-              \end{smallmatrix} \right)
-              \cdot
-              \nabla f(x,y) =0\);
-        \item Directional derivative \( D_{v}f(x,y) = 0\) where \(v=\left( \begin{smallmatrix}
-                      3 \\ 2
-                  \end{smallmatrix} \right)\);
-        \item This means that \(f\) is constant in the direction \(\left( \begin{smallmatrix}
-                  3 \\ 2
-              \end{smallmatrix} \right)\);
-        \item All solutions have the form \(f(x,y) = g(2x-3y)\) for some \(g:\bR \to \bR\).
-    \end{enumerate}
 \end{example*}
 
+\begin{solution}
+    The given PDE is equivalent to
+    \(\left( \begin{smallmatrix}
+            3 \\ 2
+        \end{smallmatrix} \right)
+    \cdot
+    \nabla f(x,y) =0\).
+    We can also phrase this in terms of the directional derivative, namely
+    \[
+        D_{v}f(x,y) = 0 \quad \text{where \(v=\left( \begin{smallmatrix}
+                3 \\ 2
+            \end{smallmatrix} \right)\)}.
+    \]
+    This means that if a function \(f\) is a solution to the PDE then it is constant in the direction \(\left( \begin{smallmatrix}
+            3 \\ 2
+        \end{smallmatrix} \right)\).
+    This means that all solutions have the form \(f(x,y) = g(2x-3y)\) for some \(g:\bR \to \bR\).
+\end{solution}
 
+The same idea as above gives the following general result.
 
 \begin{theorem}
     Let \(g:\bR\to\bR\) be differentiable, \(a,b\in \bR\), \((a,b)\neq (0,0)\).
-    If \(f(x,y):= g(bx-ay)\) then
+    If \(f(x,y)= g(bx-ay)\) then
     \[
         a \frac{\partial f}{\partial x} (x,y) + b \frac{\partial f}{\partial y} (x,y) = 0.
     \]
     Conversely, every \(f\) which satisfies this equation is of the form \(g(bx-ay)\).
 \end{theorem}
 
-
 \begin{proof}
-    \begin{description}
-        \item[\((\Rightarrow\))]
-              \begin{enumerate}
-                  \item If \(f(x,y)= g(bx-ay)\) then, by the chain rule,
-                        \(\partial_x f(x,y) = bg'(bx-ay)\) and \(\partial_y f(x,y) = -ag'(bx-ay)\).
-                  \item
-                        Consequently \(a\partial_x f(x,y) + b \partial_y f(x,y) = a bg'(bx-ay) - abg'(bx-ay) = 0\).
-              \end{enumerate}
+    First we prove \textbf{(\(\Rightarrow\))}.
+    If \(f(x,y)= g(bx-ay)\) then, by the chain rule,
+    \[
+        \partial_x f(x,y) = bg'(bx-ay),
+        \quad
+        \partial_y f(x,y) = -ag'(bx-ay).
+    \]
+    Consequently \(a\partial_x f(x,y) + b \partial_y f(x,y) = a bg'(bx-ay) - abg'(bx-ay) = 0\).
 
-        \item[(\(\Leftarrow\))]
-              \begin{enumerate}
-                  \item Let \(\left(\begin{smallmatrix}
-                                u\\ v
-                            \end{smallmatrix}\right)
-                        = \left(\begin{smallmatrix}
-                                a & b \\ b & -a
-                            \end{smallmatrix}\right)
-                        \left(\begin{smallmatrix}
-                                x \\ y
-                            \end{smallmatrix}\right)\)
-                        and so
-                        \(\left(\begin{smallmatrix}
-                                x\\ y
-                            \end{smallmatrix}\right)
-                        = \frac{-1}{a^2 + b^2} \left(\begin{smallmatrix}
-                                a & b \\ b & -a
-                            \end{smallmatrix}\right)
-                        \left(\begin{smallmatrix}
-                                u \\ v
-                            \end{smallmatrix}\right)\).
-                        %\item Let \(u=ax+by\), \(v=bx-ay\) and observe that \(x=\frac{au + bv}{a^2 + b^2}\) and that \(y=\frac{au + bv}{a^2 + b^2}\).
-                  \item Let \(h(u,v)=f(\frac{au + bv}{a^2 + b^2}, \frac{bu-av}{a^2+b^2})\).
-                  \item Calculate
-                        \[
-                            \partial_u h(u,v)
-                            = \tfrac{1}{{a^2 + b^2}}
-                            \left( a \partial_x f
-                            + b \partial_y f \right)  (au + bv, bu-av) = 0.
-                        \]
-                  \item Namely, \(h(u,v)\) is a function of \(v\) only so take \(g(v) = h(u,v)\) and so \(f(x,y) = g(bx-ay)\).
-              \end{enumerate}
-    \end{description}
-
+    Now we prove \textbf{(\(\Leftarrow\))}.
+    It's convenient to work in coordinates which correspond to the lines along which the solutions are constant.
+    Let \(\left(\begin{smallmatrix}
+            u\\ v
+        \end{smallmatrix}\right)
+    = \left(\begin{smallmatrix}
+            a & b \\ b & -a
+        \end{smallmatrix}\right)
+    \left(\begin{smallmatrix}
+            x \\ y
+        \end{smallmatrix}\right)\).
+    This means that
+    \(\left(\begin{smallmatrix}
+            x\\ y
+        \end{smallmatrix}\right)
+    = \frac{-1}{a^2 + b^2} \left(\begin{smallmatrix}
+            a & b \\ b & -a
+        \end{smallmatrix}\right)
+    \left(\begin{smallmatrix}
+            u \\ v
+        \end{smallmatrix}\right)\).
+    Let \(h(u,v)=f(\frac{au + bv}{a^2 + b^2}, \frac{bu-av}{a^2+b^2})\).
+    Calculate
+    \[
+        \partial_u h(u,v)
+        = \tfrac{1}{{a^2 + b^2}}
+        \left( a \partial_x f
+        + b \partial_y f \right)  (au + bv, bu-av) = 0.
+    \]
+    Namely, \(h(u,v)\) is a function of \(v\) only so take \(g(v) = h(u,v)\) and so \(f(x,y) = g(bx-ay)\).
 \end{proof}
 
-
-
-
-
-\subsubsection*{1D wave equation}
-
+Now we look at another type of PDE.
 The \emph{1D wave equation} is
 \[
     \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t).
@@ -112,80 +104,80 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
 
 \begin{theorem}
     Let \(F\) be a twice differentiable function and \(G\) a differentiable function.
-    \begin{enumerate}
-        \item
-              Then the function defined as
-              \begin{equation}
-                  \label{eq:wave}
-                  f(x,t) = \frac{1}{2}(F(x+ct) + F(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \ ds
-              \end{equation}
-              satisfies \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \),
-              \(f(x,0) = F(x)\)
-              and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
-        \item
-              Conversely, if a solution of  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \) satisfies
-              \[\frac{\partial^2 f}{\partial x \partial t}(x,t) = \frac{\partial^2 f}{\partial t \partial x}(x,t),\]
-              then it has the above form \eqref{eq:wave}.
-    \end{enumerate}
 
+    \noindent
+    \textbf{1.} The function defined as
+    \begin{equation}
+        \label{eq:wave}
+        f(x,t) = \frac{1}{2}(F(x+ct) + F(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \ ds
+    \end{equation}
+    satisfies \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \),
+    \(f(x,0) = F(x)\)
+    and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
+
+    \noindent
+    \textbf{2.} Conversely, if a solution of  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \) satisfies
+    \[\frac{\partial^2 f}{\partial x \partial t}(x,t) = \frac{\partial^2 f}{\partial t \partial x}(x,t),\]
+    then it has the above form \eqref{eq:wave}.
 \end{theorem}
 
 
 \begin{proof}[Proof of part 1.]
-    \begin{enumerate}
-        \item Let \(f(x,t)\) be as defined \eqref{eq:wave} and calculate
-              \[
-                  \begin{aligned}
-                      \tfrac{\partial f}{\partial x} (x,t)
-                       & = \tfrac{1}{2} \left(F'(x+ct) + F'(x-ct)\right)
-                      + \tfrac{1}{2c}\left(G(x+ct) - G(x-ct)\right)               \\
-                      \tfrac{\partial^2 f}{\partial x^2}(x,t)
-                       & = \tfrac{1}{2} \left(F''(x+ct) + F''(x-ct)\right)
-                      + \tfrac{1}{2c}\left(G'(x+ct) - G'(x-ct)\right)             \\
-                      \tfrac{\partial f}{\partial t} (x,t)
-                       & = \tfrac{1}{2} \left(cF'(x+ct) - c F'(x-ct)\right)
-                      + \tfrac{1}{2}\left(G(x+ct) + G(x-ct)\right)                \\
-                      \tfrac{\partial^2 f}{\partial t^2} f(x,t)
-                       & = \tfrac{1}{2} \left(c^2F''(x+ct) + c^2 F''(x-ct)\right)
-                      + \tfrac{c}{2}\left(G'(x+ct) + G'(x-ct)\right)
-                  \end{aligned}
-              \]
-        \item Observe that  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \).
-        \item Observe that \(f(x,0) = F(x)\)
-              and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
-    \end{enumerate}
+    Let \(f(x,t)\) be as defined \eqref{eq:wave} in the statement of the theorem.
+    We calculate
+    \[
+        \begin{aligned}
+            \tfrac{\partial f}{\partial x} (x,t)
+             & = \tfrac{1}{2} \left(F'(x+ct) + F'(x-ct)\right)
+            + \tfrac{1}{2c}\left(G(x+ct) - G(x-ct)\right)               \\
+            \tfrac{\partial^2 f}{\partial x^2}(x,t)
+             & = \tfrac{1}{2} \left(F''(x+ct) + F''(x-ct)\right)
+            + \tfrac{1}{2c}\left(G'(x+ct) - G'(x-ct)\right)             \\
+            \tfrac{\partial f}{\partial t} (x,t)
+             & = \tfrac{1}{2} \left(cF'(x+ct) - c F'(x-ct)\right)
+            + \tfrac{1}{2}\left(G(x+ct) + G(x-ct)\right)                \\
+            \tfrac{\partial^2 f}{\partial t^2} f(x,t)
+             & = \tfrac{1}{2} \left(c^2F''(x+ct) + c^2 F''(x-ct)\right)
+            + \tfrac{c}{2}\left(G'(x+ct) + G'(x-ct)\right)
+        \end{aligned}
+    \]
+    Observe that  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \).
+    Observe that \(f(x,0) = F(x)\)
+    and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
 \end{proof}
-
 
 \begin{proof}[Proof of part 2.]
-    \begin{enumerate}
-        \item Suppose that \(f\) satisfies the 1D wave equation;
-        \item Introduce \(u = x + ct\), \(v=x-ct\)
-              and observe that \(x = \frac{u+v}{2}\), \(t=\frac{u-v}{2c}\);
-        \item Define \(g(u,v) = f(x,t) = f(   \frac{u+v}{2} , \frac{u-v}{2c} )\);
-        \item By the chain rule
-              \[
-                  \begin{aligned}
-                      \tfrac{\partial g}{\partial u}(u,v)
-                       & = \tfrac{1}{2} \tfrac{\partial f}{\partial x}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
-                      + \tfrac{1}{2c} \tfrac{\partial f}{\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )                      \\
-                      \tfrac{\partial^2 g}{\partial v \partial u}(u,v)
-                       & = \tfrac{1}{4} \tfrac{\partial^2 f}{\partial x^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
-                      - \tfrac{1}{4c} \tfrac{\partial^2 f}{\partial x\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )          \\
-                       & \ \ +  \tfrac{1}{4c} \tfrac{\partial^2 f}{\partial x \partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
-                      -  \tfrac{1}{4c^2} \tfrac{\partial^2 f}{\partial t^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} ) = 0;
-                  \end{aligned}
-              \]
-        \item So \( \tfrac{\partial g}{\partial u}(u,v) = \varphi_0(u)\) and \(g(u,v) = \varphi_1(u) + \varphi_2(v)\).
-              I.e., \(f(x,t) = \varphi_1(x+ct) + \varphi_2(x-ct)\);
-        \item Let \(F(x) := \varphi_1(x) + \varphi_2(x)\);
-        \item \(F'(x) = \varphi_1'(x) + \varphi_2'(x)\)
-              and \(\frac{\partial f}{\partial t}(x,t) = c\varphi_1(x+ct) - c\varphi_2(x-ct)\);
-        \item Let \(G(x) := \frac{\partial f}{\partial t}(x,0) = c\varphi_1(x) - c\varphi_2(x)\).
-    \end{enumerate}
+    Suppose that \(f\) satisfies the 1D wave equation;
+    Introduce \(u = x + ct\), \(v=x-ct\)
+    and observe that \(x = \frac{u+v}{2}\), \(t=\frac{u-v}{2c}\).
+    Define \(g(u,v) = f(x,t) = f(   \frac{u+v}{2} , \frac{u-v}{2c} )\).
+    By the chain rule
+    \[
+        \begin{aligned}
+            \tfrac{\partial g}{\partial u}(u,v)
+             & = \tfrac{1}{2} \tfrac{\partial f}{\partial x}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
+            + \tfrac{1}{2c} \tfrac{\partial f}{\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )                      \\
+            \tfrac{\partial^2 g}{\partial v \partial u}(u,v)
+             & = \tfrac{1}{4} \tfrac{\partial^2 f}{\partial x^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
+            - \tfrac{1}{4c} \tfrac{\partial^2 f}{\partial x\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )          \\
+             & \ \ +  \tfrac{1}{4c} \tfrac{\partial^2 f}{\partial x \partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
+            -  \tfrac{1}{4c^2} \tfrac{\partial^2 f}{\partial t^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} ) = 0.
+        \end{aligned}
+    \]
+    So \( \tfrac{\partial g}{\partial u}(u,v) = \varphi_0(u)\) and \(g(u,v) = \varphi_1(u) + \varphi_2(v)\).
+    I.e., \(f(x,t) = \varphi_1(x+ct) + \varphi_2(x-ct)\).
+    Let
+    \[
+        F(x) = \varphi_1(x) + \varphi_2(x).
+    \]
+    This means that
+    \(F'(x) = \varphi_1'(x) + \varphi_2'(x)\)
+    and \(\frac{\partial f}{\partial t}(x,t) = c\varphi_1(x+ct) - c\varphi_2(x-ct)\).
+    Let
+    \[
+        G(x) = \frac{\partial f}{\partial t}(x,0) = c\varphi_1(x) - c\varphi_2(x). \qedhere
+    \]
 \end{proof}
-
-
 
 \section{Extrema (minima / maxima / saddle)}
 
@@ -222,12 +214,11 @@ To proceed it is convenient to connect the extrema with the behaviour of the gra
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Suppose \(f\) has a relative minimum at \(\aa\) (or consider \(-f\));
-        \item For any unit vector \(\vv\) let \(g(u) = f(\aa+u\vv)\);
-        \item \(g\) has relative minimum at \(u=0\) so \(u'(0)=0\);
-        \item This means that \(D_{\vv} f(\aa) = 0\) for every \(\vv\) and so \(\nabla f (\aa)= \mathbf{0}\). \qedhere
-    \end{enumerate}
+    Suppose \(f\) has a relative minimum at \(\aa\) (or consider \(-f\)).
+    For any unit vector \(\vv\) let \(g(u) = f(\aa+u\vv)\).
+    We know that \(g:\bR \to \bR\) has a relative minimum at \(u=0\) so \(u'(0)=0\).
+    This means that the directional derivative \(D_{\vv} f(\aa) = 0\) for every \(\vv\).
+    Consequently this means that \(\nabla f (\aa)= \mathbf{0}\).
 \end{proof}
 
 \begin{figure}[htb]
@@ -297,8 +288,7 @@ The main object for doing this is the \emph{Hessian matrix}.
     \]
 \end{definition}
 
-Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\).
-
+Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since we know that \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\).
 The Hessian matrix is defined analogously in any dimensions as follows.
 Let \(f:\bR^n \to\bR\) be twice differentiable.
 The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
@@ -358,7 +348,7 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
             \end{pmatrix}
             \begin{pmatrix}
                 v_1 \\ \vdots \\v_n
-            \end{pmatrix} \\
+            \end{pmatrix}    \\
              & = \sum_{j,k=0}^{n}
             \partial_{j}\partial_{k}f(\aa)
             v_j v_k
@@ -370,30 +360,30 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
 
 \begin{example*}
     Let \(f(x,y)=x^2-y^2\).
-    The gradient is
-    \[\nabla f(x,y) =\begin{pmatrix}
-            \frac{\partial f}{\partial x} (x,y) \\[2.2ex]
-            \frac{\partial f}{\partial y} (x,y)
-        \end{pmatrix} =   \begin{pmatrix}
-            2x \\-2y
-        \end{pmatrix}.
-    \]
-    The Hessian is
+    The gradient and the Hessian are respectively
     \[
-        \mathbf{H} f (x,y)= \begin{pmatrix}
-            \dfrac{\partial^2 f}{\partial x^2} (x,y)
-             & \dfrac{\partial^2 f}{\partial x\,\partial y} (x,y)
-            \\[2.2ex]
-            \dfrac{\partial^2 f}{\partial y\,\partial x} (x,y)
-             & \dfrac{\partial^2 f}{\partial y^2}(x,y)
-        \end{pmatrix}
-        = \begin{pmatrix}
-            2
-             & 0
-            \\[2.2ex]
-            0
-             & -2
-        \end{pmatrix}.
+        \begin{aligned}
+            \nabla f(x,y)      & =\begin{pmatrix}
+                                      \frac{\partial f}{\partial x} (x,y) \\[2.2ex]
+                                      \frac{\partial f}{\partial y} (x,y)
+                                  \end{pmatrix} =   \begin{pmatrix}
+                                                        2x \\-2y
+                                                    \end{pmatrix},         \\
+            \mathbf{H} f (x,y) & = \begin{pmatrix}
+                                       \frac{\partial^2 f}{\partial x^2} (x,y)
+                                        & \frac{\partial^2 f}{\partial x\,\partial y} (x,y)
+                                       \\[2.2ex]
+                                       \frac{\partial^2 f}{\partial y\,\partial x} (x,y)
+                                        & \frac{\partial^2 f}{\partial y^2}(x,y)
+                                   \end{pmatrix}
+            = \begin{pmatrix}
+                  2
+                   & 0
+                  \\[2.2ex]
+                  0
+                   & -2
+              \end{pmatrix}.
+        \end{aligned}
     \]
     The point \((0,0)\) is a stationary point since \(\nabla f(0,0) =\left(\begin{smallmatrix}
             0\\0
@@ -422,32 +412,29 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) =
 
 
 \begin{proof}[Proof of second order Taylor formula]
-
-    \begin{enumerate}
-        \item Let \(g(u) = f(\aa + u \vv)\);
-        \item Taylor's expansion \(g(1) = g(0) + g'(0) + \frac{1}{2} g''(c)\) for some \(c\in (0,1)\);
-        \item Since \(g(u) = f(a_1 + uv_1, \ldots, a_n + u v_n)\), by the chain rule,
-              \[
-                  g'(u) = \sum_{j=1}^{n} \partial_j f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j
-                  =\nabla f( \aa + u \vv) \cdot \vv;
-              \]
-              \vspace{-2em}
-        \item Similarly
-              \vspace{-1em}
-              \[
-                  g''(u) = \sum_{j,k=1}^{n} \partial_j\partial_k f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j v_k
-                  =  \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + u \vv) \ \vv;
-              \]
-              \vspace{-1em}
-        \item Consequently
-              \(
-              f(\aa+\vv) = f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + c\vv) \ \vv
-              \);
-        \item We define \(E_2(\aa,\vv) = \frac{1}{2} \frac{1}{\norm{\vv}^2} \vv^{\mathbf{t}} (\mathbf{H} f (\aa + c\vv) - \mathbf{H} f (\aa)  ) \vv\).
-        \item \(\abs{E_2(\aa,\vv)} \leq \sum_{j,k=0}^{n}
-              \frac{v_j v_k}{\norm{\vv}^2} \left( \partial_{j}\partial_{k}f(\aa+c\vv)-\partial_{j}\partial_{k}f(\aa) \right).\)
-              \qedhere
-    \end{enumerate}
+    Let \(g(u) = f(\aa + u \vv)\).
+    The Taylor expansion of \(g\) tells us that
+    \(g(1) = g(0) + g'(0) + \frac{1}{2} g''(c)\) for some \(c\in (0,1)\).
+    Since \(g(u) = f(a_1 + uv_1, \ldots, a_n + u v_n)\), by the chain rule,
+    \[
+        g'(u) = \sum_{j=1}^{n} \partial_j f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j
+        =\nabla f( \aa + u \vv) \cdot \vv.
+    \]
+    Similarly
+    \[
+        g''(u) = \sum_{j,k=1}^{n} \partial_j\partial_k f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j v_k
+        =  \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + u \vv) \ \vv.
+    \]
+    Consequently
+    \(
+    f(\aa+\vv) = f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + c\vv) \ \vv
+    \).
+    We define the ``error'' in the approximation as \(\epsilon(\vv) = \frac{1}{2} \frac{1}{\norm{\vv}^2} \vv^{\mathbf{t}} (\mathbf{H} f (\aa + c\vv) - \mathbf{H} f (\aa)  ) \vv\)
+    and estimate that
+    \[
+        \abs{\epsilon(\vv)} \leq \sum_{j,k=0}^{n}
+        \frac{v_j v_k}{\norm{\vv}^2} \left( \partial_{j}\partial_{k}f(\aa+c\vv)-\partial_{j}\partial_{k}f(\aa) \right).
+    \]
 \end{proof}
 
 
@@ -466,24 +453,24 @@ In order to classify the stationary points we will take advantage of the Hessian
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item \(A\) can be diagonalised by  matrix \(B\)  which is orthogonal (\(B^{\mathbf{t}}=B^{-1}\))
-              \[
-                  D = B^{\mathbf{t}} A B =
-                  \begin{pmatrix}
-                      \lambda_1 & \cdots & 0         \\
-                      \vdots    & \ddots & \vdots    \\
-                      0         & \cdots & \lambda_n
-                  \end{pmatrix};
-              \]
-              \vspace{-1em}
-        \item \(Q(\vv) = \vv^{\mathbf{t}} B^{\mathbf{t}} B A B^{\mathbf{t}} B \vv  = \ww^{\mathbf{t}} D \ww = \sum_{j} \lambda_j w_j^2  \) where \(\ww = B \vv\);
-        \item If all \(\lambda_j >0\) then \( \sum_{j} \lambda_j w_j^2  >0\);
-        \item \(Q(B \uu_k ) = \lambda_k\) so, if \(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\) then \(\lambda_k>0\) for all \(k\). \qedhere
-    \end{enumerate}
-\end{proof}
+    Since \(A\) is symmetric it can be diagonalised by  matrix \(B\)  which is orthogonal (\(B^{\mathbf{t}}=B^{-1}\))
+    \[
+        D = B^{\mathbf{t}} A B =
+        \begin{pmatrix}
+            \lambda_1 & \cdots & 0         \\
+            \vdots    & \ddots & \vdots    \\
+            0         & \cdots & \lambda_n
+        \end{pmatrix}.
+    \]
+    This means that
+    \[
+        Q(\vv) = \vv^{\mathbf{t}} B^{\mathbf{t}} B A B^{\mathbf{t}} B \vv  = \ww^{\mathbf{t}} D \ww = \sum_{j} \lambda_j w_j^2
+    \]
+    where \(\ww = B \vv\).
+    Observe that, if all \(\lambda_j >0\) then \( \sum_{j} \lambda_j w_j^2  >0\).
 
-% \textbf{Classifying stationary points (cont.)}
+    In order to prove the other direction in the ``if and only if'' statement, observe that \(Q(B \uu_k ) = \lambda_k\). This means that, if \(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\) then \(\lambda_k>0\) for all \(k\).
+\end{proof}
 
 \begin{theorem}[classification of stationary points]
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
@@ -497,22 +484,18 @@ In order to classify the stationary points we will take advantage of the Hessian
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Let \(Q(\vv) =  \vv^{\mathbf{t}} \mathbf{H} f (\aa) \vv  \),  \(\ww = B \vv\) and let \(\Lambda := \min_j \lambda_j\);
-        \item Observe that \(\norm{\ww} =  \norm{\vv}\) and that \(Q(\vv)=  \sum_{j} \lambda_j w_j^2  \geq \Lambda \sum_{j} w_j^2 = \Lambda  \norm{\vv}^2 \);
-        \item 2\textsuperscript{nd}-order Taylor
-              \vspace{-1em}
-              \[
-                  f(\aa+\vv) - f(\aa)
-                  =  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv + \norm{\vv}^2 E_2(\aa,\vv)
-                  \geq  \left(\tfrac{\Lambda}{2} - E_2(\aa,\vv) \right) \norm{\vv}^2;
-              \]
-        \item Since \(E_2(\aa,\vv) \to 0\) as \(\norm{\vv}\to 0\), \(\abs{E_2(\aa,\vv)} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
-    \end{enumerate}
+    Let \(Q(\vv) =  \vv^{\mathbf{t}} \mathbf{H} f (\aa) \vv  \),  \(\ww = B \vv\) and let \(\Lambda := \min_j \lambda_j\).
+    Observe that \(\norm{\ww} =  \norm{\vv}\) and that \(Q(\vv)=  \sum_{j} \lambda_j w_j^2  \geq \Lambda \sum_{j} w_j^2 = \Lambda  \norm{\vv}^2 \).
+    We have them 2\textsuperscript{nd}-order Taylor
+    \[
+        f(\aa+\vv) - f(\aa)
+        =  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv + \norm{\vv}^2 E_2(\aa,\vv)
+        \geq  \left(\tfrac{\Lambda}{2} - E_2(\aa,\vv) \right) \norm{\vv}^2;
+    \]
+    Since \(E_2(\aa,\vv) \to 0\) as \(\norm{\vv}\to 0\), \(\abs{E_2(\aa,\vv)} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
+
     Analogous argument for the second part. For final part consider \(\vv_j\) which is eigenvector for \(\lambda_j\) and apply the argument of first or second part.
 \end{proof}
-
-
 
 \section{Attaining extreme values}
 
@@ -609,146 +592,6 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
         \label{fig:lagrange}
     \end{center}
 \end{figure}
-
-
-
-
-% \section*{Worked examples}
-
-% \begin{task}
-%     Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
-% \end{task}
-
-% \begin{proof}[Solution]
-%     We start by calculating that
-%     \[
-%         \nabla f(x,y) = \left(\begin{smallmatrix}
-%                 y\\ x
-%             \end{smallmatrix}\right),
-%         \quad
-%         \nabla g(x,y) = \left(\begin{smallmatrix}
-%                 1\\ 1
-%             \end{smallmatrix}\right).
-%     \]
-%     According to the Lagrange multiplier method there is \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at the extremum point \((x,y)\).
-%     To proceed we must solve the system of equations (3 equations and 3 unknowns),
-%     \[
-%         \left(\begin{smallmatrix}
-%                 y\\ x
-%             \end{smallmatrix}\right)
-%         = \lambda \left(\begin{smallmatrix}
-%                 1\\ 1
-%             \end{smallmatrix}\right),
-%         \quad g(x,y) =0;
-%     \]
-%     That is,
-%     \( x = \lambda, \quad
-%     y = \lambda, \quad
-%     x+y = 1
-%     \).
-%     This has the solution \((x,y) = (\frac{1}{2},\frac{1}{2})\), \(f(\frac{1}{2},\frac{1}{2})= \frac{1}{4}\).
-% \end{proof}
-
-
-
-% \begin{task}
-%     Find the points closest to the origin on the set defined by the intersection of the two surfaces
-%     \[
-%         x^2 - xy + y^2 - z^2 = 1
-%         \quad \text{and} \quad
-%         x^2 + y^2 = 1.
-%     \]
-% \end{task}
-
-% \begin{proof}[Solution]
-%     For convenience we let
-%     \[
-%         \begin{aligned}
-%             f(x,y,z)   & = x^2 + y^2 + z^2,          \\
-%             g_1(x,y,z) & = x^2 - xy + y^2 - z^2 - 1, \\
-%             g_2(x,y,z) & = x^2 + y^2 - 1.
-%         \end{aligned}
-%     \]
-%     In the language of the Lagrange multiplier method, we are finding the extrema of \(f\) subject to the constraints \(g_1=0\) and \(g_2 = 0\).
-%     Applying the method leads us to the a system of 5 equations and 5 unknowns,
-%     \[
-%         \nabla f  = \lambda_1 \nabla g_1  + \lambda_2 \nabla g_2,
-%         \quad
-%         g_1 = 0,
-%         \quad
-%         g_2 = 0.
-%     \]
-%     We proceed to solve this system of equations in order to obtain a set of points which are the points where the extrema occur.
-%     We calculate that the gradients are
-%     \[
-%         \nabla f (x,y,z) = \begin{pmatrix}
-%             2 x \\ 2y \\ 2z
-%         \end{pmatrix},
-%         \quad
-%         \nabla g_1(x,y,z) = \begin{pmatrix}
-%             2x-y \\ 2y - x \\ -2z
-%         \end{pmatrix},
-%         \quad
-%         \nabla g_2(x,y,z) = \begin{pmatrix}
-%             2x \\ 2y \\ 0
-%         \end{pmatrix}.
-%     \]
-%     Consequently the 5 equations are
-%     \[
-%         \begin{aligned}
-%             2x & = \lambda_1 ( 2x -y ) + \lambda_2(2x) \\
-%             2y & = \lambda_1 ( 2y - x) + \lambda_2(2y) \\
-%             2z & = \lambda_1(-2z),
-%         \end{aligned}
-%     \]
-%     \[
-%         x^2 + y^2 = 1,
-%         \quad
-%         x^2 - xy + y^2 - z^2 =1.
-%     \]
-%     If we combine the 4\textsuperscript{th} and 5\textsuperscript{th} equations we obtain that 
-%         \begin{equation}
-%             \label{eq:LagrangeA}
-%             xy + z^2 = 0.
-%         \end{equation}
-%     Consequently
-%     \begin{equation}
-%         \label{eq:LagrangeB}
-%         xy \leq 0.
-%     \end{equation}
-%     If we multiply the 1\textsuperscript{st} by \(y\), multiply the 2\textsuperscript{nd} by \(x\) and combine we obtain that \(\lambda_1(2x-y)y = \lambda_1(2y - x)x\).
-%     This means that
-%     \begin{equation}
-%         \label{eq:LagrangeC}
-%         x^2 = y^2 
-%         \quad \text{or} \quad
-%         \lambda_1 = 0.
-%     \end{equation}
-%     For a moment we assume the first case and combined this with the 4\textsuperscript{th} equation.
-%     This means that \(x^2 +x^2 = 1\) and so \(x = \pm \frac{1}{\sqrt{2}}\).
-%     In general \(x^2 = y^2\) allows that \(y = \pm x\) but \eqref{eq:LagrangeB} means that \(y = -x\). Using \eqref{eq:LagrangeA} to calculate \(z\) we obtain 4 solutions,
-%     \[
-%         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}}),
-%         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}),
-%         (\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}}),
-%         (\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}).
-%     \]
-%     We check that these really are solutions by substituting into the 5 equations.
-%     Now we need to consider the other case \eqref{eq:LagrangeC} which we previously ignored. 
-%     Consider the 3\textsuperscript{rd} equation we find that \(z = 0\). 
-%     Consequently, by \eqref{eq:LagrangeA}, either \(x=0\) or \(y=0\).
-%     This then means that, by the 4\textsuperscript{th} equation that \(y^2=1\) or \(x^2=1\) respectively.
-%     Consequently we have obtained another 4 solutions,
-%     \[
-%         (-1,0,0),
-%         (1,0,0),
-%         (0,-1,0),
-%         (0,1,0).
-%     \]
-%     Again we check that these really are solutions by substituting into the 5 equations.
-
-%     Calculating the distance of the points to the origin we find that the first set are equally the closest to the origin and the second set are equally the furthest.
-% \end{proof}
 
 
 
