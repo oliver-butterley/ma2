@@ -1,57 +1,7 @@
-\documentclass[paper=A5,fontsize=12pt,openright,DIV=16,chapterprefix=on]{scrbook}      
-\usepackage[UKenglish]{babel}
-\usepackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref} % Clickable links
-\usepackage{ebgaramond} % Classic style font
-\usepackage[tracking=true,babel=true]{microtype}   % Better typography
-\usepackage{lettrine}   % Add drop caps to chapter openings
-
-%%%%%%%%%%%%%% setup format for section headings %%%%%%%
-\setkomafont{disposition}{\normalfont\scshape}
-\addtokomafont{chapterentry}{\normalfont\itshape\large}
-\addtokomafont{chapterentrypagenumber}{\normalfont\normalsize}
-\renewcommand{\raggedchapter}{\centering}
-\renewcommand{\raggedsection}{\centering}
-%%%%%%%%%%% setup table of contents %%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{\sectiontocdepth}
-\newcommand\gobble[1]{}
-\DeclareTOCStyleEntries[entrynumberformat=\gobble,numwidth=0pt]{default}{chapter,section}
-%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{thisbook}
 
 \usepackage{svg} % automatically convert svg and include
-
-% Include graphics from relevant folders
-\usepackage{graphicx}
-\graphicspath{{graphics/}{graphics/build/}}
-\setkeys{Gin}{width=0.75\textwidth} % Default width
-
-% Allow sub figures
-\usepackage{caption}
-\usepackage{subcaption}
-
-% \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage[type={CC},modifier={by-sa},version={4.0}]{doclicense}
-\usepackage[skins,breakable,theorems]{tcolorbox}
-
 \usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
-
-%%%%%%%%%%%% inserting git sha
-\usepackage{xstring}
-\usepackage{catchfile}
-% Set user input
-\newcommand{\gitfolder}{.git}             % Relative path to .git folder from .tex file
-\newcommand{\reponame}{oliver-butterley/ma2}    % Name of account and repo. Will be included in URL
-% Based on this https://tex.stackexchange.com/questions/455396/how-to-include-the-current-git-commit-id-and-branch-in-my-document
-\CatchFileDef{\headfull}{\gitfolder/HEAD}{}              % Get path to head file for checked out branch
-\StrGobbleRight{\headfull}{1}[\head]                      % Remove end of line character
-\StrBehind[2]{\head}{/}[\branch]                          % Parse out the path only
-\CatchFileDef{\commit}{\gitfolder/refs/heads/\branch}{}  % Get the chapters of the branch head
-\StrGobbleRight{\commit}{1}[\commithash]                  % Remove end of line character
-% Build the URL to this commit based on the information we now have
-\newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
-\newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 %%%%%%%%%% BOOK INFORMATION %%%%%%%%%%
@@ -117,10 +67,6 @@
 \newcommand{\aalpha}{\boldsymbol{\alpha}}
 \newcommand{\littleo}[1]{o(#1)}
 %%%%%%%%%
-
-
-% Light formatting for questions and solutions
-\newcommand{\question}{\noindent \textbf{Question:} }
 
 
 \begin{document}
