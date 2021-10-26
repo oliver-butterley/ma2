@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thismath}
+
+% Custom theorems 
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{task}[theorem]{Task} % Environment for exercises
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}} % Environment for solutions of tasks
+
+% Highlighted versions of definition and theorem
+\tcolorboxenvironment{definition}{
+    colback=blue!5!white, 
+    arc=2mm,  enhanced, frame hidden, oversize,
+    left=2mm,right=2mm,top=1mm,bottom=1mm}
+\tcolorboxenvironment{theorem}{
+    colback=blue!5!white, 
+    arc=2mm,  enhanced, frame hidden, oversize,
+    left=2mm,right=2mm,top=1mm,bottom=1mm}
+
+% mathematics helpers
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\bC}{\mathbb{C}} % Complex numbers
+\newcommand{\bN}{\mathbb{N}} % Natural numbers
+\newcommand{\bR}{\mathbb{R}} % Real numbers
+\newcommand{\norm}[1]{\left\|#1\right\|} % Norm
+\renewcommand{\aa}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\cc}{\mathbf{c}}
+\newcommand{\ee}{\mathbf{e}}
+\newcommand{\ff}{\mathbf{f}}
+\renewcommand{\gg}{\mathbf{g}}
+\newcommand{\hh}{\mathbf{h}}
+\newcommand{\rr}{\mathbf{r}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\aalpha}{\boldsymbol{\alpha}}
+\newcommand{\littleo}[1]{o(#1)}

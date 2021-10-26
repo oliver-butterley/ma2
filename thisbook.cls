@@ -13,6 +13,14 @@
 \renewcommand{\raggedchapter}{\centering}
 \renewcommand{\raggedsection}{\centering}
 
+%%%%%% Title page
+\date{}
+% \publishers{\sourcelink}
+\publishers{\href{https://\sourcelink}{\sourcelink}}
+% \newcommand{\sourcelink}{}
+\addtokomafont{publishers}{\large\ttfamily}
+\addtokomafont{author}{\itshape\normalsize}
+
 %%%%%% Table of contents 
 \setcounter{tocdepth}{\sectiontocdepth}
 \newcommand\gobble[1]{}
@@ -30,6 +38,9 @@
 \RequirePackage{ebgaramond} % Classic font
 \RequirePackage[tracking=true,babel=true]{microtype}  % Better typography
 \RequirePackage{lettrine}   % Add drop caps to chapter openings
+
+%%%%%%% Math notation and theorems
+\RequirePackage{thismath}
 
 %%%%%%% Include graphics
 \RequirePackage{graphicx}
@@ -50,7 +61,3 @@
 \newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
 \newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
 
-%%%%%%% 
-
-
-%%%%%%% 
