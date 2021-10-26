@@ -202,22 +202,104 @@ Some of the examples come from the exercises, some from past exams, some just be
 
 
 % \begin{task}
-%     Investigate the stationary points of the, scalar field,
-%     $$ f(x,y,z) = 2 e^{(x-1)^2}(y^4 - 4yz + 2z^2). $$
+%     Investigate the stationary points of the scalar field,
+%     $$ f(x,y,z) =  e^{-(x-1)^2}(y^4 - 4yz + 2z^2). $$
 % \end{task}
 
 % \begin{solution}
-%     First, we compute the gradient $\nabla f$:
-%     $$ \nabla f(x,y,z) =  \left(\begin{array}{c} \fbox{a}(x-1)e^{(x-1)^2}(y^4 - 4yz + 2z^2) \\
-%                 e^{(x-1)^2}(\fbox{b}y^{\fbox{c}} + \fbox{d}z)  \\
-%                 e^{(x-1)^2}(\fbox{e}y + \fbox{f}z)             \\
-%             \end{array}\right).$$
+%     First, we compute the gradient,
+%     \[
+%         \nabla f(x,y,z) =  \left(
+%         \begin{array}{c}
+%                 -2(x-1)e^{-(x-1)^2}(y^4 - 8yz + 2z^2) \\
+%                 e^{-(x-1)^2}(4y^{3} + 8 z)            \\
+%                 e^{-(x-1)^2}(-8 y + 4 z)              \\
+%             \end{array}
+%         \right).
+%     \]
+%     Consequently we know that the statement \(\nabla f(x,y,z) = \mathbf{0}\) is equivalent to the system of equations
+%     \begin{gather}
+%         (x-1)(y^4 - 8yz + 2z^2) = 0, \label{eq:stationaryA}\\
+%         y^3 = 2z,  \label{eq:stationaryB}\\
+%         z = 2y.    \label{eq:stationaryC}
+%     \end{gather}
+%     We proceed to find all the solutions to this system of equations and in doing so we will have found all the stationary points of \(f\).
+%     Combining \eqref{eq:stationaryB} and \eqref{eq:stationaryC} we obtain that \(y^3 = 4y\) and so
+%     \begin{equation}
+%         \label{eq:stationaryD}
+%         y = 0 \quad \text{or} \quad y^2 = 4.
+%     \end{equation}
+%     We will use this information later.
+%     From \eqref{eq:stationaryA} we know that
+%     \[
+%         y^4 - 8yz + 2z^2 = 0
+%         \quad \text{or} \quad
+%         x = 1.
+%     \]
+%     We proceed considering this case by case.
+%     In the first case, using also \eqref{eq:stationaryC}, we obtain that \(y^4 - 16 y^2 + 8y^2 = 0\).
+%     This means that \(y=0\) or \(y^2 = 8\).
+%     However the second option is in contradiction with \eqref{eq:stationaryD} and so \(y=0\) is the only solution.
+%     Using also \eqref{eq:stationaryC} we are left with the set of points
+%     \[
+%         (a,0,0) \quad \text{for any \(a\in\bR\)}.
+%     \]
+%     We check that this really does satisfy the system of equations without further restrictions on the \(x\)-coordinate.
+%     Consequently each of these points is a stationary point.
+%     It now remains to consider the case which previously we ignored, namely \(x=1\).
+%     Using also \eqref{eq:stationaryD} we obtain the points
+%     \[
+%         (1,-2,-4)
+%         \quad \text{and} \quad
+%         (1,2,4)
+%     \]
+%     (the point \((1,0,0)\) is already included in the previous set).
+%     Again we check that these two points satisfy the system of equations and are therefore both stationary points.
 
-%     The equation $\nabla f(x,y,z) = \pmb{0}$ has three solutions. They are $(x,y,z) = (\fbox{g}, \sqrt{\fbox{h}}, \sqrt{\fbox{i}}),
-%         (\fbox{j}, -\sqrt{\fbox{k}}, -\sqrt{\fbox{l}})$ and $(1,0,0)$ where
-
-%     Consider the first of them $(\fbox{g}, \sqrt{\fbox{h}}, \sqrt{\fbox{i}})$.
-
-%     At this point, the function $f(x,y,z)$ takes a
-%     At this point, the function $f(x,y)$ has a
+%     In order to classify the stationary points we calculate the Hessian matrix.
+%     For convenience we use the notation
+%     \[
+%         \mathbf{H}f =
+%         \begin{pmatrix}
+%             h_{11} & h_{12} & h_{13} \\
+%             h_{21} & h_{22} & h_{23} \\
+%             h_{31} & h_{32} & h_{33}
+%         \end{pmatrix}.
+%     \]
+%     We calculate (since the matrix is symmetric we only need at most 6 of the terms)
+%     \[
+%         \begin{aligned}
+%             h_{11}(x,y,z)
+%              & = e^{-(x-1)^2} (y^4 - 8yz + 2z^2) (-2 + 4(x-1)^2), \\
+%             h_{12}(x,y,z)
+%              & = -2(x-1) e^{-(x-1)^2} (4y^3 - 8z),                \\
+%             h_{13}(x,y,z)
+%              & = -2(x-1) e^{-(x-1)^2} (-8y+4z),                   \\
+%             h_{22}(x,y,z)
+%              & = e^{-(x-1)^2}(12y^2),                             \\
+%             h_{23}(x,y,z)
+%              & = e^{-(x-1)^2}(-8),                                \\
+%             h_{33}(x,y,z)
+%              & = e^{-(x-1)^2} (4).                                \\
+%         \end{aligned}
+%     \]
+%     Evaluating the Hessian at two of the stationary points we obtain that (that \(x=1\) means that several terms disappear and the others are easy to calculate),
+%     \[
+%         \begin{aligned}
+%             \mathbf{H}f(1,0,0) & =
+%             \begin{pmatrix}
+%                 0 & 0  & 0  \\
+%                 0 & 0  & -8 \\
+%                 0 & -8 & 4
+%             \end{pmatrix}, \\
+%             \mathbf{H}f(1,2,4) & =
+%             \begin{pmatrix}
+%                 32 & 0  & 0  \\
+%                 0   & 48 & -8 \\
+%                 0   & -8 & 4
+%             \end{pmatrix}.
+%         \end{aligned}
+%     \]
+%     The first matrix has one positive and one negative eigenvalue so \((1,0,0)\) is a saddle point.
+%     On the other hand, the eigenvalues of the second matrix are all positive and so the function $f(x,y,z)$ takes a minimum at this point.
 % \end{solution}
