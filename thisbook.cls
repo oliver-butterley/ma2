@@ -3,7 +3,7 @@
 
 %%%%%%% Base class and page setup
 \LoadClass{scrbook}   
-\KOMAoptions{paper=a5,fontsize=12pt,headings=openright,DIV=16,chapterprefix=on}  
+\KOMAoptions{paper=a5,fontsize=12pt,headings=openright,DIV=16,chapterprefix=on,titlepage=firstiscover}  
 \recalctypearea
 
 %%%%%% Section headings 
@@ -20,6 +20,8 @@
 % \newcommand{\sourcelink}{}
 \addtokomafont{publishers}{\large\ttfamily}
 \addtokomafont{author}{\itshape\normalsize}
+\renewcommand{\coverpageleftmargin}{5pt}
+\renewcommand{\coverpagerightmargin}{5pt}
 
 %%%%%% Table of contents 
 \setcounter{tocdepth}{\sectiontocdepth}
