@@ -572,7 +572,18 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
 
 
 \begin{theorem}[Lagrange multipliers]
-    Suppose that a scalar field \(f(x_1,\ldots,x_n)\) has a relative minimum or maximum when it is subject to \(m\) constraints
+    Suppose that a differentiable scalar field \(f(x,y)\) has a relative minimum or maximum when it is subject to the constraint
+    \[
+        g(x,y) = 0.
+    \]
+    Then there exists a scalar \(\lambda\) such that, at the extremum point,
+    \[
+        \nabla f = \lambda \nabla g.
+    \]
+\end{theorem}
+In higher dimensions, with additional constraints
+\begin{theorem*}[Lagrange multipliers]
+    Suppose that a differentiable scalar field \(f(x_1,\ldots,x_n)\) has a relative minimum or maximum when it is subject to \(m\) constraints
     \[
         g_1(x_1,\ldots,x_n) = 0,
         \dots , g_m(x_1,\ldots,x_n)=0,
@@ -583,7 +594,7 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
         \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m
     \]
     at the extremum point.
-\end{theorem}
+\end{theorem*}
 
 \begin{figure}[htb]
     \begin{center}
