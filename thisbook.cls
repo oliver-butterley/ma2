@@ -15,11 +15,9 @@
 
 %%%%%% Title page
 \date{}
-% \publishers{\sourcelink}
 \publishers{\href{https://\sourcelink}{\sourcelink}}
-% \newcommand{\sourcelink}{}
 \addtokomafont{publishers}{\large\ttfamily}
-\addtokomafont{author}{\itshape\normalsize}
+\addtokomafont{author}{\normalsize\itshape By\\ \normalfont\scshape}
 \renewcommand{\coverpageleftmargin}{5pt}
 \renewcommand{\coverpagerightmargin}{5pt}
 
