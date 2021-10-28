@@ -650,7 +650,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{two-hyperboloid.pdf}
-            \caption{Two-sheeted hyperboloid}
+            \caption{1-sheet hyperboloid}
             \label{fig:two-hyperboloid}
         \end{subfigure}
         \hfill
@@ -664,7 +664,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{one-hyperboloid.pdf}
-            \caption{One-sheeted hyperboloid}
+            \caption{2-sheet hyperboloid}
             \label{fig:one-hyperboloid}
         \end{subfigure}
         \caption{Various surfaces as level sets.}
@@ -884,6 +884,7 @@ We first consider the question of when
 \end{example*}
 
 \begin{theorem}
+    \label{thm:equal-double-partial}
     Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x} \) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
     Further assume that \(\frac{\partial^2 f}{\partial y \partial x} \) is continuous on \(S\).
     Then the derivative \(\frac{\partial^2 f}{\partial x \partial y} (\xx)\) exists and
@@ -928,3 +929,13 @@ Consequently
 \[
     y'(x) = - \frac{ \frac{\partial f}{\partial x}(x,y(x)) }{ \frac{\partial f}{\partial y}(x,y(x)) }.
 \]
+
+
+
+
+\subsection*{Suggested further reading}
+
+\begin{itemize}
+  \item Apostol, ``Calculus Volume 2'' -- Chapter 8
+\end{itemize}
+
