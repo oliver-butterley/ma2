@@ -7,6 +7,61 @@ Some of the examples come from the exercises, some from past exams, some just be
 \section{Sequences and series of functions}
 
 \begin{task}
+    Calculate the Taylor expansion of
+    $x\cos^2 x$ or $x\sin^2 x$
+    about the point $x=0$.
+\end{task}
+
+\begin{solution}
+    We recall or calculate that $\cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}$
+    and so
+    $$
+    \cos(2x) =
+        \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} (2x)^{2n}
+        = \sum_{n=0}^\infty \frac{(-4)^n}{(2n)!} x^{2n}.
+        $$
+    Additionally we know that
+    \(\cos(2x) = \cos^2 x - \sin^2 x\)
+    and hence
+    \[
+        \cos^2 x = \tfrac{1}{2} + \tfrac{1}{2} \cos(2x)
+        \quad \text{and} \quad
+        \sin^2 x = \tfrac{1}{2} - \tfrac{1}{2} \cos(2x).
+    \]
+    Combining the above we obtain
+    \[
+        \begin{aligned}
+            x \cos^2 x
+             & = \frac{x}{2} + \frac{x}{2} \cos(2x)
+            =  \frac{x}{2} +  \frac{x}{2}  \sum_{n=0}^\infty \frac{(-4)^n}{(2n)!} x^{2n}                                                          \\
+             & =  \frac{x}{2} +  \frac{x}{2} \left( 1 + \frac{-4}{2!} x^2 + \frac{(-4)^2}{4!} x^4 +  \frac{(-4)^3}{(6)!} x^{6} + \cdots   \right) \\
+             & =  x  - x^3 + \frac{1}{3} x^5 -  \frac{2}{45} x^{7} + \cdots
+        \end{aligned}
+    \]
+    On the other hand
+    \[
+        \begin{aligned}
+            x \sin^2 x
+             & = \frac{x}{2} - \frac{x}{2} \cos(2x)
+            =  \frac{x}{2} -  \frac{x}{2}  \sum_{n=0}^\infty \frac{(-4)^n}{(2n)!} x^{2n}                                                         \\
+             & =  \frac{x}{2} - \frac{x}{2} \left( 1 + \frac{-4}{2!} x^2 + \frac{(-4)^2}{4!} x^4 +  \frac{(-4)^3}{(6)!} x^{6} + \cdots   \right) \\
+             & =  x^3 - \frac{1}{3} x^5 +  \frac{2}{45} x^{7} + \cdots
+        \end{aligned}
+    \]
+    To integrate we use the fact that \(f(x) = \sum_{n=0}^{\infty}a_n x^n\) implies \(\int_0^x f(t) \ dt = \sum_{n=1}^{\infty} \frac{a_{n-1}}{n!} x^{n}\) (or simply integrate the above term-by-term) and so
+    \[
+        \int_0^x t \cos^2 t \ dt
+        = \frac{ 1}{2}x^2  -\frac{1}{4} x^4 + \frac{1}{18} x^6 -  \frac{1}{180} x^{8} + \cdots
+    \]
+    and
+    \[
+        \int_0^x t \sin^2 t \ dt
+        =  \frac{1}{4} x^4 - \frac{1}{18} x^6 +  \frac{1}{180} x^{8} + \cdots
+    \]
+    The Taylor expansion for \(\cos x\) converges for all \(x\) and consequently the Taylor expansions for \(\frac{1}{2}(1 + \cos (2x))\) and for  \(\frac{1}{2}(1 - \cos (2x))\) also converge for all \(x\).
+\end{solution}
+
+\begin{task}
     Consider, for $m\in \{0,1\}$, the linear differential equation\footnote{This equation, for some constant $m$, is called \href{https://en.wikipedia.org/wiki/Bessel_function}{Bessel's differential equation} and has various applications including: electromagnetic waves in a cylindrical waveguide; heat conduction in a cylindrical object and the modes of vibration of a circular drum.}
     $$
         x^2y'' + xy' + (x^2-m^2) y = 0.
@@ -18,8 +73,8 @@ Some of the examples come from the exercises, some from past exams, some just be
 \begin{solution}
     Substituting $y(x) = \sum_{n=0}^{\infty} a_n x^n$, $y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1}$ and $y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}$ one obtains the equation
     \begin{multline*}
-                x^2 \left(\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}\right) + x \left(\sum_{n=1}^{\infty} n a_n x^{n-1}\right) \\ + x^2 \left(\sum_{n=0}^{\infty} a_n x^n\right) - m^2 \left(\sum_{n=0}^{\infty} a_n x^n\right) = 0
-            \end{multline*}
+        x^2 \left(\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}\right) + x \left(\sum_{n=1}^{\infty} n a_n x^{n-1}\right) \\ + x^2 \left(\sum_{n=0}^{\infty} a_n x^n\right) - m^2 \left(\sum_{n=0}^{\infty} a_n x^n\right) = 0
+    \end{multline*}
     and so
     $$
         \sum_{n=2}^{\infty} n(n-1) a_n x^{n} + \sum_{n=1}^{\infty} n a_n x^{n} + \sum_{n=0}^{\infty} a_n x^{n+2} -  \sum_{n=0}^{\infty} m^2 a_n x^n = 0.
