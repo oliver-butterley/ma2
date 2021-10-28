@@ -16,10 +16,10 @@ Some of the examples come from the exercises, some from past exams, some just be
     We recall or calculate that $\cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}$
     and so
     $$
-    \cos(2x) =
+        \cos(2x) =
         \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} (2x)^{2n}
         = \sum_{n=0}^\infty \frac{(-4)^n}{(2n)!} x^{2n}.
-        $$
+    $$
     Additionally we know that
     \(\cos(2x) = \cos^2 x - \sin^2 x\)
     and hence
@@ -60,6 +60,7 @@ Some of the examples come from the exercises, some from past exams, some just be
     \]
     The Taylor expansion for \(\cos x\) converges for all \(x\) and consequently the Taylor expansions for \(\frac{1}{2}(1 + \cos (2x))\) and for  \(\frac{1}{2}(1 - \cos (2x))\) also converge for all \(x\).
 \end{solution}
+
 
 \begin{task}
     Consider, for $m\in \{0,1\}$, the linear differential equation\footnote{This equation, for some constant $m$, is called \href{https://en.wikipedia.org/wiki/Bessel_function}{Bessel's differential equation} and has various applications including: electromagnetic waves in a cylindrical waveguide; heat conduction in a cylindrical object and the modes of vibration of a circular drum.}
@@ -111,7 +112,49 @@ Some of the examples come from the exercises, some from past exams, some just be
 \end{solution}
 
 
+In the next task we will use the following notation.
+For \(\alpha \in \bR\), \(n\in \bN\), let
+\(  \binom{\alpha}{n}= \frac{\alpha (\alpha-1) \cdots (\alpha-n+1)}{n!}\).
+This quantity is called the binomial coefficient.
 
+\begin{task}[binomial series]
+    Let \(\alpha \in \bR\).
+    Show that, whenever \(\abs{x}<1\),
+    \[
+        (1+x)^\alpha = \displaystyle\sum_{n=0}^{\infty} \textstyle\binom{\alpha}{n} x^n.
+    \]
+\end{task}
+
+\begin{solution}
+    By the ratio test the right hand side converges.
+    Let \(f(x) = (1+x)^\alpha\).
+    We calculate that \(f'(x) = \alpha(1+x)^{\alpha-1}\) and so \(f(x)\) is a solution to the differential equation
+    \[
+        y'(x) = \frac{\alpha}{x+1}y(x)
+    \]
+    and satisfies the initial condition \(f(0)=1\).
+    To complete the proof we will show that 
+    \(g(x) = \sum_{n=0}^{\infty} \binom{\alpha}{n} x^n\) satisfies the same differential equation and initial condition.
+    First observe that 
+    \( (n+1)\binom{\alpha}{n+1} = (\alpha - n)\binom{\alpha}{n} \) 
+    is equivalent to 
+    \( (n+1)\binom{\alpha}{n+1} + n \binom{\alpha}{n} = \alpha \binom{\alpha}{n}\).
+    We calculate that 
+    \[
+        g'(x)
+        =  \sum_{n=1}^{\infty} n \binom{\alpha}{n} x^{n-1}
+        =  \sum_{n=0}^{\infty} (n+1) \binom{\alpha}{n+1} x^n.
+    \]
+    Consequently
+    \[
+        \begin{aligned}
+            (1+x)g'(x)
+             & = \sum_{n=0}^{\infty} \left( (n+1)\binom{\alpha}{n+1} + n\binom{\alpha}{n}    \right)  x^n \\
+             & = \alpha  \sum_{n=0}^{\infty} \binom{\alpha}{n}  x^n = \alpha g(x).
+        \end{aligned}
+    \]
+    Additionally \(g(0) = 1\).
+\end{solution}
 
 
 \section{Differential calculus in higher dimension}
