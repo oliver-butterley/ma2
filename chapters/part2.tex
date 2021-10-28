@@ -251,14 +251,14 @@ For example \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\) in 2D, \(\ff(\xx) = \l
     We will independently prove the two implications.
     \begin{description}
         \item[(\(\Rightarrow\))]
-            Let
-            \( \ee_1=(1,0) \), \( \ee_2=(0,1) \)
-            and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
-            We have already shown that the continuity of two vector fields implies the continuity of the inner product.
+              Let
+              \( \ee_1=(1,0) \), \( \ee_2=(0,1) \)
+              and observe that \(f_k(\xx) = \ff(\xx)\cdot \ee_k\).
+              We have already shown that the continuity of two vector fields implies the continuity of the inner product.
         \item[(\(\Leftarrow \))]
-            By definition of the norm
-            \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{2}(f_k(\xx)-f_k(\aa))^2\)
-            and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
+              By definition of the norm
+              \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{2}(f_k(\xx)-f_k(\aa))^2\)
+              and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
     \end{description}
 \end{proof}
 
@@ -472,21 +472,29 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 \end{theorem}
 
 \begin{proof}
-    For convenience write \(\vv = (v_1,v_2,\ldots,v_n)\)     and     \(\uu_k = (v_1,v_2,\ldots,v_k,0,\ldots,0)\).
-    \begin{enumerate}
-        \item Observe that \(\uu_k - \uu_{k-1} = v_k \ee_k\), \(\uu_0 = (0,0,\ldots,0)\) and \(\uu_n = \vv\);
-        \item Using the mean value theorem (exists \( \zz_k = \uu_{k-1}+ \theta_k \ee_k\)) \vspace{-0.9em}
-              \[
-                  \begin{aligned}
-                      f(\aa+\vv) - f(\aa)
-                       & = \sum_{k=1}^{n} f(\aa + \uu_k) - f(\aa + \uu_{k-1})
-                      = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa +  \zz_k)                                                                  \\
-                       & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})                                                            \\
-                       & \ \ \ \ \ \ \ \ + \sum_{k=1}^{n}  v_k \left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa + \uu_{k-1}) \right)
-                  \end{aligned}
-              \]
-        \item \(\sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1}) \to \vv \cdot \nabla f(\aa)\). \qedhere
-    \end{enumerate}
+    For convenience define the vectors \(\vv = (v_1,v_2,\ldots,v_n)\)
+    and  \(\uu_k = (v_1,v_2,\ldots,v_k,0,\ldots,0)\).
+    Observe that
+    \[
+        \uu_k - \uu_{k-1} = v_k \ee_k,
+        \quad
+        \uu_0 = (0,0,\ldots,0),
+        \quad
+        \uu_n = \vv.
+    \]
+    Using the mean value theorem we know that there exists \( \zz_k = \uu_{k-1}+ \theta_k \ee_k\) such that \( f(\aa + \uu_k) - f(\aa + \uu_{k-1}) =  v_k  D_{\ee_k}f(\aa +  \zz_k) \).
+    Consequently
+    \[
+        \begin{aligned}
+            f(\aa+\vv) - f(\aa)
+             & = \sum_{k=1}^{n} f(\aa + \uu_k) - f(\aa + \uu_{k-1})                                               \\
+             & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa +  \zz_k)                                                     \\
+             & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})                                                  \\
+             & \quad + \sum_{k=1}^{n}  v_k \left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa + \uu_{k-1}) \right)
+        \end{aligned}
+    \]
+    To conclude, observe that the second sum vanishes as \(\norm{\vv} \to 0\) and that
+    \(\sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})\) converges to \(\vv \cdot \nabla f(\aa)\).
 \end{proof}
 
 
@@ -498,15 +506,14 @@ We now investigate how this extends to higher dimension?
 
 \begin{example*}
     Suppose that
-    \begin{itemize}
-        \item \(\aalpha:\bR \to \bR^3\) describes the position \(\aalpha(t)\) at time \(t\),
-        \item \(f:\bR^3 \to \bR\) describes the temperature \(f(\aalpha)\) at a point \(\aalpha\)
-    \end{itemize}
+    \(\aalpha:\bR \to \bR^3\) describes the position \(\aalpha(t)\) at time \(t\)
+    and that
+    \(f:\bR^3 \to \bR\) describes the temperature \(f(\aalpha)\) at a point \(\aalpha\)
     The temperature at time \(t\) is equal to \(g(t)=f(\aalpha(t))\).
     We want to calculate \(g'(t)\) because this is the change in temperature with respect to time.
 \end{example*}
 
-Consequently it is convenient to consider the derivative of a path \(\aalpha:\bR \to \bR^n\).
+In situations like the above example it is convenient to consider the derivative of a path \(\aalpha:\bR \to \bR^n\).
 Let \(\aalpha:\bR \to \bR^n\) and suppose it has the form
 \(\aalpha(t) = \left( \alpha_1(t), \ldots, \alpha_n(t)  \right)\).
 We define the derivative as
@@ -669,8 +676,8 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
 Let \(f\) be a differentiable scalar field on \(S\subset \bR^3\) and suppose that \(L(c) = \left\{\xx\in S : f(\xx)=c\right\}\) is a surface.
 
 \begin{itemize}
-    \item \(\nabla f(\aa)\) is normal to every curve \(\aalpha(t)\) in the surface which passes through \(\aa\),
-    \item Tangent plane at \(\aa\) is
+    \item The gradient \(\nabla f(\aa)\) is normal to every curve \(\aalpha(t)\) in the surface which passes through \(\aa\),
+    \item The tangent plane at \(\aa\) is
           \(\left\{\xx\in\bR^3: \nabla f(\aa) \cdot (\xx-\aa)=0\right\}\).
 \end{itemize}
 
@@ -699,7 +706,7 @@ This is because of the linearity and that we can consider each \emph{component} 
 \end{definition}
 
 \begin{remark}
-    If we write \(\ff = (f_1,\ldots,f_m)\) then \(D_{\vv}\ff = (D_{\vv}f_1,\ldots,D_{\vv} f_m)\).
+    If we use the notation \(\ff = (f_1,\ldots,f_m)\), i.e., we write the function using the ``components'' where each \(f_k\) is a scalar field, then \(D_{\vv}\ff = (D_{\vv}f_1,\ldots,D_{\vv} f_m)\).
 \end{remark}
 
 
@@ -807,8 +814,8 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
     \[
         D\ff(r,\theta) =
         \begin{pmatrix}
-            \partial_{r}x(r,\theta) & \partial_{\theta}x(r,\theta) \\
-            \partial_{r}y(r,\theta) & \partial_{\theta}y(r,\theta)
+            \tfrac{\partial x}{\partial r}(r,\theta) & \tfrac{\partial x}{\partial \theta}(r,\theta) \\[2pt]
+            \tfrac{\partial y}{\partial r}(r,\theta) & \tfrac{\partial y}{\partial \theta}(r,\theta)
         \end{pmatrix}
         =
         \begin{pmatrix}
@@ -819,15 +826,16 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
     In particular we see that \(\det D\ff(r,\theta) = r\), the familiar value used in change of variables with polar coordinated.
 
     Suppose now that we wish to calculate derivatives of \(h := g \circ \ff\) for some  \(g:\bR^2 \to \bR\).
+    Here we take advantage of Theorem~\ref{thm:jacobian-chain}.
     \[
         \begin{aligned}
             Dh(r,\theta) & = Dg(\ff(r,\theta)) \ D\ff(r,\theta) \\
             \begin{pmatrix}
-                \partial_r h(r,\theta) & \partial_\theta h(r,\theta)
+                \frac{\partial h}{\partial r}(r,\theta) & \frac{\partial h}{\partial \theta}(r,\theta)
             \end{pmatrix}
                          & =
             \begin{pmatrix}
-                \partial_x g(\ff(r,\theta)) & \partial_y g(\ff(r,\theta))
+                \frac{\partial g}{\partial x}(\ff(r,\theta)) & \frac{\partial g}{\partial y}(\ff(r,\theta))
             \end{pmatrix}
             \begin{pmatrix}
                 \cos \theta & -r\sin \theta \\
@@ -835,12 +843,14 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
             \end{pmatrix}
         \end{aligned}
     \]
-    In other words
+    In other words, we have shown that
     \[
-        \begin{cases}
-            \partial_r h(r,\theta) = \partial_x g(r\cos \theta, r\sin \theta) \cos \theta + \partial_y g(r\cos \theta, r\sin \theta)\sin \theta \\
-            \partial_\theta h(r,\theta) = - r \partial_x g(r\cos \theta, r\sin \theta) \sin \theta +  r \partial_y g(r\cos \theta, r\sin \theta)\cos \theta
-        \end{cases}.
+        \begin{aligned}
+            \frac{\partial h}{\partial r}(r,\theta)
+             & = \frac{\partial g}{\partial x}(r\cos \theta, r\sin \theta) \cos \theta + \frac{\partial g}{\partial y}(r\cos \theta, r\sin \theta)\sin \theta         \\
+            \frac{\partial h}{\partial \theta}(r,\theta)
+             & = - r \frac{\partial g}{\partial x}(r\cos \theta, r\sin \theta) \sin \theta +  r \frac{\partial g}{\partial y}(r\cos \theta, r\sin \theta)\cos \theta.
+        \end{aligned}
     \]
 \end{example}
 
