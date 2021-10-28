@@ -38,7 +38,7 @@
 \addtokomafont{captionlabel}{\scshape}
 \addtokomafont{caption}{\small}
 \setcapindent{0em}
-\captionsetup{width=.75\textwidth}
+\captionsetup{width=.8\textwidth}
 
 %%%%%%% Style
 \RequirePackage{ebgaramond} % Classic font
