@@ -34,6 +34,12 @@
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
 \RequirePackage{caption, subcaption} % Allow sub figures
 
+%%%%%% Figures
+\addtokomafont{captionlabel}{\scshape}
+\addtokomafont{caption}{\small}
+\setcapindent{0em}
+\captionsetup{width=.75\textwidth}
+
 %%%%%%% Style
 \RequirePackage{ebgaramond} % Classic font
 \RequirePackage[tracking=true,babel=true]{microtype}  % Better typography
