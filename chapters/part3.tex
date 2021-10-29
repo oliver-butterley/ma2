@@ -596,19 +596,20 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
         \nabla f = \lambda \nabla g.
     \]
 \end{theorem}
-In higher dimensions, with additional constraints
+
+In higher dimensions and possibly with additional constraints we have the following general theorem.
+
 \begin{theorem*}[Lagrange multipliers]
-    Suppose that a differentiable scalar field \(f(x_1,\ldots,x_n)\) has a relative minimum or maximum when it is subject to \(m\) constraints
+    Suppose that a differentiable scalar field \(f(x_1,\ldots,x_n)\) has an relative extrema when it is subject to \(m\) constraints
     \[
         g_1(x_1,\ldots,x_n) = 0,
         \dots , g_m(x_1,\ldots,x_n)=0,
     \]
-    where \(m<n\), and that the \(\nabla g_k\) are all linearly independent.
-    Then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that
+    where \(m<n\), and the \(\nabla g_k\) are all linearly independent.
+    Then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that, at each extremum point,
     \[
-        \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m
+        \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m.
     \]
-    at the extremum point.
 \end{theorem*}
 
 \begin{figure}[htb]
@@ -619,6 +620,55 @@ In higher dimensions, with additional constraints
     \end{center}
 \end{figure}
 
+The Lagrange multiplier method is often stated and far less often proved. 
+Since the proof is rather involved we will follow this tradition here.
+See, for example, Chapter 14 of  ``A First Course in Real Analysis''  (2012) by Protter \& Morrey for a complete proof and further discussion.
+
+Let us consider a particular case of the method when \(n=3\) and \(m=2\).
+More precisely we consider the following problem: 
+Find the maxima and minima of \(f(x,y,z)\) along the curve \(C\) defined as 
+\[
+    g_1(x,y,z) = 0, 
+    \quad
+    g_2(x,y,z) = 0
+\]
+where \(g_1\), \(g_2\) are differentiable functions.
+In this particular case we will prove the Lagrange multiplier method.
+Suppose that \(\aa\) is some point in the curve.
+Let \(\aalpha(t)\) denote a path which lies in the curve \(C\) in the sense that \(\aalpha(t) \in C\) for all \(t\in (-1,1)\), \(\aalpha'(t)\neq \mathbf{0}\) and \(\aalpha(0)=\aa\).
+If \(\aa\) is a local minimum for \(f\) restricted to \(C\) it means that \(f(\aalpha(t))\geq f(\aalpha(0))\) for all \(t \in (-\delta,\delta)\) for some \(\delta>0\). 
+In words, moving away from \(\aa\) along the curve \(C\) doesn't cause \(f(\xx)\) to decrease.
+Let \(h(t) = f(\aalpha(t))\) and observe that \(h:\bR \to \bR\) so we know how to find the extrema.
+In particular we know that \(h'(0)=0\).
+By the chain rule \(h'(t) = \nabla f(\aalpha(t))\cdot \aalpha'(t)\) and so 
+\[
+    \nabla f(\aa)\cdot \aalpha'(0) = 0.
+\]
+Since we know that \(g_1(\aalpha(t))=0\) and \(g_2(\aalpha(t))=0\), again by the chain rule,
+\[
+    \nabla g_1(\aa)\cdot \aalpha'(0) = 0,
+    \quad 
+    \nabla g_2(\aa)\cdot \aalpha'(0) = 0.
+\]
+To proceed it is convenient to isolate the following result of linear algebra.
+\begin{lemma*}
+    Consider \(w, u_1,u_2 \in \bR^3\) and let \(V = \{v : u_k \cdot v = 0, k =1,2\}\).
+    If \(w\cdot v =0\) for all \(v \in V\) then \(w = \lambda_1 u_1 + \lambda_2 u_2\) for some \(\lambda_1,\lambda_2 \in \bR\). 
+\end{lemma*}
+\begin{proof}
+    We can write \(w = \lambda_1 u_1 + \lambda_2 u_2 + v_0\) where \(v_0 \in V\) because \(u_1, u_2\) together with \(V\) must span \(\bR^3\).
+    Since \(v_0 \in V\) and, by assumption, \(w\cdot v_0 = 0\),
+    \[
+        0 = w\cdot v_0
+        = (\lambda_1 u_1 + \lambda_2 u_2 + v_0)\cdot v_0
+        = v_0\cdot v_0 
+        = \norm{v_0}^2.
+    \] 
+    This means that \(v_0 =0\) and so \(w = \lambda_1 u_1 + \lambda_2 u_2\).
+\end{proof}
+
+The above lemma also holds in any dimension with any number of vectors with the analogous proof.
+Apply thing lemma to the vectors \(\nabla f(\aa)\), \(\nabla g_1(\aa)\) and \(\nabla g_2(\aa)\) recovers exactly the Lagrange multiplier method in this setting.
 
 
 \subsection*{Suggested further reading}
