@@ -1,67 +1,8 @@
-\documentclass[aspectratio=169,handout]{beamer}
-
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{pgfplots} \pgfplotsset{compat=1.10} % also includes tikz
-% \usetikzlibrary{external} % To speed up compile
-% \tikzexternalize[prefix=build/figures/]
-% \usepackage{svg} % automatically convert svg and include
-
-\usetheme{Goettingen} % To show sidebar navigation
-\setbeamercolor{paleBlue}{fg=black,bg=blue!10!white}
-
-\colorlet{paleBlue}{blue!10!white}
-\colorlet{halfBlue}{blue!50!white}
- 
-%%%%%%%%% helpers
-\newcommand{\abs}[1]{\left|#1\right|} % Absolute value
-\newcommand{\norm}[1]{\left\|#1\right\|} % Norm
-\newcommand{\bC}{\mathbb{C}} % Complex numbers
-\newcommand{\bN}{\mathbb{N}} % Natural numbers
-\newcommand{\bR}{\mathbb{R}} % Real numbers
-\renewcommand{\aa}{\mathbf{a}}
-\newcommand{\bb}{\mathbf{b}}
-\newcommand{\cc}{\mathbf{c}}
-\newcommand{\ee}{\mathbf{e}}
-\newcommand{\ff}{\mathbf{f}}
-\renewcommand{\gg}{\mathbf{g}}
-\newcommand{\hh}{\mathbf{h}}
-\newcommand{\rr}{\mathbf{r}}
-\newcommand{\uu}{\mathbf{u}}
-\newcommand{\vv}{\mathbf{v}}
-\newcommand{\ww}{\mathbf{w}}
-\newcommand{\xx}{\mathbf{x}}
-\newcommand{\yy}{\mathbf{y}}
-\newcommand{\zz}{\mathbf{z}}
-\newcommand{\aalpha}{\boldsymbol{\alpha}}
-\newcommand{\bbeta}{\boldsymbol{\beta}}
-\newenvironment{shaded}{\begin{beamercolorbox}[sep=.1em,rounded=true]{paleBlue}}{\end{beamercolorbox}}
+% !TeX root = ../main.tex
+\chapter{Curves and line integrals}
 
 
-
-%%%%%%%%%
-
-\title{MA2 -- Part 4 -- Line integrals}
-\subtitle{Weeks 7--8 of MA2 -- Draft lecture slides}
-\author[]{Oliver Butterley}
-\institute{University of Rome Tor Vergata}
-\date{2020/21}
-\setbeamercovered{transparent} 
-
-\begin{document}
-
-\frame{\titlepage}
-
-\begin{frame}
-    \frametitle{Outline}
-    \tableofcontents
-\end{frame}
-
-
-\section{Curves and line integrals}
-
-\begin{frame}
-    \frametitle{Some curves}
+    {Some curves}
 
     Recall some ``curves'' we already saw:
 
@@ -76,13 +17,13 @@
 
 
 
-\end{frame}
+
 
 
 \section{Definition of paths and line integral}
 
-\begin{frame}
-    \frametitle{Curves and paths}
+
+    {Curves and paths}
 
     \begin{itemize}
         \item Let \(\aalpha : [a,b] \to \bR^n\) be continuous.
@@ -91,11 +32,11 @@
         \item We say that \(\aalpha(t)\) is \emph{piecewise continuously differentiable} if \([a,b] = [a,c_1]\cup[c_1,c_2] \cup \cdots \cup [c_l,b]\) and \(\aalpha(t)\) is \emph{continuously differentiable} on each of these intervals.
     \end{itemize}
 
-    \begin{shaded}
+    
         \begin{definition}
             If \(\aalpha: [a,b] \to \bR^n\) is piecewise continuously differentiable then we call it a \emph{path}.
         \end{definition}
-    \end{shaded}
+    
 
 
 
@@ -105,10 +46,10 @@
         \item     This is a \emph{parametric representation} of the curve.
     \end{itemize}
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Examples of paths}
+
+
+    {Examples of paths}
 
     \begin{itemize}
         \item \(\aalpha(t):= (t,t)\), \(t\in[0,1]\)
@@ -122,10 +63,10 @@
 
     [View graphic of the spiral and circle in part 2]
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Definition of the line integral}
+
+
+    {Definition of the line integral}
 
     \begin{itemize}
         \item Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\),
@@ -144,17 +85,17 @@
         \]
     \end{definition}
 
-    \structure{Other possible notation:}
+    {Other possible notation:}
     \begin{itemize}
         \item  \(\int_C \ff \cdot d\aalpha  \) (if the parametrization of the curve \(C\) is clear);
         \item \(\int f_1 \ d\alpha_1 + \cdots + f_n \ d\alpha_n\) or \(\int f_1 \ dx_1 + \cdots + f_n \ dx_n\).
     \end{itemize}
 
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Example of calculating a line integral}
+
+
+    {Example of calculating a line integral}
 
 
     \begin{example}
@@ -184,20 +125,20 @@
                   \) \qedhere
         \end{enumerate}
     \end{proof}
-\end{frame}
+
 
 \section{Basic properties}
 
 
-\begin{frame}
-    \frametitle{Basic properties of the line integral}
-    %    \frametitle{Combining / dividing paths}
-    \structure<>{Linearity:}
+
+    {Basic properties of the line integral}
+    %    {Combining / dividing paths}
+    {Linearity:}
     Suppose \(\ff\), \(\gg\) are vector fields and \(\aalpha(t)\) is a path. For any \(c,d\in \bR\),
     \[
         \int (c\ff + d\gg) \cdot d\aalpha =  c \int \ff  \cdot d\aalpha +  d \int \gg \cdot d\aalpha.
     \]
-    \structure<>{Joining / dividing paths:}
+    {Joining / dividing paths:}
     Suppose \(\ff\) is a vector field and that
     \[
         \aalpha(t) = \begin{cases}
@@ -210,19 +151,19 @@
     \[
         \int \ff  \cdot d\aalpha = \int \ff  \cdot d\aalpha_1  + \int \ff  \cdot d\aalpha_2.
     \]
-    \structure<>{Or:}
+    {Or:}
     If we write \(C\), \(C_1\), \(C_2\) for the corresponding curves, then
     \[
         \int_{C} \ff  \cdot d\aalpha = \int_{C_1} \ff  \cdot d\aalpha + \int_{C_2} \ff  \cdot d\aalpha.
     \]
 
 
-\end{frame}
 
 
 
-\begin{frame}
-    \frametitle{Choices of parametrization}
+
+
+    {Choices of parametrization}
 
     Consider the curve \(C = \{(x,y) : x^2 + y^2 = 1, y\geq 0\}\) (Half circle).
 
@@ -244,11 +185,11 @@
     \end{definition}
 
 
-\end{frame}
 
 
-\begin{frame}
-    \frametitle{Change of parametrization}
+
+
+    {Change of parametrization}
 
     \begin{theorem}[Change of parametrization]
         Let \(\ff\) be a continuous vector field and let \(\aalpha\), \(\bbeta\) be equivalent paths.
@@ -272,12 +213,12 @@
             \item Change variables (gives minus if path is opposite direction). \qedhere
         \end{enumerate}
     \end{proof}
-\end{frame}
+
 
 \section{Applications (gradients / work in physics)}
 
-\begin{frame}
-    \frametitle{Gradients and line integrals}
+
+    {Gradients and line integrals}
 
     \begin{itemize}
         \item Let \(h(x,y)\) be a scalar field in \(\bR^2\);
@@ -300,12 +241,12 @@
     [Graphic of person walking on a map with contour lines]
 
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Work in physics 1 (Gravity)}
 
-    %\structure{Gravity}
+
+    {Work in physics 1 (Gravity)}
+
+    %{Gravity}
 
     \begin{itemize}
         \item Gravitational field \(\ff(x,y,z) = \left(\begin{smallmatrix}
@@ -323,12 +264,12 @@
         \end{aligned}
     \]
 
-    \structure<>{I.e.,} work done depends only on the change in height.
-\end{frame}
+    {I.e.,} work done depends only on the change in height.
 
 
-\begin{frame}
-    \frametitle{Work in physics 2 (force field)}
+
+
+    {Work in physics 2 (force field)}
 
     \begin{itemize}
         \item Let \(\ff\) be a force field;
@@ -337,11 +278,11 @@
         \item Define kinetic energy as \(\frac{m}{2} \norm{\vv(t)}^2\).
     \end{itemize}
 
-    \structure<>{Newton's law:}
+    {Newton's law:}
     \(\ff(\xx(t)) = m\xx''(t) = m \vv'(t)\).
 
-    \structure<>{Work done:}
-    \vspace{-1em}
+    {Work done:}
+    
     \[
         \begin{aligned}
             \int \ff \cdot d\xx
@@ -352,14 +293,14 @@
         \end{aligned}
     \]
 
-    \structure<>{I.e.,}
+    {I.e.,}
     work done on the particle moving in the force field is equal to the change in kinetic energy.
 
-\end{frame}
 
 
-\begin{frame}
-    \frametitle{Length of a curve}
+
+
+    {Length of a curve}
 
     Let \(\aalpha(t)\), \(t\in [a,b]\) be a path.
     \begin{definition}[length of a curve]
@@ -377,18 +318,18 @@
 
 
 
-\end{frame}
+
 
 
 
 \section{The second fundamental theorem of calculus}
 
 
-\begin{frame}
-    \frametitle{The second fundamental theorem of calculus}
+
+    {The second fundamental theorem of calculus}
 
 
-    \structure{Recall:}
+    {Recall:}
     If \(\varphi:\bR \to \bR\) is differentiable then
     \(\int_a^b \varphi'(t) \ dt = \varphi(b) - \varphi(a)\).
 
@@ -414,10 +355,10 @@
         \end{enumerate}
     \end{proof}
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Potential energy example}
+
+
+    {Potential energy example}
 
     \begin{itemize}
         \item Earth has mass \(M\) with centre at \((0,0,0)\),
@@ -441,16 +382,16 @@
     \]
 
 
-\end{frame}
+
 
 \section{The first fundamental theorem of calculus}
 
-\begin{frame}
-    \frametitle{Connected sets}
+
+    {Connected sets}
 
     
-    \begin{columns}
-        \begin{column}{.5\textwidth}
+    
+        
             \begin{definition}[connected]
                 The set \(S\subset \bR^n\) is said to be \emph{connected} if, for every pair of points \(\aa,\bb\in S\), there exists a path \(\aalpha(t), t\in[a,b]\) such that 
                 \begin{itemize}
@@ -459,10 +400,11 @@
                 \end{itemize}
             \end{definition}
         
-            \structure{Terminology:} Sometimes this is called ``path connected'' to distinguish between different notions.
-        \end{column}
+            {Terminology:} Sometimes this is called ``path connected'' to distinguish between different notions.
+        
+            \colorlet{paleBlue}{blue!10!white}
 
-        \begin{column}{.5\textwidth}
+        
             \begin{figure}
                 \begin{tikzpicture}
                     \fill[paleBlue] plot [smooth cycle, tension=1] coordinates {(0,0) (1,3) (3,3) (4,1)};
@@ -475,16 +417,16 @@
                 \end{tikzpicture}
                 \caption{A connected set.}
             \end{figure}
-        \end{column}
-    \end{columns}
+        
+    
     
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{The first fundamental theorem of calculus}
 
-    \structure{Recall:}
+
+    {The first fundamental theorem of calculus}
+
+    {Recall:}
     If \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then \(\varphi'(x) = f(x)\).
 
     \begin{theorem}[1\textsuperscript{st} fundamental theorem in \(\bR^n\)]
@@ -513,54 +455,54 @@
     \end{proof}
 
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Closed paths}
+
+
+    {Closed paths}
 
     \begin{definition}[closed path]
         We say a path \(\aalpha(t)\), \(t\in [a,b]\) is \emph{closed} if \(\aalpha(a) = \aalpha(b)\).
     \end{definition}
 
 
-    \begin{block}<>{Remarks}<>
+    
         \begin{itemize}
             \item If \(\aalpha(t)\), \(t\in[a,b]\) is a closed path then we can divided it into two paths: Let \(c\in[a,b]\) and consider the two paths \(\aalpha(t)\), \(t\in[a,c]\) and  \(\aalpha(t)\), \(t\in[c,b]\).
             \item Suppose \(\aalpha(t)\), \(t\in [a,b]\) and  \(\bbeta(t)\), \(t\in [c,d]\) are two path starting at \(\aa\) and finishing at \(\bb\). The these can be combined to define a closed path (by following one backward).
         \end{itemize}
-    \end{block}
-\end{frame}
+    
 
 
-\begin{frame}
-    \frametitle{Conservative vector fields}
+
+
+    {Conservative vector fields}
 
     \begin{definition}[conservative vector field]
         A vector field \(\ff\), continuous on \(S \subset \bR^n\) is said to be conservative if there exists a scalar field \(\varphi\) such that, on \(S\), \[\ff = \nabla \varphi.\]
     \end{definition}
 
-    \structure{Terminology:}
+    {Terminology:}
 
     \begin{itemize}
         \item     Some authors call such a vector field a \emph{gradient} (i.e., the vector field is the gradient of some scalar).
         \item If \(\ff = \nabla \varphi\) the \(\varphi\) is called the \emph{potential}.
     \end{itemize}
 
-    \structure{Non-uniqueness:}
+    {Non-uniqueness:}
     \begin{itemize}
         \item     Observe that \(\nabla \varphi = \nabla(\varphi + C)\) for any constant \(C \in \bR\).
     \end{itemize}
 
-\end{frame}
 
 
 
-\begin{frame}
-    \frametitle{Conservative vector fields}
+
+
+    {Conservative vector fields}
 
     \begin{theorem}[conservative vector fields]
         The following are equivalent for a vector field \(\ff\):
-        \begin{enumerate}[(a)]
+        \begin{enumerate}
             \item There exists \(\varphi\) such that \(\ff = \nabla \varphi\),
             \item \(\int \ff \cdot d\aalpha\) does not depend on \(\aalpha\), as long as \(\aalpha(a)=\aa\), \(\aalpha(b)=\bb\),
             \item \(\int \ff \cdot d\aalpha = 0\) for any closed path \(\aalpha\).
@@ -576,11 +518,11 @@
     \end{proof}
 
 
-\end{frame}
 
 
-\begin{frame}
-    \frametitle{Mixed partial derivatives}
+
+
+    {Mixed partial derivatives}
 
     \begin{theorem}
         Suppose that \(\ff\) is a continuously differential vector field.
@@ -590,7 +532,7 @@
         \]
     \end{theorem}
 
-    \structure<>{Notation:} Here we write, as usual, \(\ff(x_1,\ldots,x_n) = \left(\begin{smallmatrix}
+    {Notation:} Here we write, as usual, \(\ff(x_1,\ldots,x_n) = \left(\begin{smallmatrix}
             f_1(x_1,\ldots,x_n)\\
             \vdots \\
             f_n(x_1,\ldots,x_n)
@@ -606,22 +548,22 @@
         \]
     \end{proof}
 
-    \structure{Useful:}
+    {Useful:}
     If a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative.
 
-\end{frame}
+
 
 
 \section{Potential functions and conservative vector fields}
 
-\begin{frame}
-    \frametitle{Constructing a potential}
 
-    \structure{Question:}
+    {Constructing a potential}
+
+    {Question:}
     Suppose we are given a vector field \(\ff\) and we know that \(\ff = \nabla \varphi\) for some \(\varphi\).
     How can we calculate \(\varphi\)?
 
-    \structure{Two methods:}
+    {Two methods:}
     \begin{enumerate}
         \item by line integral;
         \item by indefinite integrals.
@@ -631,18 +573,18 @@
 
 
 
-\end{frame}
 
 
 
-\begin{frame}
-    \frametitle{Constructing a potential by line integral}
+
+
+    {Constructing a potential by line integral}
 
 
   
 
-    \begin{columns}
-        \begin{column}{.5\textwidth}
+    
+        
             \begin{enumerate}
                 \item Suppose that \(\ff\) is a conservative vector field on the rectangle \([a_1,b_1]\times [a_2,b_2]\);
                 \item We will define \(\varphi(\xx)\) as the line integral \(\int \ff \cdot d\aalpha\) where \(\aalpha\) is a path between \(\aa=(a_1,a_2)\) and \(\xx\);
@@ -653,8 +595,8 @@
                       \end{itemize}
             \end{enumerate}
         
-        \end{column}
-        \begin{column}{.5\textwidth}
+        
+        
 
             \begin{figure}
                 \begin{tikzpicture}
@@ -675,8 +617,8 @@
                 \caption{The paths \(\aalpha_1\) and \(\aalpha_2\).}
             \end{figure}
 
-        \end{column}
-    \end{columns}
+        
+    
 
 
     \begin{enumerate}
@@ -685,10 +627,10 @@
         \item[6.] And so \(\varphi(\xx)  = \int_{a_1}^{x_1} f_1(t,a_2)\ dt + \int_{a_2}^{x_2} f_2(x_1,t)\ dt \).
     \end{enumerate}
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Constructing a potential by indefinite integrals}
+
+
+    {Constructing a potential by indefinite integrals}
 
     \begin{enumerate}
         \item Again suppose that \(\ff = \nabla \varphi\) for some scalar field \(\varphi(x,y)\) which we wish to find;
@@ -701,6 +643,7 @@
     \end{enumerate}
     
 
+    \colorlet{halfBlue}{blue!50!white}
     \begin{example}
         Find a potential for \(\ff(x,y) = \left(\begin{smallmatrix}
             e^x y^2 + 1\\ 2e^x y
@@ -713,18 +656,18 @@
         \end{itemize}
     \end{example}
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Convex sets}
+
+
+    {Convex sets}
 
 
     \begin{definition}[convex set]
         A set \(S\subset \bR^n\) is said to be \emph{convex} if for any \(\xx,\yy\in S\) the segment \(\{t\xx + (1-t)\yy, t\in[0,1]\}\) is contained in \(S\).
     \end{definition}
 
-    \begin{columns}
-        \begin{column}{.5\textwidth}
+    
+        
             \begin{figure}
                 \begin{tikzpicture}
                     \fill[paleBlue] plot [smooth cycle, tension=1] coordinates {(0,0) (1,3) (3,3) (4,1)};
@@ -735,8 +678,8 @@
                 \end{tikzpicture}
                 \caption{A convex set.}
             \end{figure}
-        \end{column}        
-        \begin{column}{.5\textwidth}
+                
+        
             \begin{figure}
                 \begin{tikzpicture}
                     \fill[paleBlue] plot [smooth cycle, tension=1] coordinates {(0,0) (1,3) (2,1) (3,3) (4,1)};
@@ -747,14 +690,14 @@
                 \end{tikzpicture}
                 \caption{A set which is not convex.}
             \end{figure}
-        \end{column}
-    \end{columns}
+        
+    
 
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Sufficient condition for a vector field to be conservative}
+
+
+    {Sufficient condition for a vector field to be conservative}
 
 
     \begin{theorem}
@@ -766,7 +709,7 @@
         \]
     \end{theorem}
 
-    \vspace{-1em}
+    
 
     \begin{proof}[Sketch of proof]
         \begin{enumerate}
@@ -781,10 +724,10 @@
         
     \end{proof}
 
-\end{frame}
 
-\begin{frame}
-    \frametitle{Conservative or non-conservative vector field?}
+
+
+    {Conservative or non-conservative vector field?}
 
 
     \begin{example}
@@ -799,14 +742,16 @@
 
     \end{example}
 
-    \begin{block}<>{Remarks}<>
-        \begin{itemize}
+
+    \begin{itemize}
             \item \(S\) is not convex;
             \item Line integral is the same for any circle, independent of the radius.
         \end{itemize}
-    \end{block}
 
-    \begin{block}<>{Evaluation of line integral}<>
+        
+    {Evaluation of line integral}
+
+
         \begin{enumerate}
             \item \(\aalpha'(t) = \left(\begin{smallmatrix}
                 -a \sin t \\ a \cos t
@@ -816,15 +761,14 @@
             \item \(\ff(\aalpha(t)) \cdot \aalpha'(t) = \sin^2 t + \cos^2 t = 1  \);
             \item \(\int \ff \cdot d\aalpha = \int_{0}^{2\pi} (1) \ dt = 2\pi \).
         \end{enumerate}
-    \end{block}
 
-\end{frame}
+
 
 \section{Applications to differential equations}
 
 
-\begin{frame}
-    \frametitle{Exact  differential equations {\color{black}{\(p(x,y) + q(x,y) \frac{d y}{d x}=0\)}}}
+
+    {Exact  differential equations {\color{black}{\(p(x,y) + q(x,y) \frac{d y}{d x}=0\)}}}
 
     % Differential equations of the form  \(p(x,y) = q(x,y) \frac{d y}{d x}\).
     \begin{theorem}
@@ -855,7 +799,7 @@
         Solutions satisfy \(\varphi(x,y(x))= x y(x)^2 =C\), i.e., \(y(x) = \sqrt{\frac{C}{x}}\). 
     \end{example}
 
-\end{frame}
+
 
 
 
