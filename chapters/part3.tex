@@ -1,19 +1,19 @@
 % !TeX root = ../main.tex
-\chapter{Applications of the differential calculus}
+\chapter{Extrema \& other applications}
 
 \lettrine{I}{n} the previous chapter we introduced various notions of differentials for higher dimensional functions (scalar fields, vector fields, paths, etc.).
-In this chapter we now explore various applications of these notions and work with some of the implementations, rather than just the theory.
+In this chapter we now explore various applications of these notions and work with some of the implementations, rather than just the objects.
 Firstly we will consider certain partial differential equations which we now have the tools to solve.
 Then the majority of the chapter is devoted to searching for extrema (minima / maxima) in various different scenarios.
 This extends what we already know for functions in \(\bR\) and we will find that in higher dimensions many more possibilities and subtleties exist.
 
 \section{Partial differential equations}
 
-There are a huge number of different types of partial differential equations and here we consider just two types \emph{first order linear PDEs} and the \emph{1D wave equation}.
+There are a huge number of different types of partial differential equations (PDEs) and here we consider just two types, \emph{first order linear PDEs} and the \emph{1D wave equation}.
 We start by consider an example of the first type.
 
 \begin{example*}
-    Find all solutions of the partial differential equation
+    Find all solutions of the PDE
     \(3 \frac{\partial f}{\partial x}(x,y) + 2 \frac{\partial f}{\partial y} (x,y) = 0\).
 \end{example*}
 
@@ -36,7 +36,7 @@ We start by consider an example of the first type.
     This means that all solutions have the form \(f(x,y) = g(2x-3y)\) for some \(g:\bR \to \bR\).
 \end{solution}
 
-The same idea as above gives the following general result.
+The same idea as used for the above example gives the following general result.
 
 \begin{theorem}
     Let \(g:\bR\to\bR\) be differentiable, \(a,b\in \bR\), \((a,b)\neq (0,0)\).
@@ -48,7 +48,7 @@ The same idea as above gives the following general result.
 \end{theorem}
 
 \begin{proof}
-    First we prove \textbf{(\(\Rightarrow\))}.
+    First we prove \textbf{(\(\boldsymbol\Rightarrow\))}.
     If \(f(x,y)= g(bx-ay)\) then, by the chain rule,
     \[
         \partial_x f(x,y) = bg'(bx-ay),
@@ -56,8 +56,7 @@ The same idea as above gives the following general result.
         \partial_y f(x,y) = -ag'(bx-ay).
     \]
     Consequently \(a\partial_x f(x,y) + b \partial_y f(x,y) = a bg'(bx-ay) - abg'(bx-ay) = 0\).
-
-    Now we prove \textbf{(\(\Leftarrow\))}.
+    Now we prove \textbf{(\(\boldsymbol\Leftarrow\))}.
     It's convenient to work in coordinates which correspond to the lines along which the solutions are constant.
     Let \(\left(\begin{smallmatrix}
             u\\ v
@@ -79,7 +78,7 @@ The same idea as above gives the following general result.
             u \\ v
         \end{smallmatrix}\right)\).
     Let \(h(u,v)=f(\frac{au + bv}{a^2 + b^2}, \frac{bu-av}{a^2+b^2})\).
-    Calculate
+    We calculate that
     \[
         \partial_u h(u,v)
         = \tfrac{1}{{a^2 + b^2}}
@@ -90,7 +89,7 @@ The same idea as above gives the following general result.
 \end{proof}
 
 Now we look at another type of PDE.
-The \emph{1D wave equation} is
+The \href{https://en.wikipedia.org/wiki/Wave_equation}{\emph{1D wave equation}} is
 \[
     \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t).
 \]
@@ -116,33 +115,41 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
     and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
 
     \noindent
-    \textbf{2.} Conversely, if a solution of  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \) satisfies
-    \[\frac{\partial^2 f}{\partial x \partial t}(x,t) = \frac{\partial^2 f}{\partial t \partial x}(x,t),\]
+    \textbf{2.} Conversely, if a solution of
+    \[
+        \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t)
+    \]
+    satisfies
+    \(\frac{\partial^2 f}{\partial x \partial t} = \frac{\partial^2 f}{\partial t \partial x}\),
     then it has the above form \eqref{eq:wave}.
 \end{theorem}
 
 
 \begin{proof}[Proof of part 1.]
     Let \(f(x,t)\) be as defined \eqref{eq:wave} in the statement of the theorem.
-    We calculate
+    We calculate the partial derivatives
     \[
         \begin{aligned}
             \tfrac{\partial f}{\partial x} (x,t)
-             & = \tfrac{1}{2} \left(F'(x+ct) + F'(x-ct)\right)
+             & = \tfrac{1}{2} \left(F'(x+ct) + F'(x-ct)\right)          \\
+             & \quad\quad\quad
             + \tfrac{1}{2c}\left(G(x+ct) - G(x-ct)\right)               \\
             \tfrac{\partial^2 f}{\partial x^2}(x,t)
-             & = \tfrac{1}{2} \left(F''(x+ct) + F''(x-ct)\right)
+             & = \tfrac{1}{2} \left(F''(x+ct) + F''(x-ct)\right)        \\
+             & \quad\quad\quad
             + \tfrac{1}{2c}\left(G'(x+ct) - G'(x-ct)\right)             \\
             \tfrac{\partial f}{\partial t} (x,t)
-             & = \tfrac{1}{2} \left(cF'(x+ct) - c F'(x-ct)\right)
+             & = \tfrac{1}{2} \left(cF'(x+ct) - c F'(x-ct)\right)       \\
+             & \quad\quad\quad
             + \tfrac{1}{2}\left(G(x+ct) + G(x-ct)\right)                \\
             \tfrac{\partial^2 f}{\partial t^2} f(x,t)
-             & = \tfrac{1}{2} \left(c^2F''(x+ct) + c^2 F''(x-ct)\right)
-            + \tfrac{c}{2}\left(G'(x+ct) + G'(x-ct)\right)
+             & = \tfrac{1}{2} \left(c^2F''(x+ct) + c^2 F''(x-ct)\right) \\
+             & \quad\quad\quad
+            + \tfrac{c}{2}\left(G'(x+ct) + G'(x-ct)\right).
         \end{aligned}
     \]
-    Observe that  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \).
-    Observe that \(f(x,0) = F(x)\)
+    From this calculation we see that  \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \).
+    Additionally \(f(x,0) = F(x)\)
     and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
 \end{proof}
 
@@ -150,13 +157,13 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
     Suppose that \(f\) satisfies the 1D wave equation;
     Introduce \(u = x + ct\), \(v=x-ct\)
     and observe that \(x = \frac{u+v}{2}\), \(t=\frac{u-v}{2c}\).
-    Define \(g(u,v) = f(x,t) = f(   \frac{u+v}{2} , \frac{u-v}{2c} )\).
+    Define \(g(u,v) = f(   \frac{u+v}{2} , \frac{u-v}{2c} )\).
     By the chain rule
     \[
         \begin{aligned}
             \tfrac{\partial g}{\partial u}(u,v)
              & = \tfrac{1}{2} \tfrac{\partial f}{\partial x}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
-            + \tfrac{1}{2c} \tfrac{\partial f}{\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )                      \\
+            + \tfrac{1}{2c} \tfrac{\partial f}{\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} ),                     \\
             \tfrac{\partial^2 g}{\partial v \partial u}(u,v)
              & = \tfrac{1}{4} \tfrac{\partial^2 f}{\partial x^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )
             - \tfrac{1}{4c} \tfrac{\partial^2 f}{\partial x\partial t}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} )          \\
@@ -164,7 +171,8 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
             -  \tfrac{1}{4c^2} \tfrac{\partial^2 f}{\partial t^2}(   \tfrac{u+v}{2} , \tfrac{u-v}{2c} ) = 0.
         \end{aligned}
     \]
-    So \( \tfrac{\partial g}{\partial u}(u,v) = \varphi_0(u)\) and \(g(u,v) = \varphi_1(u) + \varphi_2(v)\).
+    Since the second derivative is zero we know that \(\tfrac{\partial g}{\partial u}\) is constant in \(v\), therefore we can write \( \tfrac{\partial g}{\partial u}(u,v) = \varphi_0(u)\).
+    In turn this means we can write \(g(u,v) = \varphi_1(u) + \varphi_2(v)\).
     I.e., \(f(x,t) = \varphi_1(x+ct) + \varphi_2(x-ct)\).
     Let
     \[
@@ -175,8 +183,9 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
     and \(\frac{\partial f}{\partial t}(x,t) = c\varphi_1(x+ct) - c\varphi_2(x-ct)\).
     Let
     \[
-        G(x) = \frac{\partial f}{\partial t}(x,0) = c\varphi_1(x) - c\varphi_2(x). \qedhere
+        G(x) = \tfrac{\partial f}{\partial t}(x,0) = c\varphi_1(x) - c\varphi_2(x). \qedhere
     \]
+    Substituting these quantities we show that the required form \eqref{eq:wave} is satisfied.
 \end{proof}
 
 \section{Extrema (minima / maxima / saddle)}
@@ -195,11 +204,11 @@ and \(\aa \in S\).
 
 Collectively we call the these points the \emph{extrema} of the scalar field.
 In the case of a scalar field defined on \(\bR^2\) we can visualize the scalar field as a 3D plot like Figure~\ref{fig:bumps}.
-Here we see the extrema as the ``flat'' regions.
-In this setting we use \emph{global} as a synonym of \emph{absolute} and \emph{local} as a synonym of \emph{relative}.
+Here we see the extrema as the ``flat'' places.
+We sometimes use \emph{global} as a synonym of \emph{absolute} and \emph{local} as a synonym of \emph{relative}.
 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \begin{center}
         \includegraphics{bumps.pdf}
         \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
@@ -210,6 +219,7 @@ In this setting we use \emph{global} as a synonym of \emph{absolute} and \emph{l
 To proceed it is convenient to connect the extrema with the behaviour of the gradient of the scalar field.
 
 \begin{theorem}
+    \label{thm:is-stationary}
     If \(f:S\to\bR\) is differentiable and has a relative minimum or maximum at \(\aa\), then \(\nabla f(\aa)=  \mathbf{0}\).
 \end{theorem}
 
@@ -221,10 +231,11 @@ To proceed it is convenient to connect the extrema with the behaviour of the gra
     Consequently this means that \(\nabla f (\aa)= \mathbf{0}\).
 \end{proof}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{inflection.pdf}
-        \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\) as seen for the function \(f(x):=x^3\).}
+        \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\), even in \(\bR\), as seen with the function \(f(x):=x^3\). In higher dimensions even more is possible.}
+        \label{fig:inflection}
     \end{center}
 \end{figure}
 
@@ -233,11 +244,11 @@ Everything still holds and reduces to the arguments and formulae previously deve
 
 
 \begin{definition}[stationary point]
-    If \(\nabla f(\aa)=0\) then \(\aa\) is called a \emph{stationary point}.
+    If \(\nabla f(\aa)=\mathbf{0}\) then \(\aa\) is called a \emph{stationary point}.
 \end{definition}
 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{bowl.pdf}
         \caption{If \(f(x,y)=x^2+y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
@@ -248,22 +259,25 @@ Everything still holds and reduces to the arguments and formulae previously deve
     \end{center}
 \end{figure}
 
+As we see in the example of Figure~\ref{fig:inflection}, the converse of Theorem~\ref{thm:is-stationary} fails in the sense that a stationary point might not be a minimum or a maximum.
+The motivates the following.
 
 \begin{definition}[saddle point]
-    If \(\nabla f(\aa)=0\) and \(\aa\) is neither a minimum nor a maximum then \(\aa\) is said to be a \emph{saddle point}.
+    If \(\nabla f(\aa)=\mathbf{0}\) and \(\aa\) is neither a minimum nor a maximum then \(\aa\) is said to be a \emph{saddle point}.
 \end{definition}
 
+The quintessential saddle has the shape seen in Figure~\ref{fig:pringle}.
+However it might be similar to Figure~\ref{fig:inflection} or more complicated using the possibilities available in higher dimension.
 
-
-\begin{figure}
-    \begin{center}
-        \includegraphics{pringle.pdf}
-        \caption{If \(f(x,y)=x^2-y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
-                2x\\-2y
-            \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
-                0\\0
-            \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}
-    \end{center}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics{pringle.pdf}
+    \caption{If \(f(x,y)=x^2-y^2\) then \(\nabla f(x,y) = \left(\begin{smallmatrix}
+            2x\\-2y
+        \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
+            0\\0
+        \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}
+    \label{fig:pringle}
 \end{figure}
 
 
@@ -274,8 +288,7 @@ In particular this will allow us to identify the local behaviour close to statio
 The main object for doing this is the \emph{Hessian matrix}.
 
 \begin{definition}[Hessian matrix]
-    Let \(f:\bR^2 \to\bR\) be twice differentiable.
-    We write this scalar field as \(f(x,y)\).
+    Let \(f:\bR^2 \to\bR\) be twice differentiable and use the notation \(f(x,y)\).
     The \emph{Hessian matrix} at \(\aa\in \bR^2\) is defined as
     \[
         \mathbf{H} f (\aa)= \begin{pmatrix}
@@ -288,7 +301,7 @@ The main object for doing this is the \emph{Hessian matrix}.
     \]
 \end{definition}
 
-Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since we know that \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\).
+Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since we know that \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\) for twice differentiable functions (Theorem~\ref{thm:equal-double-partial}).
 The Hessian matrix is defined analogously in any dimensions as follows.
 Let \(f:\bR^n \to\bR\) be twice differentiable.
 The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
@@ -313,8 +326,9 @@ The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
     \end{pmatrix}.
 \]
 
-Observe that the Hessian matrix is a symmetric matrix in any dimension.
-
+Observe that the Hessian matrix is a real symmetric matrix in any dimension.
+If \(f:\bR \to \bR\) then \(\mathbf{H} f (a)\) is a \(1\times 1\) matrix and coincides with the second derivative of \(f\).
+In this sense what we know about extrema in \(\bR\) is just a special case of everything we do here.
 
 \begin{lemma*}
     If \(\vv= \left( \begin{smallmatrix}
@@ -325,13 +339,8 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
 \end{lemma*}
 
 \begin{proof}
-    %We consider the \(\bR^2\) case. 
-    % Let \(\vv= \left( \begin{smallmatrix}
-    %         v_1\\ \vdots \\v_n
-    %     \end{smallmatrix} \right)  \).
-    For convenience we use the notation
-    \(\partial_{j}\partial_{k}f(\aa) = \frac{\partial^2 f}{\partial x_j\,\partial x_k} (\aa)\).
-    We calculate that
+    Multiplying the matrices we calculate that\footnote{For convenience, here and in many other places of this text, we use the notation
+        \(\partial_{j}\partial_{k}f(\aa) = \frac{\partial^2 f}{\partial x_j\,\partial x_k} (\aa)\).}
     \[
         \begin{aligned}
             \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv
@@ -348,7 +357,7 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
             \end{pmatrix}
             \begin{pmatrix}
                 v_1 \\ \vdots \\v_n
-            \end{pmatrix}    \\
+            \end{pmatrix} \\
              & = \sum_{j,k=0}^{n}
             \partial_{j}\partial_{k}f(\aa)
             v_j v_k
@@ -359,35 +368,36 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
 
 
 \begin{example*}
-    Let \(f(x,y)=x^2-y^2\).
+    Let \(f(x,y)=x^2-y^2\) (Figure~\ref{fig:pringle}).
     The gradient and the Hessian are respectively
     \[
         \begin{aligned}
             \nabla f(x,y)      & =\begin{pmatrix}
-                                      \frac{\partial f}{\partial x} (x,y) \\[2.2ex]
-                                      \frac{\partial f}{\partial y} (x,y)
-                                  \end{pmatrix} =   \begin{pmatrix}
-                                                        2x \\-2y
-                                                    \end{pmatrix},         \\
+                \frac{\partial f}{\partial x} (x,y) \\[2pt]
+                \frac{\partial f}{\partial y} (x,y)
+            \end{pmatrix} =   \begin{pmatrix}
+                2x \\-2y
+            \end{pmatrix}, \\
             \mathbf{H} f (x,y) & = \begin{pmatrix}
-                                       \frac{\partial^2 f}{\partial x^2} (x,y)
-                                        & \frac{\partial^2 f}{\partial x\,\partial y} (x,y)
-                                       \\[2.2ex]
-                                       \frac{\partial^2 f}{\partial y\,\partial x} (x,y)
-                                        & \frac{\partial^2 f}{\partial y^2}(x,y)
-                                   \end{pmatrix}
+                \frac{\partial^2 f}{\partial x^2} (x,y)
+                 & \frac{\partial^2 f}{\partial x\,\partial y} (x,y)
+                \\[2pt]
+                \frac{\partial^2 f}{\partial y\,\partial x} (x,y)
+                 & \frac{\partial^2 f}{\partial y^2}(x,y)
+            \end{pmatrix}
             = \begin{pmatrix}
-                  2
-                   & 0
-                  \\[2.2ex]
-                  0
-                   & -2
-              \end{pmatrix}.
+                2
+                 & 0
+                \\[2.2ex]
+                0
+                 & -2
+            \end{pmatrix}.
         \end{aligned}
     \]
     The point \((0,0)\) is a stationary point since \(\nabla f(0,0) =\left(\begin{smallmatrix}
             0\\0
         \end{smallmatrix}\right) \).
+    In this example \(\mathbf{H} f \) does not depend on \((x,y)\) but in general we can expect dependence and so it gives a different matrix at different points  \((x,y)\).
 \end{example*}
 
 
@@ -396,45 +406,43 @@ Observe that the Hessian matrix is a symmetric matrix in any dimension.
 First let's recall the first order Taylor approximation from Theorem~\ref{thm:differential}.
 If \(f\) is differentiable at \(\aa\)
 then
-\(  f(\aa+  \vv) = f(\aa)  + \nabla f(\aa) \cdot \vv + \epsilon(\vv)\).
-If \(\aa\) is a stationary point then this only tells us that \(  f(\aa+  \vv) = f(\aa)  +  \epsilon(\vv)\) so a natural next question is to search for slightly more detailed information.
+\(  f(\xx) \approx f(\aa)  + \nabla f(\aa) \cdot (\xx-\aa)\).
+If \(\aa\) is a stationary point then this only tells us that \(  f(\xx) \approx f(\aa) \) so a natural next question is to search for slightly more detailed information.
 
 \begin{theorem}[second order Taylor]
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
-    Then, if \(\norm{\vv}\leq r\),
+    Then,\footnote{We use the convention that \((\xx-\aa)\) is a vertical vector, equivalently, a \(n \times 1\) matrix.} for \(\xx\) close to \(\aa\),
     \[
-        f(\aa+\vv) \approx f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv
+        f(\xx) \approx f(\aa) + \nabla f(\aa) \cdot (\xx-\aa) + \frac{1}{2} (\xx-\aa)^{\mathbf{t}} \ \mathbf{H} f (\aa) \ (\xx-\aa)
     \]
-    in the sense that the error is \(\littleo{\norm{\vv}^2}\).
+    in the sense that the error is \(\littleo{\norm{(\xx-\aa)}^2}\).
 \end{theorem}
 
-
-
-
 \begin{proof}[Proof of second order Taylor formula]
-    Let \(g(u) = f(\aa + u \vv)\).
+    Let \(\vv = \xx-\aa\) and let \(g(u) = f(\aa + u \vv)\).
     The Taylor expansion of \(g\) tells us that
     \(g(1) = g(0) + g'(0) + \frac{1}{2} g''(c)\) for some \(c\in (0,1)\).
     Since \(g(u) = f(a_1 + uv_1, \ldots, a_n + u v_n)\), by the chain rule,
     \[
-        g'(u) = \sum_{j=1}^{n} \partial_j f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j
-        =\nabla f( \aa + u \vv) \cdot \vv.
-    \]
-    Similarly
-    \[
-        g''(u) = \sum_{j,k=1}^{n} \partial_j\partial_k f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j v_k
-        =  \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + u \vv) \ \vv.
+        \begin{aligned}
+            g'(u)  & = \sum_{j=1}^{n} \partial_j f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j
+            =\nabla f( \aa + u \vv) \cdot \vv,                                                            \\
+            g''(u) & = \sum_{j,k=1}^{n} \partial_j\partial_k f( a_1 + uv_1, \ldots, a_n + u v_n ) v_j v_k \\
+                   & \quad \quad \quad
+            =  \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + u \vv) \ \vv.
+        \end{aligned}
     \]
     Consequently
     \(
     f(\aa+\vv) = f(\aa) + \nabla f(\aa) \cdot \vv + \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa + c\vv) \ \vv
     \).
-    We define the ``error'' in the approximation as \(\epsilon(\vv) = \frac{1}{2} \frac{1}{\norm{\vv}^2} \vv^{\mathbf{t}} (\mathbf{H} f (\aa + c\vv) - \mathbf{H} f (\aa)  ) \vv\)
+    We define the ``error'' in the approximation as \(\epsilon(\vv) = \frac{1}{2}  \vv^{\mathbf{t}} (\mathbf{H} f (\aa + c\vv) - \mathbf{H} f (\aa)  ) \vv\)
     and estimate that
     \[
         \abs{\epsilon(\vv)} \leq \sum_{j,k=0}^{n}
-        \frac{v_j v_k}{\norm{\vv}^2} \left( \partial_{j}\partial_{k}f(\aa+c\vv)-\partial_{j}\partial_{k}f(\aa) \right).
+        v_j v_k \left( \partial_{j}\partial_{k}f(\aa+c\vv)-\partial_{j}\partial_{k}f(\aa) \right).
     \]
+    Since \(\abs{ v_j v_k} \leq \norm{\vv}^2\) we observe that \(\frac{\abs{\epsilon(\vv)} }{\norm{\vv}^2} \to 0\) as \(\norm{\vv} \to 0\) as required.
 \end{proof}
 
 
@@ -446,27 +454,25 @@ In order to classify the stationary points we will take advantage of the Hessian
     Let \(A\) be a real symmetric matrix and let
     \(Q(\vv) =  \vv^{\mathbf{t}} A  \vv  \).
     Then
-    \begin{itemize}
-        \item \(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\) if and only if all eigenvalues of \(A\) are positive;
-        \item \(Q(\vv) < 0\) for all \(\vv \neq \mathbf{0}\) if and only if all eigenvalues of \(A\) are negative.
-    \end{itemize}
+    \[
+        \begin{aligned}
+            \text{\(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\)}
+             & \quad \Longleftrightarrow \quad 
+            \text{all eigenvalues of \(A\) are positive}, \\
+            \text{\(Q(\vv) < 0\) for all \(\vv \neq \mathbf{0}\)}
+             & \quad \Longleftrightarrow \quad
+            \text{all eigenvalues of \(A\) are negative}.
+        \end{aligned}
+    \]
 \end{theorem}
 
 \begin{proof}
     Since \(A\) is symmetric it can be diagonalised by  matrix \(B\)  which is orthogonal (\(B^{\mathbf{t}}=B^{-1}\))
-    \[
-        D = B^{\mathbf{t}} A B =
-        \begin{pmatrix}
-            \lambda_1 & \cdots & 0         \\
-            \vdots    & \ddots & \vdots    \\
-            0         & \cdots & \lambda_n
-        \end{pmatrix}.
-    \]
+    and the diagonal matrix \(D = B^{\mathbf{t}} A B\) has the eigenvalues of \(A\) as the diagonal.
     This means that
-    \[
-        Q(\vv) = \vv^{\mathbf{t}} B^{\mathbf{t}} B A B^{\mathbf{t}} B \vv  = \ww^{\mathbf{t}} D \ww = \sum_{j} \lambda_j w_j^2
-    \]
+    \(Q(\vv) = \vv^{\mathbf{t}} B^{\mathbf{t}} B A B^{\mathbf{t}} B \vv = \ww^{\mathbf{t}} D \ww \)
     where \(\ww = B \vv\).
+    Consequently \(Q(\vv) =  \sum_{j} \lambda_j w_j^2\).
     Observe that, if all \(\lambda_j >0\) then \( \sum_{j} \lambda_j w_j^2  >0\).
 
     In order to prove the other direction in the ``if and only if'' statement, observe that \(Q(B \uu_k ) = \lambda_k\). This means that, if \(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\) then \(\lambda_k>0\) for all \(k\).
@@ -474,13 +480,21 @@ In order to classify the stationary points we will take advantage of the Hessian
 
 \begin{theorem}[classification of stationary points]
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
-    Suppose  \(\nabla f(\aa) = \mathbf{0}\).
+    Suppose  \(\nabla f(\aa) = \mathbf{0}\) and consider the eigenvalues of  \(\mathbf{H} f (\aa)\). 
     Then
-    \begin{itemize}
-        \item \emph{All} eigenvalues of \(\mathbf{H} f (\aa)\) are positive then \(f\) has a relative minimum at \(\aa\);
-        \item \emph{All} eigenvalues of \(\mathbf{H} f (\aa)\) are negative then \(f\) has a relative maximum at \(\aa\);
-        \item Some eigenvalues positive and some negative then \(\aa\) is a saddle point.
-    \end{itemize}
+    \[
+        \begin{aligned}
+            \text{{All} eigenvalues are positive}
+             & \quad \Longrightarrow \quad 
+            \text{relative minimum at \(\aa\)}, \\
+            \text{{All} eigenvalues are negative}
+             & \quad \Longrightarrow \quad 
+            \text{relative maximum at \(\aa\)}, \\
+            \text{Some positive, some negative}
+             & \quad \Longrightarrow \quad 
+            \text{\(\aa\) is a saddle point}.
+        \end{aligned}
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -488,13 +502,14 @@ In order to classify the stationary points we will take advantage of the Hessian
     Observe that \(\norm{\ww} =  \norm{\vv}\) and that \(Q(\vv)=  \sum_{j} \lambda_j w_j^2  \geq \Lambda \sum_{j} w_j^2 = \Lambda  \norm{\vv}^2 \).
     We have them 2\textsuperscript{nd}-order Taylor
     \[
-        f(\aa+\vv) - f(\aa)
-        =  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv + \norm{\vv}^2 E_2(\aa,\vv)
-        \geq  \left(\tfrac{\Lambda}{2} - E_2(\aa,\vv) \right) \norm{\vv}^2;
+        \begin{aligned}
+                   f(\aa+\vv) - f(\aa)
+        &=  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv +  \epsilon(\vv)\\
+        &\geq  \left(\tfrac{\Lambda}{2} - \tfrac{\epsilon(\vv)}{\norm{\vv}^2} \right) \norm{\vv}^2.
+        \end{aligned}
     \]
-    Since \(E_2(\aa,\vv) \to 0\) as \(\norm{\vv}\to 0\), \(\abs{E_2(\aa,\vv)} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
-
-    Analogous argument for the second part. For final part consider \(\vv_j\) which is eigenvector for \(\lambda_j\) and apply the argument of first or second part.
+    Since \(\frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} \to 0\) as \(\norm{\vv}\to 0\), \( \frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
+    The argument is analogous for the second part. For final part consider \(\vv_j\) which is the eigenvector for \(\lambda_j\) and apply the argument of the first or second part.
 \end{proof}
 
 \section{Attaining extreme values}
@@ -503,7 +518,7 @@ Here we explore the extreme value theorem for continuous scalar fields.
 The argument will be in two parts:
 Firstly we show that continuity implies boundedness;
 Secondly we show that boundedness implies that the maximum and minimum are attained.
-We use the following notation for \emph{intervals} / \emph{rectangles} / \emph{cuboids}, etc.
+We use the following notation for \emph{intervals} / \emph{rectangles} / \emph{cuboids} / \emph{tesseracts}, etc.
 If \(\aa = (a_1,\ldots,a_n)\) and  \(\bb = (b_1,\ldots,b_n)\)
 then we consider the \(n\)-dimensional closed Cartesian product
 \[
@@ -599,11 +614,16 @@ In higher dimensions, with additional constraints
 \begin{figure}[htb]
     \begin{center}
         \includegraphics{lagrange.pdf}
-        \caption{Searching for the extrema of \(f\) under constraint \(g(x,y)=0\)}
+        \caption{Searching extrema of \(f\) under constraint \(g=0\)}
         \label{fig:lagrange}
     \end{center}
 \end{figure}
 
 
 
+\subsection*{Suggested further reading}
+
+\begin{itemize}
+  \item Apostol, ``Calculus Volume 2'' -- Chapter 9
+\end{itemize}
 

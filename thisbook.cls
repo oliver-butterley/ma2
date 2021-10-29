@@ -15,11 +15,9 @@
 
 %%%%%% Title page
 \date{}
-% \publishers{\sourcelink}
 \publishers{\href{https://\sourcelink}{\sourcelink}}
-% \newcommand{\sourcelink}{}
 \addtokomafont{publishers}{\large\ttfamily}
-\addtokomafont{author}{\itshape\normalsize}
+\addtokomafont{author}{\normalsize\itshape By\\ \normalfont\scshape}
 \renewcommand{\coverpageleftmargin}{5pt}
 \renewcommand{\coverpagerightmargin}{5pt}
 
@@ -35,6 +33,12 @@
 \RequirePackage[type={CC},modifier={by-sa},version={4.0}]{doclicense} % CC info
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
 \RequirePackage{caption, subcaption} % Allow sub figures
+
+%%%%%% Figures
+\addtokomafont{captionlabel}{\scshape}
+\addtokomafont{caption}{\small}
+\setcapindent{0em}
+\captionsetup{width=.8\textwidth}
 
 %%%%%%% Style
 \RequirePackage{ebgaramond} % Classic font
