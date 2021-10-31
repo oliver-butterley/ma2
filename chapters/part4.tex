@@ -112,12 +112,17 @@ This latter notation highlights the vector nature of the quantity.
 
 \section{Basic properties of the line integral}
 
- {Linearity:}
-Suppose \(\ff\), \(\gg\) are vector fields and \(\aalpha(t)\) is a path. For any \(c,d\in \bR\),
+Having defined the line integral, the next step is to clarify its behaviour, in particular the following key properties.
+
+\noindent
+\textbf{Linearity:}
+Suppose \(\ff\), \(\gg\) are vector fields and \(\aalpha(t)\) is a path. For any \(c,d\in \bR\), then
 \[
     \int (c\ff + d\gg) \cdot d\aalpha =  c \int \ff  \cdot d\aalpha +  d \int \gg \cdot d\aalpha.
 \]
-{Joining / dividing paths:}
+
+\noindent
+\textbf{Joining / splitting paths:}
 Suppose \(\ff\) is a vector field and that
 \[
     \aalpha(t) = \begin{cases}
@@ -130,47 +135,36 @@ Then
 \[
     \int \ff  \cdot d\aalpha = \int \ff  \cdot d\aalpha_1  + \int \ff  \cdot d\aalpha_2.
 \]
-{Or:}
-If we write \(C\), \(C_1\), \(C_2\) for the corresponding curves, then
+Alternatively, if we write \(C\), \(C_1\), \(C_2\) for the corresponding curves, then
 \[
     \int_{C} \ff  \cdot d\aalpha = \int_{C_1} \ff  \cdot d\aalpha + \int_{C_2} \ff  \cdot d\aalpha.
 \]
 
-
-
-
-
-
-
-{Choices of parametrization}
-
-Consider the curve \(C = \{(x,y) : x^2 + y^2 = 1, y\geq 0\}\) (Half circle).
-
-Many possible path parametrization, e.g.,
-
-\begin{itemize}
-    \item     \(\aalpha(t):= ( -t , \sqrt{1-t^2})\), \(t\in [-1,1]\)
-    \item  \(\bbeta(t) := (\cos t, \sin t)\), \(t\in [0,\pi]\)
-\end{itemize}
-
+As already mentioned, for a given curve there are many different choices of parametrization.
+For example, consider the curve \(C = \{(x,y) : x^2 + y^2 = 1, y\geq 0\}\).
+This is a semi-circle and two parametrizations are
+\begin{center}
+    \begin{tabular}{l}
+        \(\aalpha(t) = (-t, \sqrt{1-t^2})\), \(t\in [-1,1]\), \\
+        \(\bbeta(t) = (\cos t, \sin t)\), \(t\in [0,\pi]\).
+    \end{tabular}
+\end{center}
+These are just two possibilities among many possible choices.
+For a given curve, to what extent does the line integral depend on the choice of parametrization?
 
 \begin{definition}[equivalent paths]
     We say that two paths \(\aalpha(t)\) and \(\bbeta(t)\) are \emph{equivalent} if there exists a continuously differentiable function \(u : [c,d] \to [a,b] \) such that \(\aalpha(u(t)) = \bbeta(t)\).
-    Furthermore,
+    Furthermore, we say that \(\aalpha(t)\) and \(\bbeta(t)\) are
     \begin{itemize}
-        \item if \(u(c)=a\) and \(u(d)=b\) we say that  \(\aalpha(t)\) and \(\bbeta(t)\) are in the same direction,
-        \item if \(u(c)=b\) and \(u(d)=a\) we say that  \(\aalpha(t)\) and \(\bbeta(t)\) are in the opposite direction.
+        \item \emph{in the same direction} if \(u(c)=a\) and \(u(d)=b\),
+        \item \emph{in the opposite direction} if \(u(c)=b\) and \(u(d)=a\).
     \end{itemize}
 \end{definition}
 
+With this terminology we can precisely describe the dependence of the integral on the choice of parametrization.
 
-
-
-
-
-{Change of parametrization}
-
-\begin{theorem}[Change of parametrization]
+\begin{theorem}[change of parametrization]%
+    \label{thm:change-param}
     Let \(\ff\) be a continuous vector field and let \(\aalpha\), \(\bbeta\) be equivalent paths.
     Then
     \[
@@ -183,14 +177,14 @@ Many possible path parametrization, e.g.,
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Suppose continuously differentiable path (decomposing if required);
-        \item Since \(\aalpha(u(t)) = \bbeta(t)\) chain rule implies that
-              \( \bbeta'(t) = \aalpha'(u(t)) \ u'(t)\);
-        \item
-              \(\displaystyle \int \ff \cdot  d\bbeta = \displaystyle \int_c^d \ff(\bbeta(t)) \cdot \bbeta'(t) \ dt =  \displaystyle \int_c^d \ff(\aalpha(u(t))) \cdot \aalpha'(u(t)) \ u'(t) \ dt \);
-        \item Change variables (gives minus if path is opposite direction). \qedhere
-    \end{enumerate}
+    Suppose that the paths are continuously differentiable path, decomposing if required.
+    Since \(\aalpha(u(t)) = \bbeta(t)\) the chain rule implies that
+    \( \bbeta'(t) = \aalpha'(u(t)) \ u'(t)\).
+    In particular
+    \[
+        \displaystyle \int \ff \cdot  d\bbeta = \displaystyle \int_c^d \ff(\bbeta(t)) \cdot \bbeta'(t) \ dt =  \displaystyle \int_c^d \ff(\aalpha(u(t))) \cdot \aalpha'(u(t)) \ u'(t) \ dt.
+    \]
+    Changing variables, with a minus sign if path is opposite direction, completes the proof.
 \end{proof}
 
 
