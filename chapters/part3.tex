@@ -88,7 +88,7 @@ The same idea as used for the above example gives the following general result.
     Namely, \(h(u,v)\) is a function of \(v\) only so take \(g(v) = h(u,v)\) and so \(f(x,y) = g(bx-ay)\).
 \end{proof}
 
-Now we look at another type of PDE.
+Now we look at another type of PDE.\@
 The \href{https://en.wikipedia.org/wiki/Wave_equation}{\emph{1D wave equation}} is
 \[
     \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t).
@@ -121,12 +121,12 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
     \]
     satisfies
     \(\frac{\partial^2 f}{\partial x \partial t} = \frac{\partial^2 f}{\partial t \partial x}\),
-    then it has the above form \eqref{eq:wave}.
+    then it has the above form~\eqref{eq:wave}.
 \end{theorem}
 
 
 \begin{proof}[Proof of part 1.]
-    Let \(f(x,t)\) be as defined \eqref{eq:wave} in the statement of the theorem.
+    Let \(f(x,t)\) be as defined~\eqref{eq:wave} in the statement of the theorem.
     We calculate the partial derivatives
     \[
         \begin{aligned}
@@ -211,14 +211,14 @@ We sometimes use \emph{global} as a synonym of \emph{absolute} and \emph{local} 
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics{bumps.pdf}
-        \caption{$f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}$}
+        \caption{\(f(x,y) := x e^{-(x^2y^2)}  + \frac{1}{4}e^{y^\frac{3}{10}}\)}%
         \label{fig:bumps}
     \end{center}
 \end{figure}
 
 To proceed it is convenient to connect the extrema with the behaviour of the gradient of the scalar field.
 
-\begin{theorem}
+\begin{theorem}%
     \label{thm:is-stationary}
     If \(f:S\to\bR\) is differentiable and has a relative minimum or maximum at \(\aa\), then \(\nabla f(\aa)=  \mathbf{0}\).
 \end{theorem}
@@ -234,7 +234,7 @@ To proceed it is convenient to connect the extrema with the behaviour of the gra
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{inflection.pdf}
-        \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\), even in \(\bR\), as seen with the function \(f(x):=x^3\). In higher dimensions even more is possible.}
+        \caption{\(\nabla f(\aa) =  \mathbf{0}\) doesn't imply a minimum or maximum at \(\aa\), even in \(\bR\), as seen with the function \(f(x):=x^3\). In higher dimensions even more is possible.}%
         \label{fig:inflection}
     \end{center}
 \end{figure}
@@ -276,7 +276,7 @@ However it might be similar to Figure~\ref{fig:inflection} or more complicated u
             2x\\-2y
         \end{smallmatrix}\right)\) and \(\nabla f(0,0) =\left(\begin{smallmatrix}
             0\\0
-        \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}
+        \end{smallmatrix}\right) \). The point \((0,0)\) is a saddle point for \(f\).}%
     \label{fig:pringle}
 \end{figure}
 
@@ -413,7 +413,7 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\xx) \approx
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
     Then,\footnote{We use the convention that \((\xx-\aa)\) is a vertical vector, equivalently, a \(n \times 1\) matrix.} for \(\xx\) close to \(\aa\),
     \[
-        f(\xx) \approx f(\aa) + \nabla f(\aa) \cdot (\xx-\aa) + \frac{1}{2} (\xx-\aa)^{\mathbf{t}} \ \mathbf{H} f (\aa) \ (\xx-\aa)
+        f(\xx) \approx f(\aa) + \nabla f(\aa) \cdot (\xx-\aa) + \frac{1}{2} {(\xx-\aa)}^{\mathbf{t}} \ \mathbf{H} f (\aa) \ (\xx-\aa)
     \]
     in the sense that the error is \(\littleo{\norm{(\xx-\aa)}^2}\).
 \end{theorem}
@@ -457,7 +457,7 @@ In order to classify the stationary points we will take advantage of the Hessian
     \[
         \begin{aligned}
             \text{\(Q(\vv) > 0\) for all \(\vv \neq \mathbf{0}\)}
-             & \quad \Longleftrightarrow \quad 
+             & \quad \Longleftrightarrow \quad
             \text{all eigenvalues of \(A\) are positive}, \\
             \text{\(Q(\vv) < 0\) for all \(\vv \neq \mathbf{0}\)}
              & \quad \Longleftrightarrow \quad
@@ -480,18 +480,18 @@ In order to classify the stationary points we will take advantage of the Hessian
 
 \begin{theorem}[classification of stationary points]
     Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
-    Suppose  \(\nabla f(\aa) = \mathbf{0}\) and consider the eigenvalues of  \(\mathbf{H} f (\aa)\). 
+    Suppose  \(\nabla f(\aa) = \mathbf{0}\) and consider the eigenvalues of  \(\mathbf{H} f (\aa)\).
     Then
     \[
         \begin{aligned}
             \text{{All} eigenvalues are positive}
-             & \quad \Longrightarrow \quad 
+             & \quad \Longrightarrow \quad
             \text{relative minimum at \(\aa\)}, \\
             \text{{All} eigenvalues are negative}
-             & \quad \Longrightarrow \quad 
+             & \quad \Longrightarrow \quad
             \text{relative maximum at \(\aa\)}, \\
             \text{Some positive, some negative}
-             & \quad \Longrightarrow \quad 
+             & \quad \Longrightarrow \quad
             \text{\(\aa\) is a saddle point}.
         \end{aligned}
     \]
@@ -503,9 +503,9 @@ In order to classify the stationary points we will take advantage of the Hessian
     We have them 2\textsuperscript{nd}-order Taylor
     \[
         \begin{aligned}
-                   f(\aa+\vv) - f(\aa)
-        &=  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv +  \epsilon(\vv)\\
-        &\geq  \left(\tfrac{\Lambda}{2} - \tfrac{\epsilon(\vv)}{\norm{\vv}^2} \right) \norm{\vv}^2.
+            f(\aa+\vv) - f(\aa)
+             & =  \frac{1}{2} \vv^{\mathbf{t}} \ \mathbf{H} f (\aa) \ \vv +  \epsilon(\vv)                \\
+             & \geq  \left(\tfrac{\Lambda}{2} - \tfrac{\epsilon(\vv)}{\norm{\vv}^2} \right) \norm{\vv}^2.
         \end{aligned}
     \]
     Since \(\frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} \to 0\) as \(\norm{\vv}\to 0\), \( \frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
@@ -615,20 +615,20 @@ In higher dimensions and possibly with additional constraints we have the follow
 \begin{figure}[htb]
     \begin{center}
         \includegraphics{lagrange.pdf}
-        \caption{Searching extrema of \(f\) under constraint \(g=0\)}
+        \caption{Searching extrema of \(f\) under constraint \(g=0\)}%
         \label{fig:lagrange}
     \end{center}
 \end{figure}
 
-The Lagrange multiplier method is often stated and far less often proved. 
+The Lagrange multiplier method is often stated and far less often proved.
 Since the proof is rather involved we will follow this tradition here.
 See, for example, Chapter 14 of  ``A First Course in Real Analysis''  (2012) by Protter \& Morrey for a complete proof and further discussion.
 
 Let us consider a particular case of the method when \(n=3\) and \(m=2\).
-More precisely we consider the following problem: 
-Find the maxima and minima of \(f(x,y,z)\) along the curve \(C\) defined as 
+More precisely we consider the following problem:
+Find the maxima and minima of \(f(x,y,z)\) along the curve \(C\) defined as
 \[
-    g_1(x,y,z) = 0, 
+    g_1(x,y,z) = 0,
     \quad
     g_2(x,y,z) = 0
 \]
@@ -636,24 +636,24 @@ where \(g_1\), \(g_2\) are differentiable functions.
 In this particular case we will prove the Lagrange multiplier method.
 Suppose that \(\aa\) is some point in the curve.
 Let \(\aalpha(t)\) denote a path which lies in the curve \(C\) in the sense that \(\aalpha(t) \in C\) for all \(t\in (-1,1)\), \(\aalpha'(t)\neq \mathbf{0}\) and \(\aalpha(0)=\aa\).
-If \(\aa\) is a local minimum for \(f\) restricted to \(C\) it means that \(f(\aalpha(t))\geq f(\aalpha(0))\) for all \(t \in (-\delta,\delta)\) for some \(\delta>0\). 
+If \(\aa\) is a local minimum for \(f\) restricted to \(C\) it means that \(f(\aalpha(t))\geq f(\aalpha(0))\) for all \(t \in (-\delta,\delta)\) for some \(\delta>0\).
 In words, moving away from \(\aa\) along the curve \(C\) doesn't cause \(f(\xx)\) to decrease.
 Let \(h(t) = f(\aalpha(t))\) and observe that \(h:\bR \to \bR\) so we know how to find the extrema.
 In particular we know that \(h'(0)=0\).
-By the chain rule \(h'(t) = \nabla f(\aalpha(t))\cdot \aalpha'(t)\) and so 
+By the chain rule \(h'(t) = \nabla f(\aalpha(t))\cdot \aalpha'(t)\) and so
 \[
     \nabla f(\aa)\cdot \aalpha'(0) = 0.
 \]
 Since we know that \(g_1(\aalpha(t))=0\) and \(g_2(\aalpha(t))=0\), again by the chain rule,
 \[
     \nabla g_1(\aa)\cdot \aalpha'(0) = 0,
-    \quad 
+    \quad
     \nabla g_2(\aa)\cdot \aalpha'(0) = 0.
 \]
 To proceed it is convenient to isolate the following result of linear algebra.
 \begin{lemma*}
     Consider \(w, u_1,u_2 \in \bR^3\) and let \(V = \{v : u_k \cdot v = 0, k =1,2\}\).
-    If \(w\cdot v =0\) for all \(v \in V\) then \(w = \lambda_1 u_1 + \lambda_2 u_2\) for some \(\lambda_1,\lambda_2 \in \bR\). 
+    If \(w\cdot v =0\) for all \(v \in V\) then \(w = \lambda_1 u_1 + \lambda_2 u_2\) for some \(\lambda_1,\lambda_2 \in \bR\).
 \end{lemma*}
 \begin{proof}
     We can write \(w = \lambda_1 u_1 + \lambda_2 u_2 + v_0\) where \(v_0 \in V\) because \(u_1, u_2\) together with \(V\) must span \(\bR^3\).
@@ -661,9 +661,9 @@ To proceed it is convenient to isolate the following result of linear algebra.
     \[
         0 = w\cdot v_0
         = (\lambda_1 u_1 + \lambda_2 u_2 + v_0)\cdot v_0
-        = v_0\cdot v_0 
+        = v_0\cdot v_0
         = \norm{v_0}^2.
-    \] 
+    \]
     This means that \(v_0 =0\) and so \(w = \lambda_1 u_1 + \lambda_2 u_2\).
 \end{proof}
 
@@ -674,6 +674,6 @@ Apply thing lemma to the vectors \(\nabla f(\aa)\), \(\nabla g_1(\aa)\) and \(\n
 \subsection*{Suggested further reading}
 
 \begin{itemize}
-  \item Apostol, ``Calculus Volume 2'' -- Chapter 9
+    \item Apostol, ``Calculus Volume 2'', Chapter 9
 \end{itemize}
 
