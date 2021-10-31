@@ -80,54 +80,38 @@ and \(\ff(\xx) = \left(
     \]
 \end{definition}
 
-Other possible notation
-\begin{itemize}
-    \item  \(\int_C \ff \cdot d\aalpha  \) (if the parametrization of the curve \(C\) is clear);
-    \item \(\int f_1 \ d\alpha_1 + \cdots + f_n \ d\alpha_n\) or \(\int f_1 \ dx_1 + \cdots + f_n \ dx_n\).
-\end{itemize}
 
+Sometimes the same integral is written as \(\int_C \ff \cdot d\aalpha  \) to emphasize that the integral is along the curve \(C\).
+Alternatively the integral is sometimes written as \(\int f_1 \ d\alpha_1 + \cdots + f_n \ d\alpha_n\) or \(\int f_1 \ dx_1 + \cdots + f_n \ dx_n\).
+This latter notation highlights the vector nature of the quantity.
 
-
-
-
-{Example of calculating a line integral}
-
-
-\begin{example}
-    Consider the vector field \(\ff(x,y) := \begin{pmatrix}
+\begin{example*}
+    Consider the vector field \(\ff(x,y) = \left(\begin{smallmatrix}
         \sqrt y \\ x^3 + y
-    \end{pmatrix}\)
+    \end{smallmatrix}\right)\)
     and the path
-    \(\aalpha(t):= (t^2,t^3)\), \(t \in (0,1)\).
+    \(\aalpha(t)= (t^2,t^3)\) for \(t \in (0,1)\).
     Evaluate \(\int \ff \cdot d\aalpha\).
-\end{example}
-\begin{proof}[Solution]
-    \begin{enumerate}
-        \item \(\aalpha'(t) = \begin{pmatrix}
-                  2t \\ 3t^2
-              \end{pmatrix}\);
-        \item \(\ff(\aalpha(t)) := \begin{pmatrix}
-                  t^{\frac{3}{2}} \\ t^6 + t^3
-              \end{pmatrix}\);
-        \item \( \ff(\aalpha(t)) \cdot  \aalpha'(t) = \begin{pmatrix}
-                  t^{\frac{3}{2}} \\ t^6 + t^3
-              \end{pmatrix} \cdot  \begin{pmatrix}
-                  2t \\ 3t^2
-              \end{pmatrix} = 2 t^{\frac{5}{2}} + 3t^8 + 3t^5\);
-        \item
-              \(
-              \displaystyle\int \ff \cdot d\aalpha = \displaystyle\int_{0}^{1} (2 t^{\frac{5}{2}} + 3t^8 + 3t^5 ) \ dt = \frac{59}{42}.
-              \) \qedhere
-    \end{enumerate}
-\end{proof}
+\end{example*}
+\begin{solution}
+    We start by calculating
+    \[
+        \aalpha'(t) = \begin{pmatrix}
+            2t \\ 3t^2
+        \end{pmatrix},\\
+        \quad
+        \ff(\aalpha(t)) = \begin{pmatrix}
+            t^{\frac{3}{2}} \\ t^6 + t^3
+        \end{pmatrix}.
+    \]
+    This means that \(\ff(\aalpha(t)) \cdot  \aalpha'(t) =    2 t^{\frac{5}{2}} + 3t^8 + 3t^5\) and so
+    \[
+        \displaystyle\int \ff \cdot d\aalpha = \displaystyle\int_{0}^{1} (2 t^{\frac{5}{2}} + 3t^8 + 3t^5 ) \ dt = \frac{59}{42}. \qedhere
+    \]
+\end{solution}
 
+\section{Basic properties of the line integral}
 
-\section{Basic properties}
-
-
-
- {Basic properties of the line integral}
- %    {Combining / dividing paths}
  {Linearity:}
 Suppose \(\ff\), \(\gg\) are vector fields and \(\aalpha(t)\) is a path. For any \(c,d\in \bR\),
 \[
