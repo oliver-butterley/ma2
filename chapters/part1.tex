@@ -315,7 +315,7 @@ In general exchanging limits with derivatives and integrals is problematic but f
 
 
 
-\begin{theorem}[integrating power series]
+\begin{theorem}[integrating power series]%
   \label{thm:integrate-power}
   Suppose that, for \(x\in (-r,r)\), the series  \(f(x) = \sum_{n=0}^{\infty} a_n x^n\) is convergent.
   Then \(f(x)\) is continuous and \(\int_0^x f(y) \ dy = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}\).
@@ -336,16 +336,11 @@ In general exchanging limits with derivatives and integrals is problematic but f
 \end{proof}
 
 
-
-
-
-\begin{theorem}[differentiating power series]
+\begin{theorem}[differentiating power series]%
   \label{thm:differentiate-power}
   Suppose that, for \(x\in (-r,r)\), the series  \(f(x) = \sum_{n=0}^{\infty} a_n x^n\) is convergent.
   Then \(f(x)\) is differentiable and \(f'(x) =\sum_{n=1}^{\infty} n a_n x^{n-1}\), convergent for \(x\in (-r,r)\).
 \end{theorem}
-
-
 
 \begin{proof}
   \begin{itemize}
@@ -493,20 +488,13 @@ If the Taylor's series converges, is it equal to \(f(x)\) on the interval?
 
   \begin{tabular}{ r l  l}
     \(f(x) = \)  & \( \exp(-x^{-2})\)
-                 &
-    \(f(0)=0\)
-    \\
+                 & \(f(0)=0\)                                          \\
     \(f'(x)=\)   & \( 2x^{-3} \exp(-x^{-2})\)
-                 &
-    \(f'(0)=0\)
-    \\
+                 & \(f'(0)=0\)                                         \\
     \(f''(x)=\)  & \( (-6 x^{-4}   + 4x^{-6} )\exp(-x^{-2})  \)
-                 &
-    \(f''(0)=0\)
-    \\
-    \(f'''(x)=\) & \( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\)
-                 &
-    \(f'''(0)=0\)
+                 & \(f''(0)=0\)                                        \\
+    \(f'''(x)=\) & \( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\) % chktex 23
+                 & \(f'''(0)=0\)                                       % chktex 23
   \end{tabular}
 
   \noindent

@@ -2,6 +2,7 @@
     "cSpell.words": [
         "Apostol",
         "Bolzano",
+        "chktex",
         "extremum",
         "Morrey",
         "Protter",
@@ -30,5 +31,27 @@
     "latex-workshop.latex.outDir": "%DIR%/build",
     "cSpell.enableFiletypes": [
         "!yaml"
+    ],
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.chktex.args.root": [
+        "-wall",
+        "-n22",
+        "-n30",
+        "-e16",
+        "-n21",
+        "-n15",
+        "-17",
+        "-q",
+        "-l ../mychktexrc"
+    ],
+    "latex-workshop.chktex.args.active": [
+        "-wall",
+        "-n22",
+        "-n30",
+        "-e16",
+        "-n21",
+        "-n15",
+        "-n17",
+        "-q"
     ]
 }
