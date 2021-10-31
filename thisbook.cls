@@ -33,6 +33,7 @@
 \RequirePackage[type={CC},modifier={by-sa},version={4.0}]{doclicense} % CC info
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
 \RequirePackage{caption, subcaption} % Allow sub figures
+\RequirePackage{booktabs} % Allows \midrule, etc
 
 %%%%%% Figures
 \addtokomafont{captionlabel}{\scshape}

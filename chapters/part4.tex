@@ -59,22 +59,28 @@ Observe how some of these parts represent the same circle, perhaps traversed in 
 \section{Line integrals}
 Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\) and
 let \(\ff: \bR^n\to\bR^n\) be a continuous vector field.
-Recall that \(\aalpha'(t) = \begin{pmatrix}
-    \alpha_1'(t) \\ \vdots \\ \alpha_n'(t)
-\end{pmatrix}\)
-and \(\ff(\xx) = \begin{pmatrix}
-    f_1(\xx) \\ \vdots \\ f_n(\xx)
-\end{pmatrix}\).
+Recall that we consider \(\aalpha'(t)\) and \(\ff(\xx)\) as \(n\)-vectors.
+I.e., in the case \(n=2\), then
+\(\aalpha'(t) = \left(
+\begin{smallmatrix}
+        \alpha_1'(t) \\ \alpha_2'(t)
+    \end{smallmatrix}
+\right)\)
+and \(\ff(\xx) = \left(
+\begin{smallmatrix}
+        f_1(\xx) \\ f_2(\xx)
+    \end{smallmatrix}
+\right)\).
 
 \begin{definition}[line integral]
     \label{def:line-integral}
-    The \emph{line integral} of the vector field \(\ff\) along the path \(\aalpha\) is
+    The \emph{line integral} of the vector field \(\ff\) along the path \(\aalpha\) is defined as
     \[
         \int \ff \cdot d\aalpha = \int_{a}^{b} \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt.
     \]
 \end{definition}
 
-{Other possible notation:}
+Other possible notation
 \begin{itemize}
     \item  \(\int_C \ff \cdot d\aalpha  \) (if the parametrization of the curve \(C\) is clear);
     \item \(\int f_1 \ d\alpha_1 + \cdots + f_n \ d\alpha_n\) or \(\int f_1 \ dx_1 + \cdots + f_n \ dx_n\).
