@@ -389,14 +389,15 @@ If \(f:\bR \to \bR\) is differentiable, then we know that, when \(x\) is close t
 More precisely, we know that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(f(x) = f(a) + (x-a) f'(a) + \epsilon(x-a)\) where \(\abs{\epsilon(x-a)} = \littleo{\abs{x-a}}\).
 This way of seeing differentiability is convenient for the higher dimensional definition of differentiability.
 
-\begin{definition*}[differentiable]
+\begin{definition}[differentiable]
+    \label{def:differentiable}
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that, for \(\xx \in B(\aa,r)\),
     \[
         f(\xx) = f(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
     \]
     where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
-\end{definition*}
+\end{definition}
 
 
 For future convenience we introduce the following notation.

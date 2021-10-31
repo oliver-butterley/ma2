@@ -8,77 +8,69 @@ These types of integrals have a natural and important physical relevance.
 We will then study some of the properties of these integrals.
 To start let's recall a random selection of curves we have already seen:
 
-\begin{tabular}{l l}
-    Circle        & \(\{(x,y):x^2+y^2 = 4\}\)                            \\
-    Half a circle & \(\{(x,y): x^2+y^2 = 4, x\geq 0\}\)                  \\
-    Ellipse       & \(\{(x,y): (\frac{x}{2})^2 + (\frac{y}{3})^2 = 4\}\) \\
-    Line          & \(\{(x,y):y=5x+2\}\)                                 \\
-    Line in 3D    & \(\{(x,y,z):x+2y+3z=0, x=4y\}\)                      \\
-    Parabola      & \(\{(x,y):y=x^2\}\)
-\end{tabular}
+\begin{center}
+    \begin{tabular}{l l}
+        Circle           & \(x^2+y^2 = 4\)                           \\
+        Semi-circle      & \(x^2+y^2 = 4\), \(x\geq 0\)              \\
+        Ellipse          & \((\frac{x}{2})^2 + (\frac{y}{3})^2 = 4\) \\
+        Line             & \(y=5x+2\)                                \\
+        Line (in 3D)     & \(x+2y+3z=0\), \(x=4y\)                   \\
+        Parabola (in 3D) & \(y=x^2\), \(z=x\)
+    \end{tabular}
+\end{center}
 
 \noindent
+In the above list the curves are written in a way where we are describing a set of points using certain constraint or constraints. In some cases in \emph{implicit} form, in some cases in \emph{explicit} form.
+For example, for the circle we formally mean the set  \(\{(x,y):x^2+y^2 = 4\}\).
+We have the idea that the curves should be sets which are single connected pieces and we vaguely have an idea that we need curves that are sufficiently smooth.
 To proceed we need a precise definition of the 1D objects we can work with.
 As part of the definition we force a structure which really allows us to work with these objects in a useful way.
 
 \section{Curves and paths}
-
-\begin{itemize}
-    \item Let \(\aalpha : [a,b] \to \bR^n\) be continuous.
-    \item  In components \(\aalpha(t) = (\alpha_1(t),\ldots,\alpha_n(t))\).
-    \item  We say that \(\aalpha(t)\) is \emph{continuously differentiable} if each component \(\alpha_k(t)\) is differentiable on \([a,b]\) and \(\alpha_k'(t)\) is continuous.
-    \item We say that \(\aalpha(t)\) is \emph{piecewise continuously differentiable} if \([a,b] = [a,c_1]\cup[c_1,c_2] \cup \cdots \cup [c_l,b]\) and \(\aalpha(t)\) is \emph{continuously differentiable} on each of these intervals.
-\end{itemize}
-
+Let \(\aalpha : [a,b] \to \bR^n\) be continuous.
+In components we write \(\aalpha(t) = (\alpha_1(t),\ldots,\alpha_n(t))\).
+We say that \(\aalpha(t)\) is \emph{continuously differentiable} if each component \(\alpha_k(t)\) is differentiable on \([a,b]\) and \(\alpha_k'(t)\) is continuous (Definition~\ref{def:differentiable}).
+We say that \(\aalpha(t)\) is \emph{piecewise continuously differentiable} if \([a,b] = [a,c_1]\cup[c_1,c_2] \cup \cdots \cup [c_l,b]\) and \(\aalpha(t)\) is \emph{continuously differentiable} on each of these intervals.
 
 \begin{definition}
+    \label{def:path}
     If \(\aalpha: [a,b] \to \bR^n\) is piecewise continuously differentiable then we call it a \emph{path}.
 \end{definition}
 
+Note that different functions can trace out the \emph{same} curve in different ways.
+Also note that a path has an inherent direction.
+We say that this is a \emph{parametric representation} of a given curve.
+We already saw examples of paths in Figure~\ref{fig:spiral} and Figure~\ref{fig:particle-circle}.
+A few examples of paths are as follows.
 
-
-
-\begin{itemize}
-    \item     Different functions can trace out the same curve in different ways.
-    \item     The path has an inherent direction.
-    \item     This is a \emph{parametric representation} of the curve.
-\end{itemize}
-
-
-
-
-{Examples of paths}
-
-\begin{itemize}
-    \item \(\aalpha(t):= (t,t)\), \(t\in[0,1]\)
-    \item \(\aalpha(t) := (\cos t, \sin t)\), \(t\in[0,2\pi]\)
-    \item \(\aalpha(t) := (\cos t, \sin t)\), \(t\in [-\pi/2,\pi/2]\)
-    \item \(\aalpha(t) := (\cos t, -\sin t)\), \(t\in[0,2\pi]\)
-    \item \(\aalpha(t):= (t,t,t)\), \(t\in[0,1]\)
-    \item \(\aalpha(t):=(\cos t, \sin t, t)\), \(t\in [-10,10]\)
-    \item etc\ldots
-\end{itemize}
-
-[View graphic of the spiral and circle in part 2]
-
+\begin{center}
+    \begin{tabular}{l l}
+        \(\aalpha(t)= (t,t)\),              & \(t\in[0,1]\)                           \\
+        \(\aalpha(t) = (\cos t, \sin t)\),  & \(t\in[0,2\pi]\)                        \\
+        \(\aalpha(t) = (\cos t, \sin t)\),  & \(t\in [-\frac{\pi}{2},\frac{\pi}{2}]\) \\
+        \(\aalpha(t) = (\cos t, -\sin t)\), & \(t\in[0,2\pi]\)                        \\
+        \(\aalpha(t)= (t,t,t)\),            & \(t\in[0,1]\)                           \\
+        \(\aalpha(t)=(\cos t, \sin t, t)\), & \(t\in [-10,10]\)
+    \end{tabular}
+\end{center}
+\noindent
+Observe how some of these parts represent the same circle, perhaps traversed in a different direction.
 
 \section{Line integrals}
+Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\) and
+let \(\ff: \bR^n\to\bR^n\) be a continuous vector field.
+Recall that \(\aalpha'(t) = \begin{pmatrix}
+    \alpha_1'(t) \\ \vdots \\ \alpha_n'(t)
+\end{pmatrix}\)
+and \(\ff(\xx) = \begin{pmatrix}
+    f_1(\xx) \\ \vdots \\ f_n(\xx)
+\end{pmatrix}\).
 
-
-\begin{itemize}
-    \item Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\),
-    \item Let \(\ff: \bR^n\to\bR^n\) be a continuous vector field,
-    \item Recall that \(\aalpha'(t) = \begin{pmatrix}
-              \alpha_1'(t) \\ \vdots \\ \alpha_n'(t)
-          \end{pmatrix}\)
-          and \(\ff(\xx) = \begin{pmatrix}
-              f_1(\xx) \\ \vdots \\ f_n(\xx)
-          \end{pmatrix}\).
-\end{itemize}
 \begin{definition}[line integral]
+    \label{def:line-integral}
     The \emph{line integral} of the vector field \(\ff\) along the path \(\aalpha\) is
     \[
-        \int \ff \cdot d\aalpha := \int_{a}^{b} \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt.
+        \int \ff \cdot d\aalpha = \int_{a}^{b} \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt.
     \]
 \end{definition}
 
