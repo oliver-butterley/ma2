@@ -1,4 +1,4 @@
-#  Writing guide for these lecture notes
+#  Writing guide for these course notes
 
 Writing text is mostly an exercise in empathy. The majority of the content isn't describing an objective reality - the few definitions and theorems do this. Our job is to help ourselves as humans to have an understanding of the mathematical rigour and enhance our ability of working with these concepts. 
 
@@ -16,8 +16,8 @@ The usual _pirate code_ interpretation applies, the following are not hard and f
 ## Structure
 
 - Help ourselves and other readers to feel smart, powerful, and curious, then maintain this state so that they maintain the motivation and cognitive capacity to keep learning more. 
-- On some occasions the lecture notes are meant to be read sequentially, so sometimes it is helpful if they are ordered from the highest to lowest power/effort ratio. Alternatively they can gently introduce and then expand on any given topic.
-- On other occasions the lecture notes will be used as a reference text and therefore, whenever possible, give it a structure so that key concepts can easily be extracted with minimal searching. Currently one element of this is that they key definitions and theorems are highlighted to easily stand out from the other text whilst remaining with the appropriate context. 
+- On some occasions the course notes are meant to be read sequentially, so sometimes it is helpful if they are ordered from the highest to lowest power/effort ratio. Alternatively they can gently introduce and then expand on any given topic.
+- On other occasions the course notes will be used as a reference text and therefore, whenever possible, give it a structure so that key concepts can easily be extracted with minimal searching. Currently one element of this is that they key definitions and theorems are highlighted to easily stand out from the other text whilst remaining with the appropriate context. 
 - Many resources exist and greatly support the understanding of the course material. Useful resources should be linked in a way that it is clear to the reader the purpose of the given resource.
 
 ## Writing & Grammar
