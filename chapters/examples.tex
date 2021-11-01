@@ -361,7 +361,7 @@ This quantity is called the binomial coefficient.
     \end{equation}
     For a moment we assume the first case and combined this with the 4\textsuperscript{th} equation.
     This means that \(x^2 +x^2 = 1\) and so \(x = \pm \frac{1}{\sqrt{2}}\).
-    In general \(x^2 = y^2\) allows that \(y = \pm x\) but \eqref{eq:LagrangeB} means that \(y = -x\). Using \eqref{eq:LagrangeA} to calculate \(z\) we obtain 4 solutions,
+    In general \(x^2 = y^2\) allows that \(y = \pm x\) but~\eqref{eq:LagrangeB} means that \(y = -x\). Using~\eqref{eq:LagrangeA} to calculate \(z\) we obtain 4 solutions,
     \[
         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}}),
         (\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}),
@@ -369,9 +369,9 @@ This quantity is called the binomial coefficient.
         (\tfrac{1}{\sqrt{2}},\tfrac{-1}{\sqrt{2}},\tfrac{1}{\sqrt{2}}).
     \]
     We check that these really are solutions by substituting into the 5 equations.
-    Now we need to consider the other case \eqref{eq:LagrangeC} which we previously ignored.
+    Now we need to consider the other case~\eqref{eq:LagrangeC} which we previously ignored.
     Consider the 3\textsuperscript{rd} equation we find that \(z = 0\).
-    Consequently, by \eqref{eq:LagrangeA}, either \(x=0\) or \(y=0\).
+    Consequently, by~\eqref{eq:LagrangeA}, either \(x=0\) or \(y=0\).
     This then means that, by the 4\textsuperscript{th} equation that \(y^2=1\) or \(x^2=1\) respectively.
     Consequently we have obtained another 4 solutions,
     \[
@@ -390,7 +390,7 @@ This quantity is called the binomial coefficient.
 \begin{task}
     Investigate the stationary points of the scalar field,
     \[
-        f(x,y,z) =  e^{-(x-1)^2}(y^4 - 8yz + 2z^2).
+        f(x,y,z) =  e^{-{(x-1)}^2}(y^4 - 8yz + 2z^2).
     \]
 \end{task}
 
@@ -399,9 +399,9 @@ This quantity is called the binomial coefficient.
     \[
         \nabla f(x,y,z) =  \left(
         \begin{array}{c}
-                -2(x-1)e^{-(x-1)^2}(y^4 - 8yz + 2z^2) \\
-                e^{-(x-1)^2}(4y^{3} - 8 z)            \\
-                e^{-(x-1)^2}(-8 y + 4 z)              \\
+                -2(x-1)e^{-{(x-1)}^2}(y^4 - 8yz + 2z^2) \\
+                e^{-{(x-1)}^2}(4y^{3} - 8 z)            \\
+                e^{-{(x-1)}^2}(-8 y + 4 z)              \\
             \end{array}
         \right).
     \]
@@ -412,30 +412,30 @@ This quantity is called the binomial coefficient.
         z = 2y.    \label{eq:stationaryC}
     \end{gather}
     We proceed to find all the solutions to this system of equations and in doing so we will have found all the stationary points of \(f\).
-    Combining \eqref{eq:stationaryB} and \eqref{eq:stationaryC} we obtain that \(y^3 = 4y\) and so
+    Combining~\eqref{eq:stationaryB} and~\eqref{eq:stationaryC} we obtain that \(y^3 = 4y\) and so
     \begin{equation}
         \label{eq:stationaryD}
         y = 0 \quad \text{or} \quad y^2 = 4.
     \end{equation}
     We will use this information later.
-    From \eqref{eq:stationaryA} we know that
+    From~\eqref{eq:stationaryA} we know that
     \[
         y^4 - 8yz + 2z^2 = 0
         \quad \text{or} \quad
         x = 1.
     \]
     We proceed considering this case by case.
-    In the first case, using also \eqref{eq:stationaryC}, we obtain that \(y^4 - 16 y^2 + 8y^2 = 0\).
+    In the first case, using also~\eqref{eq:stationaryC}, we obtain that \(y^4 - 16 y^2 + 8y^2 = 0\).
     This means that \(y=0\) or \(y^2 = 8\).
-    However the second option is in contradiction with \eqref{eq:stationaryD} and so \(y=0\) is the only solution.
-    Using also \eqref{eq:stationaryC} we are left with the set of points
+    However the second option is in contradiction with~\eqref{eq:stationaryD} and so \(y=0\) is the only solution.
+    Using also~\eqref{eq:stationaryC} we are left with the set of points
     \[
         (a,0,0) \quad \text{for any \(a\in\bR\)}.
     \]
     We check that this really does satisfy the system of equations without further restrictions on the \(x\)-coordinate.
     Consequently each of these points is a stationary point.
     It now remains to consider the case which previously we ignored, namely \(x=1\).
-    Using also \eqref{eq:stationaryD} and \eqref{eq:stationaryC} we obtain the points
+    Using also~\eqref{eq:stationaryD} and~\eqref{eq:stationaryC} we obtain the points
     \[
         (1,-2,-4)
         \quad \text{and} \quad
@@ -458,17 +458,17 @@ This quantity is called the binomial coefficient.
     \[
         \begin{aligned}
             h_{11}(x,y,z)
-             & = e^{-(x-1)^2} (y^4 - 8yz + 2z^2) (-2 + 4(x-1)^2), \\
+             & = e^{-{(x-1)}^2} (y^4 - 8yz + 2z^2) (-2 + 4{(x-1)}^2), \\
             h_{12}(x,y,z)
-             & = -2(x-1) e^{-(x-1)^2} (4y^3 - 8z),                \\
+             & = -2(x-1) e^{-{(x-1)}^2} (4y^3 - 8z),                \\
             h_{13}(x,y,z)
-             & = -2(x-1) e^{-(x-1)^2} (-8y+4z),                   \\
+             & = -2(x-1) e^{-{(x-1)}^2} (-8y+4z),                   \\
             h_{22}(x,y,z)
-             & = e^{-(x-1)^2}(12y^2),                             \\
+             & = e^{-{(x-1)}^2}(12y^2),                             \\
             h_{23}(x,y,z)
-             & = e^{-(x-1)^2}(-8),                                \\
+             & = e^{-{(x-1)}^2}(-8),                                \\
             h_{33}(x,y,z)
-             & = e^{-(x-1)^2} (4).                                \\
+             & = e^{-{(x-1)}^2} (4).                                \\
         \end{aligned}
     \]
     Evaluating the Hessian at two of the stationary points we obtain that (that \(x=1\) means that several terms disappear and the others are easy to calculate),
@@ -489,5 +489,5 @@ This quantity is called the binomial coefficient.
         \end{aligned}
     \]
     The first matrix has one positive and one negative eigenvalue so \((1,0,0)\) is a saddle point.
-    On the other hand, the eigenvalues of the second matrix are all positive and so the function $f(x,y,z)$ takes a minimum at the point \((1,2,4)\).
+    On the other hand, the eigenvalues of the second matrix are all positive and so the function \(f(x,y,z)\) takes a minimum at the point \((1,2,4)\).
 \end{solution}
