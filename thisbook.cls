@@ -55,7 +55,6 @@
 %%%%%%% Include graphics
 \RequirePackage{graphicx}
 \graphicspath{{graphics/}{graphics/build/}}
-\setkeys{Gin}{width=0.75\textwidth} % Default width
 
 %%%%%% Insert git sha
 \RequirePackage{xstring,catchfile}
