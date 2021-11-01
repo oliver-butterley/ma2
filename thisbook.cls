@@ -34,6 +34,9 @@
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
 \RequirePackage{caption, subcaption} % Allow sub figures
 \RequirePackage{booktabs} % Allows \midrule, etc
+\RequirePackage{enumitem} 
+\setlist{nosep}
+\setlist[itemize]{label=\(\triangleright\)}
 
 %%%%%% Figures
 \addtokomafont{captionlabel}{\scshape}

@@ -154,6 +154,7 @@ For a given curve, to what extent does the line integral depend on the choice of
 
 \begin{definition}[equivalent paths]
     We say that two paths \(\aalpha(t)\) and \(\bbeta(t)\) are \emph{equivalent} if there exists a continuously differentiable function \(u : [c,d] \to [a,b] \) such that \(\aalpha(u(t)) = \bbeta(t)\).
+
     Furthermore, we say that \(\aalpha(t)\) and \(\bbeta(t)\) are
     \begin{itemize}
         \item \emph{in the same direction} if \(u(c)=a\) and \(u(d)=b\),
@@ -188,74 +189,49 @@ With this terminology we can precisely describe the dependence of the integral o
 \end{proof}
 
 
-\section{Applications (gradients / work in physics)}
+\section{Applications (gradients, work, length)}
 
-
- {Gradients and line integrals}
-
-\begin{itemize}
-    \item Let \(h(x,y)\) be a scalar field in \(\bR^2\);
-    \item Recall that the gradient \(\nabla h(x,y)\) is a vector field;
-    \item Let \(\aalpha(t)\), \(t\in [0,1]\) be a path;
-    \item \(\frac{d}{dt} h(\aalpha(t)) = \nabla h(\aalpha(t))\cdot \aalpha'(t)\);
-    \item \[
-              \begin{aligned}
-                  \int \nabla h \cdot d\aalpha
-                   & = \int_0^1 \nabla h(\aalpha(t)) \cdot \alpha'(t)\ dt \\
-                   & = \int_0^1 \tfrac{d}{dt} h(\aalpha(t)) \ dt
-                  = h(\aalpha(1)) - h(\aalpha(0)).
-              \end{aligned}
-          \]
-\end{itemize}
-
-
-
-
-[Graphic of person walking on a map with contour lines]
-
-
-
-
-
-{Work in physics 1 (Gravity)}
-
-%{Gravity}
-
-\begin{itemize}
-    \item Gravitational field \(\ff(x,y,z) = \left(\begin{smallmatrix}
-              0 \\ 0 \\ mg
-          \end{smallmatrix}\right)\);
-    \item Move particle from \(\aa=(a_1,a_2,a_3)\) to \(\bb=(b_1,b_2,b_3)\) along the path \(\aalpha(t)\), \(t\in [0,1]\);
-    \item Work done is defined as \(\int \ff \cdot d\aalpha\).
-\end{itemize}
-
+Let \(h(x,y)\) be a scalar field in \(\bR^2\)
+and recall that the gradient \(\nabla h(x,y)\) is a vector field.
+Let \(\aalpha(t)\), \(t\in [0,1]\) be a path.
+Now let \(g(t) = h(\aalpha(t))\), consider the derivative
+\(g'(t) = \nabla h(\aalpha(t))\cdot \aalpha'(t)\)
+and evaluate the line integral
 \[
     \begin{aligned}
-        \int \ff \cdot d\aalpha & = \int_0^1 \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt
-        = \int_0^1 mg \ \alpha_3'(t) \ dt                                                 \\
-                                & = mg \ {\left[ \alpha_3(t)\right]}_0^1 = mg(b_3 - a_3).
+        \int \nabla h \cdot d\aalpha
+         & = \int_0^1 \nabla h(\aalpha(t)) \cdot \alpha'(t)\ dt \\
+         & = \int_0^1 g(t) \ dt
+        = g(1) - g(0)
+        = h(\aalpha(1)) - h(\aalpha(0)).
     \end{aligned}
 \]
+This equality has the following intuitive interpretation if we suppose for a moment that \(h\) denotes altitude.
+In this case the line integral is the sum of all the infinitesimal altitude changes and equals the total change in altitude.
 
-{I.e.,} work done depends only on the change in height.
+As a first example of work in physics let's consider gravity.
+The gravitational field on earth is \(\ff(x,y,z) = \left(\begin{smallmatrix}
+        0 \\ 0 \\ mg
+    \end{smallmatrix}\right)\).
+If we move a particle from \(\aa=(a_1,a_2,a_3)\) to \(\bb=(b_1,b_2,b_3)\) along the path \(\aalpha(t)\), \(t\in [0,1]\)
+then the work done is defined as \(\int \ff \cdot d\aalpha\).
+We calculate that
+\[
+    \begin{aligned}
+        \int \ff \cdot d\aalpha
+         & = \int_0^1 \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt
+        = \int_0^1 mg \ \alpha_3'(t) \ dt                          \\
+         & = mg \ {\left[ \alpha_3(t)\right]}_0^1 = mg(b_3 - a_3).
+    \end{aligned}
+\]
+This coincides we what we know, work done depends only on the change in height.
 
-
-
-
-    {Work in physics 2 (force field)}
-
-\begin{itemize}
-    \item Let \(\ff\) be a force field;
-    \item Let \(\xx(t)\) be the position at time \(t\) of a particle moving in the field;
-    \item Let \(\vv(t) = \xx'(t)\) be the velocity at time \(t\) of the particle;
-    \item Define kinetic energy as \(\frac{m}{2} \norm{\vv(t)}^2\).
-\end{itemize}
-
-{Newton's law:}
-\(\ff(\xx(t)) = m\xx''(t) = m \vv'(t)\).
-
-    {Work done:}
-
+As a second example of work in physics let's consider a particle moving in a force field.
+Let \(\ff\) be the force field and let \(\xx(t)\) be the position at time \(t\) of a particle moving in the field.
+Let \(\vv(t) = \xx'(t)\) be the velocity at time \(t\) of the particle and define kinetic energy as \(\frac{m}{2} \norm{\vv(t)}^2\).
+According to Newton's law
+\(\ff(\xx(t)) = m\xx''(t) = m \vv'(t)\)
+and so the work done is
 \[
     \begin{aligned}
         \int \ff \cdot d\xx
@@ -265,42 +241,24 @@ With this terminology we can precisely describe the dependence of the integral o
         = \left(  \tfrac{m}{2} \norm{\vv(1)}^2  -  \tfrac{m}{2} \norm{\vv(0)}^2   \right)
     \end{aligned}
 \]
+In this case we see, as expected, the work done on the particle moving in the force field is equal to the change in kinetic energy.
 
-{I.e.,}
-work done on the particle moving in the force field is equal to the change in kinetic energy.
-
-
-
-
-
-    {Length of a curve}
-
+We also use the line integral to define the \emph{length of a curve} in a meaningful way.
 Let \(\aalpha(t)\), \(t\in [a,b]\) be a path.
 \begin{definition}[length of a curve]
     The length of the piece of the curve between \(\aalpha(a)\) and \(\aalpha(t)\) is defined as
     \[
-        s(t) := \int_a^t \norm{\aalpha'(u)} \ du.
+        s(t) = \int_a^t \norm{\aalpha'(u)} \ du.
     \]
 \end{definition}
 
-\begin{itemize}
-    \item  \(s'(t) = \norm{\aalpha'(t)} \).
-    \item If the path represents a wire and the wire has density \(\varphi(\aalpha(t))\) at the point \(\aalpha(t)\) then the mass of the wire is defined as
-          \(M = \displaystyle\int \varphi(\aalpha(t)) \ s'(t) \ dt\).
-\end{itemize}
-
-
-
-
-
+Observe that \(s'(t) = \norm{\aalpha'(t)} \) and also that the length of the curve, as we would expect, doesn't depend on the choice of parametrization of that curve.
+We also consider the following weighted version of the above definition.
+If the path represents a wire and the wire has density \(\varphi(\aalpha(t))\) at the point \(\aalpha(t)\) then the mass of the wire is defined as
+\(M = \displaystyle\int \varphi(\aalpha(t)) \ s'(t) \ dt\).
 
 
 \section{The second fundamental theorem of calculus}
-
-
-
- {The second fundamental theorem of calculus}
-
 
  {Recall:}
 If \(\varphi:\bR \to \bR\) is differentiable then
