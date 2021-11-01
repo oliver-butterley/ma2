@@ -388,12 +388,12 @@ Observe that that the potential is not unique,
 \end{theorem}
 
 \begin{proof}
-        In the previous theorems (the two fundamental theorems) we proved that (i) is equivalent to (ii).
+    In the previous theorems (the two fundamental theorems) we proved that (i) is equivalent to (ii).
 
-        Now we prove that (ii) implies (iii):  
-        Let \(\aalpha(t)\) be a closed path and let \(\bbeta(t)\) be the same path in the opposite direction. Observe that \(\int \ff \cdot d\aalpha = - \int \ff \cdot d \bbeta\) but that \(\int \ff \cdot d \aalpha = \int \ff \cdot d \bbeta\) and so \(\int \ff \cdot d \aalpha = 0\).
+    Now we prove that (ii) implies (iii):
+    Let \(\aalpha(t)\) be a closed path and let \(\bbeta(t)\) be the same path in the opposite direction. Observe that \(\int \ff \cdot d\aalpha = - \int \ff \cdot d \bbeta\) but that \(\int \ff \cdot d \aalpha = \int \ff \cdot d \bbeta\) and so \(\int \ff \cdot d \aalpha = 0\).
 
-        It remains to prove that (iii) implies (ii): The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
+    It remains to prove that (iii) implies (ii): The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
 \end{proof}
 
 \begin{theorem}
@@ -403,12 +403,6 @@ Observe that that the potential is not unique,
         \frac{\partial f_l}{\partial x_k} = \frac{\partial f_k}{\partial x_l}.
     \]
 \end{theorem}
-
-% Here we write, as usual, \(\ff(x_1,\ldots,x_n) = \left(\begin{smallmatrix}
-%         f_1(x_1,\ldots,x_n)\\
-%         \vdots \\
-%         f_n(x_1,\ldots,x_n)
-%     \end{smallmatrix}\right)\).
 
 \begin{proof}
     By assumption the second order partial derivatives exist and so
@@ -423,89 +417,62 @@ Observe that that the potential is not unique,
 The above result isn't really useful in showing that a vector field is conservative because it is possible for the mixed partial derivatives to all be equal but still the field fail to be conservative.
 On the other hand, if a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative and so it is useful for proving the negative.
 
-
 \section{Potential functions and conservative vector fields}
 
-
- {Constructing a potential}
-
- {Question:}
+We now turn our attention to the following question:
 Suppose we are given a vector field \(\ff\) and we know that \(\ff = \nabla \varphi\) for some \(\varphi\).
-How can we calculate \(\varphi\)?
-
-{Two methods:}
-\begin{enumerate}
-    \item by line integral;
-    \item by indefinite integrals.
-\end{enumerate}
-
-
-
-
-
-
-
-
-
-
-{Constructing a potential by line integral}
-
-
-
-
-
-
-\begin{enumerate}
-    \item Suppose that \(\ff\) is a conservative vector field on the rectangle \([a_1,b_1]\times [a_2,b_2]\);
-    \item We will define \(\varphi(\xx)\) as the line integral \(\int \ff \cdot d\aalpha\) where \(\aalpha\) is a path between \(\aa=(a_1,a_2)\) and \(\xx\);
-    \item For any \(\xx = (x_1,x_2) \in \bR^2\) consider the two paths:
-          \begin{itemize}
-              \item[H:] \(\aalpha_1(t) := (t,a_2)\), \(t\in [a_1,x_1]\);
-              \item[V:]  \(\aalpha_2(t) := (x_1,t)\),  \(t\in [a_2,x_2]\);
-          \end{itemize}
-\end{enumerate}
-
-\begin{figure}[htbp]
+How can we find \(\varphi\)?
+For this we consider two methods in the following paragraphs.
+%
+\begin{figure}[tbhp]
     \centering
     \includegraphics{two-paths.pdf}
     \caption{The paths \(\aalpha_1\) and \(\aalpha_2\).}
 \end{figure}
+%
+First we describe the method which we call \emph{constructing a potential by line integral}.
+Suppose that \(\ff\) is a conservative vector field on the rectangle \([a_1,b_1]\times [a_2,b_2]\).
+We define \(\varphi(\xx)\) as the line integral \(\int \ff \cdot d\aalpha\) where \(\aalpha\) is a path between \(\aa=(a_1,a_2)\) and \(\xx\).
+For any \(\xx = (x_1,x_2) \in \bR^2\) consider the two paths:
+\begin{itemize}
+    \item[] \(\aalpha_1(t) = (t,a_2)\), \(t\in [a_1,x_1]\),
+    \item[]  \(\aalpha_2(t) = (x_1,t)\),  \(t\in [a_2,x_2]\).
+\end{itemize}
+Let \(\aalpha(t)\) denote the concatenation of the two paths.
+We calculate that
+\[
+    \int \ff \cdot d\aalpha = \int_{a_1}^{x_1} \ff(\aalpha_1(t))\cdot \aalpha_1'(t) \ dt +  \int_{a_2}^{x_2} \ff(\aalpha_2(t))\cdot \aalpha_2'(t) \ dt.
+\]
+This means that \(\varphi(\xx)  = \int_{a_1}^{x_1} f_1(t,a_2)\ dt + \int_{a_2}^{x_2} f_2(x_1,t)\ dt \).
 
-\begin{enumerate}
-    \item[4.] Let \(\aalpha(t)\) denote the combination of the two paths;
-    \item[5.] Calculate \(\int \ff \cdot d\aalpha = \int_{a_1}^{x_1} \ff(\aalpha_1(t))\cdot \aalpha_1'(t) \ dt +  \int_{a_2}^{x_2} \ff(\aalpha_2(t))\cdot \aalpha_2'(t) \ dt \);
-    \item[6.] And so \(\varphi(\xx)  = \int_{a_1}^{x_1} f_1(t,a_2)\ dt + \int_{a_2}^{x_2} f_2(x_1,t)\ dt \).
-\end{enumerate}
+Now we describe a different method which we describe as \emph{constructing a potential by indefinite integrals}.
+Again suppose that \(\ff = \nabla \varphi\) for some scalar field \(\varphi(x,y)\) which we wish to find.
+Observe that \(\frac{\partial \varphi}{\partial x} = f_1\) and  \(\frac{\partial \varphi}{\partial y} = f_2\).
+This means that
+\[
+    \int_{a}^{x} f_1(t,y) \ dt + A(y) = \varphi(x,y) =  \int_{b}^{y} f_2(x,t) \ dt + B(x)
+\]
+where \(A(y)\), \(B(x)\) are constants of integration.
+Calculating and comparing we can then obtain a formula for \(\varphi(x,y)\).
 
-
-
-
-{Constructing a potential by indefinite integrals}
-
-\begin{enumerate}
-    \item Again suppose that \(\ff = \nabla \varphi\) for some scalar field \(\varphi(x,y)\) which we wish to find;
-    \item Observe that \(\frac{\partial \varphi}{\partial x} = f_1\) and  \(\frac{\partial \varphi}{\partial y} = f_2\);
-    \item  This means that (\(A(y)\), \(B(x)\) are constants of integration)
-          \[
-              \int_{a}^{x} f_1(t,y) \ dt + A(y) = \varphi(x,y) =  \int_{b}^{y} f_2(x,t) \ dt + B(x);
-          \]
-    \item Calculating and comparing we can obtain a formula for \(\varphi(x,y)\).
-\end{enumerate}
-
-
-\colorlet{halfBlue}{blue!50!white}
-\begin{example}
+\begin{example*}
     Find a potential for \(\ff(x,y) = \left(\begin{smallmatrix}
         e^x y^2 + 1\\ 2e^x y
     \end{smallmatrix}\right)\) on \(\bR^2\).
-    \begin{itemize}
-        \item \({\color{halfBlue} \int_{a}^{x} f_1(t,y) \ dt + A(y) = } \ e^x y^2 + x + A(y) = \varphi(x,y)\);
-        \item \( {\color{halfBlue} \int_{b}^{y} f_2(x,t) \ dt + B(x) = }  e^x y^2 + B(x) = \varphi(x,y) \);
-        \item we can choose \(A(y) = 0\) and \(B(x)=x\) to obtain equality above;
-        \item potential is \(\varphi(x,y) = e^x y^2 + x\).
-    \end{itemize}
-\end{example}
-
+\end{example*}
+\begin{solution}
+    We calculate that
+    \[
+        \begin{aligned}
+            \int_{a}^{x} f_1(t,y) \ dt + A(y)
+             & =  \ e^x y^2 + x + A(y) = \varphi(x,y) \\
+            \int_{b}^{y} f_2(x,t) \ dt + B(x)
+             & =  e^x y^2 + B(x) = \varphi(x,y).
+        \end{aligned}
+    \]
+    From this we see that we can choose \(A(y) = 0\) and \(B(x)=x\) to obtain equality of the above quantities.
+    Consequently we obtain the potential  \(\varphi(x,y) = e^x y^2 + x\).
+\end{solution}
 
 
 
