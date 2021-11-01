@@ -255,19 +255,20 @@ Let \(\aalpha(t)\), \(t\in [a,b]\) be a path.
 Observe that \(s'(t) = \norm{\aalpha'(t)} \) and also that the length of the curve, as we would expect, doesn't depend on the choice of parametrization of that curve.
 We also consider the following weighted version of the above definition.
 If the path represents a wire and the wire has density \(\varphi(\aalpha(t))\) at the point \(\aalpha(t)\) then the mass of the wire is defined as
-\(M = \displaystyle\int \varphi(\aalpha(t)) \ s'(t) \ dt\).
-
+\[
+    M = \displaystyle\int \varphi(\aalpha(t)) \ s'(t) \ dt.
+\]
 
 \section{The second fundamental theorem of calculus}
 
- {Recall:}
-If \(\varphi:\bR \to \bR\) is differentiable then
+Recall that, if \(\varphi:\bR \to \bR\) is differentiable then
 \(\int_a^b \varphi'(t) \ dt = \varphi(b) - \varphi(a)\).
+The analog for line integrals is the following.
 
 \begin{theorem}[2\textsuperscript{nd} fundamental theorem in \(\bR^n\)]
     Suppose that \(\varphi\) is a continuously differentiable scalar field on \(S \subset \bR^n\)
     and suppose that \(\aalpha(t)\), \(t\in[a,b]\) is a path in \(S\).
-    Let \(\aa:= \aalpha(a)\),  \(\bb:= \aalpha(b)\).
+    Let \(\aa = \aalpha(a)\),  \(\bb = \aalpha(b)\).
     Then
     \[
         \int \nabla \varphi \cdot d\aalpha = \varphi(\bb) - \varphi(\aa).
@@ -275,53 +276,35 @@ If \(\varphi:\bR \to \bR\) is differentiable then
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Suppose that \(\aalpha(t)\) is continuously differentiable;
-        \item By the chain rule \(\frac{d}{dt} \varphi(\aalpha(t)) = \nabla \varphi(\aalpha(t))\cdot \aalpha'(t)\);
-        \item Consequently \(\int \nabla \varphi \cdot d\aalpha
-              = \int_0^1 \nabla \varphi(\aalpha(t)) \cdot \aalpha'(t)\ dt
-              = \int_0^1 \tfrac{d}{dt} \varphi(\aalpha(t)) \ dt \)
-        \item By 2\textsuperscript{nd} fund.\,theorem in \(\bR\),
-              \(\int_0^1 \tfrac{d}{dt} \varphi(\aalpha(t)) \ dt = \varphi(\aalpha(b)) - \varphi(\aalpha(a))\).
-    \end{enumerate}
+    Suppose that \(\aalpha(t)\) is continuously differentiable.
+    By the chain rule \(\frac{d}{dt} \varphi(\aalpha(t)) = \nabla \varphi(\aalpha(t))\cdot \aalpha'(t)\).
+    Consequently
+    \[
+        \int \nabla \varphi \cdot d\aalpha
+        = \int_0^1 \nabla \varphi(\aalpha(t)) \cdot \aalpha'(t)\ dt
+        = \int_0^1 \tfrac{d}{dt} \varphi(\aalpha(t)) \ dt.
+    \]
+    By the 2\textsuperscript{nd} fundamental theorem in \(\bR\) we know that
+    \(\int_0^1 \tfrac{d}{dt} \varphi(\aalpha(t)) \ dt = \varphi(\aalpha(b)) - \varphi(\aalpha(a))\).
 \end{proof}
 
-
-
-
-{Potential energy example}
-
-\begin{itemize}
-    \item Earth has mass \(M\) with centre at \((0,0,0)\),
-    \item Small particle close to earth has mass \(m\),
-    \item Force field of gravitation is equal to
-          \(\ff(\xx) := \frac{-GmM}{\norm{\xx}^3}\xx\),
-    \item Define potential energy as
-          \(\varphi(\xx):= \frac{GmM}{\norm{\xx}}\).
-\end{itemize}
-
-We write \(\varphi(x_1,x_2,x_3) = \frac{GmM}{\sqrt{x_1^2 + x_2^2 + x_3^2}}\)
-and calculate
-\[
-    \nabla \varphi(\xx) =
-    \begin{pmatrix}
-        {(GmM) \ (2x_1)} \ {(-\frac{1}{2}) \ {(x_1^2 + x_2^2 + x_3^2)}^{-\frac{3}{2}}} \\
-        {(GmM) \ (2x_2)} \ {(-\frac{1}{2}) \ {(x_1^2 + x_2^2 + x_3^2)}^{-\frac{3}{2}}} \\
-        {(GmM) \ (2x_3)} \ {(-\frac{1}{2}) \ {(x_1^2 + x_2^2 + x_3^2)}^{-\frac{3}{2}}}
-    \end{pmatrix}
-    =   \frac{-GmM}{\norm{\xx}^3}\xx.
-\]
-
-
+\begin{example}[potential energy]
+    Our earth has mass \(M\) with centre at \((0,0,0)\).
+    Suppose that there is a small particle close to earth which has mass \(m\).
+    The force field of gravitation and potential energy are, respectively,
+    \[
+        \ff(\xx) = \frac{-GmM}{\norm{\xx}^3}\xx,
+        \quad
+        \varphi(\xx) = \frac{GmM}{\norm{\xx}}.
+    \]
+    We can calculate \(\nabla \varphi(\xx)\) and see that it is equal to \(\ff(\xx)\).
+\end{example}
 
 
 \section{The first fundamental theorem of calculus}
 
-
- {Connected sets}
-
-
-
+First we need to consider a basic topological property of sets.
+In particular we want to avoid the possibility of the set being several disconnected pieces, in other words we want to guarantee that we can get from one point to another in the set in a way without every leaving the set (see Figure~\ref{fig:connected}).
 
 \begin{definition}[connected]
     The set \(S\subset \bR^n\) is said to be \emph{connected} if, for every pair of points \(\aa,\bb\in S\), there exists a path \(\aalpha(t), t\in[a,b]\) such that
@@ -331,97 +314,73 @@ and calculate
     \end{itemize}
 \end{definition}
 
-{Terminology:} Sometimes this is called ``path connected'' to distinguish between different notions.
-
-\colorlet{paleBlue}{blue!10!white}
+\noindent
+Sometimes this property is called ``path connected'' to distinguish between different notions.
 
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics{connected.pdf}
         \caption{A connected set.}%
-        \label{fig:connected}      
+        \label{fig:connected}
     \end{center}
 \end{figure}
 
-{The first fundamental theorem of calculus}
-
-{Recall:}
-If \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then \(\varphi'(x) = f(x)\).
+Recall that, if \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then \(\varphi'(x) = f(x)\).
 
 \begin{theorem}[1\textsuperscript{st} fundamental theorem in \(\bR^n\)]
     Let \(\ff\) be a continuous vector field on a connected set \(S \subset \bR^n\).
     Suppose that, for \(\xx,\aa\in S\), the line integral \(\int \ff \cdot d\aalpha\) is equal for every path \(\aalpha\) such that \(\aalpha(a)=\aa\), \(\aalpha(b)=\xx\).
-    Fix \(\aa\in S\) and define \(\varphi(\xx):= \int \ff \cdot d\alpha\).
+    Fix \(\aa\in S\) and define \(\varphi(\xx)= \int \ff \cdot d\alpha\).
     Then \(\varphi\) is continuously differentiable and \(\nabla \varphi = \ff\).
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
-    \begin{enumerate}
-        \item As before \(\ee_1 = \left(\begin{smallmatrix}
-                  1 \\ 0 \\ 0
-              \end{smallmatrix}\right) \),
-              \(\ee_2 = \left(\begin{smallmatrix}
-                  0 \\ 1 \\ 0
-              \end{smallmatrix}\right) \),
-              \(\ee_3 = \left(\begin{smallmatrix}
-                  0 \\ 0 \\ 1
-              \end{smallmatrix}\right) \);
-        \item \(\varphi(\xx + h \ee_k) - \varphi(\xx) = \int \ff \cdot d\bbeta_k\) where \(\bbeta_k(t) := \xx + t \ee_k\), \(t\in [0,h]\);
-        \item Observe that \(\bbeta'_k(t) = \ee_k\);
-        \item \(\frac{\partial \varphi}{\partial x_k} =  \displaystyle\lim_{h\to 0} \frac{1}{h}( \varphi(\xx + h \ee_k) - \varphi(\xx)) = \displaystyle \lim_{h\to 0} \frac{1}{h} \int_0^h \ff(\bbeta_k(t)) \cdot \ee_k \ dt = f_k(\xx)  \);
-        \item I.e., \(\nabla \varphi (\xx) =  \ff(\xx)\);
-    \end{enumerate}
+
+    As before let \(\ee_1 = \left(\begin{smallmatrix}
+            1 \\ 0 \\ 0
+        \end{smallmatrix}\right) \),
+    \(\ee_2 = \left(\begin{smallmatrix}
+            0 \\ 1 \\ 0
+        \end{smallmatrix}\right) \),
+    \(\ee_3 = \left(\begin{smallmatrix}
+            0 \\ 0 \\ 1
+        \end{smallmatrix}\right) \).
+    Observe that, if we define the paths \(\bbeta_k(t) = \xx + t \ee_k\), \(t\in [0,h]\), then
+    \[
+        \varphi(\xx + h \ee_k) - \varphi(\xx) = \int \ff \cdot d\bbeta_k.
+    \]
+    Moreover \(\bbeta'_k(t) = \ee_k\).
+    Consequently
+    \[
+        \begin{aligned}
+            \frac{\partial \varphi}{\partial x_k}(\xx)
+             & =  \displaystyle\lim_{h\to 0} \frac{1}{h}( \varphi(\xx + h \ee_k) - \varphi(\xx))                \\
+             & = \displaystyle \lim_{h\to 0} \frac{1}{h} \int_0^h \ff(\bbeta_k(t)) \cdot \ee_k \ dt = f_k(\xx).
+        \end{aligned}
+    \]
+    In other words, we have shown that \(\nabla \varphi (\xx) =  \ff(\xx)\).
 \end{proof}
-
-
-
-
-
-{Closed paths}
 
 \begin{definition}[closed path]
     We say a path \(\aalpha(t)\), \(t\in [a,b]\) is \emph{closed} if \(\aalpha(a) = \aalpha(b)\).
 \end{definition}
 
-
-
-\begin{itemize}
-    \item If \(\aalpha(t)\), \(t\in[a,b]\) is a closed path then we can divided it into two paths: Let \(c\in[a,b]\) and consider the two paths \(\aalpha(t)\), \(t\in[a,c]\) and  \(\aalpha(t)\), \(t\in[c,b]\).
-    \item Suppose \(\aalpha(t)\), \(t\in [a,b]\) and  \(\bbeta(t)\), \(t\in [c,d]\) are two path starting at \(\aa\) and finishing at \(\bb\). The these can be combined to define a closed path (by following one backward).
-\end{itemize}
-
-
-
-
-
-{Conservative vector fields}
+Observe that, if \(\aalpha(t)\), \(t\in[a,b]\) is a closed path then we can divided it into two paths: Let \(c\in[a,b]\) and consider the two paths \(\aalpha(t)\), \(t\in[a,c]\) and  \(\aalpha(t)\), \(t\in[c,b]\).
+On the other hand, suppose \(\aalpha(t)\), \(t\in [a,b]\) and  \(\bbeta(t)\), \(t\in [c,d]\) are two path starting at \(\aa\) and finishing at \(\bb\). The these can be combined to define a closed path (by following one backward).
 
 \begin{definition}[conservative vector field]
-    A vector field \(\ff\), continuous on \(S \subset \bR^n\) is said to be conservative if there exists a scalar field \(\varphi\) such that, on \(S\), \[\ff = \nabla \varphi.\]
+    A vector field \(\ff\), continuous on \(S \subset \bR^n\) is \emph{conservative} if there exists a scalar field \(\varphi\) such that, on \(S\), \[\ff = \nabla \varphi.\]
 \end{definition}
 
-{Terminology:}
+Note that some authors call such a vector field a \emph{gradient} (i.e., the vector field is the gradient of some scalar).
+If \(\ff = \nabla \varphi\) then the scalar field \(\varphi\) is called the \emph{potential} (associated to \(\ff\)).
+Observe that that the potential is not unique,
+\(\nabla \varphi = \nabla(\varphi + C)\) for any constant \(C \in \bR\).
 
-\begin{itemize}
-    \item     Some authors call such a vector field a \emph{gradient} (i.e., the vector field is the gradient of some scalar).
-    \item If \(\ff = \nabla \varphi\) the \(\varphi\) is called the \emph{potential}.
-\end{itemize}
-
-{Non-uniqueness:}
-\begin{itemize}
-    \item     Observe that \(\nabla \varphi = \nabla(\varphi + C)\) for any constant \(C \in \bR\).
-\end{itemize}
-
-
-
-
-
-
-{Conservative vector fields}
 
 \begin{theorem}[conservative vector fields]
     The following are equivalent for a vector field \(\ff\):
-    \begin{enumerate}
+    \begin{enumerate}[label=\textnormal{(\roman*)}]
         \item There exists \(\varphi\) such that \(\ff = \nabla \varphi\),
         \item \(\int \ff \cdot d\aalpha\) does not depend on \(\aalpha\), as long as \(\aalpha(a)=\aa\), \(\aalpha(b)=\bb\),
         \item \(\int \ff \cdot d\aalpha = 0\) for any closed path \(\aalpha\).
@@ -429,19 +388,13 @@ If \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then
 \end{theorem}
 
 \begin{proof}
-    \begin{description}
-        \item[(a) \(\Leftrightarrow\) (b)] We proved in the previous theorems (the two fundamental theorems);
-        \item[(b) \(\Rightarrow\) (c)] Let \(\aalpha(t)\) be a closed path and let \(\bbeta(t)\) be the same path in the opposite direction. Observe that \(\int \ff \cdot d\aalpha = - \int \ff \cdot d \bbeta\) but that \(\int \ff \cdot d \aalpha = \int \ff \cdot d \bbeta\) and so \(\int \ff \cdot d \aalpha = 0\);
-        \item[(b) \(\Leftarrow\) (c)] The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
-    \end{description}
+        In the previous theorems (the two fundamental theorems) we proved that (i) is equivalent to (ii).
+
+        Now we prove that (ii) implies (iii):  
+        Let \(\aalpha(t)\) be a closed path and let \(\bbeta(t)\) be the same path in the opposite direction. Observe that \(\int \ff \cdot d\aalpha = - \int \ff \cdot d \bbeta\) but that \(\int \ff \cdot d \aalpha = \int \ff \cdot d \bbeta\) and so \(\int \ff \cdot d \aalpha = 0\).
+
+        It remains to prove that (iii) implies (ii): The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
 \end{proof}
-
-
-
-
-
-
-{Mixed partial derivatives}
 
 \begin{theorem}
     Suppose that \(\ff\) is a continuously differential vector field.
@@ -451,11 +404,11 @@ If \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then
     \]
 \end{theorem}
 
-{Notation:} Here we write, as usual, \(\ff(x_1,\ldots,x_n) = \left(\begin{smallmatrix}
-        f_1(x_1,\ldots,x_n)\\
-        \vdots \\
-        f_n(x_1,\ldots,x_n)
-    \end{smallmatrix}\right)\).
+% Here we write, as usual, \(\ff(x_1,\ldots,x_n) = \left(\begin{smallmatrix}
+%         f_1(x_1,\ldots,x_n)\\
+%         \vdots \\
+%         f_n(x_1,\ldots,x_n)
+%     \end{smallmatrix}\right)\).
 
 \begin{proof}
     By assumption the second order partial derivatives exist and so
@@ -467,10 +420,8 @@ If \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then
     \]
 \end{proof}
 
-{Useful:}
-If a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative.
-
-
+The above result isn't really useful in showing that a vector field is conservative because it is possible for the mixed partial derivatives to all be equal but still the field fail to be conservative.
+On the other hand, if a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative and so it is useful for proving the negative.
 
 
 \section{Potential functions and conservative vector fields}
