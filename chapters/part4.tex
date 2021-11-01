@@ -26,7 +26,7 @@ We have the idea that the curves should be sets which are single connected piece
 To proceed we need a precise definition of the 1D objects we can work with.
 As part of the definition we force a structure which really allows us to work with these objects in a useful way.
 
-\section{Curves and paths}
+\section{Curves, paths \& line integrals}
 Let \(\aalpha : [a,b] \to \bR^n\) be continuous.
 In components we write \(\aalpha(t) = (\alpha_1(t),\ldots,\alpha_n(t))\).
 We say that \(\aalpha(t)\) is \emph{continuously differentiable} if each component \(\alpha_k(t)\) is differentiable on \([a,b]\) and \(\alpha_k'(t)\) is continuous (Definition~\ref{def:differentiable}).
@@ -56,7 +56,6 @@ A few examples of paths are as follows.
 \noindent
 Observe how some of these parts represent the same circle, perhaps traversed in a different direction.
 
-\section{Line integrals}
 Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\) and
 let \(\ff: \bR^n\to\bR^n\) be a continuous vector field.
 Recall that we consider \(\aalpha'(t)\) and \(\ff(\xx)\) as \(n\)-vectors.
@@ -396,7 +395,8 @@ Observe that that the potential is not unique,
     It remains to prove that (iii) implies (ii): The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}%
+    \label{thm:mixed-partials}
     Suppose that \(\ff\) is a continuously differential vector field.
     If \(\ff = \nabla \varphi\) for some scalar field \(\varphi\) then, for each \(l,k\),
     \[
@@ -414,8 +414,34 @@ Observe that that the potential is not unique,
     \]
 \end{proof}
 
-The above result isn't really useful in showing that a vector field is conservative because it is possible for the mixed partial derivatives to all be equal but still the field fail to be conservative.
+
+\begin{example}
+    Consider the vector field
+    \[
+        \ff(x,y) = \left(\begin{smallmatrix}
+                -y {(x^2 + y^2)}^{-1} \\ x {(x^2 + y^2)}^{-1}
+            \end{smallmatrix}\right)
+    \]
+    on \(S = \bR^2 \setminus (0,0)\).
+    Calculating we verify that  \(  \tfrac{\partial f_1}{\partial y} = \tfrac{\partial f_2}{\partial x}\) on \(S\).
+    We now evaluate the line integral \(\int \ff \cdot d\aalpha\) where \(\aalpha(t) = (a \cos t, a \sin t)\), \(t\in [0,2\pi]\).
+    We calculate that
+    \(\aalpha'(t) = \left(\begin{smallmatrix}
+            -a \sin t \\ a \cos t
+        \end{smallmatrix}\right)\) and \(\ff(\aalpha(t)) = \frac{1}{a^2} \left(\begin{smallmatrix}
+            -a \sin t \\ a \cos t
+        \end{smallmatrix}\right)   \).
+    This means that
+    \[
+        \int \ff \cdot d\aalpha = \int_{0}^{2\pi} ( \sin^2 t + \cos^2 t )\ dt = 2\pi.
+    \]
+\end{example}
+Observe that in the above example \(S\) is somehow not a ``nice'' set because of the ``hole'' in the middle.
+Moreover, observe that the line integral is the same for any circle, independent of the radius.
+
+Theorem~\ref{thm:mixed-partials} isn't really useful in showing that a vector field is conservative because it is possible for the mixed partial derivatives to all be equal but still the field fail to be conservative.
 On the other hand, if a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative and so it is useful for proving the negative.
+Later in this chapter we will return to this topic.
 
 \section{Potential functions and conservative vector fields}
 
@@ -465,7 +491,7 @@ Calculating and comparing we can then obtain a formula for \(\varphi(x,y)\).
     \[
         \begin{aligned}
             \int_{a}^{x} f_1(t,y) \ dt + A(y)
-             & =  \ e^x y^2 + x + A(y) = \varphi(x,y) \\
+             & =  \ e^x y^2 + x + A(y) = \varphi(x,y), \\
             \int_{b}^{y} f_2(x,t) \ dt + B(x)
              & =  e^x y^2 + B(x) = \varphi(x,y).
         \end{aligned}
@@ -474,32 +500,29 @@ Calculating and comparing we can then obtain a formula for \(\varphi(x,y)\).
     Consequently we obtain the potential  \(\varphi(x,y) = e^x y^2 + x\).
 \end{solution}
 
+Theorem~\ref{thm:mixed-partials} concerning conservative fields and the mixed partial derivatives was somewhat less than satisfactory since the converse wasn't possible.
+In order to get a more satisfactory result we need to look at another topological details of the domain of the vector field.
+This concept is somewhat suggested by the methods of constructing potentials which were described above.
 
-
-{Convex sets}
-
-
-\begin{definition}[convex set]
+\begin{definition}[convex set]%
+    \label{def:convex}
     A set \(S\subset \bR^n\) is said to be \emph{convex} if for any \(\xx,\yy\in S\) the segment \(\{t\xx + (1-t)\yy, t\in[0,1]\}\) is contained in \(S\).
 \end{definition}
 
-
-
 \begin{figure}
     \centering
-    \includegraphics{convex.pdf}
-    \caption{A convex set.}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics{convex.pdf}
+        \caption{A convex set.}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics{not-convex.pdf}
+        \caption{A set which is not convex.}
+    \end{subfigure}
+    \caption{Convex and non-convex sets.}
 \end{figure}
 
-
-\begin{figure}
-    \centering
-    \includegraphics{not-convex.pdf}
-    \caption{A set which is not convex.}
-\end{figure}
-
-{Sufficient condition for a vector field to be conservative}
-
+This extra property permits the following sufficient condition for a vector field to be conservative.
 
 \begin{theorem}
     Let\footnote{As usual  \(  f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} \(\ff\) be a continuously differentiable vector field on a convex region \(S\subset \bR^n\).
@@ -510,86 +533,42 @@ Calculating and comparing we can then obtain a formula for \(\varphi(x,y)\).
     \]
 \end{theorem}
 
-
-
 \begin{proof}[Sketch of proof]
-    \begin{enumerate}
-        %\item Already proved that \(\ff\) conservative implies the equality of partial derivatives;
-        \item Need only assume \(\partial_g f_l = \partial_l f_k\) and construct a potential;
-        \item Let \(\varphi(\xx) = \int \ff \cdot d\aalpha\) where \(\aalpha(t) = t\xx\), \(t\in[0,1]\);
-        \item Since \(\aalpha'(t) = \xx\), \(\varphi(\xx) = \int_0^1 \ff(t\xx)\cdot \xx\);
-        \item Also (needs proving) \(\partial_k  \varphi(\xx) = \int_{0}^{1} \left( t \partial_k \ff(t\xx) \cdot \xx + f_k(t\xx) \right) \ dt\);
-        \item This is equal to \(\int_{0}^{1} \left( t \nabla f_k(t\xx) \cdot \xx + f_k(t\xx) \right) \ dt\) because  \(\partial_g f_l = \partial_l f_k\);
-        \item By the chain rule (to \(g(t):= t \nabla f_k(t\xx) \)) this is equal to \(f_k(\xx)\) as required.
-    \end{enumerate}
-
+    We have already proved that \(\ff\) being conservative implies the equality of partial derivatives (Theorem~\ref{thm:mixed-partials}) and therefore we need only assume that \(\partial_g f_l = \partial_l f_k\) and construct a potential.
+    Let \(\varphi(\xx) = \int \ff \cdot d\aalpha\) where \(\aalpha(t) = t\xx\), \(t\in[0,1]\).
+    Since \(\aalpha'(t) = \xx\), \(\varphi(\xx) = \int_0^1 \ff(t\xx)\cdot \xx \ dt\).
+    Also (needs proving)
+    \[
+        \frac{\partial \varphi}{\partial x_k}(t\xx) = \int_{0}^{1} \left( t \partial_k \ff(t\xx) \cdot \xx + f_k(t\xx) \right) \ dt.
+    \]
+    This is equal to \(\int_{0}^{1} \left( t \nabla f_k(t\xx) \cdot \xx + f_k(t\xx) \right) \ dt\) because  \(\partial_g f_l = \partial_l f_k\);
+    By the chain rule applied to \(g(t) = t \nabla f_k(t\xx) \) this is equal to \(f_k(\xx)\) as required.
 \end{proof}
 
+The above gives us a few tools to check if a given vector field is conservative.
 
 
+\subsubsection*{Application to exact differential equations}
 
-{Conservative or non-conservative vector field?}
+A  differential equation of the form \(p(x,y) + q(x,y) \frac{d y}{d x}=0\) is called an \emph{exact differential equation}.
 
+\begin{theorem}%
+    \label{thm:exact-diff-eq}
+    If \(\varphi(x,y)\) satisfies
+    \(\nabla \varphi(x,y) =   \left(\begin{smallmatrix}
+            p(x,y) \\ q(x,y)
+        \end{smallmatrix}\right)\)
+    then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) \frac{d y}{d x}\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
 
-\begin{example}
-    Consider the vector field \(\ff(x,y) := \left(\begin{smallmatrix}
-        -y {(x^2 + y^2)}^{-1} \\ x {(x^2 + y^2)}^{-1}
-    \end{smallmatrix}\right)\)
-    on \(S = \bR^2 \setminus (0,0)\).
-    \begin{enumerate}
-        \item Verify that \(  \tfrac{\partial f_2}{\partial y} = \tfrac{\partial f_2}{\partial x}\);
-        \item Evaluate the line integral \(\int \ff \cdot d\aalpha\) where \(\aalpha(t) := (a \cos t, a \sin t)\), \(t\in [0,2\pi]\).
-    \end{enumerate}
-
-\end{example}
-
-
-\begin{itemize}
-    \item \(S\) is not convex;
-    \item Line integral is the same for any circle, independent of the radius.
-\end{itemize}
-
-
-{Evaluation of line integral}
-
-
-\begin{enumerate}
-    \item \(\aalpha'(t) = \left(\begin{smallmatrix}
-                  -a \sin t \\ a \cos t
-              \end{smallmatrix}\right)\) and \(\ff(\aalpha(t)) = \frac{1}{a^2} \left(\begin{smallmatrix}
-                  -a \sin t \\ a \cos t
-              \end{smallmatrix}\right)   \);
-    \item \(\ff(\aalpha(t)) \cdot \aalpha'(t) = \sin^2 t + \cos^2 t = 1  \);
-    \item \(\int \ff \cdot d\aalpha = \int_{0}^{2\pi} (1) \ dt = 2\pi \).
-\end{enumerate}
-
-
-
-\section{Applications to differential equations}
-
-
-
- {Exact  differential equations {\color{black}{\(p(x,y) + q(x,y) \frac{d y}{d x}=0\)}}}
-
-% Differential equations of the form  \(p(x,y) = q(x,y) \frac{d y}{d x}\).
-\begin{theorem}
-    \begin{enumerate}
-        \item[(a)]         If \(\varphi(x,y)\) satisfies
-              \(\nabla \varphi(x,y) =   \left(\begin{smallmatrix}
-                      p(x,y) \\ q(x,y)
-                  \end{smallmatrix}\right)\)
-              then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) \frac{d y}{d x}\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
-        \item[(b)] Conversely, if  \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) \frac{d y}{d x}\).
-    \end{enumerate}
+    Conversely, if  \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) \frac{d y}{d x}\).
 \end{theorem}
 
 \begin{proof}
-    \begin{enumerate}
-        \item If \(y(x)\) satisfies  \(\varphi(x,y(x))=C\), then by the chain rule and \(\nabla \varphi =   \left(\begin{smallmatrix}
-                  p \\ q
-              \end{smallmatrix}\right)\), \(p(x,y(x)) + y'(x) q(x,y(x)) = 0\);
-        \item Conversely, if \(y(x)\) is a solution, \(\varphi(x,y(x))\) must be constant in \(x\). \qedhere
-    \end{enumerate}
+    If \(y(x)\) satisfies  \(\varphi(x,y(x))=C\), then by the chain rule and \(\nabla \varphi =   \left(\begin{smallmatrix}
+        p \\ q
+    \end{smallmatrix}\right)\), \(p(x,y(x)) + y'(x) q(x,y(x)) = 0\).
+
+    Conversely, if \(y(x)\) is a solution, \(\varphi(x,y(x))\) must be constant in \(x\).
 \end{proof}
 
 \begin{example}
