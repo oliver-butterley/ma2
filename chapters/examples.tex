@@ -241,8 +241,8 @@ This quantity is called the binomial coefficient.
         \begin{aligned}
              & 4 \alpha(\alpha+1)( x^2 + y^2 + z^2){(x^2 + y^2 + z^2)}^{-\alpha-2} \\
              & \quad -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                     \\
-             & =  4 \alpha(\alpha+1){(x^2 + y^2 + z^2)}^{-\alpha-1}               % \\
-              -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                     \\
+             & =  4 \alpha(\alpha+1){(x^2 + y^2 + z^2)}^{-\alpha-1}                % \\
+            -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                              \\
              & = (4 \alpha(\alpha+1) -6 \alpha ) {(x^2 + y^2 + z^2)}^{-\alpha-1}.
         \end{aligned}
     \]
@@ -460,15 +460,15 @@ This quantity is called the binomial coefficient.
             h_{11}(x,y,z)
              & = e^{-{(x-1)}^2} (y^4 - 8yz + 2z^2) (-2 + 4{(x-1)}^2), \\
             h_{12}(x,y,z)
-             & = -2(x-1) e^{-{(x-1)}^2} (4y^3 - 8z),                \\
+             & = -2(x-1) e^{-{(x-1)}^2} (4y^3 - 8z),                  \\
             h_{13}(x,y,z)
-             & = -2(x-1) e^{-{(x-1)}^2} (-8y+4z),                   \\
+             & = -2(x-1) e^{-{(x-1)}^2} (-8y+4z),                     \\
             h_{22}(x,y,z)
-             & = e^{-{(x-1)}^2}(12y^2),                             \\
+             & = e^{-{(x-1)}^2}(12y^2),                               \\
             h_{23}(x,y,z)
-             & = e^{-{(x-1)}^2}(-8),                                \\
+             & = e^{-{(x-1)}^2}(-8),                                  \\
             h_{33}(x,y,z)
-             & = e^{-{(x-1)}^2} (4).                                \\
+             & = e^{-{(x-1)}^2} (4).                                  \\
         \end{aligned}
     \]
     Evaluating the Hessian at two of the stationary points we obtain that (that \(x=1\) means that several terms disappear and the others are easy to calculate),
@@ -493,4 +493,98 @@ This quantity is called the binomial coefficient.
 \end{solution}
 
 
-\section{Curves and line integrals}
+\section{Curves \& line integrals}
+
+\begin{task}
+    Determine if the following two vector fields are conservative on \(\mathbb{R}^2\).
+    \[
+        \begin{aligned}
+            \mathbf{f}(x,y)
+             & =
+            \begin{pmatrix}
+                2y(1 + x )e^x \\ 2x e^x
+            \end{pmatrix}, \\
+            \mathbf{g}(x,y)
+             & =
+            \begin{pmatrix}
+                2y^2 \\
+                x+2
+            \end{pmatrix}.
+        \end{aligned}
+    \]
+    For \((x,y) \neq (0,0)\) let
+    \[
+        \mathbf{h}(x,y) =
+        \begin{pmatrix}
+            3 y {(x^2+y^2)}^{-1} \\
+            3 x {(x^2+y^2)}^{-1}
+        \end{pmatrix}.
+    \]
+    Is the vector field \(\mathbf{h}\) conservative on the domain \(\{(x,y): |y| > 0 \}\)?
+    Is the vector field \(\mathbf{h}\) conservative on the domain \(\{(x,y): 1 \leq x^2+y^2 \leq 4 \}\)?
+
+    Let \(\boldsymbol\alpha\) denote the anticlockwise triangular path with three straight segments and vertices \((0,0)\), \((1,0)\), \((0,1)\).
+    With \(\mathbf{g}\) the vector-field defined above, calculate the line integral
+    \(\int \mathbf{g} \ d\boldsymbol\alpha\).
+\end{task}
+
+\begin{solution}
+    We see that \(\mathbf{f}(x,y)\) is conservative because, if \(\varphi (x,y) = 2xy e^x \) then
+    \[
+        \nabla \varphi (x,y) = \begin{pmatrix}
+            2y(1 + x )e^x \\ 2 x e^x
+        \end{pmatrix}.
+    \]
+    Comparing the \(y\) derivative of the first component and the \(x\) derivative of the second component we see that the other two vector fields are not conservative on any domain.
+
+    Let's calculate the line integral.
+    It is convenient to divide the path \(\boldsymbol{\alpha}\) into three pieces:
+    \begin{itemize}
+        \item   \(\boldsymbol{\alpha}_1(t) = (t,0)\), \(t\in[0,1]\),
+        \item   \(\boldsymbol{\alpha}_2(t) = (1-t,t)\), \(t\in[0,1]\),
+        \item   \(\boldsymbol{\alpha}_3(t) = (0,1-t)\), \(t\in[0,1]\).
+    \end{itemize}
+    This in means that
+    \(\boldsymbol{\alpha}_1'(t) = \left(\begin{smallmatrix}  1 \\ 0  \end{smallmatrix}\right)\),
+    \(\boldsymbol{\alpha}_2'(t) =  \left(\begin{smallmatrix}  -1 \\ 1  \end{smallmatrix}\right)\),
+    \(\boldsymbol{\alpha}_3'(t) =  \left(\begin{smallmatrix}  0 \\ -1  \end{smallmatrix}\right)\).
+    Since
+    \(\mathbf{g}(x,y) =
+    \left(\begin{smallmatrix}
+        2 y^2 \\ x + 2
+    \end{smallmatrix}\right)\), we calculate that
+    \[
+        \mathbf{g}(\boldsymbol{\alpha}_1(t)) =
+        \left(\begin{smallmatrix}
+            0 \\ t + 2
+        \end{smallmatrix}\right),
+        \quad
+        \mathbf{g}(\boldsymbol{\alpha}_2(t)) =
+        \left(\begin{smallmatrix}
+            2 t^2 \\ 1 - t + 2
+        \end{smallmatrix}\right),
+        \quad
+        \mathbf{g}(\boldsymbol{\alpha}_3(t)) =
+        \left(\begin{smallmatrix}
+            2 {(1-t)}^2 \\ 2
+        \end{smallmatrix}\right).
+    \]
+    And so
+    \[
+        \begin{aligned}
+            \boldsymbol{\alpha}_1'(t) \cdot \mathbf{g}(\boldsymbol{\alpha}_1(t)) & = 0,               \\
+            \boldsymbol{\alpha}_2'(t) \cdot \mathbf{g}(\boldsymbol{\alpha}_2(t)) & = 1 + 2 -t - 2t^2, \\
+            \boldsymbol{\alpha}_3'(t) \cdot \mathbf{g}(\boldsymbol{\alpha}_3(t)) & = -2.
+        \end{aligned}
+    \]
+    Finally
+    \[
+        \begin{aligned}
+            \int \mathbf{g} \ d\boldsymbol\alpha
+             & = \int_0^1 1  -t - 2t^2 \ dt                           \\
+             & = {\left[t - \frac{t^2}{2} - \frac{2 t^3}{3}\right]}_0^1
+            = 1 - \frac{1}{2} - \frac{2}{3}
+            = \frac{3-4}{6} = - \frac{1}{6}.
+        \end{aligned}
+    \]
+\end{solution}
