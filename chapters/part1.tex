@@ -1,8 +1,8 @@
 % !TeX root = ../main.tex
 \chapter{Sequences and series of functions}
 
-\lettrine{A}{nalogously} to sequences of numbers we can consider a sequence of functions \(f_0(x),f_1(x), f_2(x), f_3(x),\) etc.
-Often it is convenient to write such a sequence as \(\{ f_n(x)\}_{n\in \mathbb{N}}\).
+\lettrine{A}{nalogously} to sequences of numbers we can consider a sequence of functions \(f_0(x)\), \(f_1(x)\), \(f_2(x)\), \(f_3(x)\), etc.
+Often it is convenient to write such a sequence as \({\{ f_n(x)\}}_{n\in \mathbb{N}}\).
 For example, the following are sequences of functions.
 \begin{itemize}
   \item \(f_1(x) = x^2, f_2(x)=x^4, f_3(x)=x^6,\ldots \)
@@ -93,7 +93,7 @@ We observe that it converges pointwise to the constant function \(f(x)=0\).
 It is natural to consider a sequence of continuous functions which converge and ask if the function they converge to is continuous.
 What about the sequence of functions \(f_n(x) = \arctan (nx)\)?
 
-\begin{theorem}
+\begin{theorem}%
   \label{thm:continuous-limit}
   Suppose that \(f_n \to f\) uniformly on \(D\) and that the \(f_n\) are continuous on \(D\).
   Then \(f\) is continuous on \(D\).
@@ -120,7 +120,7 @@ What about the sequence of functions \(f_n(x) = \arctan (nx)\)?
 
 Recall that integrals are defined rigorously using the notion of a step functions.
 
-\begin{theorem}
+\begin{theorem}%
   \label{thm:limit-of-integral}
   Suppose that \(f_n\) are continuous functions on \([a,b] \subset \mathbb{R}\), uniformly convergent to \(f\).
   Then
@@ -243,7 +243,7 @@ However, for the present purposes we will assume that \(x \in \bR\) and that the
 \begin{example*}
   Let \(a_n = 2^{-n}\).
   The power series \(\sum_{n} a_n x^n = \sum_{n}\frac{x^n}{2^n}\) is convergent when \(\abs{x}<2\) and divergent  when \(\abs{x} > 2\).
-  To see this we apply the root test and observe that  \(\lim_{n\to\infty}\big(\frac{\abs{x}^n}{2^n} \big)^{\frac{1}{n}}=\frac{\abs{x}}{2}\).
+  To see this we apply the root test and observe that  \(\lim_{n\to\infty}{\big(2^{-n}\abs{x}^n \big)}^{\frac{1}{n}}=\frac{\abs{x}}{2}\).
 \end{example*}
 
 \begin{example*}
@@ -315,7 +315,7 @@ In general exchanging limits with derivatives and integrals is problematic but f
 
 
 
-\begin{theorem}[integrating power series]
+\begin{theorem}[integrating power series]%
   \label{thm:integrate-power}
   Suppose that, for \(x\in (-r,r)\), the series  \(f(x) = \sum_{n=0}^{\infty} a_n x^n\) is convergent.
   Then \(f(x)\) is continuous and \(\int_0^x f(y) \ dy = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}\).
@@ -336,27 +336,22 @@ In general exchanging limits with derivatives and integrals is problematic but f
 \end{proof}
 
 
-
-
-
-\begin{theorem}[differentiating power series]
+\begin{theorem}[differentiating power series]%
   \label{thm:differentiate-power}
   Suppose that, for \(x\in (-r,r)\), the series  \(f(x) = \sum_{n=0}^{\infty} a_n x^n\) is convergent.
-  Then \(f(x)\) is differentiable and \(f'(x) =\sum_{n=1}^{\infty} n a_nx^{n-1}\), convergent for \(x\in (-r,r)\).
+  Then \(f(x)\) is differentiable and \(f'(x) =\sum_{n=1}^{\infty} n a_n x^{n-1}\), convergent for \(x\in (-r,r)\).
 \end{theorem}
-
-
 
 \begin{proof}
   \begin{itemize}
     \item Let \(\abs{x}<R<r\);
     \item
-          \(\sum_{n=1}^{\infty} n a_nx^{n-1}    = \sum_{n=1}^{\infty} a_n R^{n} \cdot \frac{n}{R} \cdot \frac{{x}^{n-1}}{R^{n-1}}\);
-    \item \(\sum_{n=1}^{\infty} a_n R^n\) is absolutely convergent and \(  \frac{n}{R}  \cdot ( \frac{\abs{x}}{R} )^{n-1}\) is bounded;
-    \item \(\sum_{n=1}^{\infty} n a_nx^{n-1} \) is absolutely convergent
+          \(\sum_{n=1}^{\infty} n a_n x^{n-1}    = \sum_{n=1}^{\infty} a_n R^{n} \cdot \frac{n}{R} \cdot \frac{{x}^{n-1}}{R^{n-1}}\);
+    \item \(\sum_{n=1}^{\infty} a_n R^n\) is absolutely convergent and \(  \frac{n}{R}  \cdot {( \frac{\abs{x}}{R} )}^{n-1}\) is bounded;
+    \item \(\sum_{n=1}^{\infty} n a_n x^{n-1} \) is absolutely convergent
           (comparison test);
-    \item \(g(x) =\sum_{n=1}^{\infty} n a_nx^{n-1} \) is a power series;
-    \item \(\int_0^x g(y) \ dy = \sum_{n=1}^{\infty} a_nx^{n} = f(x) - a_0\) (by Theorem~\ref{thm:integrate-power});
+    \item \(g(x) =\sum_{n=1}^{\infty} n a_n x^{n-1} \) is a power series;
+    \item \(\int_0^x g(y) \ dy = \sum_{n=1}^{\infty} a_n x^{n} = f(x) - a_0\) (by Theorem~\ref{thm:integrate-power});
     \item By the fundamental theorem of calculus this concludes the proof. \qedhere
   \end{itemize}
 \end{proof}
@@ -432,7 +427,7 @@ In general exchanging limits with derivatives and integrals is problematic but f
 Let \(a\), \(x\) and the coefficients \(a_n\) be real numbers.
 The series
 \[
-  f(x) = \sum_{n=0}^{\infty} a_n (x-a)^n
+  f(x) = \sum_{n=0}^{\infty} a_n {(x-a)}^n
 \]
 defines a function on the interval \((a-r,a+r)\),
 where  \(r\)  is the \emph{radius of convergence}.
@@ -451,23 +446,25 @@ Only rather special functions possess power-series expansions however the class 
 The conclusion of Theorem~\ref{thm:differentiate-power} can be iterated and leads to the following result.
 
 \begin{theorem}
-  Suppose that \(f(x) = \sum_{n=0}^{\infty} a_n (x-a)^n\) is convergent for \(x\in (a-r,a+r)\).
+  Suppose that \(f(x) = \sum_{n=0}^{\infty} a_n {(x-a)}^n\) is convergent for \(x\in (a-r,a+r)\).
   Then \(f(x)\) has derivatives of every order and, for \(k\in \bN\),
   \[
-    f^{(k)}(x) =\sum_{n=k}^{\infty} n(n-1)\cdots (n-k+1) a_n(x-a)^{n-k}.
+    f^{(k)}(x) =\sum_{n=k}^{\infty} n(n-1)\cdots (n-k+1) a_n{(x-a)}^{n-k}.
   \]
 \end{theorem}
 
 The following result is a crucial piece of information about power series and is one major reason why they are useful.
 
-\begin{theorem}[uniqueness of power series]
+\begin{theorem}[uniqueness of power series]%
   \label{thm:unique-power}
-  If two power series \(\sum_n a_n(x-a)^n\) and  \(\sum_n b_n(x-a)^n\) are equal in a neighbourhood of \(a\) then the two series are equal term-by-term:
-  \(a_n = b_n = \frac{f^{(n)}(a)}{n!}\) for every \(n\in \bN\).
+  Suppose that two power series, \(\sum_n a_n {(x-a)}^n\) and  \(\sum_n b_n {(x-a)}^n\) are equal in a neighbourhood of \(a\).
+  Then the two series are equal term-by-term, i.e.,
+  \(a_n = b_n\) for every \(n\in \bN\).
+  Moreover  \(a_n = \frac{f^{(n)}(a)}{n!}\).
 \end{theorem}
 
 \begin{proof}
-  \(f^{(k)}(x) = k! a_k + \displaystyle\sum_{n=k+1}^{\infty} n\cdots (n-k+1) a_n(x-a)^{n-k}\)
+  \(f^{(k)}(x) = k! a_k + \displaystyle\sum_{n=k+1}^{\infty} n\cdots (n-k+1) a_n {(x-a)}^{n-k}\)
   so \(f^{(k)}(a) = k! a_k \).
 \end{proof}
 
@@ -475,7 +472,7 @@ The following result is a crucial piece of information about power series and is
 Suppose that a function \(f(x)\) is infinitely differentiable on an open interval about \(a\).
 We consider the \emph{Taylor's series generated by \(f\) at \(a\)}:
 \[
-  \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^{n}.
+  \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} {(x-a)}^{n}.
 \]
 Observe how the coefficients in the Taylor's series coincide with the formula obtained in the above results.
 \textbf{Question:}
@@ -491,20 +488,13 @@ If the Taylor's series converges, is it equal to \(f(x)\) on the interval?
 
   \begin{tabular}{ r l  l}
     \(f(x) = \)  & \( \exp(-x^{-2})\)
-                 &
-    \(f(0)=0\)
-    \\
+                 & \(f(0)=0\)                                          \\
     \(f'(x)=\)   & \( 2x^{-3} \exp(-x^{-2})\)
-                 &
-    \(f'(0)=0\)
-    \\
+                 & \(f'(0)=0\)                                         \\
     \(f''(x)=\)  & \( (-6 x^{-4}   + 4x^{-6} )\exp(-x^{-2})  \)
-                 &
-    \(f''(0)=0\)
-    \\
-    \(f'''(x)=\) & \( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\)
-                 &
-    \(f'''(0)=0\)
+                 & \(f''(0)=0\)                                        \\
+    \(f'''(x)=\) & \( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\) % chktex 23
+                 & \(f'''(0)=0\)                                       % chktex 23
   \end{tabular}
 
   \noindent
@@ -535,14 +525,14 @@ and satisfies the initial conditions \(y(0)=1\), \(y'(0)=1\).
 
 \noindent
 \textbf{Solution:}
-We start by assuming that there exists a power series solution \(y(x) = \sum_{n=0}^{\infty}a_nx^n\) convergent for \(x \in (-r,r)\) for some \(r>0\) to be determined later.
+We start by assuming that there exists a power series solution \(y(x) = \sum_{n=0}^{\infty}a_n x^n\) convergent for \(x \in (-r,r)\) for some \(r>0\) to be determined later.
 \begin{enumerate}
   \item
         By Theorem~\ref{thm:differentiate-power}, \(y'(x) = \sum_{n=1}^{\infty}n a_n x^{n-1}\) and \(y''(x) = \sum_{n=2}^{\infty}n(n-1) a_n x^{n-2}\);
   \item And so
         \[
           \begin{aligned}
-            -2 \sum_{n=0}^{\infty}a_nx^n
+            -2 \sum_{n=0}^{\infty}a_n x^n
              & = (1-x^2)y''(x)
             = (1-x^2) \sum_{n=2}^{\infty}n(n-1) a_n x^{n-2}                                        \\
              & = \sum_{n=2}^{\infty}n(n-1) a_n x^{n-2} - \sum_{n=2}^{\infty}n(n-1) a_n x^{n}       \\
@@ -572,14 +562,14 @@ We start by assuming that there exists a power series solution \(y(x) = \sum_{n=
   \item We see that this series is convergent for \(\abs{x}<1\).
 \end{enumerate}
 %
-Consequently we have shown that the function defined above \eqref{eq:sol-diff-eq} is well-defined in the interval \((-1,1)\) and is a solution to the given differential equation.
+Consequently we have shown that the function defined above~\eqref{eq:sol-diff-eq} is well-defined in the interval \((-1,1)\) and is a solution to the given differential equation.
 
 
 
 \subsection*{Suggested further reading}
 
 \begin{itemize}
-  \item Apostol, ``Calculus Volume 1'' -- Chapter 11
+  \item Apostol, ``Calculus Volume 1'', Chapter 11
   \item \href{https://tutorial.math.lamar.edu/Classes/CalcII/SeriesIntro.aspx}{Paul Dawkins' online math notes ``Sequences and Series.''}
 \end{itemize}
 

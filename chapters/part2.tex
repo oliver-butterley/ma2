@@ -21,7 +21,7 @@ We recall that the inner product being zero has a geometric meaning, it means th
 We also recall that the ``length'' of a vector is given by the norm, defined as follows.
 
 \begin{definition}[norm]
-    \(\norm{\xx} =  \sqrt{\xx \cdot \xx} = (\sum_{k=1}^{n} x_k^2 )^{\frac{1}{2}}\).
+    \(\norm{\xx} =  \sqrt{\xx \cdot \xx} = {(\sum_{k=1}^{n} x_k^2 )}^{\frac{1}{2}}\).
 \end{definition}
 
 \noindent
@@ -48,7 +48,7 @@ There are various convenient properties for working with norms and inner product
     \end{center}
 \end{samepage}
 \noindent
-These possibilities all fit into the general pattern of \(f:\mathbb{R}^n \to \mathbb{R}^m\) for $n,m\in \mathbb{N}$ but tradition and use of the function gives us different terminology and symbols.
+These possibilities all fit into the general pattern of \(f:\mathbb{R}^n \to \mathbb{R}^m\) for \(n,m\in \mathbb{N}\) but tradition and use of the function gives us different terminology and symbols.
 Such functions are useful for representing various practical things, for example:
 gravitational force; temperature in a region; wind velocity; fluid flow; electric field; etc.
 
@@ -86,15 +86,17 @@ For example,
 open intervals, open disks, open balls, unions of open intervals, etc., are all open sets.
 
 \begin{lemma*}
-    Let $r>0$, $\mathbf{x} \in \mathbb{R}^n$. The set $B(\mathbf{a},r) \subset \mathbb{R}^n$ is open.
+    Let \(r>0\), \(\mathbf{x} \in \mathbb{R}^n\). The set \(B(\mathbf{a},r) \subset \mathbb{R}^n\) is open.
 \end{lemma*}
 \begin{proof}
-    Let $\mathbf{b} \in B(\mathbf{a},r)$. It suffices to show that $\mathbf{b}$ is an interior point.
-    (1) Let $r_1 = \| \mathbf{b} - \mathbf{a} \| < r$.
-    (2) Let $r_2 = (r - r_1)/2$.
-    (3) We claim that $B(\mathbf{b},r_2) \subset B(\mathbf{a},r)$:
-    In order to see this take any $\mathbf{c} \in B(\mathbf{b},r_2)$ and observe that
-    $$\| \mathbf{c} - \mathbf{a} \| \leq \| \mathbf{c} - \mathbf{b} \|  + \| \mathbf{b} - \mathbf{a} \| \leq r_2 + r_1 = \frac{r + r_1}{2} < r.$$
+    Let \(\mathbf{b} \in B(\mathbf{a},r)\). It suffices to show that \(\mathbf{b}\) is an interior point.
+    (1) Let \(r_1 = \| \mathbf{b} - \mathbf{a} \| < r\).
+    (2) Let \(r_2 = (r - r_1)/2\).
+    (3) We claim that \(B(\mathbf{b},r_2) \subset B(\mathbf{a},r)\):
+    In order to see this take any \(\mathbf{c} \in B(\mathbf{b},r_2)\) and observe that
+    \[
+        \| \mathbf{c} - \mathbf{a} \| \leq \| \mathbf{c} - \mathbf{b} \|  + \| \mathbf{b} - \mathbf{a} \| \leq r_2 + r_1 = \frac{r + r_1}{2} < r.
+    \]
     Observe that the radius of the ball will be small for points close to the boundary.
 \end{proof}
 
@@ -193,9 +195,9 @@ Even functions which look ``nice'' can fail to be continuous as we can see in th
     and \(f(0,0)=0\).
     What is the behaviour of \(f\) when approaching \((0,0)\) along the following lines?
     \begin{center}
-        \begin{tabular}{ c | c }
+        \begin{tabular}{ c | c } % chktex 44
             line         & value                     \\
-            \hline
+            \midrule
             \(\{x=0\}\)  & \(f(0,t) =  0\)           \\
             \(\{y=0\}\)  & \(f(t,0) = 0\)            \\
             \(\{x=y\}\)  & \(f(t,t) = \frac{1}{2}\)  \\
@@ -257,7 +259,7 @@ For example \(\ff(\xx) = \left(f_1(\xx),f_2(\xx)\right)\) in 2D, \(\ff(\xx) = \l
               We have already shown that the continuity of two vector fields implies the continuity of the inner product.
         \item[(\(\Leftarrow \))]
               By definition of the norm
-              \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{2}(f_k(\xx)-f_k(\aa))^2\)
+              \(\norm{\ff(\xx)-\ff(\aa)}^2 = \displaystyle\sum_{k=1}^{2}{(f_k(\xx)-f_k(\aa))}^2\)
               and we know \(\norm{f_k(\xx)-f_k(\aa)} \to 0\) as \(\norm{\xx-\aa}\to 0\). \qedhere
     \end{description}
 \end{proof}
@@ -308,7 +310,7 @@ As described in the following result, the continuity of functions continues to h
 \begin{figure}
     \begin{center}
         \includegraphics[width=0.5\textwidth]{gradient.pdf}
-        \caption{Plot where colour represents the value of \(f(x,y)=x^2 + y^2\). The change in \(f\) depends on direction.}
+        \caption{Plot where colour represents the value of \(f(x,y)=x^2 + y^2\). The change in \(f\) depends on direction.}%
         \label{fig:directional}
     \end{center}
 \end{figure}
@@ -374,7 +376,7 @@ I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,
 
 \begin{remark*}
     Various symbols used for partial derivatives:
-    \(\frac{\partial f}{\partial x_k}(\aa) = D_kf(\aa) = \partial_{k}f(\aa)\).
+    \(\frac{\partial f}{\partial x_k}(\aa) = D_k f(\aa) = \partial_{k}f(\aa)\).
     If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
 \end{remark*}
 
@@ -389,14 +391,15 @@ If \(f:\bR \to \bR\) is differentiable, then we know that, when \(x\) is close t
 More precisely, we know that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(f(x) = f(a) + (x-a) f'(a) + \epsilon(x-a)\) where \(\abs{\epsilon(x-a)} = \littleo{\abs{x-a}}\).
 This way of seeing differentiability is convenient for the higher dimensional definition of differentiability.
 
-\begin{definition*}[differentiable]
+\begin{definition}[differentiable]%
+    \label{def:differentiable}
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that, for \(\xx \in B(\aa,r)\),
     \[
         f(\xx) = f(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
     \]
     where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
-\end{definition*}
+\end{definition}
 
 
 For future convenience we introduce the following notation.
@@ -426,7 +429,7 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 \]
 
 
-\begin{theorem}
+\begin{theorem}%
     \label{thm:differential}
     If \(f\) is differentiable at \(\aa\)
     then \({df}_{\aa}(\vv) = \nabla f(\aa) \cdot \vv \).
@@ -468,7 +471,7 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 
 \begin{theorem}
     Suppose that \(f(x_1,\ldots,x_n)\) is a scalar field.
-    If the partial derivatives \(\partial_1 f(\xx), \ldots, \partial_nf(\xx)\) exist for all \(\xx\in B(\aa,r)\) and are continuous at \(\aa\) then \(f\) is differentiable at \(\aa\).
+    If the partial derivatives \(\partial_1 f(\xx), \ldots, \partial_n f(\xx)\) exist for all \(\xx\in B(\aa,r)\) and are continuous at \(\aa\) then \(f\) is differentiable at \(\aa\).
 \end{theorem}
 
 \begin{proof}
@@ -530,7 +533,7 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{spiral.pdf}
-        \caption{\(\aalpha(t)=(\cos t, \sin t, t)\), \(t\in \bR\).}
+        \caption{\(\aalpha(t)=(\cos t, \sin t, t)\), \(t\in \bR\).}%
         \label{fig:spiral}
     \end{center}
 \end{figure}
@@ -591,7 +594,7 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
 \begin{figure}
     \begin{center}
         \includegraphics[width=0.5\textwidth]{particle-circle.pdf}
-        \caption{\(\xx(t)\) is the position of a particle. Shading represents temperature \(f\).}
+        \caption{\(\xx(t)\) is the position of a particle. Shading represents temperature \(f\).}%
         \label{fig:particle-circle}
     \end{center}
 \end{figure}
@@ -643,31 +646,31 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{sphere.pdf}
-            \caption{Sphere}
+            \caption{Sphere}%
             \label{fig:sphere}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{two-hyperboloid.pdf}
-            \caption{1-sheet hyperboloid}
+            \caption{1-sheet hyperboloid}%
             \label{fig:two-hyperboloid}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{infinite-cone.pdf}
-            \caption{Infinite cone}
+            \caption{Infinite cone}%
             \label{fig:infinite-cone}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{one-hyperboloid.pdf}
-            \caption{2-sheet hyperboloid}
+            \caption{2-sheet hyperboloid}%
             \label{fig:one-hyperboloid}
         \end{subfigure}
-        \caption{Various surfaces as level sets.}
+        \caption{Various surfaces as level sets.}%
         \label{fig:level-sets}
     \end{center}
 \end{figure}
@@ -774,7 +777,7 @@ This is like a Taylor expansion in higher dimensions.
 
 Here we see that in higher dimensions we have a matrix form of the chain rule.
 
-\begin{theorem}
+\begin{theorem}%
     \label{thm:jacobian-chain}
     Let \(S\subset \bR^l\), \(T\subset \bR^m\) be open.
     Let \(\ff: S \to T\) and \(\gg:T \to \bR^n\) and define
@@ -809,7 +812,7 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
     \[
         (r,\theta) \mapsto (r\cos \theta, r\sin \theta)
     \]
-    as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\).
+    as the function  \(\ff(r,\theta) = (x(r,\theta),y(r,\theta))\) where \(\ff:(0,\infty)\times [0,2\pi) \to \bR^2\). % chktex 9
     We calculate the Jacobian matrix of this transformation
     \[
         D\ff(r,\theta) =
@@ -870,7 +873,7 @@ Just like with derivatives, we can take higher order partial derivatives.
 We first consider the question of when
 \[
     \frac{\partial^2 f}{\partial y \partial x}(x,y)
-    \overset{\text{\large\color{blue} ?}}{=}
+    \overset{\text{\large\color{blue}?}}{=}
     \frac{\partial^2 f}{\partial x \partial y}(x,y).
 \]
 
@@ -883,7 +886,7 @@ We first consider the question of when
     \(\frac{\partial^2 f}{\partial x \partial y}(0,0) = 1\).
 \end{example*}
 
-\begin{theorem}
+\begin{theorem}%
     \label{thm:equal-double-partial}
     Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x} \) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
     Further assume that \(\frac{\partial^2 f}{\partial y \partial x} \) is continuous on \(S\).
@@ -896,9 +899,9 @@ We first consider the question of when
 In many cases we can choose to write a given curve/function either in \emph{implicit} or \emph{explicit} form.
 
 \begin{center}
-    \begin{tabular}{c | c}
+    \begin{tabular}{c | c} % chktex 44
         \textbf{Implicit}         & \textbf{Explicit}                              \\
-        \hline
+        \midrule
         \(x^2-y=0\)               & \(y(x) = x^2\)                                 \\
         \(x^2+y^2=1\)             & \(y(x) = \pm \sqrt{1-x^2}\), \(\abs{x}\leq 1\) \\
         \(x^2-y^2-1=0\)           & \(y(x) = \pm \sqrt{x^2-1}\), \(\abs{x}\geq 1\) \\
@@ -936,6 +939,6 @@ Consequently
 \subsection*{Suggested further reading}
 
 \begin{itemize}
-  \item Apostol, ``Calculus Volume 2'' -- Chapter 8
+    \item Apostol, ``Calculus Volume 2'', Chapter 8
 \end{itemize}
 

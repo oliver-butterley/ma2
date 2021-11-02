@@ -29,10 +29,14 @@
 %%%%%%% General packages
 \RequirePackage[UKenglish]{babel} % UK specific
 \RequirePackage{amsmath,amssymb,amsthm} % Maths stuff
-\RequirePackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black]{hyperref} % Clickable links
+\RequirePackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black,breaklinks=true]{hyperref} % Clickable links
 \RequirePackage[type={CC},modifier={by-sa},version={4.0}]{doclicense} % CC info
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
 \RequirePackage{caption, subcaption} % Allow sub figures
+\RequirePackage{booktabs} % Allows \midrule, etc
+\RequirePackage{enumitem} 
+\setlist{nosep}
+\setlist[itemize]{label=\(\triangleright\)}
 
 %%%%%% Figures
 \addtokomafont{captionlabel}{\scshape}
@@ -51,7 +55,6 @@
 %%%%%%% Include graphics
 \RequirePackage{graphicx}
 \graphicspath{{graphics/}{graphics/build/}}
-\setkeys{Gin}{width=0.75\textwidth} % Default width
 
 %%%%%% Insert git sha
 \RequirePackage{xstring,catchfile}

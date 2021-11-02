@@ -1,4 +1,4 @@
-# Mathematical analysis 2 lecture notes
+# Mathematical analysis 2 course notes
 
 This text accompanies the course "Mathematical Analysis 2' taught at the University of Rome Tor Vergata in the department of engineering for the academic year 2021/22.
 
@@ -6,7 +6,7 @@ A typeset version is available at http://www.mat.uniroma2.it/butterley/MA2/notes
 
 ![latexmk workflow](https://github.com/oliver-butterley/ma2/actions/workflows/latex.yml/badge.svg)
 
-The aim of the lecture notes is to concisely describe the essential details related to the material of the course.
+The aim of the course notes is to concisely describe the essential details related to the material of the course.
 They are aptly named as "notes" and are most likely not the comprehensive source of all relevant information.
 We live during an age where we have instant access to a huge volume of resources and so here we will make connections to whatever is useful, whenever we can. 
 

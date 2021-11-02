@@ -58,14 +58,14 @@
   We would like to believe that
   \[
     \int_{0}^{\infty} \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy \ dx
-    \overset{\text{\large\color{blue} ?}}{=} \int_{0}^{1} \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx \ dy.
+    \overset{\text{\large\color{blue}?}}{=} \int_{0}^{1} \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx \ dy.
   \]
   Since
-  \( \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy = \left[ ye^{-xy} \right]_{y=0}^{1} = e^{-x}\),
+  \( \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy = {\left[ye^{-xy}\right]}_{y=0}^{1} = e^{-x}\),
   the left-hand side is
-  \( \int_{0}^{\infty} e^{-x} \ dx = \left[ -e^{-x} \right]_{0}^{\infty} = 1 \).
+  \( \int_{0}^{\infty} e^{-x} \ dx = {\left[ -e^{-x} \right]}_{0}^{\infty} = 1 \).
   However, since
-  \( \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx = \left[ xe^{-xy} \right]_{x=0}^{\infty} = 0\),
+  \( \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx = {\left[ xe^{-xy} \right]}_{x=0}^{\infty} = 0\),
   the right-hand side is \(\int_{0}^{1} 0 \ dx = 0\).
   So how do we know when to trust the interchange of intervals?
 \end{example*}
@@ -75,7 +75,7 @@
   We could easily believe that
   \[
     \lim_{x\to 0}\lim_{y\to 0} \frac{x^2}{x^2 + y^2}
-    \overset{\text{\large\color{blue} ?}}{=}
+    \overset{\text{\large\color{blue}?}}{=}
     \lim_{y\to 0}\lim_{x\to 0} \frac{x^2}{x^2 + y^2}.
   \]
   However \(\lim_{y\to 0} \frac{x^2}{x^2 + y^2} = \frac{x^2}{x^2 + 0} = 1 \) and so the left-hand side is \(1\)
@@ -90,7 +90,7 @@ We need to be rigorous in our logic otherwise, as we have seen in these examples
 \begin{figure}[htb]
   \centering
   \includegraphics{reuleaux.pdf}
-  \caption{The Reuleaux triangle is a curve of constant width.}
+  \caption{The Reuleaux triangle is a curve of constant width.}%
   \label{fig:reuleaux}
 \end{figure}
 %
@@ -133,11 +133,11 @@ Much of what we do in this course builds on ideas established in Mathematical An
 In particular many of the ideas are extended to the higher dimensional setting.
 
 \begin{center}
-  \begin{tabular}{r | l}
+  \begin{tabular}{r | l} % chktex 44
     \textbf{Mathematical Analysis 1}
      &
     \textbf{Mathematical Analysis 2}  \\
-    \hline
+    \midrule
     Sequences \& series of numbers
      &
     Sequences \& series  of functions \\
@@ -149,7 +149,7 @@ In particular many of the ideas are extended to the higher dimensional setting.
      &
     \(\sum_{j=0}^{\infty} f_j(x)\)
     \\
-    \hline
+    \midrule
     (Functions) \(f:\bR \to \bR\)
      &
     \(f:\bR^n \to \bR\) (Scalar fields)
@@ -160,7 +160,7 @@ In particular many of the ideas are extended to the higher dimensional setting.
      &
     \(\boldsymbol{\alpha}:\bR \to \bR^n\) (Paths)
     \\
-    \hline
+    \midrule
     (Derivative) \( f'(x) = \frac{df}{dx}(x)\)
      &
     \( \frac{\partial f}{\partial x_j}(x_1,\ldots,x_n)\) (Partial derivatives)
@@ -177,7 +177,7 @@ In particular many of the ideas are extended to the higher dimensional setting.
      &
     \(Df\) (Jacobian matrix)
     \\
-    \hline
+    \midrule
     (Extrema) \(\sup_{x\in \bR} f(x)\)
      &
     \(\sup_{x\in \bR^n} f(x)\) (Extrema)
@@ -185,7 +185,7 @@ In particular many of the ideas are extended to the higher dimensional setting.
      &
     Lagrange multiplier method
     \\
-    \hline
+    \midrule
     Integral \(\int_{a}^{b} f(x) \ dx\)
      &
     Multiple integral
@@ -202,6 +202,6 @@ In particular many of the ideas are extended to the higher dimensional setting.
 \subsection*{Suggested further reading}
 
 \begin{itemize}
-  \item "Analysis 1" by Terence Tao.
+  \item ``Analysis 1'' by Terence Tao.
         (Particularly \S 1.2 ``Why Analysis?'' and Appendix A ``The basics of mathematical logic'').
 \end{itemize}
