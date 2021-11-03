@@ -61,17 +61,17 @@ We will write that ``\({\{f_n(x)\}}_{n}\) is a sequence of functions on \(D\subs
   If, for each \(\epsilon>0\), there exists \(N\) such that for every \(n\geq N\) and every \(x\in D\), \(|f_n(x) - f(x)| < \epsilon\) then we say that \(f_n\) is \emph{uniformly convergent} to \(f\).
 \end{definition}
 
-\noindent
-\textbf{Problem:}
-Show that the sequence \(f_n(x) = x^n\) converges uniformly on \((0,\frac{1}{2})\).
+\begin{example*}
+  Show that \(f_n(x) = x^n\) converges uniformly on \((0,\frac{1}{2})\).
+\end{example*}
 
-\noindent
-\textbf{Solution:}
-We observe that it converges pointwise to the constant function \(f(x)=0\).
-\begin{itemize}
-  \item We also observe that \(|f_n(x) - f(x) | \leq \frac{1}{2^n}\) for all \(x\in (0,\frac{1}{2})\).
-  \item This means that, for every \(\epsilon>0\), if we can choose \(N=-\log_{2}\epsilon\) then \(|f_n(x) - f(x) | \leq \epsilon\) whenever \(n\geq N\).
-\end{itemize}
+\begin{solution}
+  We observe that it converges pointwise to the constant function \(f(x)=0\).
+  \begin{itemize}
+    \item We also observe that \(|f_n(x) - f(x) | \leq \frac{1}{2^n}\) for all \(x\in (0,\frac{1}{2})\).
+    \item This means that, for every \(\epsilon>0\), if we can choose \(N=-\log_{2}\epsilon\) then \(|f_n(x) - f(x) | \leq \epsilon\) whenever \(n\geq N\).
+  \end{itemize}
+\end{solution}
 
 
 \begin{definition}
@@ -265,16 +265,15 @@ A key notion is determining exactly the domain on which a power series converges
 \end{theorem}
 
 \begin{proof}
-  \begin{itemize}
-    \item \(\sum_n a_n x_0^n\) is convergent \(\implies\) for all \(n\), \(\abs{a_n x_0^n} \leq M\) for some \(M>0\);
-    \item \(\abs{a_n x^n} = \abs{a_n x_0^n} \cdot \abs{\frac{x}{x_0}}^n \leq M \frac{R^n}{\abs{x_0}^n}\);
-    \item \(\sum_n M \frac{R^n}{\abs{x_0}^n}\) is a geometric sum and so convergent;
-    \item M-test \(\implies\) series is uniformly and absolutely convergent when \(\abs{x}\leq R\).  \qedhere
-  \end{itemize}
+  Since \(\sum_n a_n x_0^n\) is convergent there exists  \(M>0\) such that, for all \(n\), \(\abs{a_n x_0^n} \leq M\).
+  Observe that
+  \[
+    \abs{a_n x^n} = \abs{a_n x_0^n} \ \abs{\tfrac{x}{x_0}}^n \leq M \tfrac{R^n}{\abs{x_0}^n}.
+  \]
+  The series
+  \(\sum_n M \frac{R^n}{\abs{x_0}^n}\) is a geometric sum and so convergent.
+  Consequently, by the M-test, the series is uniformly and absolutely convergent when \(\abs{x}\leq R\).
 \end{proof}
-
-
-
 
 \begin{theorem}[radius of convergence]
   Suppose exists  \(x_1,x_2 \neq 0\) such that \(\sum_n a_n x_1^n\) is convergent and \(\sum_n a_n x_2^n\) is divergent.
@@ -282,14 +281,11 @@ A key notion is determining exactly the domain on which a power series converges
 \end{theorem}
 
 \begin{proof}
-  \begin{itemize}
-    \item Let \(A\) be the set of real numbers for which \(\sum_n a_n x^n\) is convergent;
-    \item Let \(r\) be the least upper bound of \(A\);
-    \item Series  \(\sum_n a_n x^n\) is convergent whenever \(\abs{x}<r\);
-    \item If \(\abs{x}>r\) and \(\sum_n a_n x^n\) is convergent then this contradicts the definition of \(A\) and so  \(\sum_n a_n x^n\) is divergent for \(\abs{x}>r\). \qedhere
-  \end{itemize}
+  Let \(A\) be the set of real numbers for which \(\sum_n a_n x^n\) is convergent and
+  let \(r\) be the least upper bound of \(A\).
+  The series  \(\sum_n a_n x^n\) is convergent whenever \(\abs{x}<r\).
+  If \(\abs{x}>r\) and \(\sum_n a_n x^n\) is convergent then this contradicts the definition of \(A\) and so  \(\sum_n a_n x^n\) is divergent for \(\abs{x}>r\).
 \end{proof}
-
 
 \begin{definition}
   This \(r\) is called the \emph{radius of convergence} for the power series \(\sum_n a_n z^n\).
@@ -445,7 +441,8 @@ Only rather special functions possess power-series expansions however the class 
 
 The conclusion of Theorem~\ref{thm:differentiate-power} can be iterated and leads to the following result.
 
-\begin{theorem}
+\begin{theorem}%
+  \label{thm:k-diff-series}
   Suppose that \(f(x) = \sum_{n=0}^{\infty} a_n {(x-a)}^n\) is convergent for \(x\in (a-r,a+r)\).
   Then \(f(x)\) has derivatives of every order and, for \(k\in \bN\),
   \[
@@ -457,17 +454,24 @@ The following result is a crucial piece of information about power series and is
 
 \begin{theorem}[uniqueness of power series]%
   \label{thm:unique-power}
-  Suppose that two power series, \(\sum_n a_n {(x-a)}^n\) and  \(\sum_n b_n {(x-a)}^n\) are equal in a neighbourhood of \(a\).
+  Suppose that two power series, are equal in a neighbourhood of \(a\)
+  in the sense that
+  \[
+    \sum_n a_n {(x-a)}^n = \sum_n b_n {(x-a)}^n.
+  \]
   Then the two series are equal term-by-term, i.e.,
   \(a_n = b_n\) for every \(n\in \bN\).
-  Moreover  \(a_n = \frac{f^{(n)}(a)}{n!}\).
+  Moreover, if \(f(x) = \sum_n a_n {(x-a)}^n\) then, for all \(n\in \bN\),
+  \[
+    a_n = \frac{f^{(n)}(a)}{n!}.
+  \]
 \end{theorem}
 
 \begin{proof}
-  \(f^{(k)}(x) = k! a_k + \displaystyle\sum_{n=k+1}^{\infty} n\cdots (n-k+1) a_n {(x-a)}^{n-k}\)
-  so \(f^{(k)}(a) = k! a_k \).
+  From Theorem~\ref{thm:k-diff-series} we know that
+  \(f^{(k)}(x) = k! a_k + \displaystyle\sum_{n=k+1}^{\infty} n\cdots (n-k+1) a_n {(x-a)}^{n-k}\).
+  This means that \(f^{(k)}(a) = k! a_k \) because all the terms in the sum vanish.
 \end{proof}
-
 
 Suppose that a function \(f(x)\) is infinitely differentiable on an open interval about \(a\).
 We consider the \emph{Taylor's series generated by \(f\) at \(a\)}:

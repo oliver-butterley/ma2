@@ -749,19 +749,17 @@ The relevant differential for higher-dimensional functions is the \href{https://
     \]
 \end{definition}
 
-\begin{remark*}
-    The \emph{Jacobian matrix} is defined analogously in any dimension.
-    I.e., if \(\ff : \bR^n \to \bR^m\) the the Jacobian at \(\aa\) is
-    \[
-        D\ff(\aa) =
-        \begin{pmatrix}
-            \partial_1 f_1 (\aa) & \partial_2 f_1 (\aa) & \cdots & \partial_n f_1 (\aa) \\
-            \partial_1 f_2 (\aa) & \partial_2 f_2 (\aa) & \cdots & \partial_n f_2 (\aa) \\
-            \vdots               & \vdots               &        & \vdots               \\
-            \partial_1 f_m (\aa) & \partial_2 f_m (\aa) & \cdots & \partial_n f_m (\aa)
-        \end{pmatrix}
-    \]
-\end{remark*}
+The \emph{Jacobian matrix} is defined analogously in any dimension.
+I.e., if \(\ff : \bR^n \to \bR^m\) the the Jacobian at \(\aa\) is
+\[
+    D\ff(\aa) =
+    \begin{pmatrix}
+        \partial_1 f_1 (\aa) & \partial_2 f_1 (\aa) & \cdots & \partial_n f_1 (\aa) \\
+        \partial_1 f_2 (\aa) & \partial_2 f_2 (\aa) & \cdots & \partial_n f_2 (\aa) \\
+        \vdots               & \vdots               &        & \vdots               \\
+        \partial_1 f_m (\aa) & \partial_2 f_m (\aa) & \cdots & \partial_n f_m (\aa)
+    \end{pmatrix}
+\]
 
 
 If we choose a basis then any linear transformation \(\bR^n \to \bR^m\) can be written as a \(m \times n\) matrix.
@@ -782,7 +780,7 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
     Let \(S\subset \bR^l\), \(T\subset \bR^m\) be open.
     Let \(\ff: S \to T\) and \(\gg:T \to \bR^n\) and define
     \[
-        \hh := \gg \circ \ff : S \to \bR^n.
+        \hh = \gg \circ \ff : S \to \bR^n.
     \]
     Let  \(\aa\in S\). Suppose that \(\ff\) is differentiable at \(\aa\) and \(\gg\) is differentiable at \(\ff(\aa)\).
     Then \(\hh\) is differentiable at \(\aa\) and
@@ -806,7 +804,7 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
 
 
 
-\begin{example}[polar coordinates]
+\begin{example*}[polar coordinates]
     Here we consider \emph{polar coordinates} and calculate the Jacobian of this transformation.
     We can write the change of coordinates
     \[
@@ -855,20 +853,14 @@ Here we see that in higher dimensions we have a matrix form of the chain rule.
              & = - r \frac{\partial g}{\partial x}(r\cos \theta, r\sin \theta) \sin \theta +  r \frac{\partial g}{\partial y}(r\cos \theta, r\sin \theta)\cos \theta.
         \end{aligned}
     \]
-\end{example}
-
-
-
-
+\end{example*}
 
 
 \section{Implicit functions \& partial derivatives}
 
 Just like with derivatives, we can take higher order partial derivatives.
-\begin{remark*}
-    For convenience when we want to write \(\frac{\partial}{\partial y}\frac{\partial}{\partial x}f(x,y) \), i.e., differentiate first with respect to \(x\) and then with respect to \(y\), we write instead \(\frac{\partial^2 f}{\partial y \partial x}(x,y) \).
-    The analogous notation is used for higher derivatives and any other choice of coordinates.
-\end{remark*}
+For convenience when we want to write \(\frac{\partial}{\partial y}\frac{\partial}{\partial x}f(x,y) \), i.e., differentiate first with respect to \(x\) and then with respect to \(y\), we write instead \(\frac{\partial^2 f}{\partial y \partial x}(x,y) \).
+The analogous notation is used for higher derivatives and any other choice of coordinates.
 
 We first consider the question of when
 \[

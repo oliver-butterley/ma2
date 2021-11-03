@@ -318,7 +318,7 @@ The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
         \vdots
          & \vdots
          & \ddots
-         & \vdots                                                 \\[1.5ex]
+         & \vdots                                                \\[1.5ex]
         \frac{\partial^2 f}{\partial x_n\,\partial x_1} (\aa)
          & \frac{\partial^2 f}{\partial x_n\,\partial x_2} (\aa)
          & \cdots
@@ -418,7 +418,7 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\xx) \approx
     in the sense that the error is \(\littleo{\norm{(\xx-\aa)}^2}\).
 \end{theorem}
 
-\begin{proof}[Proof of second order Taylor formula]
+\begin{proof}
     Let \(\vv = \xx-\aa\) and let \(g(u) = f(\aa + u \vv)\).
     The Taylor expansion of \(g\) tells us that
     \(g(1) = g(0) + g'(0) + \frac{1}{2} g''(c)\) for some \(c\in (0,1)\).
@@ -585,8 +585,7 @@ The graphical representation suggests to us that at the ``touching point'' the g
 In other words, \(\nabla f = \lambda \nabla g\) for some \(\lambda \in \bR\).
 The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagrange_multiplier}{method of Lagrange multipliers}.
 
-
-\begin{theorem}[Lagrange multipliers]
+\begin{theorem}[Lagrange multipliers (2D)]
     Suppose that a differentiable scalar field \(f(x,y)\) has a relative minimum or maximum when it is subject to the constraint
     \[
         g(x,y) = 0.
@@ -594,6 +593,30 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
     Then there exists a scalar \(\lambda\) such that, at the extremum point,
     \[
         \nabla f = \lambda \nabla g.
+    \]
+\end{theorem}
+
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics{lagrange.pdf}
+        \caption{Searching extrema of \(f\) under constraint \(g=0\)}%
+        \label{fig:lagrange}
+    \end{center}
+\end{figure}
+
+In three dimensions a similar result holds.
+
+\begin{theorem}[Lagrange multipliers (3D)]
+    Suppose that a differentiable scalar field \(f(x,y,z)\) has a relative minimum or maximum when it is subject to the constraints
+    \[
+        g_{1}(x,y,z) = 0,
+        \quad
+        g_{2}(x,y,z) = 0
+    \]
+    and the \(\nabla g_k\) are linearly independent.
+    Then there exist scalars \(\lambda_1\), \(\lambda_2\) such that, at the extremum point,
+    \[
+        \nabla f = \lambda_{1} \nabla g_{1} + \lambda_{2} \nabla g_{2}.
     \]
 \end{theorem}
 
@@ -611,14 +634,6 @@ In higher dimensions and possibly with additional constraints we have the follow
         \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m.
     \]
 \end{theorem*}
-
-\begin{figure}[htb]
-    \begin{center}
-        \includegraphics{lagrange.pdf}
-        \caption{Searching extrema of \(f\) under constraint \(g=0\)}%
-        \label{fig:lagrange}
-    \end{center}
-\end{figure}
 
 The Lagrange multiplier method is often stated and far less often proved.
 Since the proof is rather involved we will follow this tradition here.
@@ -668,7 +683,7 @@ To proceed it is convenient to isolate the following result of linear algebra.
 \end{proof}
 
 The above lemma also holds in any dimension with any number of vectors with the analogous proof.
-Apply thing lemma to the vectors \(\nabla f(\aa)\), \(\nabla g_1(\aa)\) and \(\nabla g_2(\aa)\) recovers exactly the Lagrange multiplier method in this setting.
+Applying this lemma to the vectors \(\nabla f(\aa)\), \(\nabla g_1(\aa)\) and \(\nabla g_2(\aa)\) recovers exactly the Lagrange multiplier method in this setting.
 
 
 \subsection*{Suggested further reading}
