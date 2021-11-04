@@ -26,6 +26,11 @@
 \newcommand\gobble[1]{}
 \DeclareTOCStyleEntries[entrynumberformat=\gobble,numwidth=0pt]{default}{chapter,section}
 
+%%%%%%% Style
+\RequirePackage{ebgaramond} % Classic font
+\RequirePackage[tracking=true,babel=true]{microtype}  % Better typography
+\RequirePackage{lettrine}   % Add drop caps to chapter openings
+
 %%%%%%% General packages
 \RequirePackage[UKenglish]{babel} % UK specific
 \RequirePackage{amsmath,amssymb,amsthm} % Maths stuff
@@ -43,11 +48,6 @@
 \addtokomafont{caption}{\small}
 \setcapindent{0em}
 \captionsetup{width=.8\textwidth}
-
-%%%%%%% Style
-\RequirePackage{ebgaramond} % Classic font
-\RequirePackage[tracking=true,babel=true]{microtype}  % Better typography
-\RequirePackage{lettrine}   % Add drop caps to chapter openings
 
 %%%%%%% Math notation and theorems
 \RequirePackage{thismath}
