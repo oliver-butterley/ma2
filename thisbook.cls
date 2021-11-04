@@ -43,6 +43,15 @@
 \setlist{nosep}
 \setlist[itemize]{label=\(\triangleright\)}
 
+% Adjust space around equations
+\RequirePackage{etoolbox}
+\apptocmd\normalsize{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 3pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt
+ \belowdisplayshortskip=3pt plus 5pt minus 1pt
+}{}{}
+
 %%%%%% Figures
 \addtokomafont{captionlabel}{\scshape}
 \addtokomafont{caption}{\small}
