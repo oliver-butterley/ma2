@@ -217,10 +217,13 @@ This quantity is called the binomial coefficient.
 \section{Extrema \& other applications}
 
 \begin{task}
-    Let \(\alpha>0\) and define \(f(x,y,z) = {(x^2 + y^2 + z^2)}^{-\alpha}\) for \((x,y,z)\in \bR^3 \setminus \{(0,0,0)\}\).
+    Let \(\alpha>0\) and let, for \((x,y,z)\in \bR^3 \setminus \{(0,0,0)\}\),
+    \[
+        f(x,y,z) = {(x^2 + y^2 + z^2)}^{-\alpha}.
+    \]
     Find \(\alpha>0\) such that
     \[
-        \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}  +\frac{\partial^2 f}{\partial z^2}  =0.
+        \tfrac{\partial^2 f}{\partial x^2} + \tfrac{\partial^2 f}{\partial y^2}  +\tfrac{\partial^2 f}{\partial z^2}  =0.
     \]
 \end{task}
 
@@ -241,8 +244,8 @@ This quantity is called the binomial coefficient.
         \begin{aligned}
              & 4 \alpha(\alpha+1)( x^2 + y^2 + z^2){(x^2 + y^2 + z^2)}^{-\alpha-2} \\
              & \quad -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                     \\
-             & =  4 \alpha(\alpha+1){(x^2 + y^2 + z^2)}^{-\alpha-1}               % \\
-              -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                     \\
+             & =  4 \alpha(\alpha+1){(x^2 + y^2 + z^2)}^{-\alpha-1}                % \\
+            -6 \alpha {(x^2 + y^2 + z^2)}^{-\alpha-1}                              \\
              & = (4 \alpha(\alpha+1) -6 \alpha ) {(x^2 + y^2 + z^2)}^{-\alpha-1}.
         \end{aligned}
     \]
@@ -252,7 +255,7 @@ This quantity is called the binomial coefficient.
 
 
 \begin{task}
-    Find the extrema of \(f(x,y) = xy\) subject to the constraint \(g(x,y) = x+y-1 =0\).
+    Find the extrema of \(f(x,y) = xy\) under the constraint \(g(x,y) = x+y-1 =0\).
 \end{task}
 
 \begin{solution}
@@ -266,7 +269,7 @@ This quantity is called the binomial coefficient.
                 1\\ 1
             \end{smallmatrix}\right).
     \]
-    According to the Lagrange multiplier method there is \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at the extremum point \((x,y)\).
+    According to the Lagrange multiplier method there exists \(\lambda\in \bR\) such that \(\nabla f(x,y) = \lambda \nabla g(x,y)\) at any extremum point \((x,y)\).
     To proceed we must solve the system of equations (3 equations and 3 unknowns),
     \[
         \left(\begin{smallmatrix}
@@ -460,15 +463,15 @@ This quantity is called the binomial coefficient.
             h_{11}(x,y,z)
              & = e^{-{(x-1)}^2} (y^4 - 8yz + 2z^2) (-2 + 4{(x-1)}^2), \\
             h_{12}(x,y,z)
-             & = -2(x-1) e^{-{(x-1)}^2} (4y^3 - 8z),                \\
+             & = -2(x-1) e^{-{(x-1)}^2} (4y^3 - 8z),                  \\
             h_{13}(x,y,z)
-             & = -2(x-1) e^{-{(x-1)}^2} (-8y+4z),                   \\
+             & = -2(x-1) e^{-{(x-1)}^2} (-8y+4z),                     \\
             h_{22}(x,y,z)
-             & = e^{-{(x-1)}^2}(12y^2),                             \\
+             & = e^{-{(x-1)}^2}(12y^2),                               \\
             h_{23}(x,y,z)
-             & = e^{-{(x-1)}^2}(-8),                                \\
+             & = e^{-{(x-1)}^2}(-8),                                  \\
             h_{33}(x,y,z)
-             & = e^{-{(x-1)}^2} (4).                                \\
+             & = e^{-{(x-1)}^2} (4).                                  \\
         \end{aligned}
     \]
     Evaluating the Hessian at two of the stationary points we obtain that (that \(x=1\) means that several terms disappear and the others are easy to calculate),

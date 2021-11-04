@@ -3,7 +3,7 @@
 
 %%%%%%% Base class and page setup
 \LoadClass{scrbook}   
-\KOMAoptions{paper=a5,fontsize=12pt,headings=openright,DIV=16,chapterprefix=on,titlepage=firstiscover}  
+\KOMAoptions{paper=a5,fontsize=12pt,headings=openright,DIV=17,chapterprefix=on,titlepage=firstiscover}  
 \recalctypearea
 
 %%%%%% Section headings 
