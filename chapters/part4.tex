@@ -547,17 +547,32 @@ The above gives us a few tools to check if a given vector field is conservative.
 
 \subsubsection*{Application to exact differential equations}
 
-A  differential equation of the form \(p(x,y) + q(x,y) \frac{d y}{d x}=0\) is called an \emph{exact differential equation}.
+Let \(S\subset \bR^2\) be simply-connected and open.
+The differential equation, considered on \(S\),
+\[
+    p(x,y) + q(x,y) y'(x) = 0
+\]
+is called \emph{exact} if there exists \(\varphi : S \to \bR\) such that
+\[
+    p = \frac{\partial \varphi}{\partial x},
+    \quad
+    q = \frac{\partial \varphi}{\partial y}.
+\]
+Exact differential equations are closely related to conservative vector fields.
+% https://en.wikipedia.org/wiki/Exact_differential_equation
 
 \begin{theorem}%
     \label{thm:exact-diff-eq}
-    If \(\varphi(x,y)\) satisfies
-    \(\nabla \varphi(x,y) =   \left(\begin{smallmatrix}
-            p(x,y) \\ q(x,y)
-        \end{smallmatrix}\right)\)
-    then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) \frac{d y}{d x}\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
-
-    Conversely, if  \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) \frac{d y}{d x}\).
+    Let \(S\subset \bR^2\) be simply-connected and open.
+    \begin{itemize}
+        \item     Suppose that \(\varphi: S \to \bR\) satisfies
+              \(\nabla \varphi =   \left(\begin{smallmatrix}
+                  p\\ q
+              \end{smallmatrix}\right).\)
+              Then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) y'(x)\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
+        \item
+              Conversely, if \(\varphi: S \to \bR\) is such that \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) y'(x)\).
+    \end{itemize}
 \end{theorem}
 
 \begin{proof}
