@@ -10,12 +10,12 @@ To start let's recall a random selection of curves we have already seen:
 
 \begin{center}
     \begin{tabular}{l l}
-        Circle           & \(x^2+y^2 = 4\)                               \\
-        Semi-circle      & \(x^2+y^2 = 4\), \(x\geq 0\)                  \\
-        Ellipse          & \({(\frac{x}{2})}^2 + {(\frac{y}{3})}^2 = 4\) \\
-        Line             & \(y=5x+2\)                                    \\
-        Line (in 3D)     & \(x+2y+3z=0\), \(x=4y\)                       \\
-        Parabola (in 3D) & \(y=x^2\), \(z=x\)
+        Circle           & \(x^2+y^2 = 4\)                           \\
+        Semi-circle      & \(x^2+y^2 = 4\), \, \(x\geq 0\)           \\
+        Ellipse          & \(\frac{1}{4} x^2 + \frac{1}{9} y^2 = 4\) \\
+        Line             & \(y=5x+2\)                                \\
+        Line (in 3D)     & \(x+2y+3z=0\), \, \(x=4y\)                \\
+        Parabola (in 3D) & \(y=x^2\), \, \(z=x\)
     \end{tabular}
 \end{center}
 
@@ -28,13 +28,13 @@ As part of the definition we force a structure which really allows us to work wi
 
 \section{Curves, paths \& line integrals}
 Let \(\aalpha : [a,b] \to \bR^n\) be continuous.
-In components we write \(\aalpha(t) = (\alpha_1(t),\ldots,\alpha_n(t))\).
-We say that \(\aalpha(t)\) is \emph{continuously differentiable} if each component \(\alpha_k(t)\) is differentiable on \([a,b]\) and \(\alpha_k'(t)\) is continuous (Definition~\ref{def:differentiable}).
-We say that \(\aalpha(t)\) is \emph{piecewise continuously differentiable} if \([a,b] = [a,c_1]\cup[c_1,c_2] \cup \cdots \cup [c_l,b]\) and \(\aalpha(t)\) is \emph{continuously differentiable} on each of these intervals.
+For convenience, in components we write \(\aalpha(t) = (\alpha_1(t),\ldots,\alpha_n(t))\).
+We say that \(\aalpha(t)\) is \emph{differentiable} if each component \(\alpha_k(t)\) is differentiable on \([a,b]\) and \(\alpha_k'(t)\) is continuous (Definition~\ref{def:differentiable}).
+We say that \(\aalpha(t)\) is \emph{piecewise differentiable} if \([a,b] = [a,c_1]\cup[c_1,c_2] \cup \cdots \cup [c_l,b]\) and \(\aalpha(t)\) is \emph{differentiable} on each of these intervals.
 
 \begin{definition}%
     \label{def:path}
-    If \(\aalpha: [a,b] \to \bR^n\) is piecewise continuously differentiable then we call it a \emph{path}.
+    If \(\aalpha: [a,b] \to \bR^n\) is piecewise differentiable then we call it a \emph{path}.
 \end{definition}
 
 Note that different functions can trace out the \emph{same} curve in different ways.
@@ -54,9 +54,9 @@ A few examples of paths are as follows.
     \end{tabular}
 \end{center}
 \noindent
-Observe how some of these parts represent the same circle, perhaps traversed in a different direction.
+Observe how some of these paths represent the same curve, perhaps traversed in a different direction.
 
-Let \(\aalpha(t)\) be a (piecewise continuously differentiable) path on \([a,b]\) and
+Let \(\aalpha(t)\) be a (piecewise differentiable) path on \([a,b]\) and
 let \(\ff: \bR^n\to\bR^n\) be a continuous vector field.
 Recall that we consider \(\aalpha'(t)\) and \(\ff(\xx)\) as \(n\)-vectors.
 I.e., in the case \(n=2\), then
@@ -71,18 +71,17 @@ and \(\ff(\xx) = \left(
     \end{smallmatrix}
 \right)\).
 
-\begin{definition}[line integral]%
-    \label{def:line-integral}
+\begin{definition}[line integral of a vector field]%
+    \label{def:line-integral-vector}
     The \emph{line integral} of the vector field \(\ff\) along the path \(\aalpha\) is defined as
     \[
         \int \ff \cdot d\aalpha = \int_{a}^{b} \ff(\aalpha(t)) \cdot \aalpha'(t) \ dt.
     \]
 \end{definition}
 
-
 Sometimes the same integral is written as \(\int_C \ff \cdot d\aalpha  \) to emphasize that the integral is along the curve \(C\).
 Alternatively the integral is sometimes written as \(\int f_1 \ d\alpha_1 + \cdots + f_n \ d\alpha_n\) or \(\int f_1 \ dx_1 + \cdots + f_n \ dx_n\).
-This latter notation highlights the vector nature of the quantity.
+Each of these different notations are in common usage in different contexts but the underlying quantity is always the same.
 
 \begin{example*}
     Consider the vector field \(\ff(x,y) = \left(\begin{smallmatrix}
@@ -149,7 +148,7 @@ These are just two possibilities among many possible choices.
 For a given curve, to what extent does the line integral depend on the choice of parametrization?
 
 \begin{definition}[equivalent paths]
-    We say that two paths \(\aalpha(t)\) and \(\bbeta(t)\) are \emph{equivalent} if there exists a continuously differentiable function \(u : [c,d] \to [a,b] \) such that \(\aalpha(u(t)) = \bbeta(t)\).
+    We say that two paths \(\aalpha(t)\) and \(\bbeta(t)\) are \emph{equivalent} if there exists a differentiable function \(u : [c,d] \to [a,b] \) such that \(\aalpha(u(t)) = \bbeta(t)\).
 
     Furthermore, we say that \(\aalpha(t)\) and \(\bbeta(t)\) are
     \begin{itemize}
@@ -181,11 +180,11 @@ With this terminology we can precisely describe the dependence of the integral o
     \[
         \displaystyle \int \ff \cdot  d\bbeta = \displaystyle \int_c^d \ff(\bbeta(t)) \cdot \bbeta'(t) \ dt =  \displaystyle \int_c^d \ff(\aalpha(u(t))) \cdot \aalpha'(u(t)) \ u'(t) \ dt.
     \]
-    Changing variables, with a minus sign if path is opposite direction, completes the proof.
+    Changing variables, adding a minus sign if path is opposite direction because we need to swap the limits of integration, completes the proof.
 \end{proof}
 
 
-\section{Gradients, work, length}
+\subsection*{Gradients \& work}
 
 Let \(h(x,y)\) be a scalar field in \(\bR^2\)
 and recall that the gradient \(\nabla h(x,y)\) is a vector field.
@@ -239,26 +238,11 @@ and so the work done is
 \]
 In this case we see, as expected, the work done on the particle moving in the force field is equal to the change in kinetic energy.
 
-We also use the line integral to define the \emph{length of a curve} in a meaningful way.
-Let \(\aalpha(t)\), \(t\in [a,b]\) be a path.
-\begin{definition}[length of a curve]
-    The length of the piece of the curve between \(\aalpha(a)\) and \(\aalpha(t)\) is defined as
-    \[
-        s(t) = \int_a^t \norm{\aalpha'(u)} \ du.
-    \]
-\end{definition}
-
-Observe that \(s'(t) = \norm{\aalpha'(t)} \) and also that the length of the curve, as we would expect, doesn't depend on the choice of parametrization of that curve.
-We also consider the following weighted version of the above definition.
-If the path represents a wire and the wire has density \(\varphi(\aalpha(t))\) at the point \(\aalpha(t)\) then the mass of the wire is defined as
-\[
-    M = \displaystyle\int \varphi(\aalpha(t)) \ s'(t) \ dt.
-\]
-
-\section{The second fundamental theorem of calculus}
+\section{The second fundamental theorem}
 
 Recall that, if \(\varphi:\bR \to \bR\) is differentiable then
 \(\int_a^b \varphi'(t) \ dt = \varphi(b) - \varphi(a)\).
+This is called the \href{https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus#Second_part}{second fundamental theorem of calculus} and is one of the ways in which we see that differentiation and integration are opposites.
 The analog for line integrals is the following.
 
 \begin{theorem}[2\textsuperscript{nd} fundamental theorem in \(\bR^n\)]
@@ -272,7 +256,7 @@ The analog for line integrals is the following.
 \end{theorem}
 
 \begin{proof}
-    Suppose that \(\aalpha(t)\) is continuously differentiable.
+    Suppose that \(\aalpha(t)\) is differentiable.
     By the chain rule \(\frac{d}{dt} \varphi(\aalpha(t)) = \nabla \varphi(\aalpha(t))\cdot \aalpha'(t)\).
     Consequently
     \[
@@ -284,7 +268,7 @@ The analog for line integrals is the following.
     \(\int_0^1 \tfrac{d}{dt} \varphi(\aalpha(t)) \ dt = \varphi(\aalpha(b)) - \varphi(\aalpha(a))\).
 \end{proof}
 
-\begin{example}[potential energy]
+\begin{example*}[potential energy]
     Our earth has mass \(M\) with centre at \((0,0,0)\).
     Suppose that there is a small particle close to earth which has mass \(m\).
     The force field of gravitation and potential energy are, respectively,
@@ -294,10 +278,10 @@ The analog for line integrals is the following.
         \varphi(\xx) = \frac{GmM}{\norm{\xx}}.
     \]
     We can calculate \(\nabla \varphi(\xx)\) and see that it is equal to \(\ff(\xx)\).
-\end{example}
+\end{example*}
 
 
-\section{The first fundamental theorem of calculus}
+\section{The first fundamental theorem}
 
 First we need to consider a basic topological property of sets.
 In particular we want to avoid the possibility of the set being several disconnected pieces, in other words we want to guarantee that we can get from one point to another in the set in a way without every leaving the set (see Figure~\ref{fig:connected}).
@@ -321,14 +305,16 @@ Sometimes this property is called ``path connected'' to distinguish between diff
     \end{center}
 \end{figure}
 
-Recall that, if \(f:\bR \to \bR\) is continuous and \(\varphi(x) := \int_a^x f(t) \ dt\) then \(\varphi'(x) = f(x)\).
+Recall that, if \(f:\bR \to \bR\) is continuous and we let \(\varphi(x) = \int_a^x f(t) \ dt\) then \(\varphi'(x) = f(x)\).
+This is called the \href{https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus#First_part}{first fundamental theorem of calculus} and is the other way in which we see that differentiation and integration are opposites.
+Again we have an analog for the line integral but here it becomes a little more subtle since there are many different paths along which we can integrate between any two points.
 
-\begin{theorem}[1\textsuperscript{st} fundamental theorem in \(\bR^n\)]
+\begin{theorem*}[1\textsuperscript{st} fundamental theorem in \(\bR^n\)]
     Let \(\ff\) be a continuous vector field on a connected set \(S \subset \bR^n\).
     Suppose that, for \(\xx,\aa\in S\), the line integral \(\int \ff \cdot d\aalpha\) is equal for every path \(\aalpha\) such that \(\aalpha(a)=\aa\), \(\aalpha(b)=\xx\).
     Fix \(\aa\in S\) and define \(\varphi(\xx)= \int \ff \cdot d\alpha\).
     Then \(\varphi\) is continuously differentiable and \(\nabla \varphi = \ff\).
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}[Sketch of proof]
 
@@ -375,11 +361,12 @@ Observe that that the potential is not unique,
 
 
 \begin{theorem}[conservative vector fields]
-    The following are equivalent for a vector field \(\ff\):
+    Let \(S \subset \bR^n\) and and consider the vector field \(\ff : S \to \bR^n\).
+    The following are equivalent:
     \begin{enumerate}[label=\textnormal{(\roman*)}]
-        \item There exists \(\varphi\) such that \(\ff = \nabla \varphi\),
+        \item \(\ff\) is conservative, i.e., \(\ff = \nabla \varphi\) on \(S\) for some \(\varphi\),
         \item \(\int \ff \cdot d\aalpha\) does not depend on \(\aalpha\), as long as \(\aalpha(a)=\aa\), \(\aalpha(b)=\bb\),
-        \item \(\int \ff \cdot d\aalpha = 0\) for any closed path \(\aalpha\).
+        \item \(\int \ff \cdot d\aalpha = 0\) for any closed path \(\aalpha\) contained in \(S\).
     \end{enumerate}
 \end{theorem}
 
@@ -392,10 +379,25 @@ Observe that that the potential is not unique,
     It remains to prove that (iii) implies (ii): The two paths between \(\aa\) and \(\bb\) can be combined (with a minus sign) to give a closed path.
 \end{proof}
 
-\begin{theorem}%
+\begin{theorem}[mixed derivatives in 2D]%
+    \label{thm:mixed-partials-2D}
+    Suppose that \(S \subset \bR^2\) and that \(\ff:S \to \bR^2\) is a differentiable vector field and write \(\ff = \left(\begin{smallmatrix}
+            f_1 \\ f_2
+        \end{smallmatrix}\right)\).
+
+    If \(\ff\) is conservative then, on \(S\),
+    \[
+        \frac{\partial f_1}{\partial y} = \frac{\partial f_2}{\partial x}.
+    \]
+\end{theorem}
+%
+The above result is a special case of the following general statement which holds in any dimension.
+%
+\begin{theorem}[mixed derivatives]%
     \label{thm:mixed-partials}
-    Suppose that \(\ff\) is a continuously differential vector field.
-    If \(\ff = \nabla \varphi\) for some scalar field \(\varphi\) then, for each \(l,k\),
+    Suppose that \(\ff\) is a differentiable vector field\footnote{As before  \(f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} on \(S\subset \bR^n\).
+
+    If \(\ff\) is conservative then, for each \(l,k\),
     \[
         \frac{\partial f_l}{\partial x_k} = \frac{\partial f_k}{\partial x_l}.
     \]
@@ -412,7 +414,7 @@ Observe that that the potential is not unique,
 \end{proof}
 
 
-\begin{example}
+\begin{example*}
     Consider the vector field
     \[
         \ff(x,y) = \left(\begin{smallmatrix}
@@ -432,7 +434,7 @@ Observe that that the potential is not unique,
     \[
         \int \ff \cdot d\aalpha = \int_{0}^{2\pi} ( \sin^2 t + \cos^2 t )\ dt = 2\pi.
     \]
-\end{example}
+\end{example*}
 Observe that in the above example \(S\) is somehow not a ``nice'' set because of the ``hole'' in the middle.
 Moreover, observe that the line integral is the same for any circle, independent of the radius.
 
@@ -440,7 +442,7 @@ Theorem~\ref{thm:mixed-partials} isn't really useful in showing that a vector fi
 On the other hand, if a pair of mixed derivatives is not equal then \(\ff\) is \emph{not} conservative and so it is useful for proving the negative.
 Later in this chapter we will return to this topic.
 
-\section{Potential functions \& conservative vector fields}
+\section{Potentials \& conservative vector fields}
 
 We now turn our attention to the following question:
 Suppose we are given a vector field \(\ff\) and we know that \(\ff = \nabla \varphi\) for some \(\varphi\).
@@ -522,7 +524,7 @@ This concept is somewhat suggested by the methods of constructing potentials whi
 This extra property permits the following sufficient condition for a vector field to be conservative.
 
 \begin{theorem}
-    Let\footnote{As usual  \(  f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} \(\ff\) be a continuously differentiable vector field on a convex region \(S\subset \bR^n\).
+    Let\footnote{As usual  \(  f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} \(\ff\) be a differentiable vector field on a convex region \(S\subset \bR^n\).
     Then \(\ff\) is conservative if and only if
     \[
         \tfrac{\partial f_l}{\partial x_k} = \tfrac{\partial f_k}{\partial x_l},
@@ -542,10 +544,23 @@ This extra property permits the following sufficient condition for a vector fiel
     By the chain rule applied to \(g(t) = t \nabla f_k(t\xx) \) this is equal to \(f_k(\xx)\) as required.
 \end{proof}
 
-The above gives us a few tools to check if a given vector field is conservative.
+The above gives us a useful tool to check if a given vector field is conservative. 
+Using the idea of ``gluing together'' several convex regions this result can be extended to a more general setting.
+For this we require the notion of simply-connected sets as follows.
 
+\begin{definition}[simply-connected set]%
+    \label{def:simply-connected}
+    A connected set \(S\subset \bR^n\) is said to be \emph{simply-connected} if any closed path \(\aalpha\), contained within \(S\), can be contracted to a point.
+    (This is in the sense that there exists a continuous map \(F:D^{2}\to S\), where \(D^2\subset \bR^2\) denotes the unit disk, such that \(F\) restricted  to the unit circle is \(\aalpha\).)
+\end{definition}
 
-\subsubsection*{Application to exact differential equations}
+\begin{figure}
+    \centering
+    \includegraphics{not-simply-connected.pdf}
+    \caption{A set which fails to be simply-connected because paths like the one shown cannot be contracted to a point.}
+\end{figure}
+
+\subsection*{Application to exact differential equations}
 
 Let \(S\subset \bR^2\) be simply-connected and open.
 The differential equation, considered on \(S\),
@@ -558,9 +573,8 @@ is called \emph{exact} if there exists \(\varphi : S \to \bR\) such that
     \quad
     q = \frac{\partial \varphi}{\partial y}.
 \]
-Exact differential equations are closely related to conservative vector fields.
-% https://en.wikipedia.org/wiki/Exact_differential_equation
-
+\href{https://en.wikipedia.org/wiki/Exact_differential_equation}{Exact differential equations} are closely related to conservative vector fields.
+% 
 \begin{theorem}%
     \label{thm:exact-diff-eq}
     Let \(S\subset \bR^2\) be simply-connected and open.
@@ -568,7 +582,7 @@ Exact differential equations are closely related to conservative vector fields.
         \item     Suppose that \(\varphi: S \to \bR\) satisfies
               \(\nabla \varphi =   \left(\begin{smallmatrix}
                   p\\ q
-              \end{smallmatrix}\right).\)
+              \end{smallmatrix}\right)\).
               Then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) y'(x)\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
         \item
               Conversely, if \(\varphi: S \to \bR\) is such that \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) y'(x)\).
@@ -576,17 +590,41 @@ Exact differential equations are closely related to conservative vector fields.
 \end{theorem}
 
 \begin{proof}
-    If \(y(x)\) satisfies  \(\varphi(x,y(x))=C\), then by the chain rule and \(\nabla \varphi =   \left(\begin{smallmatrix}
+    If \(y(x)\) satisfies  \(\varphi(x,y(x))=C\), then by the chain rule and the fact that \(\nabla \varphi =   \left(\begin{smallmatrix}
         p \\ q
-    \end{smallmatrix}\right)\), \(p(x,y(x)) + y'(x) q(x,y(x)) = 0\).
-
+    \end{smallmatrix}\right)\), 
+    we see that \(p(x,y(x)) + y'(x) q(x,y(x)) = 0\).
     Conversely, if \(y(x)\) is a solution, \(\varphi(x,y(x))\) must be constant in \(x\).
 \end{proof}
 
-\begin{example}
+\begin{example*}
     Solve \(y^2 + 2xyy' = 0\).
     Let \(p(x,y) = y^2\), \(q(x,y) = 2xy\) and find \(\varphi(x,y) = xy^2\) so \(\nabla \varphi = \left(\begin{smallmatrix}
             p\\ q
         \end{smallmatrix}\right)\).
     Solutions satisfy \(\varphi(x,y(x))= x {y(x)}^2 =C\), i.e., \(y(x) = \sqrt{\frac{C}{x}}\).
-\end{example}
+\end{example*}
+
+\section{Line integrals of scalar fields}
+
+Up until now this chapter has been devoted to line integrals of vector fields but there is also the obvious question of defining the line integral for scalar fields.
+This we do now.
+Such a line integral allows us also to define the \emph{length of a curve} in a meaningful way.
+Let \(\aalpha(t)\), \(t\in [a,b]\) be a path in \(\bR^n\) and let \(f:\bR^n \to \bR\).
+
+\begin{definition}[line integral of a scalar field]%
+    \label{def:line-integral-scalar}
+    The \emph{line integral} of the scalar field \(f\) along the path \(\aalpha\) is defined as
+    \[
+        \int f \ d\alpha = \int_a^b f(\alpha(t)) \ \norm{\aalpha'(t)} \ dt.
+    \]
+\end{definition}
+
+This integral shares the same basic properties of the line integral of a vector field and the proofs are essentially the same.
+Namely it is linear and also respects how a path can be decomposed or joined with other paths which changing the value of the integral.
+Moreover, the value of the integral along a given path is independent of the choice of parametrization of the curve.
+In this case, even if the curve is parametrized in the opposite direction then the integral takes the same value.
+Consequently it makes sense to define the length of the curve as the line integral of the unit scalar field, i.e., the length of a curve parametrized by the path \(\aalpha\) is \( \int_a^b \norm{\aalpha'(t)} \ dt\).
+
+As a simple application, consider that the path represents a wire and the wire has density \(f(\aalpha(t))\) at the point \(\aalpha(t)\).
+Then the mass of the wire is equal to \(\int  f \ d\alpha\).
