@@ -1,6 +1,9 @@
 % !TeX root = ../main.tex
 \chapter{Multiple integrals}
 
+\lettrine{T}{he} extension to higher dimension of differentiation was established first.
+We then defined line integrals which are, in a sense, one dimensional integrals which exist in a high dimensional setting.
+We now take the next step and define higher dimensional integrals.
 
 \section{Definition of the integral}
 
@@ -8,9 +11,9 @@ First we need to find a definition of integrability and the integral.
 Then we will proceed to study the properties of this higher dimensional integral.
 Recall that, in the one-dimensional case integration was defined using the following steps:
 \begin{enumerate}
-    \item define the integral for step functions,
-    \item define integral for ``integrable functions'',
-    \item show that continuous functions are integrable.
+    \item Define the integral for step functions,
+    \item Define integral for ``integrable functions'',
+    \item Show that continuous functions are integrable.
 \end{enumerate}
 For higher dimensions we follow the same logic.
 We will then show that we can evaluate higher dimensional integrals by repeated one-dimensional integration.
@@ -58,23 +61,16 @@ Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_
     \]
 \end{definition}
 
-\begin{itemize}
-    \item The value of the integral is independent of the partition, as long as the function is constant on each sub-rectangle,
-    \item If \(Q_{jk} = (x_{j},x_{j+1})\times (y_{k},y_{k+1})\) then
-          \[
-              \begin{aligned}
-                  \iint_{Q_{jk}} f \ dxdy
-                   & = c_{jk} (x_{j+1}-x_{j})(y_{k+1}-y_{k})                                       \\
-                   & = \int_{x_j}^{x_{j+1}} \left[\int_{y_k}^{y_{k+1}}f(x,y) \ dy\right] \ dx      \\
-                   & =  \int_{y_k}^{y_{k+1}} \left[ \int_{x_j}^{x_{j+1}} f(x,y) \ dx \right] \ dy.
-              \end{aligned}
-          \]
-\end{itemize}
-
-
-
-
-{Properties of the integral of step functions}
+Observe that the value of the integral is independent of the partition, as long as the function is constant on each sub-rectangle.
+Also note that, if \(f\) is constant on the partition element \(Q_{jk} = (x_{j},x_{j+1})\times (y_{k},y_{k+1})\), then
+\[
+    \begin{aligned}
+        \iint_{Q_{jk}} f \ dxdy
+         & = c_{jk} (x_{j+1}-x_{j})(y_{k+1}-y_{k})                                       \\
+         & = \int_{x_j}^{x_{j+1}} \left[\int_{y_k}^{y_{k+1}}f(x,y) \ dy\right] \ dx      \\
+         & =  \int_{y_k}^{y_{k+1}} \left[ \int_{x_j}^{x_{j+1}} f(x,y) \ dx \right] \ dy.
+    \end{aligned}
+\]
 
 \begin{theorem}[basic properties of the integral]
     Let \(f,g\) be step functions.
@@ -86,32 +82,15 @@ Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_
 \end{theorem}
 
 \begin{proof}
-    Straightforward from the definition.
+    All properties follow from the definition by basic calculations.
 \end{proof}
 
 
 
-
-% 
-%     {Upper and lower integrals}
-
-%     \begin{definition}[integrability]
-%         Let \(R\) be a rectangle and let \(f: R \to \bR\) be a bounded function.
-%         \begin{itemize}
-%             \item The lower integral \(\underline{I}\) is defined to be the supremum of \(\iint_{R} \underline{g} \ dxdy\) where \(\underline{g}\) is any step function such that \(\underline{g} \leq f\).
-%             \item The upper integral \(\overline{I}\) is defined to be the infimum of \(\iint_{R} \overline{g} \ dxdy\) where \(\underline{g}\) is any step function such that \(f \leq \overline{g}\).
-%             \item \(f\) is said to be \emph{integrable} if \(\underline{I}=\overline{I}\). In this case we say that  
-%             \[\iint_{R} f \ dxdy = \underline{I}=\overline{I}.\]
-%         \end{itemize}
-%     \end{definition}
-
-% 
-
 \subsection{Definition of integrable}
 
 
-
-{Upper / lower integrals and integrability}
+In order to define integrability we take advantage of ``upper'' and ``lower'' integrals which ``sandwich'' the function we really want to integrate.
 
 \begin{definition}[integrability]
     Let \(R\) be a rectangle and let \(f: R \to \bR\) be a bounded function.
@@ -129,29 +108,33 @@ Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_
 
 \subsection{Evaluation of an integral}
 
-\begin{theorem}[evaluating by repeated integration]
+Now we have a definition we can rigorously work with integrals but it is essential to also have a way to practically evaluate any given integral.
+
+\begin{theorem*}[evaluating by repeated integration]
     Let \(f\) be a bounded integrable function on  \(R = [a_1,b_1] \times [a_2,b_2]\).
-    Suppose that, for every \(y\in [a_2,b_2]\), the integral \(\int_{a_1}^{b_1} f(x,y) \ dx =: A(y)\) exists.
-    Then \(\int_{a_2}^{b_2} A(y) \ dy\) exists and
+    Suppose that, for every \(y\in [a_2,b_2]\), the integral \( A(y) = \int_{a_1}^{b_1} f(x,y) \ dx \) exists.
+
+    Then \(\int_{a_2}^{b_2} A(y) \ dy\) exists and,
     \[
         \iint_{R} f \ dxdy = \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} f(x,y) \ dx  \right] \ dy.
     \]
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-    \begin{enumerate}
-        \item Choose step functions \(g,h\) such that \(g\leq f \leq h\),
-        \item By assumption \(\int_{a_1}^{b_1} g(x,y) \ dx \leq A(y) \leq \int_{a_1}^{b_1} h(x,y) \ dx,  \)
-        \item Observe that \(\int_{a_1}^{b_1} g(x,y) \ dx \) and \(\int_{a_1}^{b_1} h(x,y) \ dx\) are step functions (in \(y\)) and so \(A(y)\) is integrable and, moreover,
-              \[ \hspace{-2em}
-                  \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} g(x,y) \ dx  \right] \ dy
-                  \leq \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} f(x,y) \ dx  \right] \ dy
-                  \leq \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} h(x,y) \ dx  \right] \ dy.
-              \]
-    \end{enumerate}
+    We start by choosing step functions \(g,h\) such that \(g\leq f \leq h\).
+    By assumption \(\int_{a_1}^{b_1} g(x,y) \ dx \leq A(y) \leq \int_{a_1}^{b_1} h(x,y) \ dx\).
+    We then observe that \(\int_{a_1}^{b_1} g(x,y) \ dx \) and \(\int_{a_1}^{b_1} h(x,y) \ dx\) are step functions (in \(y\)) and so \(A(y)\) is integrable.
+    Moreover,
+    \[
+        \begin{aligned}
+            \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} g(x,y) \ dx  \right] \ dy
+             & \leq \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} f(x,y) \ dx  \right] \ dy  \\
+             & \leq \int_{a_2}^{b_2} \left[ \int_{a_1}^{b_1} h(x,y) \ dx  \right] \ dy.
+        \end{aligned}
+    \]
 \end{proof}
 
-{Integrability of continuous functions}
+The conditions of the above theorem aren't immediately easy to check and so it is convenient to now investigate the integrability of continuous functions.
 
 \begin{theorem}[integral of continuous functions]
     Suppose that \(f\) is a continuous function defined on the rectangle \(R\).
@@ -163,61 +146,38 @@ Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_
     \]
 \end{theorem}
 \begin{proof}
-    \begin{enumerate}
-        \item Continuity implies boundedness and so upper and lower integrals exist,
-        \item Let \(\epsilon>0\). Exists \(\delta>0\) such that \(\abs{f(\xx)-f(\yy)}\leq \epsilon\) whenever \(\norm{\xx-\yy}\leq \delta\),
-        \item Partition such  \(\norm{\xx-\yy}\leq \delta\) whenever \(\xx,\yy\) are in the same sub-rectangle \(Q_{jk}\),
-        \item Step functions \(g,h\) s.t. \(g(\xx)=\inf_{Q{jk}} f\),   \(h(\xx)=\sup_{Q{jk}} f\) when \(\xx\in Q_{jk}\),
-        \item \(\abs{\inf_{Q{jk}} f - \sup_{Q{jk}} f }\leq \epsilon\) and \(\epsilon>0\) can be made arbitrarily small.
-    \end{enumerate}
+    Continuity implies boundedness and so upper and lower integrals exist.
+    Let \(\epsilon>0\). Exists \(\delta>0\) such that \(\abs{f(\xx)-f(\yy)}\leq \epsilon\) whenever \(\norm{\xx-\yy}\leq \delta\).
+    We can choose a partition such  \(\norm{\xx-\yy}\leq \delta\) whenever \(\xx,\yy\) are in the same sub-rectangle \(Q_{jk}\).
+    We then define the step functions \(g,h\) s.t. \(g(\xx)=\inf_{Q{jk}} f\),   \(h(\xx)=\sup_{Q{jk}} f\) when \(\xx\in Q_{jk}\).
+    To finish the proof we observe that \(\abs{\inf_{Q{jk}} f - \sup_{Q{jk}} f }\leq \epsilon\) and \(\epsilon>0\) can be made arbitrarily small.
 \end{proof}
 
-
-{Volume of a solid}
-Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the 3D set
+This integral naturally allows us to calculate the volume of a solid.
+Let \(f(x,y)\leq z \leq g(x,y)\) be defined on the rectangle \(R \subset \bR^2\) and consider the 3D set defined as
 \[
-    V := \left\{(x,y,z): (x,y)\in R, 0 \leq z \leq f(x,y)\right\}.
+    V = \left\{(x,y,z): (x,y)\in R, f(x,y)\leq z \leq g(x,y) \right\}.
 \]
-
+The volume of the set \(V\) is equal to
+          \[
+              \operatorname{Vol}(V) = \iint_{R} \left(g(x,y) - f(x,y)\right)  \ dxdy.
+          \]
 
 \begin{figure}
     \centering
     \includegraphics{volume.pdf}
-    \caption{Set enclosed by \(xy\)-plane \& \(f(x,y)\).}
+    \caption{Set enclosed by \(xy\)-plane and \(f(x,y)\).}
 \end{figure}
 
-\begin{itemize}
-    \item  The volume of the set is equal to
-          \[
-              \operatorname{Vol}(V) = \iint_{R} f(x,y) \ dxdy.
-          \]
-    \item Also possible: \(f(x,y)\leq z \leq g(x,y)\).
-\end{itemize}
 
-
-
-{Functions with discontinuities}
+Up until now we have considered step function and continuous functions.
+Clearly we can permit some discontinuities and we introduce the following concept to be able to control the functions with discontinuities sufficiently to guarantee that the integrals are well-defined.
 
 \begin{definition}[content zero set]
     A bounded subset \(A\subset \bR^2\) is said to have content zero if, for every \(\epsilon>0\), there exists a finite set of rectangles whose union includes \(A\) and the sum of the areas of the rectangles is not greater than \(\epsilon\).
 \end{definition}
 
-
-
-
-
-
-
-\begin{example}
-    \begin{itemize}
-        \item Finite set of points,
-        \item Bounded segment,
-        \item Continuous path.
-    \end{itemize}
-\end{example}
-
-
-
+Examples of content zero sets include:  Finite set of points; Bounded segment; Continuous path.
 
 \begin{figure}
     \centering
@@ -225,30 +185,17 @@ Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the
     \caption{The graph of a continuous function has content zero.}
 \end{figure}
 
-
-
-{Integrating functions with discontinuities}
-
 \begin{theorem}
     Let \(f\) be a bounded function on \(R\) and suppose that the set of discontinuities \(A\subset R\) had content zero. Then the double integral \(\iint_{R}f(x,y) \ dxdy\) exists.
 \end{theorem}
 \begin{proof}
-    \begin{enumerate}
-        \item Take a cover of \(A\) by rectangles with total area not greater than \(\delta>0\),
-        \item Let \(P\) be a partition of \(R\) which is finer than the cover of \(A\),
-        \item We may assume that \(\abs{\inf_{Q{jk}} f - \sup_{Q{jk}} f }\leq \epsilon\)  on each sub-rectangle of the partition which doesn't contain a discontinuity of \(f\),
-        \item The contribution to the integral of bounding step functions from the cover of \(A\) is bounded by \(\delta \sup \abs{f}\).
-    \end{enumerate}
+ Take a cover of \(A\) by rectangles with total area not greater than \(\delta>0\).
+  Let \(P\) be a partition of \(R\) which is finer than the cover of \(A\).
+     We may assume that \(\abs{\inf_{Q{jk}} f - \sup_{Q{jk}} f }\leq \epsilon\)  on each sub-rectangle of the partition which doesn't contain a discontinuity of \(f\).
+     The contribution to the integral of bounding step functions from the cover of \(A\) is bounded by \(\delta \sup \abs{f}\).
 \end{proof}
 
-
-
-
-
-
-
-{Integrals over regions bounded by continuous functions}
-
+\subsection{Integrals over regions bounded by continuous functions}
 
 \begin{definition}[integral on general regions]
     Suppose \(S\subset R\) and \(f\) is a bounded function on \(S\).
@@ -265,14 +212,7 @@ Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the
     \]
 \end{definition}
 
-
-
-
 {Regions bounded by continuous functions}
-
-
-
-
 
 \begin{definition}[type 1]
     \(S \subset \bR^2\) is \emph{type 1} if there are continuous functions \(\varphi_1\), \(\varphi_2\) such that
@@ -295,8 +235,6 @@ Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the
     \caption{A region of type 1.}
 \end{figure}
 
-%    {Integrals over regions bounded by continuous functions}
-
 \begin{theorem}
     Let \(\varphi\) be a continuous function on \([a,b]\).
     Then the graph
@@ -312,10 +250,7 @@ Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the
 \end{proof}
 
 
-
-
 {Integrals over regions bounded by continuous functions}
-
 
 \begin{theorem}
     Let \(S = \left\{(x,y): x \in [a,b], \varphi_1(x) \leq y \leq \varphi_2(x)\right\}\) be a region of type 1 and let \(f\) be a bounded continuous function of \(S\).
@@ -334,15 +269,13 @@ Let \(f(x,y)\) be positive on the rectangle \(R \subset \bR^2\) and consider the
     \end{enumerate}
 \end{proof}
 
-<>{Remark:} A similar result holds for type 2 regions.
-
+A similar result holds for type 2 regions.
 
 \subsection{Applications of multiple integrals}
 
-
 % {Area and Volume}
 
-<>{Area of \(S\)}<>
+Area of \(S\).
 Let    \(S \subset \bR^2\)  be a \emph{type 1} region, i.e.,   \(\varphi_1\), \(\varphi_2\) are continuous functions,
 \[
     S := \left\{(x,y): x \in [a,b], \varphi_1(x) \leq y \leq \varphi_2(x)\right\}.
@@ -353,7 +286,7 @@ Integrating:
 \]
 
 
-<>{Volume of \(V\)}<>
+Volume of \(V\):
 Let \(f(x,y) \geq g(x,y)\) be continuous functions on \(S\) and
 \[
     V := \left\{ (x,y,z) :  x \in [a,b], \varphi_1(x) \leq y \leq \varphi_2(x), f(x,y) \leq z \leq g(x,y)  \right\}.
