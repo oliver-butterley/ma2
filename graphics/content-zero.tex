@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw[step=.2cm,gray,very thin] (-0.4,-0.4) grid (5.4,3.4);
+    \draw [blue, domain=0:pi] plot (\x, {2+cos(\x r)*exp(\x/exp(2*pi))});
+\end{tikzpicture}
+
+\end{document}
