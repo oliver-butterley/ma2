@@ -3,7 +3,12 @@
 
 \lettrine{T}{he} extension to higher dimension of differentiation was established first.
 We then defined line integrals which are, in a sense, one dimensional integrals which exist in a high dimensional setting.
-We now take the next step and define higher dimensional integrals.
+We now take the next step and define higher dimensional integrals in the sense of how to integrate a scalar field defined on a subset of \(\bR^n\).
+The first step will be to rigorously define which scalar fields are integrable and to define the integral.
+Then we need to fine reasonable ways to evaluate such integrals. 
+Among other applications we will use this multiple integrals to calculate volumes and moment of inertia.
+In Green's Theorem we find a connection between multiple integrals and line integrals.
+We also develop the important topic of change of variables which is often invaluable for actually working with a given problem.
 
 \section{Definition of the integral}
 
@@ -18,40 +23,40 @@ Recall that, in the one-dimensional case integration was defined using the follo
 For higher dimensions we follow the same logic.
 We will then show that we can evaluate higher dimensional integrals by repeated one-dimensional integration.
 
-\subsection{Partitions \& step functions}
-
-\begin{figure}
-    \centering
-    \includegraphics{partition.pdf}
-    \caption{A partition of a rectangle \(R\).}
-\end{figure}
-
+\subsection*{Partitions \& step functions}
+%
 \begin{definition*}[partition]
     Let \(R = [a_1,b_1] \times [a_2,b_2]\) be a rectangle.
     Suppose that \(P_1 = \{x_0,\ldots,x_m\}\) and \(P_2 = \{y_0,\ldots,y_n\}\) such that
     \(a_1 = x_0 < x_2 < \cdots < x_m = b_1\) and \(a_2 = y_0 < y_2 < \cdots < y_n = b_2\).
     \(P= P_1 \times P_2\) is said to be a partition of \(R\).
 \end{definition*}
-
+%
 Observe that a partition divides \(R\) into \(nm\) sub-rectangles.
 If \(P \subseteq Q\) then we say that \(Q\) is a finer partition than \(P\).
 Partitions are constructed in higher dimension, for \(\bR^n\), in an analogous way.
 Before defining integration for general functions it is convenient to make the definition for a special class of functions called step functions.
-
+%
+\begin{figure}
+    \centering
+    \includegraphics{partition.pdf}
+    \caption{A partition of a rectangle \(R\).}
+\end{figure}
+%
 \begin{definition}[step function]
     A function \(f:R\to \bR \) is said to be a \emph{step function} if there is a partition \(P\) of \(R\) such that \(f\) is constant on each sub-rectangle of the partition.
 \end{definition}
-
+%
 \begin{figure}
     \centering
     \includegraphics{step-function.pdf}
     \caption{Graph of a step function.}
 \end{figure}
-
+%
 Observe that, if \(f\) and \(q\) are step functions and  \(c,d \in \bR\), then \(c f + d g\) is also a step function.
 Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_{k},y_{k+1}]\) is equal to \( (x_{j+1}-x_{j})(y_{k+1}-y_{k})\).
 
-\subsection{Integral of a step function}
+\subsection*{Integral of a step function}
 
 \begin{definition}[integral of a step function]
     Suppose that \(f\) is a step function with value \(c_{jk}\) on the sub-rectangle \((x_{j},x_{j+1})\times (y_{k},y_{k+1})\).
@@ -60,7 +65,7 @@ Also note that the area of the sub-rectangle \(Q_{jk}:=[x_{j},x_{j+1}]\times [y_
         \iint_{R} f \ dxdy = \sum_{j=0}^{m-1} \sum_{k=0}^{n-1} c_{jk} (x_{j+1}-x_{j})(y_{k+1}-y_{k}).
     \]
 \end{definition}
-
+%
 Observe that the value of the integral is independent of the partition, as long as the function is constant on each sub-rectangle.
 Also note that, if \(f\) is constant on the partition element \(Q_{jk} = (x_{j},x_{j+1})\times (y_{k},y_{k+1})\), then
 \[
@@ -71,7 +76,7 @@ Also note that, if \(f\) is constant on the partition element \(Q_{jk} = (x_{j},
          & =  \int_{y_k}^{y_{k+1}} \left[ \int_{x_j}^{x_{j+1}} f(x,y) \ dx \right] \ dy.
     \end{aligned}
 \]
-
+%
 \begin{theorem}[basic properties of the integral]
     Let \(f,g\) be step functions.
     \begin{enumerate}
@@ -87,11 +92,10 @@ Also note that, if \(f\) is constant on the partition element \(Q_{jk} = (x_{j},
 
 
 
-\subsection{Definition of integrable}
-
+\subsection*{Definition of integrable}
 
 In order to define integrability we take advantage of ``upper'' and ``lower'' integrals which ``sandwich'' the function we really want to integrate.
-
+%
 \begin{definition}[integrability]
     Let \(R\) be a rectangle and let \(f: R \to \bR\) be a bounded function.
     If there is one and only one number \(I\in \bR\) such that
@@ -106,10 +110,10 @@ In order to define integrability we take advantage of ``upper'' and ``lower'' in
 \end{definition}
 
 
-\subsection{Evaluation of an integral}
+\section{Evaluation of multiple integrals}
 
 Now we have a definition we can rigorously work with integrals but it is essential to also have a way to practically evaluate any given integral.
-
+%
 \begin{theorem*}[evaluating by repeated integration]
     Let \(f\) be a bounded integrable function on  \(R = [a_1,b_1] \times [a_2,b_2]\).
     Suppose that, for every \(y\in [a_2,b_2]\), the integral \( A(y) = \int_{a_1}^{b_1} f(x,y) \ dx \) exists.
@@ -133,9 +137,9 @@ Now we have a definition we can rigorously work with integrals but it is essenti
         \end{aligned}
     \]
 \end{proof}
-
+%
 The conditions of the above theorem aren't immediately easy to check and so it is convenient to now investigate the integrability of continuous functions.
-
+%
 \begin{theorem}[integral of continuous functions]
     Suppose that \(f\) is a continuous function defined on the rectangle \(R\).
     Then \(f\) is integrable and
@@ -145,6 +149,7 @@ The conditions of the above theorem aren't immediately easy to check and so it i
         = \int_{a_1}^{b_1} \left[\int_{a_2}^{b_2}  f(x,y) \ dy  \right] \ dx.
     \]
 \end{theorem}
+%
 \begin{proof}
     Continuity implies boundedness and so upper and lower integrals exist.
     Let \(\epsilon>0\). Exists \(\delta>0\) such that \(\abs{f(\xx)-f(\yy)}\leq \epsilon\) whenever \(\norm{\xx-\yy}\leq \delta\).
@@ -195,13 +200,13 @@ Examples of content zero sets include:  Finite set of points; Bounded segment; C
      The contribution to the integral of bounding step functions from the cover of \(A\) is bounded by \(\delta \sup \abs{f}\).
 \end{proof}
 
-\subsection{Integrals over regions bounded by continuous functions}
+\section{Integrals over regions bounded by continuous functions}
 
-\begin{definition}[integral on general regions]
+\begin{definition*}[integral on general regions]
     Suppose \(S\subset R\) and \(f\) is a bounded function on \(S\).
     We extend \(f\) to \(R\) by defining
     \[
-        f_R(x,y) := \begin{cases}
+        f_R(x,y) = \begin{cases}
             f(x,y) & \text{if \((x,y)\in S\)} \\
             0      & \text{otherwise}.
         \end{cases}
@@ -210,9 +215,8 @@ Examples of content zero sets include:  Finite set of points; Bounded segment; C
     \[
         \iint_{S} f(x,y) \ dxdy = \iint_{R} f_{R}(x,y) \ dx dy.
     \]
-\end{definition}
+\end{definition*}
 
-{Regions bounded by continuous functions}
 
 \begin{definition}[type 1]
     \(S \subset \bR^2\) is \emph{type 1} if there are continuous functions \(\varphi_1\), \(\varphi_2\) such that
@@ -249,9 +253,6 @@ Examples of content zero sets include:  Finite set of points; Bounded segment; C
     \end{enumerate}
 \end{proof}
 
-
-{Integrals over regions bounded by continuous functions}
-
 \begin{theorem}
     Let \(S = \left\{(x,y): x \in [a,b], \varphi_1(x) \leq y \leq \varphi_2(x)\right\}\) be a region of type 1 and let \(f\) be a bounded continuous function of \(S\).
     Then \(f\) is integrable on \(S\) and
@@ -271,9 +272,7 @@ Examples of content zero sets include:  Finite set of points; Bounded segment; C
 
 A similar result holds for type 2 regions.
 
-\subsection{Applications of multiple integrals}
-
-% {Area and Volume}
+\section{Applications of multiple integrals}
 
 Area of \(S\).
 Let    \(S \subset \bR^2\)  be a \emph{type 1} region, i.e.,   \(\varphi_1\), \(\varphi_2\) are continuous functions,
@@ -296,8 +295,6 @@ Integrating:
     \iiint_{V} \ dxdydz =  \int_{a}^{b}
     \left[ \int_{\varphi_1(x)}^{\varphi_2(x)}   ( f(x,y)  -  g(x,y)) dy \right] \ dx.
 \]
-
-
 
 
 {Mass, centre of mass, centroid}
@@ -332,9 +329,6 @@ Integrating:
 
 \section{Green's theorem}
 
-
- {Green's theorem}
-
 \begin{theorem}[Green's theorem]
     Let \(C\subset\bR^2\) be a piecewise-smooth simple (no intersections) curve and \(\aalpha\) a path that parametrizes \(C\) in the counter-clockwise direction.
     Let \(S\) be the region enclosed by \(C\).
@@ -346,13 +340,6 @@ Integrating:
         \iint_{S} \left(\tfrac{\partial Q}{\partial x} - \tfrac{\partial P}{\partial y}\right) \ dxdy = \int_{C} \ff \cdot d\aalpha.
     \]
 \end{theorem}
-
-
-
-
-
-{}
-
 
 \begin{proof}[Proof of Green's theorem]
     \begin{enumerate}
@@ -376,19 +363,6 @@ Integrating:
 
 
 
-
-\subsection{Simply connected regions}
-
-
-{Simply connected regions}
-
-
-\begin{definition}[simply connected]
-    The set \(S\subset \bR^n\) is said to be \emph{simply connected} if every closed path \(\aalpha(t)\) can be continuously shrunk to a point.
-\end{definition}
-
-
-
 % \begin{figure}
 %     \begin{tikzpicture}
 %         \fill[paleBlue] plot [smooth cycle, tension=1] coordinates {(0,0) (1,3) (2,1) (3,3) (4,1)};
@@ -398,8 +372,6 @@ Integrating:
 %     \end{tikzpicture}
 %     \caption{Simply connected.}
 % \end{figure}
-
-
 
 % \begin{figure}
 %     \begin{tikzpicture}
@@ -414,12 +386,7 @@ Integrating:
 
 
 
-
-
-
 \subsection{Application to conservative vector fields}
-
-
 
 
 \begin{theorem}[conservative vector fields on simply connected regions]
@@ -450,18 +417,15 @@ Integrating:
 
 \section{Change of variables}
 
-\subsection{Jacobian determinant}
-
-
 {Jacobian determinant}
 
-<>{Recall 1D case:}
+{Recall 1D case:}
 If \(g : [a,b] \to [g(a),g(b)]\) is onto with continuous derivative and \(f\) is continuous then
 \[
     \int_{g(a)}^{g(b)}    f(x) \ dx = \int_{a}^{b} f(g(u)) \ g'(u) \ du.
 \]
 
-<>{Two dimensional change of coordinates}<>
+{Two dimensional change of coordinates}
 We consider maps \((u,v) \mapsto (X(u,v),Y(u,v))\) mapping  \(T\subset \bR^2\) to  \(S\subset \bR^2\).
 % \begin{itemize}
 %     \item Is the map differentiable?
@@ -469,14 +433,7 @@ We consider maps \((u,v) \mapsto (X(u,v),Y(u,v))\) mapping  \(T\subset \bR^2\) t
 % \end{itemize}
 
 
-
-
-
-
 \subsection{Change of variables}
-
-
-{Change of variables}
 
 {Change of variables formula}
 Suppose that \((u,v) \mapsto (X(u,v),Y(u,v))\) which maps \(T\) to \(S\) is one-to-one with \(X\), \(Y\) continuously differentiable. Then
