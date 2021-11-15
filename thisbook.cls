@@ -15,7 +15,7 @@
 
 %%%%%% Title page
 \date{}
-\publishers{\href{https://\sourcelink}{\sourcelink}}
+\publishers{\href{https://\thesourcelink}{\thesourcelink}}
 \addtokomafont{publishers}{\large\ttfamily}
 \addtokomafont{author}{\normalsize\itshape By\\ \normalfont\scshape}
 \renewcommand{\coverpageleftmargin}{5pt}
@@ -64,6 +64,11 @@
 %%%%%%% Include graphics
 \RequirePackage{graphicx}
 \graphicspath{{graphics/}{graphics/build/}}
+
+%%%%%%% Set source link
+\newcommand{\sourcelink}[1]{%
+  \newcommand{\thesourcelink}{#1}%
+}  
 
 %%%%%% Insert git sha
 \RequirePackage{xstring,catchfile}
