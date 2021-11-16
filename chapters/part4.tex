@@ -360,7 +360,8 @@ Observe that that the potential is not unique,
 \(\nabla \varphi = \nabla(\varphi + C)\) for any constant \(C \in \bR\).
 
 
-\begin{theorem}[conservative vector fields]
+\begin{theorem}[conservative vector fields]%
+    \label{thm:conservative-fields}
     Let \(S \subset \bR^n\) and and consider the vector field \(\ff : S \to \bR^n\).
     The following are equivalent:
     \begin{enumerate}[label=\textnormal{(\roman*)}]
@@ -396,7 +397,6 @@ The above result is a special case of the following general statement which hold
 \begin{theorem}[mixed derivatives]%
     \label{thm:mixed-partials}
     Suppose that \(\ff\) is a differentiable vector field\footnote{As before  \(f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} on \(S\subset \bR^n\).
-
     If \(\ff\) is conservative then, for each \(l,k\),
     \[
         \frac{\partial f_l}{\partial x_k} = \frac{\partial f_k}{\partial x_l}.
@@ -523,7 +523,8 @@ This concept is somewhat suggested by the methods of constructing potentials whi
 
 This extra property permits the following sufficient condition for a vector field to be conservative.
 
-\begin{theorem}
+\begin{theorem}[conservative fields on convex sets]%
+    \label{thm:conservative-convex}
     Let\footnote{As usual  \(  f_k(x_1,\ldots,x_n)\) denotes the \(k\)\textsuperscript{th} component of the vector field \(\ff\).} \(\ff\) be a differentiable vector field on a convex region \(S\subset \bR^n\).
     Then \(\ff\) is conservative if and only if
     \[
@@ -545,20 +546,8 @@ This extra property permits the following sufficient condition for a vector fiel
 \end{proof}
 
 The above gives us a useful tool to check if a given vector field is conservative. 
-Using the idea of ``gluing together'' several convex regions this result can be extended to a more general setting.
-For this we require the notion of simply-connected sets as follows.
-
-\begin{definition}[simply-connected set]%
-    \label{def:simply-connected}
-    A connected set \(S\subset \bR^n\) is said to be \emph{simply-connected} if any closed path \(\aalpha\), contained within \(S\), can be contracted to a point.
-    (This is in the sense that there exists a continuous map \(F:D^{2}\to S\), where \(D^2\subset \bR^2\) denotes the unit disk, such that \(F\) restricted  to the unit circle is \(\aalpha\).)
-\end{definition}
-
-\begin{figure}
-    \centering
-    \includegraphics{not-simply-connected.pdf}
-    \caption{A set which fails to be simply-connected because paths like the one shown cannot be contracted to a point.}
-\end{figure}
+Using the idea of ``gluing together'' several convex regions this result can be manually extended to some more general settings.
+Later, in Theorem~\ref{thm:conservative-fields-simply-connected}, we will take advantage of some further ideas in order to significantly extend this result.
 
 \subsection*{Application to exact differential equations}
 
@@ -568,24 +557,20 @@ The differential equation, considered on \(S\),
     p(x,y) + q(x,y) y'(x) = 0
 \]
 is called \emph{exact} if there exists \(\varphi : S \to \bR\) such that
-\[
-    p = \frac{\partial \varphi}{\partial x},
-    \quad
-    q = \frac{\partial \varphi}{\partial y}.
-\]
+\( p = \frac{\partial \varphi}{\partial x}\) and \(q = \frac{\partial \varphi}{\partial y}\).
 \href{https://en.wikipedia.org/wiki/Exact_differential_equation}{Exact differential equations} are closely related to conservative vector fields.
 % 
 \begin{theorem}%
     \label{thm:exact-diff-eq}
-    Let \(S\subset \bR^2\) be simply-connected and open.
+    Let \(S\subset \bR^2\) be connected and open.
     \begin{itemize}
         \item     Suppose that \(\varphi: S \to \bR\) satisfies
               \(\nabla \varphi =   \left(\begin{smallmatrix}
                   p\\ q
               \end{smallmatrix}\right)\).
-              Then the solution \(y(x)\) of the equation \(p(x,y) = q(x,y) y'(x)\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
+              Then the solution \(y(x)\) of the equation \(p(x,y) + q(x,y) y'(x) = 0\) satisfies \(\varphi(x,y(x))=C\) for some \(C\in \bR\).
         \item
-              Conversely, if \(\varphi: S \to \bR\) is such that \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) = q(x,y) y'(x)\).
+              Conversely, if \(\varphi: S \to \bR\) is such that \(\varphi(x,y(x))=C\)  defines implicitly a function \(y(x)\), then \(y(x)\) is a solution to the equation  \(p(x,y) + q(x,y) y'(x) = 0\).
     \end{itemize}
 \end{theorem}
 
