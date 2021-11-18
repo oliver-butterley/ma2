@@ -275,9 +275,12 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 
-# Latex build folder
+# Latex build directory
 build/
 svg-inkscape/
 
 # Mac nonsense
 .DS_Store
+
+# Typeset document directory
+dist/
