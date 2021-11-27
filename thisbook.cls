@@ -34,6 +34,7 @@
 %%%%%%% General packages
 \RequirePackage[UKenglish]{babel} % UK specific
 \RequirePackage{amsmath,amssymb,amsthm} % Maths stuff
+\RequirePackage[intlimits]{esint} % Format of integrals
 \RequirePackage[hyperfootnotes,colorlinks=true,citecolor=black,urlcolor=darkgray,linkcolor=black,breaklinks=true]{hyperref} % Clickable links
 \RequirePackage[type={CC},modifier={by-sa},version={4.0}]{doclicense} % CC info
 \RequirePackage[skins,breakable,theorems]{tcolorbox} % Attractive boxes
