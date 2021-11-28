@@ -79,12 +79,20 @@ In this sense the integral is well-defined (not dependent on the choice of parti
 %
 \begin{theorem}[basic properties of the integral]%
     \label{thm:props-integral}
-    Let \(f,g\) be step functions.
-    \begin{enumerate}
-        \item \(\displaystyle \iint_{R} (a f + b g) \ dx dy = a \displaystyle \iint_{R} f \ dx dy + b \displaystyle\iint_{R} g \ dx dy\) for all \(a,b\in \bR\);
-        \item \(\displaystyle\iint_{R} f \ dx dy =  \displaystyle\iint_{R_1} f \ dx dy + \displaystyle \iint_{R_2} f \ dx dy\) if \(R\) is divided into \(R_1\) and \(R_2\);
-        \item \(\displaystyle\iint_{R} f \ dx dy \leq \displaystyle \iint_{R} g \ dx dy\) if \(f(x,y) \leq g(x,y)\).
-    \end{enumerate}
+    Let \(f,g\) be step functions. Then
+    \[
+        \begin{aligned}
+            \textstyle\iint\limits_{R} (a f + b g) \ dx dy
+             & = a  \textstyle\iint\limits_{R} f \ dx dy + b \textstyle\iint\limits_{R} g \ dx dy 
+             \quad \text{for all \(a,b\in \bR\)},\\
+            \textstyle\iint\limits_{R} f \ dx dy
+             & =  \textstyle\iint\limits_{R_1} f \ dx dy +  \textstyle\iint\limits_{R_2} f \ dx dy \quad
+             \text{ if \(R\) is divided into \(R_1\) and \(R_2\)}, \\
+            \textstyle\iint\limits_{R} f \ dx dy
+             & \leq  \textstyle\iint\limits_{R} g \ dx dy \quad
+            \text{ if \(f(x,y) \leq g(x,y)\)}.
+        \end{aligned}
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -222,14 +230,15 @@ We use this notation in the following definition.
 
 Suppose that there are continuous functions \(\varphi_1\), \(\varphi_2\) on \(\bR\) and consider the set (see Figure~\ref{fig:type-one})
 \[
-    S = \left\{(x,y): x \in [a,b], \varphi_1(x) \leq y \leq \varphi_2(x)\right\} \subset \bR^2.
+    S = \left\{(x,y): a \leq x \leq b, \varphi_1(x) \leq y \leq \varphi_2(x)\right\} \subset \bR^2.
 \]
 Not all sets can be written in this way but many can and such a way of describing a subset of \(\bR^2\) is convenient for evaluating integrals.
 Observe that we could also consider the following set
 \[
-    S = \left\{(x,y): y \in [a,b], \varphi_1(y) \leq x \leq \varphi_2(y)\right\}.
+    S = \left\{(x,y): a \leq y \leq b, \varphi_1(y) \leq x \leq \varphi_2(y)\right\}.
 \]
 In the first case we could describe the representation as projecting along the \(y\)-coordinate whereas in the second case we are projecting along the \(x\)-coordinate.
+Observe that it doesn't make a different to the integral if we use \(<\) or \(\leq\) in the definition of \(S\) since the difference would be a content zero set.
 %
 % \begin{definition*}[type 1]
 %     \(S \subset \bR^2\) is \emph{type 1} if there are continuous functions \(\varphi_1\), \(\varphi_2\) such that
@@ -248,7 +257,7 @@ In the first case we could describe the representation as projecting along the \
 \begin{figure}
     \centering
     \includegraphics{type-one.pdf}
-    \caption{A region defined by two continuous functions.}%
+    \caption{A region defined by two continuous functions. The ``projection'' of the region onto the \(x\)-axis is the interval \([a,b]\)}%
     \label{fig:type-one}
 \end{figure}
 %
@@ -288,11 +297,11 @@ For example, consider the upside-down cone of Figure~\ref{fig:cone} which has ba
 \begin{figure}
     \centering
     \includegraphics{cone.pdf}
-    \caption{Upside-down cone of height \(5\) with tip at the origin and satisfying \(z = \sqrt{x^2+y^2}\). This solid can be ``projected'' onto the \(xy\)-plane.}%
+    \caption{Upside-down cone of height \(5\) with tip at the origin. The solid is bounded by the surfaces \(z = \sqrt{x^2+y^2}\) and \(z=5\). This solid can be ``projected'' onto the \(xy\)-plane.}%
     \label{fig:cone}
 \end{figure}
 %
-In order to describe this set it is convenient to imagine how it projects down onto the \(xy\)-axis. 
+In order to describe this set it is convenient to imagine how it projects down onto the \(xy\)-axis.
 We then describe it as
 \[
     V = \left\{(x,y,z) : (x,y) \in S, \gamma_1(x,y)\leq z \leq \gamma_2(x,y) \right\}
@@ -311,7 +320,7 @@ Suppose that
 where \(\varphi_1\), \(\varphi_2\) are continuous functions.
 The the area of \(S\) is
 \[
-    \iint_{S} \ dx dy = \int_{a}^{b} \left[ \int_{\varphi_1(x)}^{\varphi_2(x)\ dy}\right] \ dx
+    \iint_{S} \ dx dy = \int_{a}^{b} \left[ \int_{\varphi_1(x)}^{\varphi_2(x)} \ dy\right] \ dx
     = \int_{a}^{b} [ \varphi_2(x) - \varphi_1(x) ] \ dx.
 \]
 This corresponds to the usual notion of the integral of a function on \(\bR\) determining the area under the curve.

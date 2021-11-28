@@ -17,6 +17,8 @@
             xmin = -2, xmax = 5,
             ymin = -5, ymax = 10,
             small,
+            xlabel={\(x\)},
+            ylabel={\(y\)}
         ]
         \addplot[name path=top, black, thick, mark=none, ] {-x^3/3 + (x^2) + 2*x + 3} node[right]{\(\varphi_2\)};
         \addplot[name path=bottom, black, no markers, line width=1pt] {x^3/8-x^2/2} node[right]{\(\varphi_1\)};
