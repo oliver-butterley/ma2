@@ -67,21 +67,15 @@ We will write that ``\({\{f_n(x)\}}_{n}\) is a sequence of functions on \(D\subs
 
 \begin{solution}
   We observe that it converges pointwise to the constant function \(f(x)=0\).
-  \begin{itemize}
-    \item We also observe that \(|f_n(x) - f(x) | \leq \frac{1}{2^n}\) for all \(x\in (0,\frac{1}{2})\).
-    \item This means that, for every \(\epsilon>0\), if we can choose \(N=-\log_{2}\epsilon\) then \(|f_n(x) - f(x) | \leq \epsilon\) whenever \(n\geq N\).
-  \end{itemize}
+  We also observe that \(|f_n(x) - f(x) | \leq \frac{1}{2^n}\) for all \(x\in (0,\frac{1}{2})\).
+  This means that, for every \(\epsilon>0\), if we can choose \(N=-\log_{2}\epsilon\) then \(|f_n(x) - f(x) | \leq \epsilon\) whenever \(n\geq N\).
 \end{solution}
-
 
 \begin{definition}
   Let \(f(x)\) be a functions on \(D\subset \mathbb{R}\).
   We say that \(f\) is \emph{continuous} at \(p\in D\) if, for each \(\epsilon>0\), there is \(\delta >0\) such that \(|f(x)-f(p)| <\epsilon\) whenever \(x\in D\), \(|x-p| <\delta\).
   We say that \(f\) is \emph{continuous on \( D\)} if \(f\) is continuous at every \(p\in D\).
 \end{definition}
-
-
-
 
 \begin{figure}
   \begin{center}
@@ -170,13 +164,10 @@ We say that the series  \(\sum_{n}a_n\) is convergent if \({\{\sum_{k=1}^{n}a_k\
   Then \(g\) is continuous on \(D\).
 \end{theorem}
 
-
 \begin{proof}
   If the \(f_k\) are continuous then the \(\sum_{k=1}^{n} f_k\) are continuous.
   This means that Theorem~\ref{thm:continuous-limit} applies.
 \end{proof}
-
-
 
 \begin{theorem}
   Suppose that the series \(\sum_{n} f_n\) is uniformly convergent to \(g\) and the \(f_n\) are continuous.
@@ -186,17 +177,17 @@ We say that the series  \(\sum_{n}a_n\) is convergent if \({\{\sum_{k=1}^{n}a_k\
   \]
 \end{theorem}
 
-
 \begin{proof}
   Again, that the \(f_k\) are continuous means that the \(\sum_{k=1}^{n} f_k\) are continuous.
   This means that Theorem~\ref{thm:limit-of-integral} applies.
 \end{proof}
 
-
-Here and subsequently it is convenient to recall three commons tests which are useful for proving convergence:
+Here and subsequently it is convenient to recall several commons tests which are useful for proving convergence:
 \href{https://en.wikipedia.org/wiki/Ratio_test}{ratio test},
 \href{https://en.wikipedia.org/wiki/Root_test}{root test},
-\href{https://en.wikipedia.org/wiki/Direct_comparison_test}{comparison test}.
+\href{https://en.wikipedia.org/wiki/Direct_comparison_test}{comparison test},
+\href{https://en.wikipedia.org/wiki/Alternating_series_test}{alternating series test},
+\href{https://en.wikipedia.org/wiki/Integral_test_for_convergence}{integral test for convergence}.
 %
 For series of functions we have the following test for convergence.
 
@@ -205,8 +196,6 @@ For series of functions we have the following test for convergence.
   and that \(|f_n(x)|\leq M_n\).
   If \(\sum_{n=0}^{\infty}M_n\) is convergent then the series \(\sum_{n=0}^{\infty}f_n\) converges absolutely and uniformly on \(D\).
 \end{theorem}
-
-
 
 \begin{proof}
   By the comparison test \(\sum |f_n(x)| \) is convergent for all \(x\in D\).
@@ -283,8 +272,8 @@ A key notion is determining exactly the domain on which a power series converges
   If \(\abs{x}>r\) and \(\sum_n a_n x^n\) is convergent then this contradicts the definition of \(A\) and so  \(\sum_n a_n x^n\) is divergent for \(\abs{x}>r\).
 \end{proof}
 
-In the above paragraphs we worked with the case \(c=0\) but all of these notions hold for the general \(c\in \bR\). Consequently Theorem~\ref{thm:radius-of-convergence} implies that the series is convergent on an interval \((c-r,c+r) = \{x:\abs{x-c}<r\}\) but divergent when \(\abs{x-c}>r\). 
-The convergence for the sequence for \(x=c-r\) and \(x=c+r\) must be manually checked and can differ for the left and right end points. 
+In the above paragraphs we worked with the case \(c=0\) but all of these notions hold for the general \(c\in \bR\). Consequently Theorem~\ref{thm:radius-of-convergence} implies that the series is convergent on an interval \((c-r,c+r) = \{x:\abs{x-c}<r\}\) but divergent when \(\abs{x-c}>r\).
+The convergence for the sequence for \(x=c-r\) and \(x=c+r\) must be manually checked and can differ for the left and right end points.
 
 \begin{definition}
   This \(r\) is the \emph{radius of convergence} of the series \(\sum_n a_n {(x-c)}^n\).
@@ -301,7 +290,7 @@ All of the above concerning power series holds verbatim for \(x\) a complex numb
 \section{Integrating \& differentiating power series}
 
 Let \(a_n \in \bR\), \(x\in \bR\).
-If \(\sum_n a_n x^n\)converges we define the function \(f(x) = \sum_{n=0}^{\infty} a_n x^n\).
+If the series \(\sum_n a_n x^n\) converges we define the function \(f(x) = \sum_{n=0}^{\infty} a_n x^n\).
 In general exchanging limits with derivatives and integrals is problematic but for power series the situation is good.
 
 \begin{theorem}[integrating power series]%
@@ -311,19 +300,15 @@ In general exchanging limits with derivatives and integrals is problematic but f
 \end{theorem}
 
 \begin{proof}
-  \begin{itemize}
-    \item Let \(\abs{x}<R<r\);
-    \item Series is uniformly convergent for \(y\in[-R,R]\);
-          {Which theorem do we use?}
-    \item \(f(x)\) is continuous and so we can interchange limit and integral: % Which theorem do we use?
-          \[
-            \int_0^x f(y) \ dy
-            = \sum_{n=0}^{\infty} \int_0^x  {a_n} x^{n}
-            = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}. \qedhere
-          \]
-  \end{itemize}
+  Let \(\abs{x}<R<r\).
+  Observe that the series is uniformly convergent for \(y\in[-R,R]\).
+  This means that \(f(x)\) is continuous and so we can interchange limit and integral,
+  \[
+    \int_0^x f(y) \ dy
+    = \sum_{n=0}^{\infty} \int_0^x  {a_n} x^{n}
+    = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}.
+  \]
 \end{proof}
-
 
 \begin{theorem}[differentiating power series]%
   \label{thm:differentiate-power}
@@ -332,21 +317,18 @@ In general exchanging limits with derivatives and integrals is problematic but f
 \end{theorem}
 
 \begin{proof}
-  \begin{itemize}
-    \item Let \(\abs{x}<R<r\);
-    \item
-          \(\sum_{n=1}^{\infty} n a_n x^{n-1}    = \sum_{n=1}^{\infty} a_n R^{n} \cdot \frac{n}{R} \cdot \frac{{x}^{n-1}}{R^{n-1}}\);
-    \item \(\sum_{n=1}^{\infty} a_n R^n\) is absolutely convergent and \(  \frac{n}{R}  \cdot {( \frac{\abs{x}}{R} )}^{n-1}\) is bounded;
-    \item \(\sum_{n=1}^{\infty} n a_n x^{n-1} \) is absolutely convergent
-          (comparison test);
-    \item \(g(x) =\sum_{n=1}^{\infty} n a_n x^{n-1} \) is a power series;
-    \item \(\int_0^x g(y) \ dy = \sum_{n=1}^{\infty} a_n x^{n} = f(x) - a_0\) (by Theorem~\ref{thm:integrate-power});
-    \item By the fundamental theorem of calculus this concludes the proof. \qedhere
-  \end{itemize}
+     Let \(\abs{x}<R<r\). 
+     Observe that
+          \[
+            \sum_{n=1}^{\infty} n a_n x^{n-1}    = \sum_{n=1}^{\infty} a_n R^{n} \cdot \frac{n}{R} \cdot \frac{{x}^{n-1}}{R^{n-1}}.
+            \]
+     Since \(\sum_{n=1}^{\infty} a_n R^n\) is absolutely convergent and \(  \frac{n}{R}  \cdot {( \frac{\abs{x}}{R} )}^{n-1}\) is bounded we know that
+     \(\sum_{n=1}^{\infty} n a_n x^{n-1} \) is absolutely convergent
+          (comparison test).
+    For convenience let \(g(x) =\sum_{n=1}^{\infty} n a_n x^{n-1} \) and observe that
+     \(\int_0^x g(y) \ dy = \sum_{n=1}^{\infty} a_n x^{n} = f(x) - a_0\) (by Theorem~\ref{thm:integrate-power}).
+     By the fundamental theorem of calculus this concludes the proof. 
 \end{proof}
-
-
-
 
 
 
@@ -365,8 +347,6 @@ In general exchanging limits with derivatives and integrals is problematic but f
 %     \item \(\arctan(x) =  \sum_{n=0}^{\infty}\frac{(-1)^{n}}{2n+1} x^{2n+1} \) for \(\abs{x}<1\).
 %   \end{itemize}
 % \end{example}
-
-
 
 
 % \subsection{Exercises}
@@ -388,9 +368,6 @@ In general exchanging limits with derivatives and integrals is problematic but f
 %           \item \(f'(0)\).
 %         \end{enumerate}
 % \end{enumerate}
-
-
-
 
 
 % \subsection{Exercises}
@@ -533,17 +510,17 @@ Using this idea we have the following sufficient condition for convergence of a 
   \[
     E_{n+1}(x) = E_{n}(x) -   \frac{f^{(n+1)}}{(n+1)!}{(x-a)}^{n+1}
   \]
-and that \({(x-a)}^{n+1} = (n+1) \int_{a}^{x}{(x-y)}^n \ dy\).
+  and that \({(x-a)}^{n+1} = (n+1) \int_{a}^{x}{(x-y)}^n \ dy\).
   Consequently
   \[
     \begin{aligned}
-      E_{n+1}(x) 
-      &= 
+      E_{n+1}(x)
+       & =
       \frac{1}{n!} \int_{a}^{x} {(x-y)}^n f^{(n+1)}(y) \ dy
-      -   \frac{f^{(n+1)}(a)}{(n+1)!}{(x-a)}^{n+1}\\
-       &= 
-       \frac{1}{n!} \int_{a}^{x} {(x-y)}^n f^{(n+1)}(y) \ dy
-       - \frac{1}{n!}  \int_{a}^{x} f^{(n+1)}(a)  {(x-y)}^n \ dy.
+      -   \frac{f^{(n+1)}(a)}{(n+1)!}{(x-a)}^{n+1} \\
+       & =
+      \frac{1}{n!} \int_{a}^{x} {(x-y)}^n f^{(n+1)}(y) \ dy
+      - \frac{1}{n!}  \int_{a}^{x} f^{(n+1)}(a)  {(x-y)}^n \ dy.
     \end{aligned}
   \]
   Combining the integrals and integrating by parts we obtain the claimed statement for \(n+1\).
