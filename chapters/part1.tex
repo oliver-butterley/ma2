@@ -203,7 +203,7 @@ For series of functions we have the following test for convergence.
 \begin{theorem}[Weierstrass M-test]
   Suppose that \({\{f_n\}}_n\) is a sequence of functions on \(D\), that \({\{M_n\}}_n\) is a sequence of positive numbers
   and that \(|f_n(x)|\leq M_n\).
-  If the series \(\sum_{n=0}^{\infty}M_n\) is convergent then the series \(\sum_{n=0}^{\infty}f_n\) is uniformly convergent.
+  If \(\sum_{n=0}^{\infty}M_n\) is convergent then the series \(\sum_{n=0}^{\infty}f_n\) converges absolutely and uniformly on \(D\).
 \end{theorem}
 
 
@@ -223,22 +223,18 @@ For series of functions we have the following test for convergence.
   This estimate is independent of \(x\).
 \end{proof}
 
-
-
-
 \section{Power series}
 
-
-
 \begin{definition}
-  Let \({\{a_n\}}_{n}\) be a series of numbers.
+  Let \({\{a_n\}}_{n}\) be a series of numbers and let \(c\) be a number.
   The series
-  \(\sum_{n} a_n x^n\)
-  is called a \emph{power series}.
+  \(\sum_{n} a_n {(x-c)}^n\)
+  is called a \emph{power series} (centred at \(c\)).
 \end{definition}
 Typically the power series will converge for some \(x\) and diverge for other \(x\).
-Note that we could permit \(x\) to be a complex number and the entire work of this section holds verbatim.
-However, for the present purposes we will assume that \(x \in \bR\) and that the coefficients \(a_n \in \bR\).
+We could permit \(x\) to be a complex number and the entire work of this section holds verbatim.
+However, for the present purposes we will assume that \(x \in \bR\) and that the coefficients \(a_n \in \bR\) and that \(c\in \bR\).
+To simplify formulae we will often work with the case that \(c=0\) since we can always transform a given problem to this special case.
 
 \begin{example*}
   Let \(a_n = 2^{-n}\).
@@ -251,7 +247,6 @@ However, for the present purposes we will assume that \(x \in \bR\) and that the
   The power series \(\sum_{n}\frac{x^n}{n!}\) is convergent for all \(x\).
   To see this we use the ratio test and observe that  \(\abs{\frac{x^{n+1}}{(n+1)!} }/ \abs{\frac{zx^n}{n!}} = \frac{\abs{x}}{n+1}\) and that \(\lim_{n\to\infty} \frac{\abs{x}}{n+1} = 0 \) for any \(x\).
 \end{example*}
-
 
 
 \section{Radius of convergence}
@@ -275,7 +270,8 @@ A key notion is determining exactly the domain on which a power series converges
   Consequently, by the M-test, the series is uniformly and absolutely convergent when \(\abs{x}\leq R\).
 \end{proof}
 
-\begin{theorem}[radius of convergence]
+\begin{theorem}[radius of convergence]%
+  \label{thm:radius-of-convergence}
   Suppose exists  \(x_1,x_2 \neq 0\) such that \(\sum_n a_n x_1^n\) is convergent and \(\sum_n a_n x_2^n\) is divergent.
   Then exists \(r>0\) such that \(\sum_n a_n x^n\) is convergent for \(\abs{x}<r\) and divergent for \(\abs{x}>r\).
 \end{theorem}
@@ -287,29 +283,26 @@ A key notion is determining exactly the domain on which a power series converges
   If \(\abs{x}>r\) and \(\sum_n a_n x^n\) is convergent then this contradicts the definition of \(A\) and so  \(\sum_n a_n x^n\) is divergent for \(\abs{x}>r\).
 \end{proof}
 
+In the above paragraphs we worked with the case \(c=0\) but all of these notions hold for the general \(c\in \bR\). Consequently Theorem~\ref{thm:radius-of-convergence} implies that the series is convergent on an interval \((c-r,c+r) = \{x:\abs{x-c}<r\}\) but divergent when \(\abs{x-c}>r\). 
+The convergence for the sequence for \(x=c-r\) and \(x=c+r\) must be manually checked and can differ for the left and right end points. 
+
 \begin{definition}
-  This \(r\) is called the \emph{radius of convergence} for the power series \(\sum_n a_n z^n\).
+  This \(r\) is the \emph{radius of convergence} of the series \(\sum_n a_n {(x-c)}^n\).
 \end{definition}
 
 We use the following convention:
 if \(\sum_n a_n x^n\) converges for all \(x\in \bC\) we say the radius of convergence is \(\infty\);
 if \(\sum_n a_n x^n\) doesn't converge except  \(x=0\) we say the radius of convergence is \(0\).
-
-Note: all of the above concerning power series holds verbatim for \(x\) a complex number and so ``radius'' is more meaningful since it truly corresponds to a disk in the complex plane.
+All of the above concerning power series holds verbatim for \(x\) a complex number and so ``radius'' is more meaningful since it truly corresponds to a disk in the complex plane.
 
 
 
 
 \section{Integrating \& differentiating power series}
 
-
-
 Let \(a_n \in \bR\), \(x\in \bR\).
 If \(\sum_n a_n x^n\)converges we define the function \(f(x) = \sum_{n=0}^{\infty} a_n x^n\).
-
 In general exchanging limits with derivatives and integrals is problematic but for power series the situation is good.
-
-
 
 \begin{theorem}[integrating power series]%
   \label{thm:integrate-power}
@@ -491,14 +484,18 @@ If the Taylor's series converges, is it equal to \(f(x)\) on the interval?
   If we proceed to calculate the Taylor's series about \(x=0\) we obtain:
 
   \begin{tabular}{ r l  l}
-    \(f(x) = \)  & \( \exp(-x^{-2})\)
-                 & \(f(0)=0\)                                          \\
-    \(f'(x)=\)   & \( 2x^{-3} \exp(-x^{-2})\)
-                 & \(f'(0)=0\)                                         \\
-    \(f''(x)=\)  & \( (-6 x^{-4}   + 4x^{-6} )\exp(-x^{-2})  \)
-                 & \(f''(0)=0\)                                        \\
-    \(f'''(x)=\) & \( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\) % chktex 23
-                 & \(f'''(0)=0\)                                       % chktex 23
+    \(f(x) = \)
+     & \hspace{-0.7em}\( \exp(-x^{-2})\)
+     & \(f(0)=0\)                                                         \\
+    \(f'(x)=\)
+     & \hspace{-0.7em}\( 2x^{-3} \exp(-x^{-2})\)
+     & \(f'(0)=0\)                                                        \\
+    \(f''(x)=\)
+     & \hspace{-0.7em}\( (-6 x^{-4}   + 4x^{-6} )\exp(-x^{-2})  \)
+     & \(f''(0)=0\)                                                       \\
+    \(f'''(x)=\)
+     & \hspace{-0.7em}\( 4 (2x^{-9} - 9 x^{-7} + 6 x^{-5})\exp(-x^{-2})\) % chktex 23
+     & \(f'''(0)=0\)                                                      % chktex 23
   \end{tabular}
 
   \noindent
@@ -564,7 +561,7 @@ and that \({(x-a)}^{n+1} = (n+1) \int_{a}^{x}{(x-y)}^n \ dy\).
 \section{Power series \& differential equations}
 
 In this section we will use some of the strength of power series in a particular application. This is a method which we can use to solve certain power series. The method is best illustrated with an example.
-This method of solving differential equations is called the ``Method of undetermined coefficients''.
+This method of solving differential equations is called the ``method of undetermined coefficients''.
 
 \begin{task}
   Find a function \(y(x)\) which satisfies the differential equation
