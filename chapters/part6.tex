@@ -160,7 +160,7 @@ An example of such a representation is as follows for the hemisphere.
 \end{example*}
 
 
-\section{Surface integrals of scalar field}
+\section{Surface integral of scalar field}
 
 Mirroring the process for line integrals we will define surface integrals both for scalar fields and for vector fields.
 The surface integral of a scalar field is closely related to the area of a parametric surface, just like the length of a curve is closely related to the line integral of a scalar field.
@@ -343,12 +343,6 @@ The quantity defined as
 \frac{\partial^2 \varphi}{\partial y^2} +
 \frac{\partial^2 \varphi}{\partial z^2}\)
 is called the Laplacian and occurs in many applications of physics and mathematics.
-
-\begin{theorem}
-    Let \(S\subset \bR^3\) be convex. Then \(\nabla \times \ff \equiv \mathbf{0}\) on \(S\) if and only if \(\ff\) is conservative on \(S\).
-\end{theorem}
-
-
 \begin{example*}
     If \(\ff(x,y,z) = \begin{smallpmatrix}
         x \\ y \\ z
@@ -357,13 +351,6 @@ is called the Laplacian and occurs in many applications of physics and mathemati
     \(\nabla \times \ff = \mathbf{0}\),
     \(\nabla \cdot \ff = 3\).
 \end{example*}
-
-\begin{example*}
-    If \(\varphi\) is a differentiable scalar field and \(\ff = \nabla \varphi\)
-    then
-    \(\nabla \times \ff = \mathbf{0}\).
-\end{example*}
-
 
 \begin{example*}
     If \(\ff(x,y,z) = \begin{smallpmatrix}
@@ -376,7 +363,11 @@ is called the Laplacian and occurs in many applications of physics and mathemati
     \(\nabla \cdot \ff = 0\).
 \end{example*}
 
+\begin{theorem}
+    Let \(S\subset \bR^3\) be convex. Then \(\nabla \times \ff \equiv \mathbf{0}\) on \(S\) if and only if \(\ff\) is conservative on \(S\).
+\end{theorem}
 
+The above result implies Theorem~\ref{thm:conservative-fields-simply-connected} (the 2D vector fields can be written as 3D vector fields with a zero component).
 
 \section{Theorems of Stokes and Gauss}
 
@@ -402,13 +393,8 @@ is called the Laplacian and occurs in many applications of physics and mathemati
 \end{proof}
 
 Just as Green's Theorem holds for regions which can contain holes, as long as they are correctly accounted for, we can extend Stokes' theorem to more general surfaces with the idea of ``cutting and gluing'' the surface.
-In particular this allows the extention to surfaces with holes, cylinders, spheres, etc.
+In particular this allows the extension to surfaces with holes, cylinders, spheres, etc.
 On the other hand the theorem can't be extended to the Möbius band because the topology of this surface prevents a similar process being completed.
-
-Stokes' Theorem allows us to connect surface integrals (2D) to line integrals (1D).
-On the other hand Gauss' Theorem allows us to connect volume integrals (3D) to surface integrals (2D).
-In this way they are similar to each other, the intergal goes decreases dimension and also there is the loss of a derivative.
-Indeed the fundamental theorem of calculus for line integral also fits into this same pattern.
 
 \begin{theorem}[Gauss]
     Let \(V \subset \bR^3\) be a solid with boundary the parametric surface \(S\) and let \(\nn\) be the outward normal unit vector.
@@ -428,6 +414,17 @@ Indeed the fundamental theorem of calculus for line integral also fits into this
     If we suppose the solid \(V\) is \(xy\)-projectable then we can explicitly write the integral (later to be extended to general solids).
     We then use basic calculus to express \(f_x\) as the integral of the derivative.
 \end{proof}
+
+
+Stokes' Theorem allows us to connect surface integrals (2D) to line integrals (1D).
+On the other hand Gauss' Theorem allows us to connect volume integrals (3D) to surface integrals (2D).
+In this way they are similar to each other, the integral goes decreases dimension and also there is the loss of a derivative.
+Indeed the fundamental theorem of calculus for line integral also fits into this same pattern.
+The branch of mathematics called ``differential geometry'' provides a framework in which all these results can be described in a unified way by the statement
+\[
+    \int_{\partial \Omega} \omega = \int_{\Omega} d\omega.
+\]
+This result is called the ``\href{https://en.wikipedia.org/wiki/Generalized_Stokes_theorem}{generalized Stokes theorem}''.
 
 Note that Gauss' Theorem is often called the ``divergence theorem''.
 We can use this theorem for the following interpretation of divergence as a limit, similar to the way other versions of derivatives are defined.
