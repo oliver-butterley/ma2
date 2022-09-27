@@ -13,3 +13,7 @@ echo 'Moving final typeset document and cleaning up...'
 mkdir dist
 mv build/main.pdf dist/main.pdf
 rmdir build/chapters build/frontmatter build
+
+echo 'Extract parts of the document and format for booklet printing'
+pdfjam dist/main.pdf '1-12' --booklet true --delta '1.0cm 0cm' --paper a4paper --landscape --outfile dist/part0.pdf
+pdfjam dist/main.pdf '13-24' --booklet true --delta '1.0cm 0cm' --paper a4paper --landscape --outfile dist/part1.pdf
