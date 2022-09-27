@@ -13,7 +13,7 @@ The document is written in Latex which can be typeset to produce a pdf (or other
 
 Alternatively compile the latex in whatever way you prefer. Perhaps run ``latexmk`` in the directory ``graphics`` to typeset all the figures and then run ``latexmk`` in the base directory. The output will be ``main.pdf``. The important thing is to typeset all the ``.tex`` in the graphics folder prior to typesetting ``main.tex``.
 
-Convert to booklet style pdf for printing `pdfbook2 --paper=a4paper --no-crop --inner-margin=80 --outer-margin=10 main.pdf`.
+Convert to booklet style pdf for printing [https://equa.space/notes/pdfjam/].
 
 ## Aim
 
