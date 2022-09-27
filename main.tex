@@ -9,12 +9,20 @@
 \author{Everyone who contributed.}
 \sourcelink{github.com/oliver-butterley/ma2}
 
+\usepackage{everyshi}% http://ctan.org/pkg/everyshi
+\newcounter{realpagenumber}% 
+\EveryShipout{\stepcounter{realpagenumber}}% Step every page
+
 %%%%%%%%%% Book
 \begin{document}
 \maketitle
 
 \newwrite\myoutfile
 \immediate\openout\myoutfile=booklets.aux
+
+% To do: Repair this mess by adding two commands.
+% startbooklet stores the current page in a variable
+% endbooklet takes the current page and writes this, together with the stored start page to a aux file
 
 \frontmatter%
 \include{frontmatter/copyrightpage}
@@ -23,19 +31,19 @@
 \pagestyle{plain}
 \include{chapters/part0}
 \mainmatter%
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part1}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part2}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part3}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part4}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part5}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 \include{chapters/part6}
-\immediate\write\myoutfile{\thepage}
+\immediate\write\myoutfile{\therealpagenumber}
 
 \appendix
 \include{chapters/examples.tex}

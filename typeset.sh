@@ -12,7 +12,7 @@ latexmk -pdf -c --output-directory=build main.tex
 echo 'Moving final typeset document and cleaning up...'
 mkdir dist
 mv build/main.pdf dist/main.pdf
-mv build/pp.txt dist/pp.txt
+mv build/booklets.aux dist/booklets.aux
 
 rmdir build/chapters build/frontmatter build
 
