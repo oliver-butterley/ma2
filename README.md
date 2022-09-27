@@ -9,7 +9,7 @@ A typeset version is available at https://www.mat.uniroma2.it/butterley/MA2/note
 
 ## Typesetting
 
-The document is written in Latex which can be typeset to produce a pdf (or other formats). Clone or download this repository. Then run ``bash typeset.sh`` to create the pdf document. 
+The document is written in Latex which can be typeset to produce a pdf (or other formats). Clone or download this repository. Then run ``bash typeset.sh`` to create the pdf document. Latex and Inkscape must be installed in order to compile the document.
 
 Alternatively compile the latex in whatever way you prefer. Perhaps run ``latexmk`` in the directory ``graphics`` to typeset all the figures and then run ``latexmk`` in the base directory. The output will be ``main.pdf``. The important thing is to typeset all the ``.tex`` in the graphics folder prior to typesetting ``main.tex``.
 
