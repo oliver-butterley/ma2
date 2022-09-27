@@ -12,8 +12,18 @@ latexmk -pdf -c --output-directory=build main.tex
 echo 'Moving final typeset document and cleaning up...'
 mkdir dist
 mv build/main.pdf dist/main.pdf
+mv build/pp.txt dist/pp.txt
+
 rmdir build/chapters build/frontmatter build
 
 echo 'Extract parts of the document and format for booklet printing'
-pdfjam dist/main.pdf '1-12' --booklet true --delta '1.0cm 0cm' --paper a4paper --landscape --outfile dist/part0.pdf
-pdfjam dist/main.pdf '13-24' --booklet true --delta '1.0cm 0cm' --paper a4paper --landscape --outfile dist/part1.pdf
+start=1
+part=0
+while read line; do 
+    end="$line"
+    range="$start-$end"
+    echo "Creating booklet for page range $range"
+    pdfjam --booklet true --delta '1.0cm 0cm' --paper a4paper --landscape --outfile dist/part$part.pdf --no-tidy -- dist/main.pdf $range 
+    start=$(( "$end" + 1 ))
+    part=$((++part))
+done < dist/booklets.aux

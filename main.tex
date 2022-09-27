@@ -13,20 +13,29 @@
 \begin{document}
 \maketitle
 
+\newwrite\myoutfile
+\immediate\openout\myoutfile=booklets.aux
+
 \frontmatter%
 \include{frontmatter/copyrightpage}
 \include{frontmatter/preface}
 \include{frontmatter/tocpage}
 \pagestyle{plain}
 \include{chapters/part0}
-
 \mainmatter%
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part1}
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part2}
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part3}
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part4}
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part5}
+\immediate\write\myoutfile{\thepage}
 \include{chapters/part6}
+\immediate\write\myoutfile{\thepage}
 
 \appendix
 \include{chapters/examples.tex}
