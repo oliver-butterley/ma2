@@ -6,7 +6,7 @@
 \begin{example*}[Series]
   The geometric series
   \(S = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \cdots\)
-  can be summed by the following simple simple trick.
+  can be summed by the following simple trick.
   Multiplying by \(2\) we obtain that
   \[
     2S = 2 + 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \cdots = 2+S
@@ -57,8 +57,8 @@
   Let's try to integrate \(e^{-xy} - xye^{-xy}\) with respect to both \(x\) and \(y\).
   We would like to believe that
   \[
-    \int_{0}^{\infty} \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy \ dx
-    \overset{\text{\large\color{blue}?}}{=} \int_{0}^{1} \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx \ dy.
+    \int_{0}^{\infty} \left[ \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy \right] \ dx
+    \overset{\text{\large\color{blue}?}}{=} \int_{0}^{1} \left[ \int_{0}^{\infty}  (e^{-xy} - xye^{-xy}) \ dx \right] \ dy.
   \]
   Since
   \( \int_{0}^{1} (e^{-xy} - xye^{-xy}) \ dy = {\left[ye^{-xy}\right]}_{y=0}^{1} = e^{-x}\),
@@ -80,6 +80,7 @@
   \]
   However \(\lim_{y\to 0} \frac{x^2}{x^2 + y^2} = \frac{x^2}{x^2 + 0} = 1 \) and so the left-hand side is \(1\)
   whereas \(\lim_{x\to 0} \frac{x^2}{x^2 + y^2} = \frac{0}{0 + y^2} = 0\) so the right-hand side is \(0\).
+  What does the graph of this function look like?
   This example shows that the interchange of limits is untrustworthy. Under what circumstances is it legitimate?
 \end{example*}
 
@@ -95,7 +96,7 @@ We need to be rigorous in our logic otherwise, as we have seen in these examples
 \end{figure}
 %
 The above examples are calculus based but it is worthwhile to consider a real world application of the rigour and reasoning we aspire to.
-Suppose we are organising the production facilities which manufacture a component that is round (maybe a rocket body, maybe a tube, etc.).
+Suppose we are organising the production facilities which manufacture a component that is round (maybe a rocket body, maybe a propellant tube, etc.).
 \begin{samepage}
   As part of the production it is important to have a procedure which guarantees that the fabrication is done to the correct tolerance.
   The idea proposed is:
@@ -103,7 +104,7 @@ Suppose we are organising the production facilities which manufacture a componen
     ``We measure the width from all angles to confirm that the manufactured component is correct.''
   \end{quotation}
 \end{samepage}
-Two-dimensional problem in the sense we assume that the object is a closed curve in \(\bR^2\).
+This is a two-dimensional problem in the sense we assume that the object is a closed curve in \(\bR^2\).
 For a given angle we define the width of this curve to be the smallest distance between two parallel lines which touch the curve in a single point but never cross it (one each side of the curve).
 We say that the curve has constant width if this width is equal from every direction.
 This is just what we would check using calipers on a part and rotating.
@@ -146,9 +147,9 @@ In particular many of the ideas are extended to the higher dimensional setting. 
      &
     \(f_1(x), f_2(x), f_3(x),\ldots \)
     \\
-    \(\sum_{j=0}^{\infty} a_j\)
+    \(\sum_{n=0}^{\infty} a_n\)
      &
-    \(\sum_{j=0}^{\infty} f_j(x)\)
+    \(\sum_{n=0}^{\infty} f_n(x)\)
     \\
     \midrule
     (Functions) \(f:\bR \to \bR\)

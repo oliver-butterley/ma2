@@ -2,6 +2,8 @@
     "cSpell.words": [
         "Apostol",
         "Bolzano",
+        "Butterley",
+        "Canestrari",
         "chktex",
         "extremum",
         "Morrey",
@@ -9,6 +11,7 @@
         "resp",
         "Reuleaux",
         "Schwarz",
+        "Vergata",
         "Weierstrass"
     ],
     "latex-workshop.latex.tools": [
@@ -32,8 +35,13 @@
     "cSpell.enableFiletypes": [
         "!yaml"
     ],
-    "latex-workshop.chktex.enabled": true,
-    "latex-workshop.chktex.args.root": [
+    "cSpell.language": "en-GB",
+    "cSpell.ignorePaths": [
+        "**/*.md",
+        ".vscode"
+    ],
+    "latex-workshop.linting.chktex.enabled": true,
+    "latex-workshop.linting.chktex.args.root": [
         "-wall",
         "-n22",
         "-n30",
@@ -44,7 +52,7 @@
         "-q",
         "-l ../mychktexrc"
     ],
-    "latex-workshop.chktex.args.active": [
+    "latex-workshop.linting.chktex.args.active": [
         "-wall",
         "-n22",
         "-n30",
@@ -53,5 +61,13 @@
         "-n15",
         "-n17",
         "-q"
+    ],
+    "latex-workshop.linting.chktex.exec.args": [
+        "-wall",
+        "-n22",
+        "-n30",
+        "-e16",
+        "-q",
+        "-n21"
     ]
 }
