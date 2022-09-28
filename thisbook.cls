@@ -5,6 +5,7 @@
 \LoadClass{scrbook}   
 \KOMAoptions{paper=a5,fontsize=12pt,headings=openright,DIV=17,chapterprefix=on,titlepage=firstiscover,usegeometry}  
 \recalctypearea
+\usepackage[outer=20pt,inner=20pt]{geometry} % 
 
 %%%%%% Section headings 
 \setkomafont{disposition}{\normalfont\scshape}
@@ -85,3 +86,14 @@
 \newcommand{\fullcommiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\commithash}}}
 \newcommand{\commiturl}{\href{https://github.com/\reponame/commit/\commithash}{\texttt{\StrLeft{\commithash}{7}}}}
 
+%%%%%%%%%% Allow manual cuts for booklet printing
+\usepackage{everyshi}% 
+\newcounter{realpage}% 
+\setcounter{realpage}{1}
+\EveryShipout{\stepcounter{realpage}}% Step every page
+\newcounter{startpage}%
+\setcounter{startpage}{1}
+\newcommand{\bookletstart}{\setcounter{startpage}{\therealpage}}
+\newcommand{\bookletend}{\immediate\write\myoutfile{\thestartpage-\therealpage}}
+\newwrite\myoutfile
+\immediate\openout\myoutfile=booklets.aux\relax

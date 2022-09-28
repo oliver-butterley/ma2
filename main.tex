@@ -1,28 +1,16 @@
 \documentclass{thisbook}
 
-%\usepackage[outer=5pt,inner=35pt]{geometry} % best option for booklet printing
-\usepackage[outer=20pt,inner=20pt]{geometry} % best option for pdf
-
 %%%%%%%%%% Book info
 \title{Mathematical Analysis~2}
 \subtitle{Course notes 2022/23}
 \author{Everyone who contributed.}
 \sourcelink{github.com/oliver-butterley/ma2}
 
-\usepackage{everyshi}% http://ctan.org/pkg/everyshi
-\newcounter{realpagenumber}% 
-\EveryShipout{\stepcounter{realpagenumber}}% Step every page
-
 %%%%%%%%%% Book
 \begin{document}
+
+\bookletstart%
 \maketitle
-
-\newwrite\myoutfile
-\immediate\openout\myoutfile=booklets.aux
-
-% To do: Repair this mess by adding two commands.
-% startbooklet stores the current page in a variable
-% endbooklet takes the current page and writes this, together with the stored start page to a aux file
 
 \frontmatter%
 \include{frontmatter/copyrightpage}
@@ -30,23 +18,18 @@
 \include{frontmatter/tocpage}
 \pagestyle{plain}
 \include{chapters/part0}
-\mainmatter%
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part1}
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part2}
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part3}
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part4}
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part5}
-\immediate\write\myoutfile{\therealpagenumber}
-\include{chapters/part6}
-\immediate\write\myoutfile{\therealpagenumber}
+\bookletend%
 
-\appendix
-\include{chapters/examples.tex}
+\mainmatter%
+\include{chapters/part1}
+\include{chapters/part2}
+\include{chapters/part3}
+\include{chapters/part4}
+\include{chapters/part5}
+\include{chapters/part6}
+
+% \appendix
+% \include{chapters/examples.tex}
 
 \backmatter%
 
