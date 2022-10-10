@@ -41,33 +41,14 @@
         ".vscode"
     ],
     "latex-workshop.linting.chktex.enabled": true,
-    "latex-workshop.linting.chktex.args.root": [
-        "-wall",
-        "-n22",
-        "-n30",
-        "-e16",
-        "-n21",
-        "-n15",
-        "-17",
-        "-q",
-        "-l ../mychktexrc"
-    ],
-    "latex-workshop.linting.chktex.args.active": [
-        "-wall",
-        "-n22",
-        "-n30",
-        "-e16",
-        "-n21",
-        "-n15",
-        "-n17",
-        "-q"
-    ],
     "latex-workshop.linting.chktex.exec.args": [
         "-wall",
         "-n22",
         "-n30",
         "-e16",
         "-q",
-        "-n21"
+        "-n21",
+        "-n15",
+        "-n17",
     ]
 }

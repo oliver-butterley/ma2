@@ -234,7 +234,7 @@ We prove a couple of the parts of the above theorem here, the other parts are le
              & \quad + \norm{\cc} \norm{\ff(\xx)-\bb}.
         \end{aligned}
     \]
-    Since \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\) this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
+    Since we already know that \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\), this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
 \end{proof}
 
 \begin{proof}[Proof of (d)]
@@ -467,7 +467,11 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 \end{theorem*}
 \begin{proof}
     Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{   {df}_{\aa}(\vv) + \epsilon(\vv)  }\).
-    Consequently \( \abs{f(\aa+\vv)-f(\aa)} \leq \norm{  {df}_{\aa} } \norm{\vv} + \abs{\epsilon(\vv)} \) and this tends to \(0\) as \(\norm{\vv} \to 0\).
+    This means that 
+    \[
+        \abs{f(\aa+\vv)-f(\aa)} \leq \norm{  {df}_{\aa} } \norm{\vv} + \abs{\epsilon(\vv)} 
+    \] 
+    and so this tends to \(0\) as \(\norm{\vv} \to 0\).
 \end{proof}
 
 \begin{theorem}
@@ -476,8 +480,13 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 \end{theorem}
 
 \begin{proof}
-    For convenience define the vectors \(\vv = (v_1,v_2,\ldots,v_n)\)
-    and  \(\uu_k = (v_1,v_2,\ldots,v_k,0,\ldots,0)\).
+    For convenience define the vectors 
+    \[
+        \begin{aligned}
+            \vv &= (v_1,v_2,\ldots,v_n), \\
+            \uu_k &= (v_1,v_2,\ldots,v_k,0,\ldots,0).
+        \end{aligned}
+    \]
     Observe that
     \[
         \uu_k - \uu_{k-1} = v_k \ee_k,
@@ -497,8 +506,8 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
              & \quad + \sum_{k=1}^{n}  v_k \left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa + \uu_{k-1}) \right)
         \end{aligned}
     \]
-    To conclude, observe that the second sum vanishes as \(\norm{\vv} \to 0\) and that
-    \(\sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})\) converges to \(\vv \cdot \nabla f(\aa)\).
+    To conclude, observe that the second sum vanishes as \(\norm{\vv} \to 0\) and that the first sum,
+    \(\sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})\), converges to \(\vv \cdot \nabla f(\aa)\).
 \end{proof}
 
 
@@ -677,7 +686,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
 \end{figure}
 
 
-Let \(f\) be a differentiable scalar field on \(S\subset \bR^3\) and suppose that \(L(c) = \left\{\xx\in S : f(\xx)=c\right\}\) is a surface.
+Let \(f\) be a differentiable scalar field on \(S\subset \bR^3\) and suppose that the level set \(L(c) = \left\{\xx\in S : f(\xx)=c\right\}\) defines a surface.
 
 \begin{itemize}
     \item The gradient \(\nabla f(\aa)\) is normal to every curve \(\aalpha(t)\) in the surface which passes through \(\aa\),
