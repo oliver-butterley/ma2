@@ -211,16 +211,16 @@ Even functions which look ``nice'' can fail to be continuous as we can see in th
     Suppose that \(  \lim_{\xx \to \aa}\ff(\xx) = \bb\) and \(  \lim_{\xx \to \aa}\gg(\xx) = \cc\).
     Then
     \begin{enumerate}
-        \item \(  \lim_{\xx \to \aa}(\ff(\xx)+\gg(\xx)) = \bb+\cc\),
-        \item \(  \lim_{\xx \to \aa} \lambda \ff(\xx) = \lambda \bb\) for every \(\lambda \in \bR\),
-        \item \(  \lim_{\xx \to \aa}\ff(\xx)\cdot \gg(\xx) = \bb\cdot \cc\),
-        \item \(  \lim_{\xx \to \aa} \norm{\ff(\xx)} = \norm{\bb}\).
+        \item \(  \lim_{\xx \to \aa}(\ff(\xx)+\gg(\xx)) = \bb+\cc\), \label{it:cont-a}
+        \item \(  \lim_{\xx \to \aa} \lambda \ff(\xx) = \lambda \bb\) for every \(\lambda \in \bR\), \label{it:cont-b}
+        \item \(  \lim_{\xx \to \aa}\ff(\xx)\cdot \gg(\xx) = \bb\cdot \cc\), \label{it:cont-c}
+        \item \(  \lim_{\xx \to \aa} \norm{\ff(\xx)} = \norm{\bb}\). \label{it:cont-d}
     \end{enumerate}
 \end{theorem}
 
 We prove a couple of the parts of the above theorem here, the other parts are left as exercises.
 
-\begin{proof}[Proof of (c)]
+\begin{proof}[Proof of \ref{it:cont-c}]
     Observe that  \(
     \ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc
     = (\ff(\xx)-\bb)\cdot(\gg(\xx)-\cc) + \bb\cdot(\gg(\xx)-\cc) + \cc\cdot(\ff(\xx)-\bb)
@@ -237,7 +237,7 @@ We prove a couple of the parts of the above theorem here, the other parts are le
     Since we already know that \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\), this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
 \end{proof}
 
-\begin{proof}[Proof of (d)]
+\begin{proof}[Proof of \ref{it:cont-d}]
     Take \(\ff = \gg\) in part (c) implies that \(   \lim_{\xx \to \aa} \norm{\ff(\xx)}^2 = \norm{\bb}^2\).
 \end{proof}
 
@@ -663,7 +663,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{two-hyperboloid.pdf}
-            \caption{1-sheet hyperboloid}%
+            \caption{2-sheet hyperboloid}%
             \label{fig:two-hyperboloid}
         \end{subfigure}
         \hfill
@@ -677,7 +677,7 @@ This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0
         \begin{subfigure}[b]{0.24\textwidth}
             \centering
             \includegraphics[width=\textwidth]{one-hyperboloid.pdf}
-            \caption{2-sheet hyperboloid}%
+            \caption{1-sheet hyperboloid}%
             \label{fig:one-hyperboloid}
         \end{subfigure}
         \caption{Various surfaces as level sets.}%
