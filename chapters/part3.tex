@@ -14,7 +14,7 @@ There are a huge number of different types of partial differential equations (PD
 We start by consider an example of the first type.
 
 \begin{example*}
-    Find all solutions of the PDE
+    Find all solutions of the PDE,
     \(3 \frac{\partial f}{\partial x}(x,y) + 2 \frac{\partial f}{\partial y} (x,y) = 0\).
 \end{example*}
 
@@ -27,7 +27,7 @@ We start by consider an example of the first type.
     \nabla f(x,y) =0\).
     We can also phrase this in terms of the directional derivative, namely
     \[
-        D_{v}f(x,y) = 0 \quad \text{where \(v=\left( \begin{smallmatrix}
+        D_{\mathbf{v}}f(x,y) = 0 \quad \text{where \(\mathbf{v}=\left( \begin{smallmatrix}
                 3 \\ 2
             \end{smallmatrix} \right)\)}.
     \]
@@ -586,7 +586,7 @@ The graphical representation suggests to us that at the ``touching point'' the g
 In other words, \(\nabla f = \lambda \nabla g\) for some \(\lambda \in \bR\).
 The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagrange_multiplier}{method of Lagrange multipliers}.
 
-\begin{theorem}[Lagrange multipliers (2D)]
+\begin{theorem}[Lagrange multipliers in 2D]
     Suppose that a differentiable scalar field \(f(x,y)\) has a relative minimum or maximum when it is subject to the constraint
     \[
         g(x,y) = 0.
@@ -607,7 +607,7 @@ The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagra
 
 In three dimensions a similar result holds.
 
-\begin{theorem}[Lagrange multipliers (3D)]
+\begin{theorem}[Lagrange multipliers in 3D]
     Suppose that a differentiable scalar field \(f(x,y,z)\) has a relative minimum or maximum when it is subject to the constraints
     \[
         g_{1}(x,y,z) = 0,
