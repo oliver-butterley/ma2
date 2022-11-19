@@ -56,11 +56,19 @@ We will write that ``\({\{f_n(x)\}}_{n}\) is a sequence of functions on \(D\subs
   If \(f_n(x) \to f(x)\) for each \(x\in D\) we say that \(f_n\) is \emph{pointwise convergent} to \(f\).
 \end{definition}
 
-\begin{definition}[uniform convergence]
+\begin{definition}[uniform convergence]%
+  \label{def:uniform-converge}
   Let \(f_n(x)\) be a sequence of functions on \(D\subset \mathbb{R}\)
   and let \(f(x)\) be a function on \(D\).
   If, for each \(\epsilon>0\), there exists \(N\) such that for every \(n\geq N\) and every \(x\in D\), \(|f_n(x) - f(x)| < \epsilon\) then we say that \(f_n\) is \emph{uniformly convergent} to \(f\).
 \end{definition}
+
+\begin{figure}
+  \centering
+  \includegraphics{uniform-converge.pdf}
+  \caption{Uniform convergence (Definition~\ref{def:uniform-converge}) requires that \(f_n\) is ``close'' to \(f(x)\) in the uniform sense illustrated here.}%
+  \label{fig:uniform-converge}
+\end{figure}
 
 \begin{example*}
   Show that \(f_n(x) = x^n\) converges uniformly on \((0,\frac{1}{2})\).
