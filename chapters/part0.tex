@@ -129,30 +129,6 @@ This can be proved by constructing many such curves, for example the \href{https
 
 
 \subsection*{MA2 versus MA1}
-In MA1, we learnt about functions of one variable, say $f(x)$.
-In concrete applications, $f(x)$ might be the position of a car at time $x$. In that case, the derivative $f'(x)$ is
-the speed of the car at time $x$. Or, $f(x)$ might be the total revenue from the product when we produce the quantity $x$.
-By differentiating $f'(x)$, we can find the maximum of $f(x)$, optimizing the revenue.
-But in either case, they are a function from $\bR$ to $\bR$.
-
-In MA2, we will study functions (sometimes called fields) from $\bR^m$ to $\bR^n$.
-Recall that we live in the three-dimensional space. Thus for example,
-the temperature $T(x)$ at each point $x$ in the classroom is such a function from $\bR^3$ to $\bR$.
-In Physics you learn that the electric field is a field $\mathbf{E}(x)$ from $\bR^3$ to $\bR^3$,
-as the electric field has three components. Similarly, the magnetic field $\mathbf{B}(x)$ is also a field from $\bR^3$ to $\bR^3$.
-We will consider derivatives of such fields, and in higher dimensions, there are many types of derivatives,
-denoted by $\nabla T(x), \nabla \cdot \mathbf{E}(x), \nabla \times \mathbf{B}(x)$, depending on the type of the fields.
-
-You may have heard about Maxwell's equations (in the vacuum):
-\begin{align*}
- \nabla \cdot \mathbf{E}(x) &= 0 \\
- \nabla \cdot \mathbf{B}(x) &= 0 \\
- \nabla \times \mathbf{E}(x) &= -\frac{\partial \mathbf{B}}{\partial t} \\
- \nabla \times \mathbf{B}(x) &= \mu_0\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
-\end{align*}
-These are very important equations that govern the changes of electro-magnetic fields.
-As solutions of these equations, we can find electromagnetic waves, and we can predict how they propagate (in the vacuum).
-
 
 Much of what we do in this course builds on ideas established in Mathematical Analysis 1.
 In particular many of the ideas are extended to the higher dimensional setting. See Table~\ref{tab:2versus1}.
@@ -231,6 +207,39 @@ In particular many of the ideas are extended to the higher dimensional setting. 
   \caption{Ma2 versus MA1}%
   \label{tab:2versus1}
 \end{table}
+
+In MA1, we learnt about functions of one variable, say $f(x)$.
+In concrete applications, $f(x)$ might be the position of a car at time $x$. In that case, the derivative $f'(x)$ is
+the speed of the car at time $x$. Or, $f(x)$ might be the total revenue from the product when we produce the quantity $x$.
+By differentiating $f'(x)$, we can find the maximum of $f(x)$, optimizing the revenue.
+But in either case, they are a function from $\bR$ to $\bR$.
+
+In MA2, we will study functions (sometimes called fields) from $\bR^m$ to $\bR^n$.
+Recall that we live in the three-dimensional space. Thus for example,
+the temperature $T(x)$ at each point $x$ in the classroom is such a function from $\bR^3$ to $\bR$.
+In Physics you learn that the electric field is a field $\mathbf{E}(x)$ from $\bR^3$ to $\bR^3$,
+as the electric field has three components. Similarly, the magnetic field $\mathbf{B}(x)$ is also a field from $\bR^3$ to $\bR^3$.
+We will consider derivatives of such fields, and in higher dimensions, there are many types of derivatives,
+denoted by $\nabla T(x), \nabla \cdot \mathbf{E}(x), \nabla \times \mathbf{B}(x)$, depending on the type of the fields.
+
+A practical example which involves concepts from MA2 is the heat equation:
+\begin{align*}
+ \frac{\partial T}{\partial t} = \Delta T,
+\end{align*}
+where $T(x,y,z,t)$ denotes the temperature at the point $(x,y,z)$ at time $t$.
+This equation tells that how the temperature at a point at a given time changes depending on the temperature
+of the points around it.
+
+You may have heard about Maxwell's equations (in the vacuum):
+\begin{align*}
+ \nabla \cdot \mathbf{E}(x) &= 0 \\
+ \nabla \cdot \mathbf{B}(x) &= 0 \\
+ \nabla \times \mathbf{E}(x) &= -\frac{\partial \mathbf{B}}{\partial t} \\
+ \nabla \times \mathbf{B}(x) &= \mu_0\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align*}
+These are very important equations that govern the changes of electro-magnetic fields.
+As solutions of these equations, we can find electromagnetic waves, and we can predict how they propagate (in the vacuum).
+
 
 \subsection*{A brief review of MA1}
 In MA1, we learnt some properties of real numbers $\bR$, functions defined on subsets of $\bR$
