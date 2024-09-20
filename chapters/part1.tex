@@ -33,7 +33,7 @@ In order to understand this difficulty let us consider the following example.
 \begin{example*}
   Consider the sequence \(f_n(x) = x^n\) for \(x\in (0,1)\).
   For each \(x\in (0,1)\) we see that \(f_n(x) \to 0\).
-  On the other hand, for each \(n\), \(2^{\frac{1}{n}}\in (0,1)\) and \(f_n(2^{\frac{1}{n}}) = \frac{1}{2}\).
+  On the other hand, for each \(n\), \(2^{-\frac{1}{n}}\in (0,1)\) and \(f_n(2^{-\frac{1}{n}}) = 2^{-\frac{1}{n}\cdot n} = 2^{-1}\).
 \end{example*}
 
 
@@ -56,12 +56,22 @@ We will write that ``\({\{f_n(x)\}}_{n}\) is a sequence of functions on \(D\subs
   If \(f_n(x) \to f(x)\) for each \(x\in D\) we say that \(f_n\) is \emph{pointwise convergent} to \(f\).
 \end{definition}
 
+\begin{example*}
+  The sequence \(f_n(x) = x^n\) converges pointwise on \([0,1]\).
+  Indeed, if $x < 1$, then $f_n(x) = x^n \to 0$. If $x = 1$, then $f_n(x) = 1^n \to 1$.
+\end{example*}
+
+
 \begin{definition}[uniform convergence]%
   \label{def:uniform-converge}
   Let \(f_n(x)\) be a sequence of functions on \(D\subset \mathbb{R}\)
   and let \(f(x)\) be a function on \(D\).
   If, for each \(\epsilon>0\), there exists \(N\) such that for every \(n\geq N\) and every \(x\in D\), \(|f_n(x) - f(x)| < \epsilon\) then we say that \(f_n\) is \emph{uniformly convergent} to \(f\).
 \end{definition}
+Note that pointwise convergence can be stated as follows:
+for each \(\epsilon>0\), for each $x \in D$, there exists \(N\) such that for every \(n\geq N\), \(|f_n(x) - f(x)| < \epsilon\).
+The position of the quantifier ``for each $x \in D$'' is different.
+
 
 \begin{figure}
   \centering
@@ -98,8 +108,8 @@ What about the sequence of functions \(f_n(x) = \arctan (nx)\)?
 
 \begin{theorem}%
   \label{thm:continuous-limit}
-  Suppose that \(f_n \to f\) uniformly on \(D\) and that the \(f_n\) are continuous on \(D\).
-  Then \(f\) is continuous on \(D\).
+  Suppose that $\{f_n\}$ is a sequence of functions on $D$ and each $f_n$ is continuous on $D$.
+  Supporse that \(f_n \to f\) uniformly on \(D\). Then \(f\) is continuous on \(D\).
 \end{theorem}
 
 
@@ -137,13 +147,22 @@ Recall that integrals are defined rigorously using the notion of a step function
   This means that
   \[
     \begin{aligned}
-      \Big| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \Big|
+      \left| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \right|
+      &= \left| \int_{a}^{b} (f_n(x) - f(x)) \ dx \right| \\
        & \leq \int_{a}^{b} | f_n(x) - f(x) | \ dx    \\
-       & \leq (b-a) \frac{\epsilon}{b-a} = \epsilon.
+       & < (b-a) \frac{\epsilon}{b-a} = \epsilon.
     \end{aligned}
   \]
   This shows that \(\int_{a}^{b} f_n(x) \ dx \to  \int_{a}^{b} f(x) \ dx\).
 \end{proof}
+
+\begin{example*}
+  The sequence \(f_n(x) = \begin{cases} n^2x + n & x \in [-\frac1n, 0] \\ -n^2x + n & x \in [0, \frac1n] \\ 0 & \text{otherwise} \end{cases}\) converges
+  pointwise to $f(x) = \begin{cases} 1 & x = 0 \\ 0 & \text{otherwise} \end{cases}$, but not uniformly.
+  Indeed, in this case, we have
+  $\int_{-1}^1 f_n(x)dx = 1$ (it is $2$ times the area of the right triangle with sides $\frac1n, n$),
+  while $\int_{-1}^1 f(x)dx = 0$.
+\end{example*}
 
 
 \subsubsection*{Series of functions}
