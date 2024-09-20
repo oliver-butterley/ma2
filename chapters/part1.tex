@@ -108,8 +108,8 @@ What about the sequence of functions \(f_n(x) = \arctan (nx)\)?
 
 \begin{theorem}%
   \label{thm:continuous-limit}
-  Suppose that \(f_n \to f\) uniformly on \(D\) and that the \(f_n\) are continuous on \(D\).
-  Then \(f\) is continuous on \(D\).
+  Suppose that $\{f_n\}$ is a sequence of functions on $D$ and each $f_n$ is continuous on $D$.
+  Supporse that \(f_n \to f\) uniformly on \(D\). Then \(f\) is continuous on \(D\).
 \end{theorem}
 
 
@@ -147,13 +147,22 @@ Recall that integrals are defined rigorously using the notion of a step function
   This means that
   \[
     \begin{aligned}
-      \Big| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \Big|
+      \left| \int_{a}^{b} f_n(x) \ dx - \int_{a}^{b} f(x) \ dx \right|
+      &= \left| \int_{a}^{b} (f_n(x) - f(x)) \ dx \right| \\
        & \leq \int_{a}^{b} | f_n(x) - f(x) | \ dx    \\
-       & \leq (b-a) \frac{\epsilon}{b-a} = \epsilon.
+       & < (b-a) \frac{\epsilon}{b-a} = \epsilon.
     \end{aligned}
   \]
   This shows that \(\int_{a}^{b} f_n(x) \ dx \to  \int_{a}^{b} f(x) \ dx\).
 \end{proof}
+
+\begin{example*}
+  The sequence \(f_n(x) = \begin{cases} n^2x + n & x \in [-\frac1n, 0] \\ -n^2x + n & x \in [0, \frac1n] \\ 0 & \text{otherwise} \end{cases}\) converges
+  pointwise to $f(x) = \begin{cases} 1 & x = 0 \\ 0 & \text{otherwise} \end{cases}$, but not uniformly.
+  Indeed, in this case, we have
+  $\int_{-1}^1 f_n(x)dx = 1$ (it is $2$ times the area of the right triangle with sides $\frac1n, n$),
+  while $\int_{-1}^1 f(x)dx = 0$.
+\end{example*}
 
 
 \subsubsection*{Series of functions}
