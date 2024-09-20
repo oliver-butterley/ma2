@@ -36,7 +36,7 @@ jobs:
           path: main.pdf
       # Copy file to deploy folder
       - run: mkdir dist
-      - run: cp main.pdf dist/main.pdf
+      - run: cp main.pdf dist/ma2.pdf
       # Upload PDF to server
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
@@ -46,7 +46,7 @@ jobs:
             SOURCE: "dist/"
             REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
             REMOTE_USER: ${{ secrets.REMOTE_USER }}
-            TARGET: ${{ secrets.REMOTE_TARGET }}  # E.g., "~/public_html/MA2/draft/"
+            TARGET: ${{ vars.REMOTE_TARGET }}  # E.g., "~/public_html/MA2/draft/"
             EXCLUDE: ""
 
 
