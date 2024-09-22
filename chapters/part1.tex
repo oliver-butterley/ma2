@@ -181,6 +181,8 @@ We say that the series  \(\sum_{n}a_n\) is convergent if \({\{\sum_{k=1}^{n}a_k\
   \begin{itemize}
     \item   is \emph{pointwise convergent} if
           \(\sum_{k=1}^{n} f_k(x)\) is pointwise convergent,
+    \item   is \emph{pointwise absolutely convergent} if
+          \(\sum_{k=1}^{n} |f_k(x)|\) is pointwise convergent,
     \item   is \emph{uniformly convergent} if
           \(\sum_{k=1}^{n} f_k(x)\) is uniformly convergent.
   \end{itemize}
@@ -188,7 +190,8 @@ We say that the series  \(\sum_{n}a_n\) is convergent if \({\{\sum_{k=1}^{n}a_k\
 
 
 \begin{theorem}
-  Suppose that the series \(\sum_{n} f_n\) is uniformly convergent to \(g\) on \(D\) and the \(f_n\) are continuous on \(D\).
+  Let $\{f_n\}$ be a sequence of continuous functions on $D$.
+  Suppose that the series \(\sum_{n} f_n\) is uniformly convergent to \(g\) on \(D\).
   Then \(g\) is continuous on \(D\).
 \end{theorem}
 
@@ -198,7 +201,8 @@ We say that the series  \(\sum_{n}a_n\) is convergent if \({\{\sum_{k=1}^{n}a_k\
 \end{proof}
 
 \begin{theorem}
-  Suppose that the series \(\sum_{n} f_n\) is uniformly convergent to \(g\) and the \(f_n\) are continuous.
+  Let $\{f_n\}$ be a sequence of continuous functions on $D = [a,b]$.
+  Suppose that the series \(\sum_{n} f_n\) is uniformly convergent to \(g\) on \(D\).
   Then
   \[
     \lim_{n\to\infty} \int_{a}^{b}  \sum_{k=1}^{n} f_k(x)  \ dx = \int_{a}^{b} g(x) \ dx.
@@ -222,12 +226,14 @@ For series of functions we have the following test for convergence.
 \begin{theorem}[Weierstrass M-test]
   Suppose that \({\{f_n\}}_n\) is a sequence of functions on \(D\), that \({\{M_n\}}_n\) is a sequence of positive numbers
   and that \(|f_n(x)|\leq M_n\).
-  If \(\sum_{n=0}^{\infty}M_n\) is convergent then the series \(\sum_{n=0}^{\infty}f_n\) converges absolutely and uniformly on \(D\).
+  If \(\sum_{n=0}^{\infty}M_n\) is convergent then the series \(\sum_{n=0}^{\infty}f_n\) converges pointwise absolutely and uniformly on \(D\).
 \end{theorem}
 
 \begin{proof}
-  By the comparison test \(\sum |f_n(x)| \) is convergent for all \(x\in D\).
+  Let $x \in D$.
+  By the comparison test \(\sum |f_n(x)| \) is convergent.
   I.e., for each \(x\) the series \(\sum f_n(x) \) is absolutely convergent and so we let \(f(x)\) be the limit.
+
   We compute
   \[
     \Big|f(x) - \sum_{k=1}^{n} f_k(x)  \Big|
@@ -237,13 +243,15 @@ For series of functions we have the following test for convergence.
     \leq  \sum_{k=n+1}^{\infty} M_k.
   \]
   As \(\sum_{n}M_n\) is convergent this last expression tends to \(0\) as \(k\to \infty\).
+  That is, for a given $\epsilon > 0$, there is $N$ such that for any $n \ge N$ we have $\sum_{k=n+1}^\infty M_k < \epsilon$.
+  Then for such $N$, for any $n \ge N$, $|f(x) - \sum_{k=1}^{n} f_k(x)| < \epsilon$.
   This estimate is independent of \(x\).
 \end{proof}
 
 \section{Power series}
 
 \begin{definition}
-  Let \({\{a_n\}}_{n}\) be a series of numbers and let \(c\) be a number.
+  Let \({\{a_n\}}_{n}\) be a sequence of numbers and let \(c\) be a number.
   The series
   \(\sum_{n} a_n {(x-c)}^n\)
   is called a \emph{power series} (centred at \(c\)).
@@ -298,8 +306,10 @@ A key notion is determining exactly the domain on which a power series converges
 \end{theorem}
 
 \begin{proof}
-  Let \(A\) be the set of real numbers for which \(\sum_n a_n x^n\) is convergent and
-  let \(r\) be the least upper bound of \(A\).
+  Let \(A\) be the set of real numbers $|x|$ for which \(\sum_n a_n x^n\) is convergent.
+  $A$ must be bounded, because if not, for any $x$ there is $x_0 \in A$ such that $|x| < |x_0|$,
+  then $\sum_n a_n x^n$ would be convergent by the previous theorem, thus it would contradicts the existence of $x_2$.
+  Let \(r\) be the least upper bound of \(A\).
   The series  \(\sum_n a_n x^n\) is convergent whenever \(\abs{x}<r\).
   If \(\abs{x}>r\) and \(\sum_n a_n x^n\) is convergent then this contradicts the definition of \(A\) and so  \(\sum_n a_n x^n\) is divergent for \(\abs{x}>r\).
 \end{proof}
@@ -335,11 +345,13 @@ In general exchanging limits with derivatives and integrals is problematic but f
   Let \(\abs{x}<R<r\).
   Observe that the series is uniformly convergent for \(y\in[-R,R]\).
   This means that \(f(x)\) is continuous and so we can interchange limit and integral,
-  \[
+  \begin{align*}
     \int_0^x f(y) \ dy
-    = \sum_{n=0}^{\infty} \int_0^x  {a_n} x^{n}
+    &= \int_0^x  \sum_{n=0}^{\infty}{a_n} y^{n}dy
+    = \sum_{n=0}^{\infty} \int_0^x  {a_n} y^{n}dy \\
+    &= \sum_{n=0}^{\infty} \frac{a_n}{n+1} [y]_0^x
     = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}.
-  \]
+  \end{align*}
 \end{proof}
 
 \begin{theorem}[differentiating power series]%
