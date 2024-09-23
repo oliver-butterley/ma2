@@ -1,8 +1,8 @@
 # Mathematical analysis 2 course notes
 
-This text accompanies the course "Mathematical Analysis 2' taught at the University of Rome Tor Vergata in the department of engineering for the academic year 2021/22.
+This text accompanies the course "Mathematical Analysis 2' taught at the University of Rome Tor Vergata in the department of engineering.
 
-A typeset version is available at https://www.mat.uniroma2.it/butterley/MA2/notes/main.pdf. 
+A typeset version is available at <https://www.mat.uniroma2.it/butterley/ma2.pdf>. 
 
 ![latexmk workflow](https://github.com/oliver-butterley/ma2/actions/workflows/latex.yml/badge.svg)
 
