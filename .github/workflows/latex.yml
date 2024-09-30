@@ -13,10 +13,10 @@ jobs:
     steps:
       # Checks-out repository under $GITHUB_WORKSPACE
       - name: Set up Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Compile graphics folder LaTeX
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           working_directory: graphics
           root_file: "*.tex"
@@ -25,7 +25,7 @@ jobs:
           extra_system_packages: inkscape      
       # Compile main LaTeX
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
       # Upload PDF file as artifact
@@ -39,7 +39,7 @@ jobs:
       - run: cp main.pdf dist/ma2.pdf
       # Upload PDF to server
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@main
+        uses: easingthemes/ssh-deploy@v5
         env:
             SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
             ARGS: "-rltgoDzvO"
