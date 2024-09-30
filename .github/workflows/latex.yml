@@ -39,7 +39,7 @@ jobs:
       - run: cp main.pdf dist/ma2.pdf
       # Upload PDF to server
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v5
+        uses: easingthemes/ssh-deploy@v5.1.1
         env:
             SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
             ARGS: "-rltgoDzvO"
