@@ -20,7 +20,6 @@ jobs:
         with:
           working_directory: graphics
           root_file: "*.tex"
-          glob_root_file: true
           latexmk_shell_escape: true
           extra_system_packages: inkscape      
       # Compile main LaTeX
@@ -39,8 +38,8 @@ jobs:
       - run: cp main.pdf dist/ma2.pdf
       # Upload PDF to server
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v5.1.1
-        env:
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
             SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
             ARGS: "-rltgoDzvO"
             SOURCE: "dist/"
