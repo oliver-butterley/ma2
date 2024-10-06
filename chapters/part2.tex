@@ -28,6 +28,8 @@ We also recall that the ``length'' of a vector is given by the norm, defined as 
 \noindent
 For example, in \(\bR^2\) then \(\norm{(x,y)} = \sqrt{x^2 + y^2}\).
 There are various convenient properties for working with norms and inner products, in particular, the \href{https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality}{Cauchy-Schwarz inequality} \(\abs{x\cdot y} \leq \norm{\xx} \ \norm{\yy}\) and the \href{https://en.wikipedia.org/wiki/Triangle_inequality}{triangle inequality} \(\norm{\xx + \yy} \leq \norm{\xx} + \norm{\yy}\).
+It also holds that, for any $k = 1,\cdots, n$, $|x_k| \le \norm{\xx}$.
+
 
 \begin{samepage}
     The primary higher-dimensional functions we consider in this course are:
@@ -172,11 +174,20 @@ We use the notation \(S^c = \bR^n \setminus S\) and we say that \(C^c\) is the \
 
 \subsection*{Limits and continuity}
 
-Let \(S\subset \bR^n\) and \(\ff : S \to \bR^m\).
-If \(\aa\in \bR^n\), \(\bb\in \bR^m\) we write
+Let $a \in \bR^n$.
+We say that a sequence $\{x_n\} \subset \bR^n$ converges to $a$ if
+$\lim_{n\to \infty} \norm{x_n - a} = 0$. We write $\lim_{n\to\infty} x_n = a$, or $x_n \underset{n\to\infty}\to a$.s
+
+
+
+Let \(S\subset \bR^n\), \(\ff : S \to \bR^m\),
+\(\aa\in \bR^n\) and \(\bb\in \bR^m\)
+We write
     {\(  \displaystyle\lim_{\xx \to \aa}\ff(\xx) = \bb \)}
 to mean that
 \(\norm{\ff(\xx)-\bb} \to 0\) as \(\norm{\xx-\aa}\to 0\).
+More precisely, for each $\epsilon > 0$, there is $\delta > 0$ such that
+for $\xx \in B(\aa, \delta) \cap S$, it holds that $\norm{\ff(\xx) - \bb} < \epsilon$.
 Observe how, if \(n=m=1\), this is the familiar notion of continuity for functions on \(\bR\).
 
 \begin{definition}[continuous]
@@ -235,6 +246,9 @@ We prove a couple of the parts of the above theorem here, the other parts are le
         \end{aligned}
     \]
     Since we already know that \(\norm{\ff(\xx)-\bb} \to 0\) and \(\norm{\gg(\xx)-\cc} \to 0\) as \(\xx \to \aa\), this implies that \(\norm{\ff(\xx)\cdot\gg(\xx) - \bb\cdot \cc }\to 0\).
+    
+    (We can make this precise by fixing $\epsilon > 0$, taking $\delta > 0$ such that
+    $\norm{\ff(xx) - \bb} < \frac{\epsilon}{3(\norm{\bb}+1)}, \norm{\gg(xx) - \cc} < \frac{\epsilon}{3(\norm{\bb}+1)}$)
 \end{proof}
 
 \begin{proof}[Proof of \ref{it:cont-d}]
