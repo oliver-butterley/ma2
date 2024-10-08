@@ -335,12 +335,18 @@ This motivates the following.
 
 \begin{definition}[directional derivative]
     Let \(S\subset \bR^n\) and \(f:S\to \bR\).
-    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\), \(\norm{v}=1\) the directional derivative of \(f\) with respect to \(\vv\) is defined as
+    For any \(\aa \in \operatorname{int}S\) and \(\vv \in \bR^n\), the directional derivative of \(f\) with respect to \(\vv\) is defined as
     \[
         D_{\vv}f(\aa) =
         \lim_{h\to 0} \frac{1}{h}\left(  f(\aa+h \vv) - f(\aa)     \right).
     \]
 \end{definition}
+
+\begin{example}
+ Let $f(x,y) = x^2 y, \aa = (1,2), \vv = (1,1)$. Then $\aa + h\vv = (1+t, 2+t)$.
+ We can calculate $D_{\vv}f(\aa) = \lim_{h\to 0} \frac{1}{h}\left((1+t)^2(2+t) - 1^2\cdot 2\right)
+ = \lim_{h\to 0} \frac{1}{h}\left((2+5h+4h^2+h^3) - 1^2\cdot 2\right) = 5$.
+\end{example}
 
 
 When \(h\) is small we can guarantee that \(\aa + h \vv \in S\) because \(\aa\in \operatorname{int} S\) so this definition makes sense.
@@ -395,6 +401,13 @@ I.e., \( \ee_1=(1,0,\ldots,0)  \),  \( \ee_1=(0,1,0,\ldots,0)  \),  \( \ee_1=(0,
     If  a function is written \(f(x,y)\) we write \(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\) for the partial derivatives. Similarly for higher dimension.
 \end{remark*}
 
+\begin{example}
+ Let $f(x,y) = x^2 y, \aa = (x,y)$. Then $\aa + h\ee_1 = (x+t, y)$.
+ We have $D_{1}f(\aa) = \lim_{h\to 0} \frac{1}{h}\left((x+t)^2y - x^2y\right)
+ = \lim_{h\to 0} \frac{1}{h}\left((x^2+2tx+t^2) - x^2y\right) = 2xy$.
+ Similarly, $D_2 f(\aa) = x^2$.
+\end{example}
+
 In practice, to compute the partial derivative \( \frac{\partial f}{\partial x_k}\), one should consider all other \(x_j\) for \(j\neq k\) as constants and take the derivative with respect to \(x_k\).
 In a moment we see this rigorously.
 
@@ -443,6 +456,11 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
     \end{pmatrix}.
 \]
 
+\begin{example}
+ Let $f(x,y) = x^2 y, \aa = (x,y)$. Then $\nabla f(\aa) = (2xy, x^2) \in \bR^2$.
+\end{example}
+
+
 
 \begin{theorem}%
     \label{thm:differential}
@@ -453,7 +471,7 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
         f(\xx) = f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa) + \epsilon(\xx-\aa)
     \]
     where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
-    Moreover, for any vector \(\vv\), \(\norm{v}=1\),
+    Moreover, for any vector \(\vv\),
     \[
         D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.
     \]
