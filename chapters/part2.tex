@@ -419,6 +419,13 @@ If \(f:\bR \to \bR\) is differentiable, then we know that, when \(x\) is close t
 More precisely, we know that\footnote{This is \href{https://en.wikipedia.org/wiki/Big_O_notation\#Little-o_notation}{\emph{little-o notation}} and here means that \(\abs{f(x) - f(a) - (x-a) f'(a)}/\abs{x-a} \to 0\) as \(\abs{x-a}\to 0\).  } \(f(x) = f(a) + (x-a) f'(a) + \epsilon(x-a)\) where \(\abs{\epsilon(x-a)} = \littleo{\abs{x-a}}\).
 This way of seeing differentiability is convenient for the higher dimensional definition of differentiability.
 
+Recall that a linear transformation $T : \bR^m \to \bR^n$ can be written as a matrix.
+In particular, if $T: \bR^n \to \bR$, it can be written as a row vector:
+\begin{align*}
+ T\vv = \sum_{k=1}^n T_k v_k = \begin{pmatrix} T_1 & \cdots & T_n \end{pmatrix} \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}
+\end{align*}
+
+
 \begin{definition}[differentiable]%
     \label{def:differentiable}
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
