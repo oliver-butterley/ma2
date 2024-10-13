@@ -519,10 +519,11 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 \end{theorem}
 
 \begin{proof}
+    Let $\xx$ be in the domain of $f$.
     For convenience define the vectors 
     \[
         \begin{aligned}
-            \vv &= (v_1,v_2,\ldots,v_n), \\
+            \xx - \aa =\vv &= (v_1,v_2,\ldots,v_n), \\
             \uu_k &= (v_1,v_2,\ldots,v_k,0,\ldots,0).
         \end{aligned}
     \]
@@ -534,19 +535,24 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
         \quad
         \uu_n = \vv.
     \]
-    Using the mean value theorem we know that there exists \( \zz_k = \uu_{k-1}+ \theta_k \ee_k\) such that \( f(\aa + \uu_k) - f(\aa + \uu_{k-1}) =  v_k  D_{\ee_k}f(\aa +  \zz_k) \).
+    Using the mean value theorem we know that there exists \( \zz_k = \uu_{k-1}+ \theta_k \ee_k\), $\theta_k \in (0,1)$ such that \( f(\aa + \uu_k) - f(\aa + \uu_{k-1}) =  v_k  D_{\ee_k}f(\aa +  \zz_k) \).
     Consequently
     \[
         \begin{aligned}
             f(\aa+\vv) - f(\aa)
              & = \sum_{k=1}^{n} f(\aa + \uu_k) - f(\aa + \uu_{k-1})                                               \\
              & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa +  \zz_k)                                                     \\
-             & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})                                                  \\
-             & \quad + \sum_{k=1}^{n}  v_k \left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa + \uu_{k-1}) \right)
+             & = \sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa)                                                  \\
+             & \quad + \sum_{k=1}^{n}  v_k \left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa) \right)
         \end{aligned}
     \]
-    To conclude, observe that the second sum vanishes as \(\norm{\vv} \to 0\) and that the first sum,
-    \(\sum_{k=1}^{n} v_k  D_{\ee_k}f(\aa + \uu_{k-1})\), converges to \(\vv \cdot \nabla f(\aa)\).
+    To conclude, observe that $\zz_k \to 0$ as $\vv \to 0$ and
+    \begin{align*}
+      \frac1{\norm{\vv}}|v_k |\left(  D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa) \right)|
+      \le |D_{\ee_k}f(\aa +  \zz_k)-  D_{\ee_k}f(\aa)| \to 0 
+    \end{align*}
+    as \(\norm{\vv} \to 0\) by the continuity of $D_{\ee_k}f$ at $\aa$ and that the first sum
+    is equal to \(\vv \cdot \nabla f(\aa)\).
 \end{proof}
 
 
@@ -571,9 +577,9 @@ Let \(\aalpha:\bR \to \bR^n\) and suppose it has the form
 We define the derivative as
 \[
     \aalpha'(t) := \begin{pmatrix}
-        x_1'(t) \\
+        \alpha_1'(t) \\
         \vdots  \\
-        x_n'(t)
+        \alpha_n'(t)
     \end{pmatrix}.
 \]
 \noindent
@@ -590,43 +596,53 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
 
 \begin{theorem*}
     Let \(S\subset \bR^n\) be open and \(I\subset \bR\) an interval.
-    Let \(\xx: I \to S\) and \(f:S \to \bR\) and define, for \(t\in I\),
+    Let \(\aalpha: I \to S\) and \(f:S \to \bR\) and define, for \(t\in I\),
     \[
-        g(t) = f (\xx(t)).
+        g(t) = f (\aalpha(t)).
     \]
-    Suppose that  \(t\in I\) is such that \(\xx'(t)\) exists and \(f\) is differentiable at \(\xx(t)\).
+    Suppose that  \(t\in I\) is such that \(\aalpha'(t)\) exists and \(f\) is differentiable at \(\aalpha(t)\).
     Then \(g'(t)\) exists and
     \[
-        g'(t) = \nabla f \left(\xx(t)\right) \cdot \xx'(t).
+        g'(t) = \nabla f \left(\aalpha(t)\right) \cdot \aalpha'(t).
     \]
 \end{theorem*}
 
 
 \begin{proof}
-    Let \(h>0\) be small, \vspace{-.5em}
+    Let \(h\) be small. As $f$ is differentiable at $\aalpha(t)$,
+    we have
+    \[
+     f(\xx) = f(\aalpha(t)) + \nabla f(\aalpha(t)) \cdot (\aalpha(t+h) - \aalpha(t)) + \epsilon(\aalpha(t+h)-\aalpha(t)).
+    \]
+    Then
     \[
         \begin{aligned}
             \tfrac{1}{h}\left[g(t+h)-g(t) \right]
-             & = \tfrac{1}{h}\left[f(\xx(t+h)-f(\xx(t)))\right]                        \\
-             & = \tfrac{1}{h} \nabla f(\xx(t))\cdot (\xx(t+h)-\xx(t))                  \\
-             & \ \ +  \tfrac{1}{h}  \norm{\xx(t+h)-\xx(t)} E(\xx(t), \xx(t+h)-\xx(t)).
+             & = \tfrac{1}{h}\left[f(\aalpha(t+h)-f(\aalpha(t)))\right]                        \\
+             & = \tfrac{1}{h} \nabla f(\aalpha(t))\cdot (\aalpha(t+h)-\aalpha(t))                  \\
+             & \ \ +  \tfrac{1}{h}  \epsilon(\aalpha(t+h)-\aalpha(t)).
         \end{aligned}
     \]
-    Observe that \(\tfrac{1}{h}  (\xx(t+h)-\xx(t)) \to \xx'(t)  \) as \(h\to 0\).
+    Observe that \(\tfrac{1}{h}  (\aalpha(t+h)-\aalpha(t)) \to \aalpha'(t)  \) as \(h\to 0\)
+    and $\tfrac{1}{h}  \epsilon(\aalpha(t+h)-\aalpha(t)) \to 0$
+    as in the case of one-dimensional functions
+    (we can write $\epsilon(\aalpha(t)+\vv) = \norm{\vv}E(\aa, \vv)$,
+    where $E(\aa, \vv) \to 0$ as $\vv \to 0$ and we set $E(\aa, 0) = 0$).
+    .
 \end{proof}
 
 
 \begin{example*}
     A particle moves in a circle and its position at time \(t\in [0,2\pi]\) is given by
     \[
-        \xx(t) = (\cos t, \sin t).
+        \aalpha(t) = (\cos t, \sin t).
     \]
-    The temperature at a point \(\yy=(y_1,y_2)\) is given by the function \(f(\yy) := y_1 + y_2\),
-    The temperature the particle experiences at time \(t\) is given by \(g(t) = f (\xx(t))\).
+    The temperature at a point \(\xx=(x_1,x_2)\) is given by the function \(f(\xx) := x_1 + x_2\),
+    The temperature the particle experiences at time \(t\) is given by \(g(t) = f (\aalpha(t))\).
     Temperature change:
     \(
     g'(t)
-    = \nabla f \left(\xx(t)\right) \cdot \xx'(t)
+    = \nabla f \left(\aalpha(t)\right) \cdot \aalpha'(t)
     = \left(\begin{smallmatrix}
             1 \\
             1
@@ -660,7 +676,9 @@ The set \(L(c)\) is called the \emph{level set}.
 In general this set can be empty or it can be all of \(S\).
 However the set \(L(c)\) is often a curve and this is the case of interest.
 This is the same notion as that of \href{https://en.wikipedia.org/wiki/Contour_line}{contour lines} on a map.
-I.e., \(\xx(t_a) = \aa\) for some \(t_a \in I\) and \[f(\xx(t))=c\] for all \(t\in I\).
+
+Assume that the curve can be parametrized by \(\xx(t)\), that is,
+\[f(\xx(t))=c\] for all \(t\in I\). Furthermore, $\xx(t_a) = \aa$ for some \(t_a \in I\).
 Then
 \begin{itemize}
     \item \(\nabla f(\aa)\) is normal to the curve at \(\aa\)
@@ -669,6 +687,9 @@ Then
 \end{itemize}
 
 This is because the chain rule implies that \(\nabla f(\xx(t)) \cdot \xx'(t) = 0\).
+
+
+Next, let us see some examples in $\bR^3$.
 \begin{example*}
     Let \(f(x_1,x_2,x_3):=x_1^2 + x_2^2 + x_3^2\).
     \begin{itemize}
