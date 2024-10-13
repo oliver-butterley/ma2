@@ -431,9 +431,9 @@ In particular, if $T: \bR^n \to \bR$, it can be written as a row vector:
     Let \(S\subset \bR^n\) be open, \(f:S \to \bR\).
     We say that \(f\) is \emph{differentiable} at \(\aa \in S\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that, for \(\xx \in B(\aa,r)\),
     \[
-        f(\xx) = f(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
+        f(\xx) = f(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\aa, \xx - \aa)
     \]
-    where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    where \(\abs{\epsilon(\aa, \xx - \aa)} = \littleo{\norm{\xx-\aa}}\).
 \end{definition}
 
 
@@ -475,9 +475,9 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
     then \({df}_{\aa}(\vv) = \nabla f(\aa) \cdot \vv \).
     This means that, for \(\xx \in B(\aa,r)\),
     \[
-        f(\xx) = f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa) + \epsilon(\xx-\aa)
+        f(\xx) = f(\aa) +   \nabla f(\aa) \cdot (\xx-\aa) + \epsilon(\aa, \xx-\aa)
     \]
-    where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    where \(\abs{\epsilon(\aa, \xx - \aa)} = \littleo{\norm{\xx-\aa}}\).
     Moreover, for any vector \(\vv\),
     \[
         D_{\vv}f(\aa) = \nabla f(\aa) \cdot \vv.
@@ -486,14 +486,14 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
 
 \begin{proof}
     Since \(f\) is differentiable there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR\) such that
-    \(  f(\aa+ h \vv) = f(\aa) + h {df}_{\aa}(\vv) + \epsilon(h\vv)\)
+    \(  f(\aa+ h \vv) = f(\aa) + h {df}_{\aa}(\vv) + \epsilon(\aa, h\vv)\)
     and hence
     \[
         \begin{aligned}
             D_{\vv}f(\aa) & =
             \lim_{h\to 0} \frac{1}{h}(f(\aa+h \vv) - f(\aa)) \\
                           & =
-            \lim_{h\to 0} \frac{1}{h}(h \ {df}_{\aa}(\vv) + \epsilon(h\vv) )
+            \lim_{h\to 0} \frac{1}{h}(h \ {df}_{\aa}(\vv) + \epsilon(\aa, h\vv) )
             =  {df}_{\aa}(\vv).
         \end{aligned}
     \]
@@ -505,10 +505,10 @@ In general, when working in \(\bR^n\) for some \(n\in\bN\), the \emph{gradient} 
     If \(f\) is differentiable at \(\aa\), then it is continuous at \(\aa\).
 \end{theorem*}
 \begin{proof}
-    Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{   {df}_{\aa}(\vv) + \epsilon(\vv)  }\).
+    Observe that \(\abs{f(\aa+\vv)-f(\aa)} = \abs{   {df}_{\aa}(\vv) + \epsilon(\aa, \vv)  }\).
     This means that 
     \[
-        \abs{f(\aa+\vv)-f(\aa)} \leq \norm{  {df}_{\aa} } \norm{\vv} + \abs{\epsilon(\vv)} 
+        \abs{f(\aa+\vv)-f(\aa)} \leq \norm{  {df}_{\aa} } \norm{\vv} + \abs{\epsilon(\aa, \vv)} 
     \] 
     and so this tends to \(0\) as \(\norm{\vv} \to 0\).
 \end{proof}
@@ -612,7 +612,7 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
     Let \(h\) be small. As $f$ is differentiable at $\aalpha(t)$,
     we have
     \[
-     f(\xx) = f(\aalpha(t)) + \nabla f(\aalpha(t)) \cdot (\aalpha(t+h) - \aalpha(t)) + \epsilon(\aalpha(t+h)-\aalpha(t)).
+     f(\xx) = f(\aalpha(t)) + \nabla f(\aalpha(t)) \cdot (\aalpha(t+h) - \aalpha(t)) + \epsilon(\aalpha(t), \aalpha(t+h)-\aalpha(t)).
     \]
     Then
     \[
@@ -620,14 +620,14 @@ Here \(\aalpha'\) is a vector-valued function which represents the ``direction o
             \tfrac{1}{h}\left[g(t+h)-g(t) \right]
              & = \tfrac{1}{h}\left[f(\aalpha(t+h)-f(\aalpha(t)))\right]                        \\
              & = \tfrac{1}{h} \nabla f(\aalpha(t))\cdot (\aalpha(t+h)-\aalpha(t))                  \\
-             & \ \ +  \tfrac{1}{h}  \epsilon(\aalpha(t+h)-\aalpha(t)).
+             & \ \ +  \tfrac{1}{h}  \epsilon(\aalpha(t), \aalpha(t+h)-\aalpha(t)).
         \end{aligned}
     \]
     Observe that \(\tfrac{1}{h}  (\aalpha(t+h)-\aalpha(t)) \to \aalpha'(t)  \) as \(h\to 0\)
-    and $\tfrac{1}{h}  \epsilon(\aalpha(t+h)-\aalpha(t)) \to 0$
+    and $\tfrac{1}{h}  \epsilon(\aalpha(t), \aalpha(t+h)-\aalpha(t)) \to 0$
     as in the case of one-dimensional functions
-    (we can write $\epsilon(\aalpha(t)+\vv) = \norm{\vv}E(\aa, \vv)$,
-    where $E(\aa, \vv) \to 0$ as $\vv \to 0$ and we set $E(\aa, 0) = 0$).
+    (we can write $\epsilon(\aalpha(t), \vv) = \norm{\vv}E(\aalpha(t), \vv)$,
+    where $E(\aalpha(t), \vv) \to 0$ as $\vv \to 0$ and we set $E(\aalpha(t), 0) = 0$).
     .
 \end{proof}
 
@@ -786,9 +786,9 @@ This is because of the linearity and that we can consider each \emph{component} 
 \begin{definition*}[differentiable]
     We say that \(\ff: \bR^n \to \bR^m\) is \emph{differentiable} at \(\aa\) if there exists a linear transformation \({df}_{\aa}: \bR^n \to \bR^m\) such that, for \(\xx \in B(\aa,r)\),
     \[
-        \ff(\xx) = \ff(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\xx-\aa)
+        \ff(\xx) = \ff(\aa) + {df}_{\aa}(\xx-\aa) + \epsilon(\aa, \xx-\aa)
     \]
-    \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+    \(\abs{\epsilon(\aa, \xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
 \end{definition*}
 
 
@@ -838,9 +838,9 @@ We find that \( {df}_{\aa}(\vv ) = D\ff(\aa) \vv\).
 Let \(S\subset \bR^n\) and \(\ff : S \to \bR^m\).
 If \(f\) is differentiable at \(\aa \in S\) then, for all  \(\xx\in B(\aa,r) \subset S\),
 \[
-    \ff(\xx) = \ff(\aa) +  D\ff(\aa) (\xx-\aa) + \epsilon(\xx-\aa)
+    \ff(\xx) = \ff(\aa) +  D\ff(\aa) (\xx-\aa) + \epsilon(\aa, \xx-\aa)
 \]
-where \(\abs{\epsilon(\xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
+where \(\abs{\epsilon(\aa, \xx-\aa)} = \littleo{\norm{\xx-\aa}}\).
 This is like a Taylor expansion in higher dimensions.
 
 Here we see that in higher dimensions we have a matrix form of the chain rule.
