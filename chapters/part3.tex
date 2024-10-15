@@ -8,6 +8,41 @@ Firstly we will consider certain partial differential equations which we now hav
 Then the majority of the chapter is devoted to searching for extrema (minima / maxima) in various different scenarios.
 This extends what we already know for functions in \(\bR\) and we will find that in higher dimensions many more possibilities and subtleties exist.
 
+\section{Higher partial derivatives}
+Just like with derivatives, we can take higher order partial derivatives.
+For convenience when we want to write \(\frac{\partial}{\partial y}\frac{\partial}{\partial x}f(x,y) \), i.e., differentiate first with respect to \(x\) and then with respect to \(y\), we write instead \(\frac{\partial^2 f}{\partial y \partial x}(x,y) \).
+The analogous notation is used for higher derivatives and any other choice of coordinates.
+
+We first consider the question of when
+\[
+    \frac{\partial^2 f}{\partial y \partial x}(x,y)
+    \overset{\text{\large\color{blue}?}}{=}
+    \frac{\partial^2 f}{\partial x \partial y}(x,y).
+\]
+
+\begin{example*}[partial derivative problem]
+    Let \(f:\bR^2 \to \bR\) be defined as \(f(0,0)=0\) and, for \((x,y)\neq (0,0)\),
+    \[
+        f(x,y) := \frac{x y(x^2 - y^2)}{x^2 + y^2}.
+    \]
+    We calculate that \(\frac{\partial^2 f}{\partial y \partial x} (0,0) = -1\) but
+    \(\frac{\partial^2 f}{\partial x \partial y}(0,0) = 1\).
+\end{example*}
+
+\begin{theorem}%
+    \label{thm:equal-double-partial}
+    Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x} \) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
+    Further assume that \(\frac{\partial^2 f}{\partial y \partial x} \) is continuous on \(S\).
+    Then the derivative \(\frac{\partial^2 f}{\partial x \partial y} (\xx)\) exists and
+    \[
+        \frac{\partial^2 f}{\partial x \partial y} (\xx)=\frac{\partial^2 f}{\partial y \partial x} (\xx).
+    \]
+\end{theorem}
+\begin{proof}
+ TODO
+\end{proof}
+
+
 \section{Partial differential equations}
 
 There are a huge number of different types of partial differential equations (PDEs) and here we consider just two types, \emph{first order linear PDEs} and the \emph{1D wave equation}.
