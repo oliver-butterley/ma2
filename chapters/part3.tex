@@ -31,19 +31,50 @@ We first consider the question of when
 
 \begin{theorem}%
     \label{thm:equal-double-partial}
-    Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x} \) exist on an open set \(S\subset \bR^2\) containing \(\xx\).
-    Further assume that \(\frac{\partial^2 f}{\partial y \partial x} \) is continuous on \(S\).
-    Then the derivative \(\frac{\partial^2 f}{\partial x \partial y} (\xx)\) exists and
+    Let \(f:S\to\bR\) be a scalar field such that the partial derivatives \(\frac{\partial f}{\partial x }\), \(\frac{\partial f}{\partial y}\) and \(\frac{\partial^2 f}{\partial y \partial x}, \frac{\partial^2 f}{\partial x \partial y} \) exist on an open set \(S\subset \bR^2\) containing \(\xx = (a,b)\).
+    Further assume that \(\frac{\partial^2 f}{\partial y \partial x}, \frac{\partial^2 f}{\partial x \partial y} \) is continuous on \(S\).
+    Then, for $\xx = (a,b) \in S$,
     \[
         \frac{\partial^2 f}{\partial x \partial y} (\xx)=\frac{\partial^2 f}{\partial y \partial x} (\xx).
     \]
 \end{theorem}
 \begin{proof}
- TODO
+ Let us write $D_1 = \frac{\partial}{\partial x}, D_2 = \frac{\partial}{\partial y}$.
+ By the mean value theorem applied to $G(x) = f(x,b+k) - f(x,b), G'(x) = D_1 f(x,b+k) - D_1 f(x,b)$,
+ \begin{align*}
+  &(f(a+h,b+k) - f(a+h,b)) - (f(a,b+k) - f(a,b)) \\
+  &= h G'(a+\theta_1 h) \\
+  &= h (D_1 f'(a+\theta_1 h, b+k) - D_1 f'(a+\theta_1 h, b)) \\
+  &= hk D_2 D_1f(a+\theta_1 h, b+\varphi_1 k),
+ \end{align*}
+ where $0\le \theta, \varphi \le 1$, and we applied the mean value theorem to $D_1 f(a+\theta_1 h, y) = H(y)$.
+ Similarly,
+ $(f(a+h,b+k) - f(a+h,b)) - (f(a,b+k) - f(a,b)) = hk D_1 D_2f(a+\theta_2 h, b+\varphi_2 k)$,
+ hence
+ \[
+  D_1 D_2 f(a+\theta_2 h, b+\varphi_2 k) = D_2 D_1f(a+\theta_2 h, b+\varphi_2 k).
+ \]
+ As $h,k\to 0$, this shows $D_1 D_2 f(a,b) = D_2 D_1 f(a,b)$.
 \end{proof}
 
 
 \section{Partial differential equations}
+A partial differential equation is an equation about a scalar field or a vector field
+involving its partial derivatives.
+\begin{example}
+ Some (linear) partial differential equations.
+ \begin{itemize}
+  \item $\frac{\partial f}{\partial t}(x,t) = k\frac{\partial^2 f}{\partial x^2}(x,y)$, where $k$ is a constant (heat equation)
+  \item $\frac{\partial^2 f}{\partial x^2}(x,y) + \frac{\partial^2 f}{\partial y^2}(x,y) = 0$ (Laplace's equation)
+  \item $\frac{\partial^2 f}{\partial x^2}(x,t) - \frac1{c^2}\frac{\partial^2 f}{\partial t^2}(x,t) = 0$, where $c$ is a constant (wave equation)
+ \end{itemize}
+ Maxwell's equations, Navier-Stokes equations, Einstein's equations...
+\end{example}
+In general, PDE's have many solutions, and need to specify a boundary condition (or an initial condition):
+
+Consider $\frac{\partial f}{\partial x}(x,y) = 0$. For any function $g(y)$, $f(x,y) = g(y)$ is a solution,
+and it holds that $f(0,y) = g(y)$. In general, such a condition is called a boundary condition.
+
 
 There are a huge number of different types of partial differential equations (PDEs) and here we consider just two types, \emph{first order linear PDEs} and the \emph{1D wave equation}.
 We start by consider an example of the first type.
@@ -108,7 +139,7 @@ The same idea as used for the above example gives the following general result.
             x\\ y
         \end{smallmatrix}\right)
     = \frac{-1}{a^2 + b^2} \left(\begin{smallmatrix}
-            a & b \\ b & -a
+            -a & -b \\ -b & a
         \end{smallmatrix}\right)
     \left(\begin{smallmatrix}
             u \\ v
@@ -127,7 +158,7 @@ The same idea as used for the above example gives the following general result.
 Now we look at another type of PDE.\@
 The \href{https://en.wikipedia.org/wiki/Wave_equation}{\emph{1D wave equation}} is
 \[
-    \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t).
+    \frac{\partial^2 f}{\partial x^2}(x,t) = \frac1{c^2}  \frac{\partial^2 f}{\partial t^2}(x,t).
 \]
 Here \(x\) represents the position along string,
 \(t\) is time and \(f(x,t)\) is the displacement of the string from the centre at position \(x\), at time \(t\).
@@ -146,14 +177,14 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
         \label{eq:wave}
         f(x,t) = \frac{1}{2}(F(x+ct) + F(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \ ds
     \end{equation}
-    satisfies \(   \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t) \),
+    satisfies \(   \frac{\partial^2 f}{\partial x^2}(x,t) = \frac1{c^2}  \frac{\partial^2 f}{\partial t^2}(x,t) \),
     \(f(x,0) = F(x)\)
     and \(\frac{\partial f}{\partial t}(x,0) = G(x)\).
 
     \noindent
     \textbf{2.} Conversely, if a solution of
     \[
-        \frac{\partial^2 f}{\partial x^2}(x,t) = c^2  \frac{\partial^2 f}{\partial t^2}(x,t)
+        \frac{\partial^2 f}{\partial x^2}(x,t) = \frac1{c^2}  \frac{\partial^2 f}{\partial t^2}(x,t)
     \]
     satisfies
     \(\frac{\partial^2 f}{\partial x \partial t} = \frac{\partial^2 f}{\partial t \partial x}\),
@@ -212,16 +243,17 @@ In this case the \emph{boundary conditions} are natural: Are the ends of the str
     I.e., \(f(x,t) = \varphi_1(x+ct) + \varphi_2(x-ct)\).
     Let
     \[
-        F(x) = \varphi_1(x) + \varphi_2(x).
-    \]
-    This means that
-    \(F'(x) = \varphi_1'(x) + \varphi_2'(x)\)
-    and \(\frac{\partial f}{\partial t}(x,t) = c\varphi_1(x+ct) - c\varphi_2(x-ct)\).
-    Let
-    \[
-        G(x) = \tfrac{\partial f}{\partial t}(x,0) = c\varphi_1(x) - c\varphi_2(x). \qedhere
+        F(x) = \varphi_1(x) + \varphi_2(x), \quad
+%     \]
+%     This means that
+%     \(F'(x) = \varphi_1'(x) + \varphi_2'(x)\)
+%     and \(\frac{\partial f}{\partial t}(x,t) = c\varphi_1(x+ct) - c\varphi_2(x-ct)\).
+%     Let
+%     \[
+        G(x) = \tfrac{\partial f}{\partial t}(x,0) = c\varphi'_1(x) - c\varphi'_2(x).
     \]
     Substituting these quantities we show that the required form~\eqref{eq:wave} is satisfied.
+\qedhere
 \end{proof}
 
 \section{Extrema (minima / maxima / saddle)}
