@@ -369,7 +369,9 @@ The main object for doing this is the \emph{Hessian matrix}.
     \]
 \end{definition}
 
-Observe that the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix since we know that \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\) for twice differentiable functions (Theorem~\ref{thm:equal-double-partial}).
+Observe that, if $f$ has continuous second partial derivatives, the Hessian matrix \(\mathbf{H} f (\aa)\) is a symmetric matrix 
+because we know that \(\frac{\partial^2 f}{\partial x\,\partial y} (\aa) = \frac{\partial^2 f}{\partial y\,\partial x} (\aa)\) 
+(Theorem~\ref{thm:equal-double-partial}).
 The Hessian matrix is defined analogously in any dimensions as follows.
 Let \(f:\bR^n \to\bR\) be twice differentiable.
 The \emph{Hessian matrix} at \(\aa\in \bR^n\) is defined as
@@ -478,7 +480,7 @@ then
 If \(\aa\) is a stationary point then this only tells us that \(  f(\xx) \approx f(\aa) \) so a natural next question is to search for slightly more detailed information.
 
 \begin{theorem}[second order Taylor]
-    Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\).
+    Let \(f\) be a scalar field twice differentiable on \(B(\aa,r)\) with continuous partial derivatives.
     Then,\footnote{We use the convention that \((\xx-\aa)\) is a vertical vector, equivalently, a \(n \times 1\) matrix.} for \(\xx\) close to \(\aa\),
     \[
         f(\xx) \approx f(\aa) + \nabla f(\aa) \cdot (\xx-\aa) + \frac{1}{2} {(\xx-\aa)}^{\mathbf{t}} \ \mathbf{H} f (\aa) \ (\xx-\aa)
