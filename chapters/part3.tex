@@ -517,6 +517,19 @@ If \(\aa\) is a stationary point then this only tells us that \(  f(\xx) \approx
 
 
 \section{Classifying stationary points}
+\subsubsection*{Review of linear algebra}
+Let $A = (A_{jk})$ be an $n\times n$-matrix. It can be considered as a linear map $\bR^n \to \bR^n$
+by $\xx \mapsto A\xx = (\sum_{j=1}^n A_{1j}x_j, \cdots, \sum_{j=1}^n A_{nj} x_j)$.
+A vector $\xx$ is an eigenvector with eigenvalue $\lambda$ of $A$ if $A\xx = \lambda\xx$.
+
+We say that $A$ is symmetric if $A_{jk} = A_{kj}$. If $A$ is symmetric, then it is diagonalizable:
+there is an orthogonal matrix $B = (B_{jk}), B^{\mathbf{t}} = (B_{jk}) = B^{-1}$, such that
+$BAB^{-1}$ is a diagonal matrix. Then $\ee_k$ are eigenvectors of $BAB^{-1}$.
+$B^{-1}\ee_k$ are eigenvectors of $A$. Indeed, $AB^{-1}\ee_k = B^{-1}BAB^{-1}\ee_k = \lambda_k B^{-1}\ee_k$.
+
+\subsubsection*{Classification by Hessian}
+
+We can study the stationary point using the Hessian matrix.
 
 In order to classify the stationary points we will take advantage of the Hessian matrix and therefore we need to first understand the follow fact about real symmetric matrices.
 
@@ -538,7 +551,7 @@ In order to classify the stationary points we will take advantage of the Hessian
 
 \begin{proof}
     Since \(A\) is symmetric it can be diagonalised by  matrix \(B\)  which is orthogonal (\(B^{\mathbf{t}}=B^{-1}\))
-    and the diagonal matrix \(D = B^{\mathbf{t}} A B\) has the eigenvalues of \(A\) as the diagonal.
+    and the diagonal matrix \(D = B A B^{\mathbf{t}}\) has the eigenvalues of \(A\) as the diagonal.
     This means that
     \(Q(\vv) = \vv^{\mathbf{t}} B^{\mathbf{t}} B A B^{\mathbf{t}} B \vv = \ww^{\mathbf{t}} D \ww \)
     where \(\ww = B \vv\).
@@ -581,6 +594,21 @@ In order to classify the stationary points we will take advantage of the Hessian
     Since \(\frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} \to 0\) as \(\norm{\vv}\to 0\), \( \frac{\abs{\epsilon(\vv)}}{\norm{\vv}^2} < \tfrac{\Lambda}{2}\) when \(\norm{\vv}\) is small.
     The argument is analogous for the second part. For final part consider \(\vv_j\) which is the eigenvector for \(\lambda_j\) and apply the argument of the first or second part.
 \end{proof}
+
+\begin{example}
+ Consider $f(x,y) = x^3 + y^3 - 6xy$.
+ One can find that stationary points are $(x,y) = (0,0), (2,2)$.
+ The Hessian matrix is
+ $\mathbb{H} f(0,0) = \begin{pmatrix} 0 & -6 \\ -6 & 0\end{pmatrix}$,
+ and as its trace is $0$ while the determinant is positive, so it must have a positive and a negative eigenvalues.
+ $(0,0)$ is a saddle point.
+ On the other hand,
+ $\mathbb{H} f(2,2) = \begin{pmatrix} 12 & -6 \\ -6 & 12\end{pmatrix}$,
+ and as its trace is $24$ while the determinant is positive, so it must have two positive eigenvalues.
+ $(2,2)$ is a local minimum. 
+ 
+\end{example}
+
 
 \section{Attaining extreme values}
 
