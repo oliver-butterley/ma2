@@ -686,13 +686,12 @@ In other words, \(\nabla f = \lambda \nabla g\) for some \(\lambda \in \bR\).
 The implementation of this idea is the \href{https://en.wikipedia.org/wiki/Lagrange_multiplier}{method of Lagrange multipliers}.
 
 \begin{theorem}[Lagrange multipliers in 2D]
-    Suppose that a differentiable scalar field \(f(x,y)\) has a relative minimum or maximum when it is subject to the constraint
+    Suppose that \(f(x,y)\), \(g(x,y)\) are differentiable scalar fields.
+    Let \(G = \{(x,y) : g(x,y) = 0\}\).
+    Suppose that \((x_0,y_0) \in G\) is a extrema point for \(f\) constrained to \(G\). 
+    Then there exists a unique scalar \(\lambda\) such that,
     \[
-        g(x,y) = 0.
-    \]
-    Then there exists a scalar \(\lambda\) such that, at the extremum point,
-    \[
-        \nabla f = \lambda \nabla g.
+        (\nabla f)(x_0,y_0) = \lambda (\nabla g)(x_0,y_0).
     \]
 \end{theorem}
 
@@ -714,7 +713,7 @@ In three dimensions a similar result holds.
         g_{2}(x,y,z) = 0
     \]
     and the \(\nabla g_k\) are linearly independent.
-    Then there exist scalars \(\lambda_1\), \(\lambda_2\) such that, at the extremum point,
+    For each extremum point, there exist scalars \(\lambda_1\), \(\lambda_2\) such that, at that point
     \[
         \nabla f = \lambda_{1} \nabla g_{1} + \lambda_{2} \nabla g_{2}.
     \]
@@ -723,13 +722,13 @@ In three dimensions a similar result holds.
 In higher dimensions and possibly with additional constraints we have the following general theorem.
 
 \begin{theorem*}[Lagrange multipliers]
-    Suppose that a differentiable scalar field \(f(x_1,\ldots,x_n)\) has an relative extrema when it is subject to \(m\) constraints
+    Suppose that a differentiable scalar field \(f(x_1,\ldots,x_n)\) has a relative extrema when it is subject to \(m\) constraints
     \[
         g_1(x_1,\ldots,x_n) = 0,
         \dots , g_m(x_1,\ldots,x_n)=0,
     \]
-    where \(m<n\), and the \(\nabla g_k\) are all linearly independent.
-    Then there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that, at each extremum point,
+    where \(m < n\), and the \(\nabla g_k\) are all linearly independent.
+    Then, for each extremum point, there exist \(m\) scalars \(\lambda_1,\ldots,\lambda_m\) such that, at that point,
     \[
         \nabla f = \lambda_1 \nabla g_1 + \cdots + \lambda_m \nabla g_m.
     \]
